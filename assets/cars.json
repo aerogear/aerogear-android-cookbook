@@ -1,0 +1,29 @@
+{
+    "data": [
+        {
+            "manufacturer": "Porsche",
+            "model": "911",
+            "price": "135000"
+        },
+        {
+            "manufacturer": "Nissan",
+            "model": "GT-R",
+            "price": "80000"
+        },
+        {
+            "manufacturer": "BMW",
+            "model": "M3",
+            "price": "60500"
+        },
+        {
+            "manufacturer": "Audi",
+            "model": "S5",
+            "price": "53000"
+        },
+        {
+            "manufacturer": "Audi",
+            "model": "TT",
+            "price": "40000"
+        }
+    ]
+}
