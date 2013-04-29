@@ -1,25 +1,44 @@
-package org.jboss.aerogear.guides;
+package org.jboss.aerogear.guides.pipeline;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import org.jboss.aerogear.android.Pipeline;
+import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
+import org.jboss.aerogear.android.pipeline.LoaderPipe;
 import org.jboss.aerogear.android.pipeline.Pipe;
-import org.jboss.aerogear.guides.pipes.custom.Car;
+import org.jboss.aerogear.guides.R;
+import org.jboss.aerogear.guides.model.Car;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 public class HowToUseCustomPipe extends ListActivity {
 
-    Pipe<Car> carsPipe;
+    private Pipe<Car> carsPipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.custom_pipe);
-        carsPipe = ((GuideApplication) getApplication()).getCarPipe(this);
+        setContentView(R.layout.car_list);
+
+        // Create/Config Pipeline
+        try {
+            URL fileURL = getFilesDir().toURI().toURL();
+            Pipeline pipeline = new Pipeline(fileURL);
+            PipeConfig fileReaderConfig = new PipeConfig(fileURL, Car.class);
+            fileReaderConfig.setHandler(new FileHandler(this));
+            pipeline.pipe(Car.class, fileReaderConfig);
+
+            // Retrive Pipe
+            carsPipe = (LoaderPipe<Car>) pipeline.get("car", this);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

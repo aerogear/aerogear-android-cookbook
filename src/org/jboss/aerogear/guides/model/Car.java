@@ -1,4 +1,4 @@
-package org.jboss.aerogear.guides.pipes.custom;
+package org.jboss.aerogear.guides.model;
 
 public class Car {
 

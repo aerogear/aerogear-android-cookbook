@@ -1,4 +1,4 @@
-package org.jboss.aerogear.guides.pipes.custom;
+package org.jboss.aerogear.guides.pipeline;
 
 import android.content.Context;
 import com.google.gson.Gson;
@@ -7,10 +7,10 @@ import com.google.gson.JsonParser;
 import org.jboss.aerogear.android.ReadFilter;
 import org.jboss.aerogear.android.pipeline.Pipe;
 import org.jboss.aerogear.android.pipeline.PipeHandler;
+import org.jboss.aerogear.guides.model.Car;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
