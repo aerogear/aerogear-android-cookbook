@@ -1,10 +1,29 @@
 package org.jboss.aerogear.guides.model;
 
+import org.jboss.aerogear.android.RecordId;
+
 public class Car {
 
+    @RecordId
+    private Long id;
     private String manufacturer;
     private String model;
     private Integer price;
+
+    public Car(Long id, String manufacturer, String model, int price) {
+        this.id = id;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getManufacturer() {
         return manufacturer;
