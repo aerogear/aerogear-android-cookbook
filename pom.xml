@@ -74,7 +74,7 @@
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
             <type>apklib</type>
-            <version>1.0.0.CR1</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
