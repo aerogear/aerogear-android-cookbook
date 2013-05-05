@@ -4,7 +4,8 @@
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="10"/>
-    <application android:label="@string/app_name" android:name=".GuideApplication">
+    <application android:label="@string/app_name" android:name=".GuideApplication"
+                 android:icon="@drawable/ic_launcher" android:theme="@android:style/Theme.Holo.Light">>
         <activity android:name="Main" android:label="@string/app_name">
         </activity>
         <activity android:name=".pipeline.HowToUseCustomPipe" android:label="@string/app_name">
