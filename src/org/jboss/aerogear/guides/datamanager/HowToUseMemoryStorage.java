@@ -2,11 +2,11 @@ package org.jboss.aerogear.guides.datamanager;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import org.jboss.aerogear.android.DataManager;
 import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
 import org.jboss.aerogear.android.impl.datamanager.StoreConfig;
 import org.jboss.aerogear.android.impl.datamanager.StoreTypes;
+import org.jboss.aerogear.guides.CarAdapter;
 import org.jboss.aerogear.guides.R;
 import org.jboss.aerogear.guides.model.Car;
 
@@ -47,6 +47,6 @@ public class HowToUseMemoryStorage extends ListActivity {
 
     private void updateDisplayCars() {
         List<Car> allCars = new ArrayList<Car>(store.readAll());
-        this.setListAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, allCars));
+        this.setListAdapter(new CarAdapter(this, allCars));
     }
 }

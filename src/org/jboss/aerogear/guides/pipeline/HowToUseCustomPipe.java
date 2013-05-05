@@ -9,6 +9,7 @@ import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 import org.jboss.aerogear.android.pipeline.Pipe;
+import org.jboss.aerogear.guides.CarAdapter;
 import org.jboss.aerogear.guides.R;
 import org.jboss.aerogear.guides.model.Car;
 
@@ -58,7 +59,7 @@ public class HowToUseCustomPipe extends ListActivity {
         @Override
         public void onSuccess(List<Car> data) {
             ListActivity activity = (ListActivity) getActivity();
-            activity.setListAdapter(new ArrayAdapter(activity, android.R.layout.simple_list_item_1, data));
+            activity.setListAdapter(new CarAdapter(activity, data));
         }
 
         @Override
