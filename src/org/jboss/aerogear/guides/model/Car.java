@@ -10,8 +10,10 @@ public class Car {
     private String model;
     private Integer price;
 
-    public Car(Long id, String manufacturer, String model, int price) {
-        this.id = id;
+    public Car() {
+    }
+
+    public Car(String manufacturer, String model, int price) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.price = price;
