@@ -7,4 +7,5 @@
     <string name="price">price</string>
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
+    <string name="delete_confirmation">Really want to delete it?</string>
 </resources>

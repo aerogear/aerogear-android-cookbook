@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
 import org.jboss.aerogear.guides.CarAdapter;
 import org.jboss.aerogear.guides.GuideApplication;
@@ -31,6 +34,31 @@ public class HowToUseMemoryStorage extends ListActivity {
         setContentView(R.layout.car_list);
 
         store = ((GuideApplication) getApplicationContext()).getMemoryStorage();
+
+        ListView listview = getListView();
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                final Car car = (Car) adapterView.getItemAtPosition(position);
+                AlertDialog.Builder builder = new AlertDialog.Builder(HowToUseMemoryStorage.this)
+                        .setTitle(getString(R.string.delete_confirmation))
+                        .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                store.remove(car.getId());
+                                updateDisplayCars();
+                            }
+                        })
+                        .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        });
+                builder.create().show();
+                return false;
+            }
+        });
     }
 
     @Override
