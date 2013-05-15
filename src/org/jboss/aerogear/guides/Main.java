@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import org.jboss.aerogear.guides.authentication.HowToUseAuthentication;
 import org.jboss.aerogear.guides.datamanager.HowToUseMemoryStorage;
 import org.jboss.aerogear.guides.pipeline.HowToUseCustomPipe;
 
@@ -21,6 +22,9 @@ public class Main extends Activity implements View.OnClickListener {
 
         Button memoryStorage = (Button) findViewById(R.id.memoryStorage);
         memoryStorage.setOnClickListener(this);
+
+        Button authentication = (Button) findViewById(R.id.authetication);
+        authentication.setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +37,9 @@ public class Main extends Activity implements View.OnClickListener {
                 break;
             case R.id.memoryStorage:
                 display = HowToUseMemoryStorage.class;
+                break;
+            case R.id.authetication:
+                display = HowToUseAuthentication.class;
                 break;
         }
 

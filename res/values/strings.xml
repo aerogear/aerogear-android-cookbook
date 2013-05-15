@@ -8,4 +8,8 @@
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>
     <string name="delete_confirmation">Really want to delete it?</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="logged">You are logged</string>
+    <string name="notlogged">You are *not* logged</string>
 </resources>
