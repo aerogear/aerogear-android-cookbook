@@ -2,7 +2,6 @@ package org.jboss.aerogear.guides.authentication;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +12,6 @@ import org.jboss.aerogear.android.authentication.AuthenticationModule;
 import org.jboss.aerogear.android.authentication.impl.Authenticator;
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
-import org.jboss.aerogear.android.pipeline.AbstractCallback;
 import org.jboss.aerogear.guides.R;
 
 public class HowToUseAuthentication extends Activity {
