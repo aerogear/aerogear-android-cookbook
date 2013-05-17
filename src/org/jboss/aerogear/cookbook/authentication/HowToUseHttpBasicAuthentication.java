@@ -1,8 +1,7 @@
-package org.jboss.aerogear.guides.authentication;
+package org.jboss.aerogear.cookbook.authentication;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +13,7 @@ import org.jboss.aerogear.android.authentication.impl.AuthTypes;
 import org.jboss.aerogear.android.authentication.impl.Authenticator;
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
-import org.jboss.aerogear.guides.R;
+import org.jboss.aerogear.cookbook.R;
 
 public class HowToUseHttpBasicAuthentication extends Activity {
 

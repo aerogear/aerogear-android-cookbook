@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Aerogear Android Guides</string>
+    <string name="app_name">Aerogear Android Cookbook</string>
     <string name="add">Add</string>
     <string name="manufacturer">manufacturer</string>
     <string name="model">model</string>

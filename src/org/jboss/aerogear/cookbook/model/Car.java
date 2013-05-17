@@ -1,4 +1,4 @@
-package org.jboss.aerogear.guides.model;
+package org.jboss.aerogear.cookbook.model;
 
 import org.jboss.aerogear.android.RecordId;
 

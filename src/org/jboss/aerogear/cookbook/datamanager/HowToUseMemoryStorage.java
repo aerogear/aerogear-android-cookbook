@@ -1,4 +1,4 @@
-package org.jboss.aerogear.guides.datamanager;
+package org.jboss.aerogear.cookbook.datamanager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,12 +12,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
-import org.jboss.aerogear.guides.CarAdapter;
-import org.jboss.aerogear.guides.GuideApplication;
-import org.jboss.aerogear.guides.R;
-import org.jboss.aerogear.guides.model.Car;
+import org.jboss.aerogear.cookbook.CarAdapter;
+import org.jboss.aerogear.cookbook.GuideApplication;
+import org.jboss.aerogear.cookbook.R;
+import org.jboss.aerogear.cookbook.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;

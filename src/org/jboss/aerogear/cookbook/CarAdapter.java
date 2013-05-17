@@ -1,4 +1,4 @@
-package org.jboss.aerogear.guides;
+package org.jboss.aerogear.cookbook;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import org.jboss.aerogear.guides.model.Car;
+import org.jboss.aerogear.cookbook.model.Car;
 
 import java.util.List;
 

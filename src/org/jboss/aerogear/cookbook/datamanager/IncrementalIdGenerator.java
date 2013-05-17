@@ -1,4 +1,4 @@
-package org.jboss.aerogear.guides.datamanager;
+package org.jboss.aerogear.cookbook.datamanager;
 
 import org.jboss.aerogear.android.datamanager.IdGenerator;
 

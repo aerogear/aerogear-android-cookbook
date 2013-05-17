@@ -1,12 +1,12 @@
-package org.jboss.aerogear.guides;
+package org.jboss.aerogear.cookbook;
 
 import android.app.Application;
 import org.jboss.aerogear.android.DataManager;
 import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
 import org.jboss.aerogear.android.impl.datamanager.StoreConfig;
 import org.jboss.aerogear.android.impl.datamanager.StoreTypes;
-import org.jboss.aerogear.guides.datamanager.IncrementalIdGenerator;
-import org.jboss.aerogear.guides.model.Car;
+import org.jboss.aerogear.cookbook.datamanager.IncrementalIdGenerator;
+import org.jboss.aerogear.cookbook.model.Car;
 
 public class GuideApplication extends Application {
 

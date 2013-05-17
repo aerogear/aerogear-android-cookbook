@@ -1,4 +1,4 @@
-package org.jboss.aerogear.guides.pipeline;
+package org.jboss.aerogear.cookbook.pipeline;
 
 import android.content.Context;
 import com.google.gson.Gson;
@@ -7,7 +7,7 @@ import com.google.gson.JsonParser;
 import org.jboss.aerogear.android.ReadFilter;
 import org.jboss.aerogear.android.pipeline.Pipe;
 import org.jboss.aerogear.android.pipeline.PipeHandler;
-import org.jboss.aerogear.guides.model.Car;
+import org.jboss.aerogear.cookbook.model.Car;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

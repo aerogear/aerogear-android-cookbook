@@ -1,17 +1,16 @@
-package org.jboss.aerogear.guides.pipeline;
+package org.jboss.aerogear.cookbook.pipeline;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 import org.jboss.aerogear.android.pipeline.Pipe;
-import org.jboss.aerogear.guides.CarAdapter;
-import org.jboss.aerogear.guides.R;
-import org.jboss.aerogear.guides.model.Car;
+import org.jboss.aerogear.cookbook.CarAdapter;
+import org.jboss.aerogear.cookbook.R;
+import org.jboss.aerogear.cookbook.model.Car;
 
 import java.net.MalformedURLException;
 import java.net.URL;
