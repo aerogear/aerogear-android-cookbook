@@ -1,12 +1,12 @@
 package org.jboss.aerogear.guides;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import org.jboss.aerogear.guides.authentication.HowToUseAuthentication;
+import org.jboss.aerogear.guides.authentication.HowToUseHttpBasicAuthentication;
 import org.jboss.aerogear.guides.datamanager.HowToUseMemoryStorage;
 import org.jboss.aerogear.guides.pipeline.HowToUseCustomPipe;
 
@@ -25,6 +25,9 @@ public class Main extends Activity implements View.OnClickListener {
 
         Button authentication = (Button) findViewById(R.id.authetication);
         authentication.setOnClickListener(this);
+
+        Button httpBasicAuthentication = (Button) findViewById(R.id.httpBasicAuthetication);
+        httpBasicAuthentication.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +43,9 @@ public class Main extends Activity implements View.OnClickListener {
                 break;
             case R.id.authetication:
                 display = HowToUseAuthentication.class;
+                break;
+            case R.id.httpBasicAuthetication:
+                display = HowToUseHttpBasicAuthentication.class;
                 break;
         }
 
