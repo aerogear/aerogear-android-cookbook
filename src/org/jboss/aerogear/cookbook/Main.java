@@ -9,6 +9,7 @@ import org.jboss.aerogear.cookbook.authentication.HowToUseAuthentication;
 import org.jboss.aerogear.cookbook.authentication.HowToUseHttpBasicAuthentication;
 import org.jboss.aerogear.cookbook.datamanager.HowToUseMemoryStorage;
 import org.jboss.aerogear.cookbook.pipeline.HowToUseCustomPipe;
+import org.jboss.aerogear.cookbook.pipeline.HowToUsePipeWithPagination;
 
 public class Main extends Activity implements View.OnClickListener {
 
@@ -19,6 +20,9 @@ public class Main extends Activity implements View.OnClickListener {
 
         Button customPipe = (Button) findViewById(R.id.customPipe);
         customPipe.setOnClickListener(this);
+
+        Button paginationPipe = (Button) findViewById(R.id.paginationPipe);
+        paginationPipe.setOnClickListener(this);
 
         Button memoryStorage = (Button) findViewById(R.id.memoryStorage);
         memoryStorage.setOnClickListener(this);
@@ -37,6 +41,9 @@ public class Main extends Activity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.customPipe:
                 display = HowToUseCustomPipe.class;
+                break;
+            case R.id.paginationPipe:
+                display = HowToUsePipeWithPagination.class;
                 break;
             case R.id.memoryStorage:
                 display = HowToUseMemoryStorage.class;

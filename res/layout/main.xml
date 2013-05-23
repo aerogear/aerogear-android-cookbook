@@ -1,53 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:gravity="center"
-              android:padding="30dp">
-
-    <ImageView
-            android:layout_width="250dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:src="@drawable/aerogear_logo"/>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="Android Guides"/>
-
-    <Space
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"/>
-
-    <Button
-            android:id="@+id/customPipe"
+            android:layout_height="fill_parent">
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="How To Use Custom Pipe"
-            android:onClick=""/>
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:padding="30dp">
 
-    <Button
-            android:id="@+id/memoryStorage"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="How To Use MemoryStorage"/>
+        <ImageView
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/aerogear_logo"/>
 
-    <Button
-            android:id="@+id/authetication"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="How To Use Authentication"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="Android Guides"/>
 
-    <Button
-            android:id="@+id/httpBasicAuthetication"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="How To Use Httpbasic Authentication"/>
+        <Space
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"/>
 
-</LinearLayout>
+        <Button
+                android:id="@+id/customPipe"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="How To Use Custom Pipe"/>
+
+        <Button
+                android:id="@+id/paginationPipe"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="How To Use Pipe With Pagination"/>
+
+        <Button
+                android:id="@+id/memoryStorage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="How To Use MemoryStorage"/>
+
+        <Button
+                android:id="@+id/authetication"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="How To Use Authentication"/>
+
+        <Button
+                android:id="@+id/httpBasicAuthetication"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="How To Use Httpbasic Authentication"/>
+
+    </LinearLayout>
+</ScrollView>
 
