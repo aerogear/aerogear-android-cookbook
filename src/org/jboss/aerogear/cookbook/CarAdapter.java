@@ -46,8 +46,8 @@ public class CarAdapter extends BaseAdapter {
         TextView manufacturer = (TextView) carView.findViewById(R.id.manufacturer);
         manufacturer.setText(car.getManufacturer());
 
-        TextView model = (TextView) carView.findViewById(R.id.model);
-        model.setText(car.getModel());
+        TextView model = (TextView) carView.findViewById(R.id.brand);
+        model.setText(car.getBrand());
 
         TextView price = (TextView) carView.findViewById(R.id.price);
         price.setText(String.valueOf(car.getPrice()));

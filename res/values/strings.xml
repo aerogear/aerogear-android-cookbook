@@ -3,7 +3,7 @@
     <string name="app_name">Aerogear Android Cookbook</string>
     <string name="add">Add</string>
     <string name="manufacturer">manufacturer</string>
-    <string name="model">model</string>
+    <string name="brand">brand</string>
     <string name="price">price</string>
     <string name="ok">ok</string>
     <string name="cancel">cancel</string>

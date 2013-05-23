@@ -7,15 +7,16 @@ public class Car {
     @RecordId
     private Long id;
     private String manufacturer;
-    private String model;
+    private String brand;
     private Integer price;
+    private String color;
 
     public Car() {
     }
 
-    public Car(String manufacturer, String model, int price) {
+    public Car(String manufacturer, String brand, int price) {
         this.manufacturer = manufacturer;
-        this.model = model;
+        this.brand = brand;
         this.price = price;
     }
 
@@ -35,12 +36,12 @@ public class Car {
         this.manufacturer = manufacturer;
     }
 
-    public String getModel() {
-        return model;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public Integer getPrice() {
@@ -53,6 +54,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return manufacturer + " - " + model + " - " + price;
+        return brand;
     }
 }

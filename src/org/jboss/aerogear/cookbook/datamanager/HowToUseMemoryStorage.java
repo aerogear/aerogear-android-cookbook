@@ -110,12 +110,12 @@ public class HowToUseMemoryStorage extends ListActivity {
 
     private Car retrieveCarFromForm(View view) {
         TextView manufacturer = (TextView) view.findViewById(R.id.manufacturer);
-        TextView model = (TextView) view.findViewById(R.id.model);
+        TextView model = (TextView) view.findViewById(R.id.brand);
         TextView price = (TextView) view.findViewById(R.id.price);
 
         Car car = new Car();
         car.setManufacturer(manufacturer.getText().toString());
-        car.setModel(model.getText().toString());
+        car.setBrand(model.getText().toString());
         car.setPrice(Integer.valueOf(price.getText().toString()));
 
         return car;

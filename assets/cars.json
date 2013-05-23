@@ -2,27 +2,27 @@
     "data": [
         {
             "manufacturer": "Porsche",
-            "model": "911",
+            "brand": "911",
             "price": "135000"
         },
         {
             "manufacturer": "Nissan",
-            "model": "GT-R",
+            "brand": "GT-R",
             "price": "80000"
         },
         {
             "manufacturer": "BMW",
-            "model": "M3",
+            "brand": "M3",
             "price": "60500"
         },
         {
             "manufacturer": "Audi",
-            "model": "S5",
+            "brand": "S5",
             "price": "53000"
         },
         {
             "manufacturer": "Audi",
-            "model": "TT",
+            "brand": "TT",
             "price": "40000"
         }
     ]
