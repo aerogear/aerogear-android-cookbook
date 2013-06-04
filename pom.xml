@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>aerogear-android-guides</groupId>
-    <artifactId>aerogear-android-guides</artifactId>
+    <groupId>aerogear-android-cookbook</groupId>
+    <artifactId>aerogear-android-cookbook</artifactId>
     <packaging>apk</packaging>
     <version>1.0.1</version>
 
