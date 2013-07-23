@@ -7,7 +7,7 @@
     <groupId>aerogear-android-cookbook</groupId>
     <artifactId>aerogear-android-cookbook</artifactId>
     <packaging>apk</packaging>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,7 +74,7 @@
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
             <type>apklib</type>
-            <version>1.0.1</version>
+            <version>1.1.0</version>
         </dependency>
 
         <dependency>
