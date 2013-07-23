@@ -50,7 +50,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
 
                     @Override
                     public void onFailure(Exception e) {
-                        Toast.makeText(HowToUseHttpBasicAuthentication.this, "", Toast.LENGTH_LONG).show();
+                        displayError(e.getMessage());
                     }
                 });
             }
@@ -67,7 +67,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
 
                     @Override
                     public void onFailure(Exception e) {
-                        Toast.makeText(HowToUseHttpBasicAuthentication.this, "", Toast.LENGTH_LONG).show();
+                        displayError(e.getMessage());
                     }
                 });
             }
@@ -80,6 +80,15 @@ public class HowToUseHttpBasicAuthentication extends Activity {
                 status.setText(getString(logged ? R.string.logged : R.string.notlogged));
                 login.setEnabled(!logged);
                 logout.setEnabled(logged);
+            }
+        });
+    }
+
+    private void displayError(final String message) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(HowToUseHttpBasicAuthentication.this, message, Toast.LENGTH_LONG).show();
             }
         });
     }

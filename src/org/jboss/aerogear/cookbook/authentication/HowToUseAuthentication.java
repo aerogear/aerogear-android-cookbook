@@ -49,7 +49,7 @@ public class HowToUseAuthentication extends Activity {
 
                     @Override
                     public void onFailure(Exception e) {
-                        Toast.makeText(HowToUseAuthentication.this, "", Toast.LENGTH_LONG).show();
+                        displayError(e.getMessage());
                     }
                 });
             }
@@ -66,7 +66,7 @@ public class HowToUseAuthentication extends Activity {
 
                     @Override
                     public void onFailure(Exception e) {
-                        Toast.makeText(HowToUseAuthentication.this, "", Toast.LENGTH_LONG).show();
+                        displayError(e.getMessage());
                     }
                 });
             }
@@ -80,6 +80,15 @@ public class HowToUseAuthentication extends Activity {
                 status.setText(getString(logged ? R.string.logged : R.string.notlogged));
                 login.setEnabled(!logged);
                 logout.setEnabled(logged);
+            }
+        });
+    }
+
+    private void displayError(final String message) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(HowToUseAuthentication.this, message, Toast.LENGTH_LONG).show();
             }
         });
     }
