@@ -5,8 +5,27 @@
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="10"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="org.jboss.aerogear.cookbook.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="org.jboss.aerogear.cookbook.permission.C2D_MESSAGE" />
+
     <application android:label="@string/app_name" android:name=".GuideApplication"
-                 android:icon="@drawable/ic_launcher" android:theme="@android:style/Theme.Holo.Light">>
+                 android:icon="@drawable/ic_launcher" android:theme="@android:style/Theme.Holo.Light">
+        <receiver
+            android:name="org.jboss.aerogear.android.unifiedpush.AeroGearGCMMessageReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="org.jboss.aerogear.cookbook" />
+            </intent-filter>
+            <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" android:value="org.jboss.aerogear.cookbook.push.NotifyingHandler"/>
+        </receiver> 
         <activity android:name="Main" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
