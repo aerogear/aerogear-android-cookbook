@@ -10,6 +10,7 @@ import org.jboss.aerogear.cookbook.authentication.HowToUseHttpBasicAuthenticatio
 import org.jboss.aerogear.cookbook.datamanager.HowToUseMemoryStorage;
 import org.jboss.aerogear.cookbook.pipeline.HowToUseCustomPipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipeWithPagination;
+import org.jboss.aerogear.cookbook.push.PushActivity;
 
 public class Main extends Activity implements View.OnClickListener {
 
@@ -32,6 +33,9 @@ public class Main extends Activity implements View.OnClickListener {
 
         Button httpBasicAuthentication = (Button) findViewById(R.id.httpBasicAuthetication);
         httpBasicAuthentication.setOnClickListener(this);
+        
+        Button pushDemo = (Button) findViewById(R.id.pushDemo);
+        pushDemo.setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +58,9 @@ public class Main extends Activity implements View.OnClickListener {
             case R.id.httpBasicAuthetication:
                 display = HowToUseHttpBasicAuthentication.class;
                 break;
+            case R.id.pushDemo:
+                display = PushActivity.class;
+                break;                
         }
 
         startActivity(new Intent(this, display));
