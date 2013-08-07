@@ -28,17 +28,13 @@ import android.widget.Toast;
 import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
 import org.jboss.aerogear.android.unifiedpush.Registrations;
 
-public class MainApplication extends Application {
+public class MainApplication extends Application implements PushConstants {
 
     private static final String TAG = MainApplication.class.getSimpleName();
     private PushRegistrar registrar;
     private PushConfig config;
     private final Registrations registrations = new Registrations();
-    private static final String VARIANT_ID = "c4c1a7e5-3baa-445d-b1fc-f8fa503c1721";
-    private static final String SECRET = "3986daa7-427e-4d8d-ba4c-04046fbd44fc";
-    private static final String GCM_SENDER_ID = "272275396485";
-    private static final String UNIFIED_PUSH_URL = "http://10.0.2.2:8080/ag-push/rest/registry/device";
-    private static final String MY_ALIAS = "john";
+    
 
     @Override
     public void onCreate() {
