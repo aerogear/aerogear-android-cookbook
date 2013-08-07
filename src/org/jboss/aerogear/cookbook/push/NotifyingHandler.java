@@ -28,18 +28,18 @@ import org.jboss.aerogear.cookbook.R;
 
 public class NotifyingHandler implements MessageHandler {
 
-	static final String TAG = "GCMDemo";
+    static final String TAG = "GCMDemo";
     public static final int NOTIFICATION_ID = 1;
     private NotificationManager mNotificationManager;
     NotificationCompat.Builder builder;
     Context ctx;
-    
-    public NotifyingHandler(){}
-    
-    
+
+    public NotifyingHandler() {
+    }
+
     @Override
     public void onMessage(Context context, Bundle message) {
-    	ctx = context;
+        ctx = context;
         sendNotification(message.getString("alert"));
     }
 
@@ -50,29 +50,27 @@ public class NotifyingHandler implements MessageHandler {
 
         PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0,
                 new Intent(ctx, PushActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("alert", msg), 0);
-        
+
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(ctx)
-        .setSmallIcon(R.drawable.ic_launcher)
-        .setContentTitle("GCM Notification")
-        .setStyle(new NotificationCompat.BigTextStyle()
-        .bigText(msg))
-        .setContentText(msg);
+                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setContentTitle("GCM Notification")
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText(msg))
+                        .setContentText(msg);
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
 
-	@Override
-	public void onDeleteMessage(Context context, Bundle arg0) {
-		
-	}
+    @Override
+    public void onDeleteMessage(Context context, Bundle arg0) {
 
-	@Override
-	public void onError() {
-		
-	}
+    }
 
+    @Override
+    public void onError() {
 
+    }
 
 }
