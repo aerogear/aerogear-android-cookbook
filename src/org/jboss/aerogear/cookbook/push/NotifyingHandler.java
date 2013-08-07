@@ -49,7 +49,7 @@ public class NotifyingHandler implements MessageHandler {
                 ctx.getSystemService(Context.NOTIFICATION_SERVICE);
 
         PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0,
-                new Intent(ctx, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("alert", msg), 0);
+                new Intent(ctx, PushActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("alert", msg), 0);
         
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(ctx)

@@ -27,7 +27,7 @@ import android.widget.TextView;
 import org.jboss.aerogear.android.unifiedpush.Registrations;
 import org.jboss.aerogear.cookbook.R;
 
-public class MainActivity extends Activity implements MessageHandler{
+public class PushActivity extends Activity implements MessageHandler{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
