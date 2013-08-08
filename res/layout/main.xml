@@ -57,6 +57,12 @@
                 android:layout_height="wrap_content"
                 android:text="How To Use Httpbasic Authentication"/>
 
+        <Button
+                android:id="@+id/pushDemo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="How to use the Push APIs"/>
+
     </LinearLayout>
 </ScrollView>
 
