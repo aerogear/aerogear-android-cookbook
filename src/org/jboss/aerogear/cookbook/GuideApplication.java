@@ -17,8 +17,13 @@
 package org.jboss.aerogear.cookbook;
 
 import android.app.Application;
+import android.util.Log;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jboss.aerogear.android.DataManager;
 import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
 import org.jboss.aerogear.android.impl.datamanager.StoreConfig;
@@ -41,6 +46,8 @@ public class GuideApplication extends Application {
     private PushConfig config;
     private final Registrations registrations = new Registrations();
 
+    private final static String TAG = GuideApplication.class.getSimpleName();
+    
     @Override
     public void onCreate() {
         super.onCreate();
@@ -77,15 +84,16 @@ public class GuideApplication extends Application {
 
         if (registrar == null) {
             try {
-                config = new PushConfig(new URL(UNIFIED_PUSH_URL), GCM_SENDER_ID);
+                config = new PushConfig(new URI(UNIFIED_PUSH_URL), GCM_SENDER_ID);
                 config.setVariantID(VARIANT_ID);
                 config.setSecret(SECRET);
                 config.setAlias(MY_ALIAS);
 
                 registrar = registrations.push("registrar", config);
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
+            } catch (URISyntaxException ex) {
+                Log.e(TAG, ex.getMessage(), ex);
+                throw new RuntimeException(ex);
+            } 
         }
 
     }
