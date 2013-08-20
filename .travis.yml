@@ -1,5 +1,8 @@
 language: java
 
+notifications:
+  irc: "irc.freenode.org#aerogear"
+
 before_install:
 
   # download the latest android sdk and unzip
@@ -15,5 +18,13 @@ before_install:
 
   # Checkout maven-android-sdk-deployer
   - git clone git://github.com/mosabua/maven-android-sdk-deployer.git
+
+  # Install locally google-play-services
   - cd $PWD/maven-android-sdk-deployer/extras/google-play-services
   - mvn install -N --quiet
+  - cd ../../..
+
+  # Install locally compatibility-v4
+  - cd $PWD/maven-android-sdk-deployer/extras/compatibility-v4
+  - mvn install -N --quiet
+  - cd ../../..
