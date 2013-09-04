@@ -23,13 +23,11 @@
                 android:textStyle="bold"
                 android:text="Android Guides"/>
 
-        <Space
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"/>
 
         <Button
                 android:id="@+id/customPipe"
                 android:layout_width="fill_parent"
+                android:layout_marginTop="50dp"
                 android:layout_height="wrap_content"
                 android:text="How To Use Custom Pipe"/>
 
