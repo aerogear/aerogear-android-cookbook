@@ -32,7 +32,7 @@ public class CarAdapter extends BaseAdapter {
     private final List<Car> cars;
 
     public CarAdapter(Context context, List<Car> cars) {
-        this.context = context;
+        this.context = context.getApplicationContext();
         this.cars = cars;
     }
 
