@@ -16,30 +16,30 @@
  */
 package org.jboss.aerogear.cookbook.pipeline;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.ReadFilter;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
-import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
-import org.jboss.aerogear.android.pipeline.Pipe;
 import org.jboss.aerogear.android.pipeline.paging.PageConfig;
 import org.jboss.aerogear.android.pipeline.paging.PagedList;
+import org.jboss.aerogear.android.pipeline.support.AbstractFragmentActivityCallback;
 import org.jboss.aerogear.cookbook.R;
 import org.jboss.aerogear.cookbook.model.Car;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
-public class HowToUsePipeWithPagination extends Activity {
+public class HowToUsePipeWithPagination extends FragmentActivity {
 
     private PagedList<Car> data;
     private ReadCallback readCallback = new ReadCallback();
@@ -80,7 +80,7 @@ public class HowToUsePipeWithPagination extends Activity {
             readFilter.setWhere(jsonObject);
             readFilter.setLimit(2);
 
-            pipe.readWithFilter(readFilter, readCallback);
+            pipe.read(readFilter, readCallback);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -104,14 +104,21 @@ public class HowToUsePipeWithPagination extends Activity {
         data.previous(readCallback);
     }
 
-    private class ReadCallback extends AbstractActivityCallback<List<Car>> {
-        public void onSuccess(List<Car> data) {
-            HowToUsePipeWithPagination activity = (HowToUsePipeWithPagination) getActivity();
+    private class ReadCallback extends AbstractFragmentActivityCallback<List<Car>> {
+        
+		private static final long serialVersionUID = 1L;
+
+		public ReadCallback() {
+			super(serialVersionUID);
+		}
+		
+		public void onSuccess(List<Car> data) {
+            HowToUsePipeWithPagination activity = (HowToUsePipeWithPagination) getFragmentActivity();
             activity.setData((PagedList<Car>) data);
         }
 
         public void onFailure(Exception e) {
-            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getFragmentActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
