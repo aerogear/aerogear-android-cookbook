@@ -28,7 +28,7 @@ public class HowToUseCustomPipe extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.car_list);
+        setContentView(R.layout.car_list_fragment_container);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ListFragment fragment = new HowToUseCustomPipeFragment();
         ft.add(R.id.list, fragment);
