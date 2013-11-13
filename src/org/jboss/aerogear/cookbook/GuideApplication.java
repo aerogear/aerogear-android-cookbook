@@ -17,10 +17,10 @@
 package org.jboss.aerogear.cookbook;
 
 import android.app.Application;
-import java.net.MalformedURLException;
+
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
+
 import org.jboss.aerogear.android.DataManager;
 import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
 import org.jboss.aerogear.android.impl.datamanager.StoreConfig;
@@ -30,11 +30,8 @@ import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
 import org.jboss.aerogear.android.unifiedpush.Registrations;
 import org.jboss.aerogear.cookbook.datamanager.IncrementalIdGenerator;
 import org.jboss.aerogear.cookbook.model.Car;
-import static org.jboss.aerogear.cookbook.push.PushConstants.GCM_SENDER_ID;
-import static org.jboss.aerogear.cookbook.push.PushConstants.MY_ALIAS;
-import static org.jboss.aerogear.cookbook.push.PushConstants.SECRET;
-import static org.jboss.aerogear.cookbook.push.PushConstants.UNIFIED_PUSH_URL;
-import static org.jboss.aerogear.cookbook.push.PushConstants.VARIANT_ID;
+
+import static org.jboss.aerogear.cookbook.push.PushConstants.*;
 
 public class GuideApplication extends Application {
 
@@ -83,6 +80,7 @@ public class GuideApplication extends Application {
                 config.setVariantID(VARIANT_ID);
                 config.setSecret(SECRET);
                 config.setAlias(MY_ALIAS);
+                config.setCategories(CATEGORIES);
 
                 registrar = registrations.push("registrar", config);
             } catch (URISyntaxException e) {
