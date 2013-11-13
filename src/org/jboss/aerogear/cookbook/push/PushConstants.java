@@ -16,6 +16,8 @@
  */
 package org.jboss.aerogear.cookbook.push;
 
+import java.util.List;
+
 /**
  * These are the constants which define a connection to a Unified Push server.
  */
@@ -25,4 +27,5 @@ public interface PushConstants {
     static final String GCM_SENDER_ID    = "";
     static final String UNIFIED_PUSH_URL = "";
     static final String MY_ALIAS         = "";
+    static final List<String> CATEGORIES = null;
 }
