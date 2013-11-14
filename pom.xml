@@ -46,15 +46,15 @@
     </scm>    
 
     <properties>
-        <android.version>4.0.1.2</android.version>
-        <aerogear.version>1.2.0</aerogear.version>
+        <android.version>4.1.1.4</android.version>
+        <aerogear.version>1.3.0-SNAPSHOT</aerogear.version>
 
-        <maven.android.plugin.verson>3.6.0</maven.android.plugin.verson>
+        <maven.android.plugin.verson>3.8.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
-        <java.version>1.6</java.version>
+        <java.version>1.7</java.version>
 
-        <android.avd>15</android.avd>
-        <android.platform>17</android.platform>
+        <android.avd>19</android.avd>
+        <android.platform>19</android.platform>
         <android.debug>true</android.debug>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <proguard.skip>true</proguard.skip>
