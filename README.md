@@ -1,4 +1,4 @@
-# AeroGear Android Cookbook README
+# AeroGear Android Cookbook
 
 The cookbook application contains an interactive version of the code samples found in the [online documentation](http://aerogear.org/docs/guides/aerogear-android/).  
 
@@ -6,8 +6,8 @@ The cookbook application contains an interactive version of the code samples fou
 
 ## Prerequisites
 
-* Maven 3.0.x 
-* Android SDK
+* Maven 3.1.1
+* Android SDK (and platform 19)
 * Git
 * maven-android-deployer
 
@@ -49,10 +49,6 @@ Once you have your registered your application with the push server, you can fil
 * libstdc++.i686
 * ncurses-lib.i686
 * zlib.i686
- 
-### Error when using Maven 3.1.x
- 
- The deployer does not run on Maven 3.1.  Please downgrade to Maven 3.0.x.
  
 ## Push Setup
 ### Registration fails
