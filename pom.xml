@@ -25,17 +25,9 @@
 
     <developers>
         <developer>
-            <id>passos</id>
-            <name>Daniel Passos</name>
-            <url>http://passos.me/</url>
-            <email>dpassos@redhat.com</email>
-        </developer>
-
-        <developer>
-            <id>secondsun</id>
-            <name>Summers Pittman</name>
-            <url>http://blog.sagaoftherealms.net/</url>
-            <email>supittma@redhat.com</email>
+            <id>aerogear</id>
+            <name>AeroGear Team</name>
+            <email>aerogear-dev@lists.jboss.org</email>
         </developer>
     </developers>
 
