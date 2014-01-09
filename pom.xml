@@ -39,11 +39,12 @@
 
     <properties>
         <android.version>4.1.1.4</android.version>
-        <aerogear.version>1.3.0</aerogear.version>
+        <aerogear.version>1.3.1</aerogear.version>
+        <picaso.version>2.1.1</picaso.version>
 
         <maven.android.plugin.verson>3.8.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
-        <java.version>1.7</java.version>
+        <java.version>1.6</java.version>
 
         <android.platform>19</android.platform>
         <android.debug>true</android.debug>
@@ -73,6 +74,12 @@
             <scope>provided</scope>                        
             <type>jar</type>
             <version>${aerogear.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.picasso</groupId>
+            <artifactId>picasso</artifactId>
+            <version>${picaso.version}</version>
         </dependency>
 
     </dependencies>
