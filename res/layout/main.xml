@@ -35,7 +35,8 @@
             android:id="@+id/paginationPipe"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="How To Use Pipe With Pagination" />
+            android:text="How To Use Pipe With Pagination"
+            android:enabled="false"/>
 
         <Button
             android:id="@+id/customPipe"
