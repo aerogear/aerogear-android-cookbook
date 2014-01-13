@@ -23,16 +23,16 @@ import com.google.gson.JsonParser;
 import org.jboss.aerogear.android.ReadFilter;
 import org.jboss.aerogear.android.pipeline.Pipe;
 import org.jboss.aerogear.android.pipeline.PipeHandler;
-import org.jboss.aerogear.cookbook.model.Car;
+import org.jboss.aerogear.cookbook.model.Developer;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
-public class FileHandler implements PipeHandler<Car> {
+public class FileHandler implements PipeHandler<Developer> {
 
-    private static final String FILE_NAME = "cars.json";
+    private static final String FILE_NAME = "developers.json";
     private static final Gson GSON = new Gson();
     private final Context applicationContext;
 
@@ -42,7 +42,7 @@ public class FileHandler implements PipeHandler<Car> {
     }
 
     @Override
-    public List<Car> onRead(Pipe<Car> requestingPipe) {
+    public List<Developer> onRead(Pipe<Developer> requestingPipe) {
         JsonParser parser = new JsonParser();
         BufferedReader carsReader;
         try {
@@ -50,18 +50,18 @@ public class FileHandler implements PipeHandler<Car> {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        JsonArray carsJson = parser.parse(carsReader).getAsJsonObject().getAsJsonArray("data");
-        Car[] cars = GSON.fromJson(carsJson, Car[].class);
-        return Arrays.asList(cars);
+        JsonArray json = parser.parse(carsReader).getAsJsonObject().getAsJsonArray("data");
+        Developer[] developers = GSON.fromJson(json, Developer[].class);
+        return Arrays.asList(developers);
     }
 
     @Override
-    public List<Car> onReadWithFilter(ReadFilter filter, Pipe<Car> requestingPipe) {
+    public List<Developer> onReadWithFilter(ReadFilter filter, Pipe<Developer> requestingPipe) {
         return onRead(requestingPipe);
     }
 
     @Override
-    public Car onSave(Car item) {
+    public Developer onSave(Developer item) {
         throw new IllegalAccessError("Not Supported");
     }
 
