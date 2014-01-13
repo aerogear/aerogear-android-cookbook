@@ -15,4 +15,5 @@
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="push_label">Register to receive messages</string>
+    <string name="loading">Loading...</string>
 </resources>

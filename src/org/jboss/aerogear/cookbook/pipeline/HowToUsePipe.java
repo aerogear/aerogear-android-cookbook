@@ -38,8 +38,16 @@ public class HowToUsePipe extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.developer_list);
+        setContentView(R.layout.developers);
 
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, new ProgressFragment())
+                .commit();
+
+        retriveData();
+    }
+
+    private void retriveData() {
         URL serverURL = null;
         try {
             serverURL = new URL(Constants.URL_BASE);
@@ -56,7 +64,6 @@ public class HowToUsePipe extends FragmentActivity {
 
         LoaderPipe<Developer> developerLoaderPipe = pipeline.get("developer", this);
         developerLoaderPipe.read(new TeamReadCallBack());
-
     }
 
     private static class TeamReadCallBack extends AbstractFragmentActivityCallback<List<Developer>> {
@@ -74,9 +81,9 @@ public class HowToUsePipe extends FragmentActivity {
     }
 
     private void displayTeam(List<Developer> data) {
-        DeveloperAdapater adapter = new DeveloperAdapater(this, data);
-        ListView listView = (ListView) findViewById(android.R.id.list);
-        listView.setAdapter(adapter);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, new DeveloperFragment(this, data))
+                .commit();
     }
 
     private void displayErrorMessage(Exception e) {
