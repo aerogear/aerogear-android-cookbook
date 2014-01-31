@@ -27,7 +27,7 @@ import org.jboss.aerogear.cookbook.datamanager.HowToUseMemoryStorage;
 import org.jboss.aerogear.cookbook.pipeline.HowToUseCustomPipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipeWithPagination;
-import org.jboss.aerogear.cookbook.push.PushActivity;
+import org.jboss.aerogear.cookbook.push.HowToUsePushActivity;
 
 public class Main extends Activity implements View.OnClickListener {
 
@@ -82,7 +82,7 @@ public class Main extends Activity implements View.OnClickListener {
                 display = HowToUseHttpBasicAuthentication.class;
                 break;
             case R.id.pushDemo:
-                display = PushActivity.class;
+                display = HowToUsePushActivity.class;
                 break;
         }
 
