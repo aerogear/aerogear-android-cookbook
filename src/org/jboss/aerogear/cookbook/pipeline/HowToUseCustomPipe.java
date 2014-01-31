@@ -16,7 +16,6 @@
  */
 package org.jboss.aerogear.cookbook.pipeline;
 
-import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 import org.jboss.aerogear.android.Pipeline;
@@ -24,13 +23,11 @@ import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 import org.jboss.aerogear.android.pipeline.support.AbstractFragmentActivityCallback;
 import org.jboss.aerogear.cookbook.Constants;
+import org.jboss.aerogear.cookbook.ProgressFragment;
 import org.jboss.aerogear.cookbook.R;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
-import org.jboss.aerogear.cookbook.model.Car;
 import org.jboss.aerogear.cookbook.model.Developer;
 
 import java.net.MalformedURLException;

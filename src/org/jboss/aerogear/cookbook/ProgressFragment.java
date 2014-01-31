@@ -1,4 +1,4 @@
-package org.jboss.aerogear.cookbook.pipeline;
+package org.jboss.aerogear.cookbook;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
