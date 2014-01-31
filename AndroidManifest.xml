@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.jboss.aerogear.cookbook"
+<manifest package="org.jboss.aerogear.cookbook"
+          xmlns:android="http://schemas.android.com/apk/res/android"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="10"/>
@@ -15,8 +15,8 @@
 
     <uses-permission android:name="org.jboss.aerogear.cookbook.permission.C2D_MESSAGE" />
 
-    <application android:label="@string/app_name" android:name=".GuideApplication"
-                 android:icon="@drawable/ic_launcher" android:theme="@android:style/Theme.Holo.Light">
+    <application android:name=".GuideApplication" android:icon="@drawable/ic_launcher"
+                 android:label="@string/app_name" android:theme="@style/Theme.AppCompat.Light">
         <receiver
             android:name="org.jboss.aerogear.android.unifiedpush.AeroGearGCMMessageReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
