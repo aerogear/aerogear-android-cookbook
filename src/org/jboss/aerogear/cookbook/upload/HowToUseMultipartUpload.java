@@ -115,7 +115,12 @@ public class HowToUseMultipartUpload extends Activity {
         return avatar;
     }
 
-    private class SaveCallBack extends AbstractActivityCallback<Avatar> {
+    private static class SaveCallBack extends AbstractActivityCallback<Avatar> {
+        
+        public SaveCallBack() {
+            super(SaveCallBack.class);
+        }
+        
         @Override
         public void onSuccess(Avatar data) {
             HowToUseMultipartUpload activity = (HowToUseMultipartUpload) getActivity();
