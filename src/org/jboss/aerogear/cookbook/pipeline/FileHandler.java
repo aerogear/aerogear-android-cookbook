@@ -51,21 +51,12 @@ public class FileHandler implements PipeHandler<Developer> {
 
     @Override
     public List<Developer> onRead(Pipe<Developer> requestingPipe) {
-        JsonParser parser = new JsonParser();
-        BufferedReader carsReader;
-        try {
-            carsReader = new BufferedReader(new InputStreamReader(applicationContext.getAssets().open(FILE_NAME)));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        JsonArray json = parser.parse(carsReader).getAsJsonObject().getAsJsonArray("data");
-        Developer[] developers = GSON.fromJson(json, Developer[].class);
-        return Arrays.asList(developers);
+        throw new IllegalAccessError("Deprecated");
     }
 
     @Override
     public List<Developer> onReadWithFilter(ReadFilter filter, Pipe<Developer> requestingPipe) {
-        return onRead(requestingPipe);
+        throw new IllegalAccessError("Deprecated");
     }
 
     @Override
