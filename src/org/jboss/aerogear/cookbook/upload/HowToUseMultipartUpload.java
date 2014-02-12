@@ -127,6 +127,8 @@ public class HowToUseMultipartUpload extends Activity {
 
     public void displaySuccess() {
         Toast.makeText(this, "Success", Toast.LENGTH_LONG).show();
+        image.setImageResource(R.drawable.noimage);
+        name.setText("");
         progressDialog.dismiss();
     }
 
