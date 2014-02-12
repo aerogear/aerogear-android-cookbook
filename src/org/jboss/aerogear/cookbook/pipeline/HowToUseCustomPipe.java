@@ -28,11 +28,14 @@ import org.jboss.aerogear.cookbook.R;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import com.google.gson.JsonArray;
 import org.jboss.aerogear.cookbook.model.Developer;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
+import org.jboss.aerogear.android.pipeline.ResponseParser;
 
 public class HowToUseCustomPipe extends FragmentActivity {
 
@@ -51,11 +54,14 @@ public class HowToUseCustomPipe extends FragmentActivity {
     private void retriveData() {
         try {
             URL fileURL = this.getFilesDir().toURI().toURL();
+            ResponseParser<Developer> parser = new GsonResponseParser<Developer>();
+            parser.getMarshallingConfig().setDataRoot("data");
 
             Pipeline pipeline = new Pipeline(fileURL);
             PipeConfig pipeConfig = new PipeConfig(fileURL, Developer.class);
-
+            pipeConfig.setResponseParser(parser);
             pipeConfig.setHandler(new FileHandler(getApplicationContext()));
+            
             pipeline.pipe(Developer.class, pipeConfig);
 
             LoaderPipe<Developer> developerLoaderPipe = pipeline.get("developer", this);
