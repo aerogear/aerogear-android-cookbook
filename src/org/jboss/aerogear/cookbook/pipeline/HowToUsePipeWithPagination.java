@@ -105,14 +105,14 @@ public class HowToUsePipeWithPagination extends FragmentActivity {
     }
 
     private class ReadCallback extends AbstractFragmentActivityCallback<List<Car>> {
-        
-		private static final long serialVersionUID = 1L;
 
-		public ReadCallback() {
-			super(serialVersionUID);
-		}
-		
-		public void onSuccess(List<Car> data) {
+        private static final long serialVersionUID = 1L;
+
+        public ReadCallback() {
+            super(serialVersionUID);
+        }
+
+        public void onSuccess(List<Car> data) {
             HowToUsePipeWithPagination activity = (HowToUsePipeWithPagination) getFragmentActivity();
             activity.setData((PagedList<Car>) data);
         }

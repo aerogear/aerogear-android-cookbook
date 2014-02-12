@@ -87,20 +87,20 @@ public class FileHandler implements PipeHandler<Developer> {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            
+
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             int read = -1;
             while ((read = carsReader.read()) != -1) {
                 bytes.write(read);
             }
-            
+
             return new HeaderAndBody(bytes.toByteArray(), new HashMap<String, Object>());
-            
+
         } catch (IOException ex) {
             Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex);
         }
-        
+
     }
 
     @Override

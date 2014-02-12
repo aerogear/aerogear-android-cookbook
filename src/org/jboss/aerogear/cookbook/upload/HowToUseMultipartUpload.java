@@ -1,3 +1,19 @@
+/**
+ * JBoss, Home of Professional Open Source
+ * Copyright Red Hat, Inc., and individual contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.jboss.aerogear.cookbook.upload;
 
 import android.app.Activity;
@@ -81,7 +97,7 @@ public class HowToUseMultipartUpload extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if((resultCode == RESULT_OK) && (requestCode == this.requestCode)) {
+        if ((resultCode == RESULT_OK) && (requestCode == this.requestCode)) {
             Uri imageURI = data.getData();
             image.setImageURI(imageURI);
         }
@@ -98,7 +114,7 @@ public class HowToUseMultipartUpload extends Activity {
             config.setRequestBuilder(new MultipartRequestBuilder<Avatar<InputStream>>());
             config.setResponseParser(new GsonResponseParser(getResponseGsonBuilder().create()));
             config.setEndpoint("upload");
-            
+
             Pipeline pipeline = new Pipeline(url);
             pipeline.pipe(Avatar.class, config);
 
@@ -123,7 +139,7 @@ public class HowToUseMultipartUpload extends Activity {
         AvatarRequest avatar = new AvatarRequest();
         avatar.setName(name.getText().toString());
 
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos);
         byte[] bitmapdata = bos.toByteArray();
@@ -135,11 +151,11 @@ public class HowToUseMultipartUpload extends Activity {
     }
 
     private static class SaveCallBack extends AbstractActivityCallback<Avatar> {
-        
+
         public SaveCallBack() {
             super(SaveCallBack.class);
         }
-        
+
         @Override
         public void onSuccess(Avatar data) {
             HowToUseMultipartUpload activity = (HowToUseMultipartUpload) getActivity();
@@ -155,25 +171,25 @@ public class HowToUseMultipartUpload extends Activity {
 
     private static GsonBuilder getResponseGsonBuilder() {
         GsonBuilder builder = new GsonBuilder();
-        
-        builder.registerTypeAdapter(Avatar.class, new JsonDeserializer(){
+
+        builder.registerTypeAdapter(Avatar.class, new JsonDeserializer() {
 
             @Override
             public Object deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                
+
                 String name = json.getAsJsonObject().get("name").getAsString();
                 String photo = json.getAsJsonObject().get("photo").getAsString();
-                
+
                 AvatarResponse response = new AvatarResponse();
-                
+
                 response.setName(name);
                 response.setPhoto(photo);
-                
+
                 return response;
             }
         });
-        
+
         return builder;
     }
-    
+
 }

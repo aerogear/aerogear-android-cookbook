@@ -22,10 +22,10 @@ import java.util.List;
  * These are the constants which define a connection to a Unified Push server.
  */
 public interface PushConstants {
-    static final String VARIANT_ID       = "";
-    static final String SECRET           = "";
-    static final String GCM_SENDER_ID    = "";
+    static final String VARIANT_ID = "";
+    static final String SECRET = "";
+    static final String GCM_SENDER_ID = "";
     static final String UNIFIED_PUSH_URL = "";
-    static final String MY_ALIAS         = "";
+    static final String MY_ALIAS = "";
     static final List<String> CATEGORIES = null;
 }

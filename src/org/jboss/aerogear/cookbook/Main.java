@@ -68,30 +68,30 @@ public class Main extends Activity implements View.OnClickListener {
         Class display = null;
 
         switch (view.getId()) {
-            case R.id.pipe:
-                display = HowToUsePipe.class;
-                break;
-            case R.id.paginationPipe:
-                display = HowToUsePipeWithPagination.class;
-                break;
-            case R.id.customPipe:
-                display = HowToUseCustomPipe.class;
-                break;
-            case R.id.memoryStorage:
-                display = HowToUseMemoryStorage.class;
-                break;
-            case R.id.authetication:
-                display = HowToUseAuthentication.class;
-                break;
-            case R.id.httpBasicAuthetication:
-                display = HowToUseHttpBasicAuthentication.class;
-                break;
-            case R.id.pushDemo:
-                display = HowToUsePushActivity.class;
-                break;
-            case R.id.upload:
-                display = HowToUseMultipartUpload.class;
-                break;
+        case R.id.pipe:
+            display = HowToUsePipe.class;
+            break;
+        case R.id.paginationPipe:
+            display = HowToUsePipeWithPagination.class;
+            break;
+        case R.id.customPipe:
+            display = HowToUseCustomPipe.class;
+            break;
+        case R.id.memoryStorage:
+            display = HowToUseMemoryStorage.class;
+            break;
+        case R.id.authetication:
+            display = HowToUseAuthentication.class;
+            break;
+        case R.id.httpBasicAuthetication:
+            display = HowToUseHttpBasicAuthentication.class;
+            break;
+        case R.id.pushDemo:
+            display = HowToUsePushActivity.class;
+            break;
+        case R.id.upload:
+            display = HowToUseMultipartUpload.class;
+            break;
         }
 
         startActivity(new Intent(this, display));
