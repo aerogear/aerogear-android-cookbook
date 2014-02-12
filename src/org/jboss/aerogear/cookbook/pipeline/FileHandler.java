@@ -26,9 +26,17 @@ import org.jboss.aerogear.android.pipeline.PipeHandler;
 import org.jboss.aerogear.cookbook.model.Developer;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jboss.aerogear.android.http.HeaderAndBody;
 
 public class FileHandler implements PipeHandler<Developer> {
 
@@ -68,6 +76,41 @@ public class FileHandler implements PipeHandler<Developer> {
     @Override
     public void onRemove(String id) {
         throw new IllegalAccessError("Not Supported");
+    }
+
+    @Override
+    public HeaderAndBody onRawRead(Pipe<Developer> requestingPipe) {
+        try {
+            BufferedReader carsReader;
+            try {
+                carsReader = new BufferedReader(new InputStreamReader(applicationContext.getAssets().open(FILE_NAME)));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            int read = -1;
+            while ((read = carsReader.read()) != -1) {
+                bytes.write(read);
+            }
+            
+            return new HeaderAndBody(bytes.toByteArray(), new HashMap<String, Object>());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FileHandler.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException(ex);
+        }
+        
+    }
+
+    @Override
+    public HeaderAndBody onRawReadWithFilter(ReadFilter filter, Pipe<Developer> requestingPipe) {
+        return onRawRead(requestingPipe);
+    }
+
+    @Override
+    public HeaderAndBody onRawSave(String id, byte[] item) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
