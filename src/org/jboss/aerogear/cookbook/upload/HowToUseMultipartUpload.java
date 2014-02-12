@@ -15,6 +15,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
+import com.sun.corba.se.spi.orbutil.fsm.Input;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.impl.pipeline.MultipartRequestBuilder;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
@@ -22,13 +33,19 @@ import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 import org.jboss.aerogear.cookbook.Constants;
 import org.jboss.aerogear.cookbook.R;
-import org.jboss.aerogear.cookbook.model.Avatar;
+import org.jboss.aerogear.cookbook.model.AvatarRequest;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.UUID;
+import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
+import org.jboss.aerogear.cookbook.model.Avatar;
+import org.jboss.aerogear.cookbook.model.AvatarResponse;
 
 public class HowToUseMultipartUpload extends Activity {
 
@@ -78,8 +95,10 @@ public class HowToUseMultipartUpload extends Activity {
             URL url = new URL(Constants.URL_BASE);
 
             PipeConfig config = new PipeConfig(url, Avatar.class);
-            config.setRequestBuilder(new MultipartRequestBuilder<Avatar>());
-
+            config.setRequestBuilder(new MultipartRequestBuilder<Avatar<InputStream>>());
+            config.setResponseParser(new GsonResponseParser(getResponseGsonBuilder().create()));
+            config.setEndpoint("upload");
+            
             Pipeline pipeline = new Pipeline(url);
             pipeline.pipe(Avatar.class, config);
 
@@ -100,8 +119,8 @@ public class HowToUseMultipartUpload extends Activity {
         progressDialog.dismiss();
     }
 
-    private Avatar createAvatar() {
-        Avatar avatar = new Avatar();
+    private AvatarRequest createAvatar() {
+        AvatarRequest avatar = new AvatarRequest();
         avatar.setName(name.getText().toString());
 
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
@@ -134,4 +153,27 @@ public class HowToUseMultipartUpload extends Activity {
         }
     }
 
+    private static GsonBuilder getResponseGsonBuilder() {
+        GsonBuilder builder = new GsonBuilder();
+        
+        builder.registerTypeAdapter(Avatar.class, new JsonDeserializer(){
+
+            @Override
+            public Object deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                
+                String name = json.getAsJsonObject().get("name").getAsString();
+                String photo = json.getAsJsonObject().get("photo").getAsString();
+                
+                AvatarResponse response = new AvatarResponse();
+                
+                response.setName(name);
+                response.setPhoto(photo);
+                
+                return response;
+            }
+        });
+        
+        return builder;
+    }
+    
 }
