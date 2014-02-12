@@ -132,8 +132,8 @@ public class HowToUseMultipartUpload extends Activity {
         progressDialog.dismiss();
     }
 
-    public void displayError() {
-        Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+    public void displayError(Exception e) {
+        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
     }
 
@@ -167,7 +167,7 @@ public class HowToUseMultipartUpload extends Activity {
         @Override
         public void onFailure(Exception e) {
             HowToUseMultipartUpload activity = (HowToUseMultipartUpload) getActivity();
-            activity.displayError();
+            activity.displayError(e);
         }
     }
 
