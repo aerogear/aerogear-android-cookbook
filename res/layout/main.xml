@@ -68,6 +68,12 @@
             android:layout_height="wrap_content"
             android:text="How to use the Push APIs" />
 
+        <Button
+            android:id="@+id/upload"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="How to use multipart upload" />
+
     </LinearLayout>
 </ScrollView>
 

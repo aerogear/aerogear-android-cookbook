@@ -28,6 +28,7 @@ import org.jboss.aerogear.cookbook.pipeline.HowToUseCustomPipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipeWithPagination;
 import org.jboss.aerogear.cookbook.push.HowToUsePushActivity;
+import org.jboss.aerogear.cookbook.upload.HowToUseMultipartUpload;
 
 public class Main extends Activity implements View.OnClickListener {
 
@@ -56,6 +57,10 @@ public class Main extends Activity implements View.OnClickListener {
 
         Button pushDemo = (Button) findViewById(R.id.pushDemo);
         pushDemo.setOnClickListener(this);
+
+        Button upload = (Button) findViewById(R.id.upload);
+        upload.setOnClickListener(this);
+
     }
 
     @Override
@@ -83,6 +88,9 @@ public class Main extends Activity implements View.OnClickListener {
                 break;
             case R.id.pushDemo:
                 display = HowToUsePushActivity.class;
+                break;
+            case R.id.upload:
+                display = HowToUseMultipartUpload.class;
                 break;
         }
 
