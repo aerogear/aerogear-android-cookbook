@@ -25,8 +25,10 @@ import org.jboss.aerogear.cookbook.authentication.HowToUseAuthentication;
 import org.jboss.aerogear.cookbook.authentication.HowToUseHttpBasicAuthentication;
 import org.jboss.aerogear.cookbook.datamanager.HowToUseMemoryStorage;
 import org.jboss.aerogear.cookbook.pipeline.HowToUseCustomPipe;
+import org.jboss.aerogear.cookbook.pipeline.HowToUsePipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipeWithPagination;
-import org.jboss.aerogear.cookbook.push.PushActivity;
+import org.jboss.aerogear.cookbook.push.HowToUsePushActivity;
+import org.jboss.aerogear.cookbook.upload.HowToUseMultipartUpload;
 
 public class Main extends Activity implements View.OnClickListener {
 
@@ -35,11 +37,14 @@ public class Main extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Button customPipe = (Button) findViewById(R.id.customPipe);
-        customPipe.setOnClickListener(this);
+        Button pipe = (Button) findViewById(R.id.pipe);
+        pipe.setOnClickListener(this);
 
         Button paginationPipe = (Button) findViewById(R.id.paginationPipe);
         paginationPipe.setOnClickListener(this);
+
+        Button customPipe = (Button) findViewById(R.id.customPipe);
+        customPipe.setOnClickListener(this);
 
         Button memoryStorage = (Button) findViewById(R.id.memoryStorage);
         memoryStorage.setOnClickListener(this);
@@ -52,6 +57,10 @@ public class Main extends Activity implements View.OnClickListener {
 
         Button pushDemo = (Button) findViewById(R.id.pushDemo);
         pushDemo.setOnClickListener(this);
+
+        Button upload = (Button) findViewById(R.id.upload);
+        upload.setOnClickListener(this);
+
     }
 
     @Override
@@ -59,11 +68,14 @@ public class Main extends Activity implements View.OnClickListener {
         Class display = null;
 
         switch (view.getId()) {
-        case R.id.customPipe:
-            display = HowToUseCustomPipe.class;
+        case R.id.pipe:
+            display = HowToUsePipe.class;
             break;
         case R.id.paginationPipe:
             display = HowToUsePipeWithPagination.class;
+            break;
+        case R.id.customPipe:
+            display = HowToUseCustomPipe.class;
             break;
         case R.id.memoryStorage:
             display = HowToUseMemoryStorage.class;
@@ -75,7 +87,10 @@ public class Main extends Activity implements View.OnClickListener {
             display = HowToUseHttpBasicAuthentication.class;
             break;
         case R.id.pushDemo:
-            display = PushActivity.class;
+            display = HowToUsePushActivity.class;
+            break;
+        case R.id.upload:
+            display = HowToUseMultipartUpload.class;
             break;
         }
 

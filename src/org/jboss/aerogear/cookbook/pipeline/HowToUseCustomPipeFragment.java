@@ -38,58 +38,58 @@ import android.widget.Toast;
 
 public class HowToUseCustomPipeFragment extends ListFragment {
 
-	private Pipe<Car> carsPipe;
+    private Pipe<Car> carsPipe;
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
 
-		try {
-			URL fileURL = getActivity().getFilesDir().toURI().toURL();
-			Pipeline pipeline = new Pipeline(fileURL);
-			PipeConfig fileReaderConfig = new PipeConfig(fileURL, Car.class);
-			Context applicationContext = this.getActivity().getApplicationContext();
-			fileReaderConfig.setHandler(new FileHandler(applicationContext));
-			pipeline.pipe(Car.class, fileReaderConfig);
+        try {
+            URL fileURL = getActivity().getFilesDir().toURI().toURL();
+            Pipeline pipeline = new Pipeline(fileURL);
+            PipeConfig fileReaderConfig = new PipeConfig(fileURL, Car.class);
+            Context applicationContext = this.getActivity().getApplicationContext();
+            fileReaderConfig.setHandler(new FileHandler(applicationContext));
+            pipeline.pipe(Car.class, fileReaderConfig);
 
-			// Retrive Pipe
-			carsPipe = (LoaderPipe<Car>) pipeline.get("car", this, applicationContext);
-		} catch (MalformedURLException e) {
-			throw new RuntimeException(e);
-		}
+            // Retrive Pipe
+            carsPipe = (LoaderPipe<Car>) pipeline.get("car", this, applicationContext);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
 
-		return super.onCreateView(inflater, container, savedInstanceState);
+        return super.onCreateView(inflater, container, savedInstanceState);
 
-	}
+    }
 
-	@Override
-	public void onStart() {
-		super.onStart();
-		carsPipe.read(new FileCallback());
-	}
+    @Override
+    public void onStart() {
+        super.onStart();
+        carsPipe.read(new FileCallback());
+    }
 
-	private static final class FileCallback extends
-			AbstractSupportFragmentCallback<List<Car>> {
+    private static final class FileCallback extends
+            AbstractSupportFragmentCallback<List<Car>> {
 
-		private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
 
-		public FileCallback() {
-			super("hashableValue");
-		}
+        public FileCallback() {
+            super("hashableValue");
+        }
 
-		@Override
-		public void onSuccess(List<Car> data) {
-			ListFragment fragment = (ListFragment) getFragment();
-			fragment.setListAdapter(new CarAdapter(fragment.getActivity(), data));
-		}
+        @Override
+        public void onSuccess(List<Car> data) {
+            ListFragment fragment = (ListFragment) getFragment();
+            fragment.setListAdapter(new CarAdapter(fragment.getActivity(), data));
+        }
 
-		@Override
-		public void onFailure(Exception e) {
-			Toast.makeText(getFragment().getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG)
-					.show();
-		}
+        @Override
+        public void onFailure(Exception e) {
+            Toast.makeText(getFragment().getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG)
+                    .show();
+        }
 
-	}
+    }
 
 }

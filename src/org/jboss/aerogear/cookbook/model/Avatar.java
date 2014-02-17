@@ -14,18 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.cookbook.push;
 
-import java.util.List;
+package org.jboss.aerogear.cookbook.model;
 
 /**
- * These are the constants which define a connection to a Unified Push server.
+ *
+ * @author summers
  */
-public interface PushConstants {
-    static final String VARIANT_ID = "";
-    static final String SECRET = "";
-    static final String GCM_SENDER_ID = "";
-    static final String UNIFIED_PUSH_URL = "";
-    static final String MY_ALIAS = "";
-    static final List<String> CATEGORIES = null;
+public interface Avatar<T> {
+    public Long getId();
+
+    public String getName();
+
+    public T getPhoto();
 }

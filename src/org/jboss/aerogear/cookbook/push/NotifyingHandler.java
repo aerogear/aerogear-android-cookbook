@@ -16,47 +16,49 @@
  */
 package org.jboss.aerogear.cookbook.push;
 
-import org.jboss.aerogear.android.unifiedpush.MessageHandler;
-
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.cookbook.R;
 
 public class NotifyingHandler implements MessageHandler {
 
-    static final String TAG = "GCMDemo";
-    public static final int NOTIFICATION_ID = 1;
+    private static final int NOTIFICATION_ID = 1;
     private NotificationManager mNotificationManager;
-    NotificationCompat.Builder builder;
-    Context ctx;
+    private Context ctx;
 
     public NotifyingHandler() {
     }
 
     @Override
-    public void onMessage(Context context, Bundle message) {
+    public void onMessage(Context context, Bundle bundle) {
         ctx = context;
-        sendNotification(message.getString("alert"));
+        sendNotification(bundle.getString("alert"), bundle.getString("sentAt"));
     }
 
     // Put the GCM message into a notification and post it.
-    private void sendNotification(String msg) {
-        mNotificationManager = (NotificationManager)
-                ctx.getSystemService(Context.NOTIFICATION_SERVICE);
+    private void sendNotification(String msg, String sentAt) {
+        mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0,
-                new Intent(ctx, PushActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("alert", msg), 0);
+        Intent intent = new Intent(ctx, HowToUsePushActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra("alert", msg);
+        intent.putExtra("sentAt", sentAt);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, intent, 0);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(ctx)
                         .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("GCM Notification")
-                        .setStyle(new NotificationCompat.BigTextStyle()
-                                .bigText(msg))
+                        .setContentTitle("AeroGear Cookbook Notification")
+                        .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
+                        .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                        .setAutoCancel(true)
                         .setContentText(msg);
 
         mBuilder.setContentIntent(contentIntent);
@@ -65,12 +67,10 @@ public class NotifyingHandler implements MessageHandler {
 
     @Override
     public void onDeleteMessage(Context context, Bundle arg0) {
-
     }
 
     @Override
     public void onError() {
-
     }
 
 }
