@@ -54,7 +54,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
         setContentView(R.layout.authentication_with_data);
 
         authModule = createAuthenticatior();
-        pipe = createPipe();
+        pipe = createPipe(authModule);
 
         TextView screenTitle = (TextView) findViewById(R.id.screen_title);
         screenTitle.setText(getString(R.string.how_to_use_http_basic_authentication));
@@ -80,12 +80,13 @@ public class HowToUseHttpBasicAuthentication extends Activity {
         return authenticator.get("login", this);
     }
 
-    private LoaderPipe createPipe() {
+    private LoaderPipe createPipe(AuthenticationModule authModule) {
         Pipeline pipeline = null;
 
         try {
             PipeConfig pipeConfig = new PipeConfig(new URL(URL_BASE), String.class);
             pipeConfig.setName("beer");
+            pipeConfig.setAuthModule(authModule);
             pipeConfig.setEndpoint("/grocery/beers");
             pipeline = new Pipeline(URL_BASE);
             pipeline.pipe(String.class, pipeConfig);
