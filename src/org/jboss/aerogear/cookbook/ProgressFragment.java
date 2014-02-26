@@ -14,18 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.cookbook.push;
+package org.jboss.aerogear.cookbook;
 
-import java.util.List;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import org.jboss.aerogear.cookbook.R;
 
-/**
- * These are the constants which define a connection to a Unified Push server.
- */
-public interface PushConstants {
-    static final String VARIANT_ID = "";
-    static final String SECRET = "";
-    static final String GCM_SENDER_ID = "";
-    static final String UNIFIED_PUSH_URL = "";
-    static final String MY_ALIAS = "";
-    static final List<String> CATEGORIES = null;
+public class ProgressFragment extends Fragment {
+
+    public ProgressFragment() {
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.progress_bar, null);
+    }
+
 }

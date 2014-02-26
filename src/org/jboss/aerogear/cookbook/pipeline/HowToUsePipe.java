@@ -16,6 +16,8 @@
  */
 package org.jboss.aerogear.cookbook.pipeline;
 
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 import org.jboss.aerogear.android.Pipeline;
@@ -25,19 +27,13 @@ import org.jboss.aerogear.android.pipeline.support.AbstractFragmentActivityCallb
 import org.jboss.aerogear.cookbook.Constants;
 import org.jboss.aerogear.cookbook.ProgressFragment;
 import org.jboss.aerogear.cookbook.R;
-
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.google.gson.JsonArray;
 import org.jboss.aerogear.cookbook.model.Developer;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
-import org.jboss.aerogear.android.pipeline.ResponseParser;
 
-public class HowToUseCustomPipe extends FragmentActivity {
+public class HowToUsePipe extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,35 +48,34 @@ public class HowToUseCustomPipe extends FragmentActivity {
     }
 
     private void retriveData() {
+        URL serverURL = null;
         try {
-            URL fileURL = this.getFilesDir().toURI().toURL();
-            ResponseParser<Developer> parser = new GsonResponseParser<Developer>();
-            parser.getMarshallingConfig().setDataRoot("data");
-
-            Pipeline pipeline = new Pipeline(fileURL);
-            PipeConfig pipeConfig = new PipeConfig(fileURL, Developer.class);
-            pipeConfig.setResponseParser(parser);
-            pipeConfig.setHandler(new FileHandler(getApplicationContext()));
-            
-            pipeline.pipe(Developer.class, pipeConfig);
-
-            LoaderPipe<Developer> developerLoaderPipe = pipeline.get("developer", this);
-            developerLoaderPipe.read(new TeamReadCallBack());
+            serverURL = new URL(Constants.URL_BASE);
         } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
+        Pipeline pipeline = new Pipeline(serverURL);
+
+        PipeConfig pipeConfig = new PipeConfig(serverURL, Developer.class);
+        pipeConfig.setEndpoint("/team/developers");
+
+        pipeline.pipe(Developer.class, pipeConfig);
+
+        LoaderPipe<Developer> developerLoaderPipe = pipeline.get("developer", this);
+        developerLoaderPipe.read(new TeamReadCallBack());
     }
 
     private static class TeamReadCallBack extends AbstractFragmentActivityCallback<List<Developer>> {
         @Override
         public void onSuccess(List<Developer> data) {
-            HowToUseCustomPipe activity = (HowToUseCustomPipe) getFragmentActivity();
+            HowToUsePipe activity = (HowToUsePipe) getFragmentActivity();
             activity.displayTeam(data);
         }
 
         @Override
         public void onFailure(Exception e) {
-            HowToUseCustomPipe activity = (HowToUseCustomPipe) getFragmentActivity();
+            HowToUsePipe activity = (HowToUsePipe) getFragmentActivity();
             activity.displayErrorMessage(e);
         }
     }
@@ -95,5 +90,4 @@ public class HowToUseCustomPipe extends FragmentActivity {
         Log.e(Constants.TAG, e.getMessage(), e);
         Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
-
 }

@@ -28,85 +28,98 @@ import org.jboss.aerogear.android.authentication.AuthenticationModule;
 import org.jboss.aerogear.android.authentication.impl.Authenticator;
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
+import org.jboss.aerogear.cookbook.Constants;
 import org.jboss.aerogear.cookbook.R;
 
 public class HowToUseAuthentication extends Activity {
 
     private AuthenticationModule authModule;
-    private String baseURL = "http://controller-aerogear.rhcloud.com/aerogear-controller-demo";
 
-    private TextView status;
-    private Button login;
-    private Button logout;
+    private TextView statusLabel;
+    private Button loginButton;
+    private Button logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentication);
 
-        Authenticator authenticator = new Authenticator(baseURL);
+        authModule = createAuthenticatior();
+
+        statusLabel = (TextView) findViewById(R.id.status);
+        loginButton = (Button) findViewById(R.id.login);
+        logoutButton = (Button) findViewById(R.id.logout);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                authModule.login("john", "123", new LoginAuthCallBack());
+            }
+        });
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                authModule.logout(new LogoutAuthCallBack());
+            }
+        });
+    }
+
+    private AuthenticationModule createAuthenticatior() {
         AuthenticationConfig authenticationConfig = new AuthenticationConfig();
-        authenticationConfig.setLoginEndpoint("/login");
-        authenticationConfig.setLogoutEndpoint("/logout");
-        authModule = authenticator.auth("login", authenticationConfig);
+        authenticationConfig.setLoginEndpoint("/auth/login");
+        authenticationConfig.setLogoutEndpoint("/auth/logout");
 
-        status = (TextView) findViewById(R.id.status);
-        login = (Button) findViewById(R.id.login);
-        logout = (Button) findViewById(R.id.logout);
+        Authenticator authenticator = new Authenticator(Constants.URL_BASE);
+        authenticator.auth("login", authenticationConfig);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.login("john", "123", new AbstractActivityCallback<HeaderAndBody>() {
-                    @Override
-                    public void onSuccess(HeaderAndBody data) {
-                        logged(true);
-                    }
-
-                    @Override
-                    public void onFailure(Exception e) {
-                        displayError(e.getMessage());
-                    }
-                });
-            }
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.logout(new Callback<Void>() {
-                    @Override
-                    public void onSuccess(Void data) {
-                        logged(false);
-                    }
-
-                    @Override
-                    public void onFailure(Exception e) {
-                        displayError(e.getMessage());
-                    }
-                });
-            }
-        });
+        return authenticator.get("login", this);
     }
 
-    private void logged(final boolean logged) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                status.setText(getString(logged ? R.string.logged : R.string.notlogged));
-                login.setEnabled(!logged);
-                logout.setEnabled(logged);
-            }
-        });
+    // UIThread callback delegate ---------------------------------
+
+    public void logged(boolean logged) {
+        displayStatus(logged ? getString(R.string.logged) : getString(R.string.notlogged));
+        loginButton.setEnabled(!logged);
+        logoutButton.setEnabled(logged);
     }
 
-    private void displayError(final String message) {
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(HowToUseAuthentication.this, message, Toast.LENGTH_LONG).show();
-            }
-        });
+    private void displayStatus(String stauts) {
+        statusLabel.setText(stauts);
+    }
+
+    private void displayMessage(String message) {
+        Toast.makeText(HowToUseAuthentication.this, message, Toast.LENGTH_LONG).show();
+    }
+
+    // Callbacks --------------------------------------------------
+
+    private static class LoginAuthCallBack extends AbstractActivityCallback<HeaderAndBody> {
+        @Override
+        public void onSuccess(HeaderAndBody data) {
+            HowToUseAuthentication activity = (HowToUseAuthentication) getActivity();
+            activity.logged(true);
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            HowToUseAuthentication activity = (HowToUseAuthentication) getActivity();
+            activity.displayMessage(e.getMessage());
+        }
+    }
+
+    private static class LogoutAuthCallBack extends AbstractActivityCallback<Void> {
+        @Override
+        public void onSuccess(Void data) {
+            HowToUseAuthentication activity = (HowToUseAuthentication) getActivity();
+            activity.logged(false);
+        }
+
+        @Override
+        public void onFailure(Exception e) {
+            HowToUseAuthentication activity = (HowToUseAuthentication) getActivity();
+            activity.displayMessage(e.getMessage());
+        }
     }
 
 }
