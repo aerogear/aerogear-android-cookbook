@@ -26,4 +26,5 @@
     <string name="unregister_failed">Unregister failed</string>
     <string name="push_message">Message received at %1$s\n%2$s</string>
     <string name="how_to_use_http_basic_authentication">How To Use Httpbasic Authentication</string>
+    <string name="how_to_use_digest_authentication">How To Use Digest Authentication</string>
 </resources>

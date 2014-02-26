@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import org.jboss.aerogear.cookbook.authentication.HowToUseAuthentication;
+import org.jboss.aerogear.cookbook.authentication.HowToUseDigestAuthentication;
 import org.jboss.aerogear.cookbook.authentication.HowToUseHttpBasicAuthentication;
 import org.jboss.aerogear.cookbook.datamanager.HowToUseMemoryStorage;
 import org.jboss.aerogear.cookbook.pipeline.HowToUseCustomPipe;
@@ -55,6 +56,9 @@ public class Main extends Activity implements View.OnClickListener {
         Button httpBasicAuthentication = (Button) findViewById(R.id.httpBasicAuthetication);
         httpBasicAuthentication.setOnClickListener(this);
 
+        Button digestAuthetication = (Button) findViewById(R.id.digestAuthetication);
+        digestAuthetication.setOnClickListener(this);
+
         Button pushDemo = (Button) findViewById(R.id.pushDemo);
         pushDemo.setOnClickListener(this);
 
@@ -85,6 +89,9 @@ public class Main extends Activity implements View.OnClickListener {
             break;
         case R.id.httpBasicAuthetication:
             display = HowToUseHttpBasicAuthentication.class;
+            break;
+        case R.id.digestAuthetication:
+            display = HowToUseDigestAuthentication.class;
             break;
         case R.id.pushDemo:
             display = HowToUsePushActivity.class;
