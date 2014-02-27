@@ -44,6 +44,11 @@ before_install:
   - mvn install -N --quiet
   - cd -
 
+  # Install locally compatibility-v7-appcompat
+  - cd $PWD/maven-android-sdk-deployer/extras/compatibility-v7-appcompat
+  - mvn install -N --quiet
+  - cd -
+
   # Checkout AeroGear Android (SNAPSHOT)
   - git clone git://github.com/aerogear/aerogear-android.git
   - cd $PWD/aerogear-android
