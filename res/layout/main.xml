@@ -60,7 +60,13 @@
             android:id="@+id/httpBasicAuthetication"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="How To Use Httpbasic Authentication" />
+            android:text="@string/how_to_use_http_basic_authentication" />
+
+        <Button
+            android:id="@+id/digestAuthetication"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/how_to_use_digest_authentication" />
 
         <Button
             android:id="@+id/pushDemo"

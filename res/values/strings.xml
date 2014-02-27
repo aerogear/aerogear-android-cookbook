@@ -10,6 +10,8 @@
     <string name="delete_confirmation">Really want to delete it?</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+    <string name="login_successful">Login successful</string>
+    <string name="logout_successful">Logout successful</string>
     <string name="logged">You are logged</string>
     <string name="notlogged">You are *not* logged</string>
     <string name="previous">Previous</string>
@@ -23,4 +25,6 @@
     <string name="unregister_successful">Unregister successful</string>
     <string name="unregister_failed">Unregister failed</string>
     <string name="push_message">Message received at %1$s\n%2$s</string>
+    <string name="how_to_use_http_basic_authentication">How To Use Httpbasic Authentication</string>
+    <string name="how_to_use_digest_authentication">How To Use Digest Authentication</string>
 </resources>
