@@ -141,6 +141,18 @@
                     </proguard>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <sourcepath>${basedir}/src</sourcepath>
+                    <sourceFileExcludes>
+                        <exclude>
+                            **com/google/**
+                        </exclude>
+                        <exclude>**/R.java</exclude>
+                    </sourceFileExcludes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
