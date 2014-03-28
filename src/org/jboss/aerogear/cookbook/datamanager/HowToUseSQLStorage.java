@@ -54,10 +54,9 @@ public class HowToUseSQLStorage extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_list);
 
-        StoreConfig storeConfig = new StoreConfig();
+        StoreConfig storeConfig = new StoreConfig(Car.class);
         storeConfig.setContext(getApplicationContext());
         storeConfig.setType(StoreTypes.SQL);
-        storeConfig.setKlass(Car.class);
         idGenerator = new IncrementalIdGenerator(readLastSQLStoreIdFromSharedPreference());
         storeConfig.setIdGenerator(idGenerator);
 
