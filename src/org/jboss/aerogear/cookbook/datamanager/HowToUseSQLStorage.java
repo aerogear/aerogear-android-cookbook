@@ -79,8 +79,7 @@ public class HowToUseSQLStorage extends ListActivity {
                         .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                store.remove(car.getId());
-                                updateDisplayCars();
+                                remove(car);
                             }
                         })
                         .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
@@ -93,6 +92,11 @@ public class HowToUseSQLStorage extends ListActivity {
                 return false;
             }
         });
+    }
+
+    private void remove(Car car) {
+        store.remove(car.getId());
+        updateDisplayCars();
     }
 
     private StoreConfig buildStoreConfig() {
