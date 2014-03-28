@@ -33,17 +33,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.DataManager;
-import org.jboss.aerogear.android.datamanager.IdGenerator;
-import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
 import org.jboss.aerogear.android.impl.datamanager.SQLStore;
 import org.jboss.aerogear.android.impl.datamanager.StoreConfig;
 import org.jboss.aerogear.android.impl.datamanager.StoreTypes;
 import org.jboss.aerogear.cookbook.CarAdapter;
-import org.jboss.aerogear.cookbook.GuideApplication;
 import org.jboss.aerogear.cookbook.R;
 import org.jboss.aerogear.cookbook.model.Car;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
