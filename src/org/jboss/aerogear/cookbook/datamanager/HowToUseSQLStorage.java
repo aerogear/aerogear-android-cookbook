@@ -54,12 +54,7 @@ public class HowToUseSQLStorage extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.car_list);
 
-        StoreConfig storeConfig = new StoreConfig(Car.class);
-        storeConfig.setContext(getApplicationContext());
-        storeConfig.setType(StoreTypes.SQL);
-        idGenerator = new IncrementalIdGenerator(readLastSQLStoreIdFromSharedPreference());
-        storeConfig.setIdGenerator(idGenerator);
-
+        StoreConfig storeConfig = buildStoreConfig();
         DataManager dataManager = new DataManager();
         store = (SQLStore<Car>) dataManager.store("myStorage", storeConfig);
         store.open(new Callback<SQLStore<Car>>() {
@@ -98,6 +93,15 @@ public class HowToUseSQLStorage extends ListActivity {
                 return false;
             }
         });
+    }
+
+    private StoreConfig buildStoreConfig() {
+        StoreConfig storeConfig = new StoreConfig(Car.class);
+        storeConfig.setContext(getApplicationContext());
+        storeConfig.setType(StoreTypes.SQL);
+        idGenerator = new IncrementalIdGenerator(readLastSQLStoreIdFromSharedPreference());
+        storeConfig.setIdGenerator(idGenerator);
+        return storeConfig;
     }
 
     @Override
