@@ -139,6 +139,11 @@
                     <proguard>
                         <skip>${proguard.skip}</skip>
                     </proguard>
+                    <dex>
+                        <jvmArguments>
+                            <jvmArgument>-Xmx4096M</jvmArgument>
+                        </jvmArguments>
+                    </dex>                    
                 </configuration>
             </plugin>
             <plugin>
