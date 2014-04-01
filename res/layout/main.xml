@@ -51,6 +51,12 @@
             android:text="How To Use MemoryStorage" />
 
         <Button
+            android:id="@+id/sqlStorage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="How To Use SQLStorage" />
+
+        <Button
             android:id="@+id/authetication"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

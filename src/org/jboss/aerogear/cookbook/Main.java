@@ -25,6 +25,7 @@ import org.jboss.aerogear.cookbook.authentication.HowToUseAuthentication;
 import org.jboss.aerogear.cookbook.authentication.HowToUseDigestAuthentication;
 import org.jboss.aerogear.cookbook.authentication.HowToUseHttpBasicAuthentication;
 import org.jboss.aerogear.cookbook.datamanager.HowToUseMemoryStorage;
+import org.jboss.aerogear.cookbook.datamanager.HowToUseSQLStorage;
 import org.jboss.aerogear.cookbook.pipeline.HowToUseCustomPipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipe;
 import org.jboss.aerogear.cookbook.pipeline.HowToUsePipeWithPagination;
@@ -49,6 +50,9 @@ public class Main extends Activity implements View.OnClickListener {
 
         Button memoryStorage = (Button) findViewById(R.id.memoryStorage);
         memoryStorage.setOnClickListener(this);
+
+        Button sqlStorage = (Button) findViewById(R.id.sqlStorage);
+        sqlStorage.setOnClickListener(this);
 
         Button authentication = (Button) findViewById(R.id.authetication);
         authentication.setOnClickListener(this);
@@ -83,6 +87,9 @@ public class Main extends Activity implements View.OnClickListener {
             break;
         case R.id.memoryStorage:
             display = HowToUseMemoryStorage.class;
+            break;
+        case R.id.sqlStorage:
+            display = HowToUseSQLStorage.class;
             break;
         case R.id.authetication:
             display = HowToUseAuthentication.class;

@@ -38,6 +38,7 @@
         <activity android:name=".pipeline.HowToUsePipeWithPagination" android:label="@string/app_name" />
         <activity android:name=".pipeline.HowToUseCustomPipe" android:label="@string/app_name" />
         <activity android:name=".datamanager.HowToUseMemoryStorage" android:label="@string/app_name" />
+        <activity android:name=".datamanager.HowToUseSQLStorage" android:label="@string/app_name" />
         <activity android:name=".authentication.HowToUseAuthentication" android:label="@string/app_name" />
         <activity android:name=".authentication.HowToUseHttpBasicAuthentication" android:label="@string/app_name" />
         <activity android:name=".authentication.HowToUseDigestAuthentication" android:label="@string/app_name" />

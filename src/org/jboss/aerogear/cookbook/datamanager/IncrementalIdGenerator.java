@@ -22,7 +22,19 @@ import java.io.Serializable;
 
 public class IncrementalIdGenerator implements IdGenerator {
 
-    private static Long actualValue = 0L;
+    private Long actualValue;
+
+    public IncrementalIdGenerator() {
+        actualValue = 0L;
+    }
+
+    public IncrementalIdGenerator(Long value) {
+        actualValue = value;
+    }
+
+    public Long getActualValue() {
+        return actualValue;
+    }
 
     @Override
     public Serializable generate() {

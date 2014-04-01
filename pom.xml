@@ -39,7 +39,7 @@
 
     <properties>
         <android.version>4.1.1.4</android.version>
-        <android.support.version>19.0.1</android.support.version>
+        <android.support.version>[19.1,)</android.support.version>
         <aerogear.version>1.4.0-SNAPSHOT</aerogear.version>
         <picaso.version>2.1.1</picaso.version>
 
@@ -139,6 +139,23 @@
                     <proguard>
                         <skip>${proguard.skip}</skip>
                     </proguard>
+                    <dex>
+                        <jvmArguments>
+                            <jvmArgument>-Xmx4096M</jvmArgument>
+                        </jvmArguments>
+                    </dex>                    
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <sourcepath>${basedir}/src</sourcepath>
+                    <sourceFileExcludes>
+                        <exclude>
+                            **com/google/**
+                        </exclude>
+                        <exclude>**/R.java</exclude>
+                    </sourceFileExcludes>
                 </configuration>
             </plugin>
         </plugins>
