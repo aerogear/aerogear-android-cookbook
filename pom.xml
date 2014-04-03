@@ -40,8 +40,8 @@
     <properties>
         <android.version>4.1.1.4</android.version>
         <android.support.version>[19.1,)</android.support.version>
-        <aerogear.version>1.4.0-SNAPSHOT</aerogear.version>
-        <picaso.version>2.1.1</picaso.version>
+        <aerogear-android.version>1.4.0-SNAPSHOT</aerogear-android.version>
+        <picasso.version>2.1.1</picasso.version>
 
         <maven.android.plugin.verson>3.8.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
@@ -80,7 +80,7 @@
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
             <type>apklib</type>
-            <version>${aerogear.version}</version>
+            <version>${aerogear-android.version}</version>
         </dependency>
 
         <dependency>
@@ -88,13 +88,13 @@
             <artifactId>aerogear-android</artifactId>
             <scope>provided</scope>                        
             <type>jar</type>
-            <version>${aerogear.version}</version>
+            <version>${aerogear-android.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.squareup.picasso</groupId>
             <artifactId>picasso</artifactId>
-            <version>${picaso.version}</version>
+            <version>${picasso.version}</version>
         </dependency>
 
     </dependencies>
