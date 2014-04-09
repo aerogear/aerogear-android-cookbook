@@ -71,7 +71,9 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-19.0.0" level="project" />
     <orderEntry type="library" exported="" name="aerogear-android-1.4.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-19.0.0" level="project" />
     <orderEntry type="library" exported="" name="guava-15.0" level="project" />
   </component>
 </module>
