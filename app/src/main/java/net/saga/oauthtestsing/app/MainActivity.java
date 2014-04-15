@@ -23,6 +23,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.saga.oauthtestsing.app.Constants.*;
+
 public class MainActivity extends ListActivity {
 
     private AGOAuth2AuthzModule authzModule;
@@ -41,14 +43,14 @@ public class MainActivity extends ListActivity {
     private void authz() {
         try {
 
-            AuthzConfig authzConfig = new AuthzConfig(new URL("https://accounts.google.com"), "restMod");
-            authzConfig.setAccessTokenEndpoint("/o/oauth2/token");
-            authzConfig.setAuthzEndpoint("/o/oauth2/auth");
-            authzConfig.setAccountId("gemAccounts");
+            AuthzConfig authzConfig = new AuthzConfig(new URL(Constants.AUTHZ_URL), "restMod");
+            authzConfig.setAuthzEndpoint(AUTHZ_ENDPOINT);
+            authzConfig.setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT);
+            authzConfig.setAccountId(AUTHZ_ACCOOUNT_ID);
+            authzConfig.setClientId(AUTHZ_CLIENT_ID);
+            authzConfig.setClientSecret(AUTHZ_CLIENT_SECRET);
+            authzConfig.setRedirectURL(AUTHZ_REDIRECT_URL);
             authzConfig.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
-            authzConfig.setClientId("374822310857-7926b3e6qugkdf2anmm51hkrcr8o7kj2.apps.googleusercontent.com");
-            authzConfig.setClientSecret("g6R5mL2MwR_ofdQCXLpKT21L");
-            authzConfig.setRedirectURL("org.aerogear.googledrive:/oauth2callback");
             authzConfig.setScopes(new ArrayList<String>() {{
                 add("https://www.googleapis.com/auth/drive");
             }});
