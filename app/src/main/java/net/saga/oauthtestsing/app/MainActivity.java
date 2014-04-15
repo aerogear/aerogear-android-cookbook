@@ -96,6 +96,8 @@ public class MainActivity extends ActionBarActivity {
 
     private void retriveFiles() {
 
+        displayLoading();
+
         URL googleDriveURL = null;
         try {
             googleDriveURL = new URL("https://www.googleapis.com/drive/v2");
@@ -127,13 +129,23 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    private void displayDriveFiles(List<Files> fileses) {
-        DriveFragment driveFragment = new DriveFragment(fileses);
+    private void displayFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.content, driveFragment)
+                .replace(R.id.content, fragment)
                 .commit();
     }
+
+    private void displayDriveFiles(List<Files> fileses) {
+        DriveFragment driveFragment = new DriveFragment(fileses);
+        displayFragment(driveFragment);
+    }
+
+    private void displayLoading() {
+        LoadingFragment loadingFragment = new LoadingFragment();
+        displayFragment(loadingFragment);
+    }
+
 
 
 }
