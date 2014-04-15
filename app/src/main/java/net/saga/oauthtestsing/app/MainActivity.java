@@ -17,11 +17,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.authorization.AuthzConfig;
-import org.jboss.aerogear.android.impl.authz.AGRestAuthzModule;
+import org.jboss.aerogear.android.impl.authz.oauth2.AGOAuth2AuthzModule;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.Pipe;
 
@@ -58,7 +57,7 @@ public class MainActivity extends ListActivity {
             conf.setScopes(new ArrayList<String>() {{
                 add("https://www.googleapis.com/auth/drive");
             }});
-            final AGRestAuthzModule module = new AGRestAuthzModule(conf);
+            final AGOAuth2AuthzModule module = new AGOAuth2AuthzModule(conf);
 
             module.requestAccess("state", this, new Callback<String>() {
                 @Override
