@@ -1,6 +1,7 @@
 package net.saga.oauthtestsing.app;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.Pair;
@@ -26,15 +27,12 @@ import static net.saga.oauthtestsing.app.Constants.*;
 
 public class MainActivity extends ActionBarActivity {
 
-    private ListView driveItems;
-
     private AGOAuth2AuthzModule authzModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        driveItems = (ListView) findViewById(R.id.drive_items);
     }
 
     @Override
@@ -116,29 +114,8 @@ public class MainActivity extends ActionBarActivity {
         documentsPipe.read(new Callback<List<Files>>() {
             @Override
             public void onSuccess(final List<Files> fileses) {
-
                 Toast.makeText(getApplicationContext(), fileses.size() + " files fetched", Toast.LENGTH_LONG).show();
-
-                driveItems.setAdapter(new ArrayAdapter<Files>(getApplicationContext(),
-                        android.R.layout.simple_list_item_1, fileses) {
-
-                    @Override
-                    public View getView(int position, View convertView, ViewGroup parent) {
-                        Files files = fileses.get(position);
-
-                        if (convertView == null) {
-                            convertView = getLayoutInflater().inflate(R.layout.drive_list_item, null);
-                        }
-
-                        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-                        Picasso.with(getApplicationContext()).load(files.getIconLink()).into(imageView);
-
-                        TextView name = (TextView) convertView.findViewById(R.id.textView);
-                        name.setText(files.getTitle());
-
-                        return convertView;
-                    }
-                });
+                displayDriveFiles(fileses);
             }
 
             @Override
@@ -149,5 +126,14 @@ public class MainActivity extends ActionBarActivity {
         });
 
     }
+
+    private void displayDriveFiles(List<Files> fileses) {
+        DriveFragment driveFragment = new DriveFragment(fileses);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, driveFragment)
+                .commit();
+    }
+
 
 }
