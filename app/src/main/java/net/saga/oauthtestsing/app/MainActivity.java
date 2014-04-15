@@ -5,9 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -25,16 +22,15 @@ import org.jboss.aerogear.android.impl.authz.oauth2.AGOAuth2AuthzModule;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.Pipe;
 
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends ListActivity {
 
     private ServiceConnection connection;
+    private AGOAuth2AuthzModule authzModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,74 +40,31 @@ public class MainActivity extends ListActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        this.authz();
+    }
 
-        AuthzConfig conf = null;
+    private void authz() {
         try {
-            conf = new AuthzConfig(new URL("https://accounts.google.com"), "restMod");
-            conf.setAccessTokenEndpoint("/o/oauth2/token");
-            conf.setAuthzEndpoint("/o/oauth2/auth");
-            conf.setAccountId("gemAccounts");
-            conf.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
-            conf.setClientId("374822310857-7926b3e6qugkdf2anmm51hkrcr8o7kj2.apps.googleusercontent.com");
-            conf.setClientSecret("g6R5mL2MwR_ofdQCXLpKT21L");
-            conf.setRedirectURL("org.aerogear.googledrive:/oauth2callback");
-            conf.setScopes(new ArrayList<String>() {{
+
+            AuthzConfig authzConfig = new AuthzConfig(new URL("https://accounts.google.com"), "restMod");
+            authzConfig.setAccessTokenEndpoint("/o/oauth2/token");
+            authzConfig.setAuthzEndpoint("/o/oauth2/auth");
+            authzConfig.setAccountId("gemAccounts");
+            authzConfig.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
+            authzConfig.setClientId("374822310857-7926b3e6qugkdf2anmm51hkrcr8o7kj2.apps.googleusercontent.com");
+            authzConfig.setClientSecret("g6R5mL2MwR_ofdQCXLpKT21L");
+            authzConfig.setRedirectURL("org.aerogear.googledrive:/oauth2callback");
+            authzConfig.setScopes(new ArrayList<String>() {{
                 add("https://www.googleapis.com/auth/drive");
             }});
-            final AGOAuth2AuthzModule module = new AGOAuth2AuthzModule(conf);
 
-            module.requestAccess("state", this, new Callback<String>() {
+            authzModule = new AGOAuth2AuthzModule(authzConfig);
+
+            authzModule.requestAccess("state", this, new Callback<String>() {
                 @Override
                 public void onSuccess(String o) {
                     Log.d("TOKEN ++ ", o);
-
-
-                    URL readGoogleDriveURL = null;
-                    try {
-                        readGoogleDriveURL = new URL("https://www.googleapis.com/drive/v2");
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
-                    Pipeline pipeline = new Pipeline(readGoogleDriveURL);
-
-                    PipeConfig docConfig = new PipeConfig(readGoogleDriveURL, Files.class);
-                    docConfig.setAuthzModule(module);
-                    docConfig.getResponseParser().getMarshallingConfig().setDataRoot("items");
-                    pipeline.pipe(Files.class, docConfig);
-                    Pipe<Files> documentsPipe = pipeline.get("files", MainActivity.this);
-                    documentsPipe.read(new Callback<List<Files>>() {
-                        @Override
-                        public void onSuccess(final List<Files> fileses) {
-                            Toast.makeText(getApplicationContext(), fileses.size() + " files fetched", Toast.LENGTH_LONG).show();
-                            setListAdapter(new ArrayAdapter<Files>(getApplicationContext(), android.R.layout.simple_list_item_1, fileses){
-                                @Override
-                                public View getView(int position, View convertView, ViewGroup parent) {
-                                    Files files = fileses.get(position);
-
-                                    if (convertView == null) {
-                                        convertView = getLayoutInflater().inflate(R.layout.drive_list_item, null);
-                                    }
-
-                                    ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-                                    Picasso.with(getApplicationContext()).load(files.getIconLink()).into(imageView);
-
-                                    TextView name = (TextView) convertView.findViewById(R.id.textView);
-
-                                    name.setText(files.getTitle());
-
-                                    return convertView;
-
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onFailure(Exception e) {
-                            Log.e("EXCEPTION", e.getMessage(), e);
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-
+                    retriveFiles();
                 }
 
                 @Override
@@ -125,6 +78,60 @@ public class MainActivity extends ListActivity {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    private void retriveFiles() {
+
+        URL googleDriveURL = null;
+        try {
+            googleDriveURL = new URL("https://www.googleapis.com/drive/v2");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        Pipeline pipeline = new Pipeline(googleDriveURL);
+
+        PipeConfig pipeConfig = new PipeConfig(googleDriveURL, Files.class);
+        pipeConfig.setAuthzModule(authzModule);
+        pipeConfig.getResponseParser().getMarshallingConfig().setDataRoot("items");
+        pipeline.pipe(Files.class, pipeConfig);
+
+        Pipe<Files> documentsPipe = pipeline.get("files", this);
+        documentsPipe.read(new Callback<List<Files>>() {
+            @Override
+            public void onSuccess(final List<Files> fileses) {
+
+                Toast.makeText(getApplicationContext(), fileses.size() + " files fetched", Toast.LENGTH_LONG).show();
+
+                setListAdapter(new ArrayAdapter<Files>(getApplicationContext(),
+                        android.R.layout.simple_list_item_1, fileses) {
+
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        Files files = fileses.get(position);
+
+                        if (convertView == null) {
+                            convertView = getLayoutInflater().inflate(R.layout.drive_list_item, null);
+                        }
+
+                        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
+                        Picasso.with(getApplicationContext()).load(files.getIconLink()).into(imageView);
+
+                        TextView name = (TextView) convertView.findViewById(R.id.textView);
+                        name.setText(files.getTitle());
+
+                        return convertView;
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("EXCEPTION", e.getMessage(), e);
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     private static class OAuthReceiver extends BroadcastReceiver {
