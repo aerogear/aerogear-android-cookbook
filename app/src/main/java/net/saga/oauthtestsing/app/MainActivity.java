@@ -41,9 +41,6 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
     }
 
-
-
-
     @Override
     protected void onStart() {
         super.onStart();
