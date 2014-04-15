@@ -1,15 +1,12 @@
 package net.saga.oauthtestsing.app;
 
-import android.app.ListActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import com.squareup.picasso.Picasso;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
@@ -25,13 +22,17 @@ import java.util.List;
 
 import static net.saga.oauthtestsing.app.Constants.*;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends ActionBarActivity {
+
+    private ListView driveItems;
 
     private AGOAuth2AuthzModule authzModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        driveItems = (ListView) findViewById(R.id.drive_items);
     }
 
     @Override
@@ -100,7 +101,7 @@ public class MainActivity extends ListActivity {
 
                 Toast.makeText(getApplicationContext(), fileses.size() + " files fetched", Toast.LENGTH_LONG).show();
 
-                setListAdapter(new ArrayAdapter<Files>(getApplicationContext(),
+                driveItems.setAdapter(new ArrayAdapter<Files>(getApplicationContext(),
                         android.R.layout.simple_list_item_1, fileses) {
 
                     @Override
