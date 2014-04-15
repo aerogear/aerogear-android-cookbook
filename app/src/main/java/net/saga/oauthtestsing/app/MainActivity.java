@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.squareup.picasso.Picasso;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.authorization.AuthzConfig;
@@ -85,15 +86,18 @@ public class MainActivity extends ListActivity {
                             setListAdapter(new ArrayAdapter<Files>(getApplicationContext(), android.R.layout.simple_list_item_1, fileses){
                                 @Override
                                 public View getView(int position, View convertView, ViewGroup parent) {
+                                    Files files = fileses.get(position);
+
                                     if (convertView == null) {
                                         convertView = getLayoutInflater().inflate(R.layout.drive_list_item, null);
                                     }
 
                                     ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-                                    new DownloadImageTask(imageView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, fileses.get(position).getIconLink());
+                                    Picasso.with(getApplicationContext()).load(files.getIconLink()).into(imageView);
 
                                     TextView name = (TextView) convertView.findViewById(R.id.textView);
-                                    name.setText(fileses.get(position).getTitle());
+
+                                    name.setText(files.getTitle());
 
                                     return convertView;
 
@@ -120,32 +124,6 @@ public class MainActivity extends ListActivity {
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
-        }
-    }
-
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
         }
     }
 
