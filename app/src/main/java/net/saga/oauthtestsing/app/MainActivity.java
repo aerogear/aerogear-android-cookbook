@@ -116,7 +116,7 @@ public class MainActivity extends ActionBarActivity {
         documentsPipe.read(new Callback<List<Files>>() {
             @Override
             public void onSuccess(final List<Files> fileses) {
-                Toast.makeText(getApplicationContext(), fileses.size() + " files fetched", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.fetched, fileses.size()), Toast.LENGTH_LONG).show();
                 displayDriveFiles(fileses);
             }
 

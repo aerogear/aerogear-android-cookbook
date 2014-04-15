@@ -3,5 +3,6 @@
 
     <string name="app_name">AGDroid oAuth2</string>
     <string name="refresh">Refresh</string>
+    <string name="fetched">%1$d file(s) fetched</string>
 
 </resources>
