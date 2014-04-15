@@ -1,10 +1,6 @@
 package net.saga.oauthtestsing.app;
 
 import android.app.ListActivity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -29,7 +25,6 @@ import java.util.List;
 
 public class MainActivity extends ListActivity {
 
-    private ServiceConnection connection;
     private AGOAuth2AuthzModule authzModule;
 
     @Override
@@ -133,14 +128,5 @@ public class MainActivity extends ListActivity {
         });
 
     }
-
-    private static class OAuthReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context, intent.getDataString(), Toast.LENGTH_LONG).show();
-        }
-    }
-
 
 }
