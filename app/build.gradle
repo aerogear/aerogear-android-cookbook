@@ -33,7 +33,6 @@ configurations.all {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile group :'org.jboss.aerogear', name:'aerogear-android', version:'1.4.0-SNAPSHOT', ext: 'aar', changing:true
     compile 'com.android.support:appcompat-v7:19.0.0'
     compile 'com.google.guava:guava:15.0'
