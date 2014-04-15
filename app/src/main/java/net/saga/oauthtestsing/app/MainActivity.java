@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.Pair;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -39,6 +41,22 @@ public class MainActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
         this.authz();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(authzModule.isAuthorized()) {
+            retriveFiles();
+        } else {
+            authz();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void authz() {

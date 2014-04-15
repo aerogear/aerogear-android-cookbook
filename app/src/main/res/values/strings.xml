@@ -2,5 +2,6 @@
 <resources>
 
     <string name="app_name">AGDroid oAuth2</string>
+    <string name="refresh">Refresh</string>
 
 </resources>
