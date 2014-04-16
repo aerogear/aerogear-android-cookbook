@@ -6,13 +6,17 @@ repositories {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.2"
+    buildToolsVersion "19.0.3"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 10
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     compileOptions {
@@ -33,9 +37,9 @@ configurations.all {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile group :'org.jboss.aerogear', name:'aerogear-android', version:'1.4.0-SNAPSHOT', ext: 'aar', changing:true
-    compile 'com.android.support:appcompat-v7:19.0.0'
+    compile 'com.android.support:appcompat-v7:19.1+'
     compile 'com.google.guava:guava:15.0'
     compile 'com.google.code.gson:gson:2.2.+'
+    compile 'com.squareup.picasso:picasso:2.2.0'
 }

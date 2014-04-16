@@ -5,9 +5,9 @@ import org.jboss.aerogear.android.RecordId;
 import java.net.URL;
 
 public class Files {
+
     @RecordId
     private String id;
-
     private String title;
     private String webContentLink;
     private String iconLink;
@@ -52,6 +52,5 @@ public class Files {
                 ", webContentLink='" + webContentLink + '\'' +
                 '}';
     }
-
 
 }

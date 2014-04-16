@@ -1,4 +1,30 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-.DS_Store
+########## Intellij #########
+
+*.iml
+.idea/
+out/
+gen-external-apklibs/
+
+########## Eclipse ##########
+
+.classpath
+.settings/
+.project
+classes/
+libs/
+bin/
+
+########## Gradle ###########
+
+.gradle/
+build/
+
+########## Android ##########
+
+local.properties
+project.properties
+ant.properties
+build.xml
+proguard-project.txt
+gen/
+lint.xml

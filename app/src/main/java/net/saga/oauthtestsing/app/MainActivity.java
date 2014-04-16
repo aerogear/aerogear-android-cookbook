@@ -1,117 +1,82 @@
 package net.saga.oauthtestsing.app;
 
-import android.app.ListActivity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.Pair;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
-
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
-import org.jboss.aerogear.android.authorization.AuthzConfig;
-import org.jboss.aerogear.android.impl.authz.AGRestAuthzModule;
+import org.jboss.aerogear.android.authorization.AuthzModule;
+import org.jboss.aerogear.android.impl.authz.AuthzConfig;
+import org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthzModule;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.Pipe;
 
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.saga.oauthtestsing.app.Constants.*;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends ActionBarActivity {
 
-    private ServiceConnection connection;
+    private AuthzModule authzModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
     }
-
-
-
 
     @Override
     protected void onStart() {
         super.onStart();
+        this.authz();
+    }
 
-        AuthzConfig conf = null;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(authzModule.isAuthorized()) {
+            retriveFiles();
+        } else {
+            authz();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void authz() {
         try {
-            conf = new AuthzConfig(new URL("https://accounts.google.com"), "restMod");
-            conf.setAccessTokenEndpoint("/o/oauth2/token");
-            conf.setAuthzEndpoint("/o/oauth2/auth");
-            conf.setAccountId("gemAccounts");
-            conf.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
-            conf.setClientId("374822310857-7926b3e6qugkdf2anmm51hkrcr8o7kj2.apps.googleusercontent.com");
-            conf.setClientSecret("g6R5mL2MwR_ofdQCXLpKT21L");
-            conf.setRedirectURL("org.aerogear.googledrive:/oauth2callback");
-            conf.setScopes(new ArrayList<String>() {{
+
+            AuthzConfig authzConfig = new AuthzConfig(new URL(Constants.AUTHZ_URL), "restMod");
+            authzConfig.setAuthzEndpoint(AUTHZ_ENDPOINT);
+            authzConfig.setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT);
+            authzConfig.setAccountId(AUTHZ_ACCOOUNT_ID);
+            authzConfig.setClientId(AUTHZ_CLIENT_ID);
+            authzConfig.setClientSecret(AUTHZ_CLIENT_SECRET);
+            authzConfig.setRedirectURL(AUTHZ_REDIRECT_URL);
+            authzConfig.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
+            authzConfig.setScopes(new ArrayList<String>() {{
                 add("https://www.googleapis.com/auth/drive");
             }});
-            final AGRestAuthzModule module = new AGRestAuthzModule(conf);
 
-            module.requestAccess("state", this, new Callback<String>() {
+            authzModule = new OAuth2AuthzModule(authzConfig);
+
+            authzModule.requestAccess("state", this, new Callback<String>() {
                 @Override
                 public void onSuccess(String o) {
                     Log.d("TOKEN ++ ", o);
-
-
-                    URL readGoogleDriveURL = null;
-                    try {
-                        readGoogleDriveURL = new URL("https://www.googleapis.com/drive/v2");
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
-                    Pipeline pipeline = new Pipeline(readGoogleDriveURL);
-
-                    PipeConfig docConfig = new PipeConfig(readGoogleDriveURL, Files.class);
-                    docConfig.setAuthzModule(module);
-                    docConfig.getResponseParser().getMarshallingConfig().setDataRoot("items");
-                    pipeline.pipe(Files.class, docConfig);
-                    Pipe<Files> documentsPipe = pipeline.get("files", MainActivity.this);
-                    documentsPipe.read(new Callback<List<Files>>() {
-                        @Override
-                        public void onSuccess(final List<Files> fileses) {
-                            Toast.makeText(getApplicationContext(), fileses.size() + " files fetched", Toast.LENGTH_LONG).show();
-                            setListAdapter(new ArrayAdapter<Files>(getApplicationContext(), android.R.layout.simple_list_item_1, fileses){
-                                @Override
-                                public View getView(int position, View convertView, ViewGroup parent) {
-                                    if (convertView == null) {
-                                        convertView = getLayoutInflater().inflate(R.layout.drive_list_item, null);
-                                    }
-
-                                    ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
-                                    new DownloadImageTask(imageView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, fileses.get(position).getIconLink());
-
-                                    TextView name = (TextView) convertView.findViewById(R.id.textView);
-                                    name.setText(fileses.get(position).getTitle());
-
-                                    return convertView;
-
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onFailure(Exception e) {
-                            Log.e("EXCEPTION", e.getMessage(), e);
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-
+                    retriveFiles();
                 }
 
                 @Override
@@ -127,39 +92,56 @@ public class MainActivity extends ListActivity {
         }
     }
 
+    private void retriveFiles() {
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
+        displayLoading();
 
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
+        URL googleDriveURL = null;
+        try {
+            googleDriveURL = new URL("https://www.googleapis.com/drive/v2");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
 
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
+        Pipeline pipeline = new Pipeline(googleDriveURL);
+
+        PipeConfig pipeConfig = new PipeConfig(googleDriveURL, Files.class);
+        pipeConfig.setAuthzModule(authzModule);
+        pipeConfig.getResponseParser().getMarshallingConfig().setDataRoot("items");
+        pipeline.pipe(Files.class, pipeConfig);
+
+        Pipe<Files> documentsPipe = pipeline.get("files", this);
+        documentsPipe.read(new Callback<List<Files>>() {
+            @Override
+            public void onSuccess(final List<Files> fileses) {
+                Toast.makeText(getApplicationContext(), getString(R.string.fetched, fileses.size()), Toast.LENGTH_LONG).show();
+                displayDriveFiles(fileses);
             }
-            return mIcon11;
-        }
 
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("EXCEPTION", e.getMessage(), e);
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
-    private static class OAuthReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context, intent.getDataString(), Toast.LENGTH_LONG).show();
-        }
+    private void displayFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
     }
 
+    private void displayDriveFiles(List<Files> fileses) {
+        DriveFragment driveFragment = new DriveFragment(fileses);
+        displayFragment(driveFragment);
+    }
+
+    private void displayLoading() {
+        LoadingFragment loadingFragment = new LoadingFragment();
+        displayFragment(loadingFragment);
+    }
 
 }
