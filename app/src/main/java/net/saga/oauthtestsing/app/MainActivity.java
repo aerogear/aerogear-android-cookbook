@@ -76,8 +76,6 @@ public class MainActivity extends ActionBarActivity {
                 add("https://www.googleapis.com/auth/drive");
             }});
 
-            final OAuth2AuthzModule module = new OAuth2AuthzModule(authzConfig);
-
             authzModule = new OAuth2AuthzModule(authzConfig);
 
             authzModule.requestAccess("state", this, new Callback<String>() {
