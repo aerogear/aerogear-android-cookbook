@@ -7,14 +7,12 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
-import com.squareup.picasso.Picasso;
+import android.widget.Toast;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
-import org.jboss.aerogear.android.authorization.AuthzConfig;
-import org.jboss.aerogear.android.impl.authz.oauth2.AGOAuth2AuthzModule;
+import org.jboss.aerogear.android.authorization.AuthzModule;
+import org.jboss.aerogear.android.impl.authz.AuthzConfig;
+import org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthzModule;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.Pipe;
 
@@ -27,7 +25,7 @@ import static net.saga.oauthtestsing.app.Constants.*;
 
 public class MainActivity extends ActionBarActivity {
 
-    private AGOAuth2AuthzModule authzModule;
+    private AuthzModule authzModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
                 add("https://www.googleapis.com/auth/drive");
             }});
 
-            authzModule = new AGOAuth2AuthzModule(authzConfig);
+            authzModule = new OAuth2AuthzModule(authzConfig);
 
             authzModule.requestAccess("state", this, new Callback<String>() {
                 @Override
@@ -145,7 +143,5 @@ public class MainActivity extends ActionBarActivity {
         LoadingFragment loadingFragment = new LoadingFragment();
         displayFragment(loadingFragment);
     }
-
-
 
 }
