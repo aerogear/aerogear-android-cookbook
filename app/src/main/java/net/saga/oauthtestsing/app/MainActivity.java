@@ -8,6 +8,7 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.authorization.AuthzModule;
@@ -21,7 +22,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.saga.oauthtestsing.app.Constants.*;
+import static net.saga.oauthtestsing.app.Constants.AUTHZ_ACCOOUNT_ID;
+import static net.saga.oauthtestsing.app.Constants.AUTHZ_CLIENT_ID;
+import static net.saga.oauthtestsing.app.Constants.AUTHZ_CLIENT_SECRET;
+import static net.saga.oauthtestsing.app.Constants.AUTHZ_ENDPOINT;
+import static net.saga.oauthtestsing.app.Constants.AUTHZ_REDIRECT_URL;
+import static net.saga.oauthtestsing.app.Constants.AUTHZ_TOKEN_ENDPOINT;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -69,6 +75,8 @@ public class MainActivity extends ActionBarActivity {
             authzConfig.setScopes(new ArrayList<String>() {{
                 add("https://www.googleapis.com/auth/drive");
             }});
+
+            final OAuth2AuthzModule module = new OAuth2AuthzModule(authzConfig);
 
             authzModule = new OAuth2AuthzModule(authzConfig);
 
