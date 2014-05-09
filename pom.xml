@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.jboss.aerogear</groupId>
         <artifactId>aerogear-parent</artifactId>
-        <version>0.1.0</version>
+        <version>0.2.0</version>
     </parent>
 
     <licenses>
@@ -61,7 +61,7 @@
             <dependency>
                 <groupId>org.jboss.aerogear</groupId>
                 <artifactId>aerogear-android-bom</artifactId>
-                <version>0.1.1-SNAPSHOT</version>
+                <version>0.2.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
