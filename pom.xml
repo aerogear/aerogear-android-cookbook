@@ -39,6 +39,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <aerogear.bom.version>0.2.0</aerogear.bom.version>
 
         <aerogear-android.version>1.4.0-SNAPSHOT</aerogear-android.version>
 
@@ -61,7 +62,7 @@
             <dependency>
                 <groupId>org.jboss.aerogear</groupId>
                 <artifactId>aerogear-android-bom</artifactId>
-                <version>0.2.0</version>
+                <version>${aerogear.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
