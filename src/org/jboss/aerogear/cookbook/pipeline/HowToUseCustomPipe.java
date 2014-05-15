@@ -28,7 +28,6 @@ import org.jboss.aerogear.cookbook.R;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import com.google.gson.JsonArray;
 import org.jboss.aerogear.cookbook.model.Developer;
 
 import java.net.MalformedURLException;

@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.jboss.aerogear</groupId>
         <artifactId>aerogear-parent</artifactId>
-        <version>0.1.0</version>
+        <version>0.2.0</version>
     </parent>
 
     <licenses>
@@ -38,41 +38,70 @@
     </scm>    
 
     <properties>
-        <android.version>4.1.1.4</android.version>
-        <android.support.version>[19.1,)</android.support.version>
-        <aerogear-android.version>1.4.0-SNAPSHOT</aerogear-android.version>
-        <picasso.version>2.1.1</picasso.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <aerogear.bom.version>0.2.0</aerogear.bom.version>
 
+        <aerogear-android.version>1.4.0-SNAPSHOT</aerogear-android.version>
+
+        <!-- Plugin properties-->
         <maven.android.plugin.verson>3.8.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
         <java.version>1.6</java.version>
 
         <android.platform>19</android.platform>
         <android.debug>true</android.debug>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <proguard.skip>true</proguard.skip>
 
     </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- AeroGear Android Dependencies BOM Imports -->
+            <dependency>
+                <groupId>org.jboss.aerogear</groupId>
+                <artifactId>aerogear-android-bom</artifactId>
+                <version>${aerogear.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.aerogear</groupId>
+                <artifactId>aerogear-android</artifactId>
+                <type>apklib</type>
+                <version>${aerogear-android.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.aerogear</groupId>
+                <artifactId>aerogear-android</artifactId>
+                <type>jar</type>
+                <version>${aerogear-android.version}</version>
+            </dependency>
+
+
+        </dependencies>
+
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
-            <version>${android.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
-            <version>${android.support.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
-            <version>${android.support.version}</version>
             <type>apklib</type>
         </dependency>
 
@@ -80,7 +109,6 @@
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
             <type>apklib</type>
-            <version>${aerogear-android.version}</version>
         </dependency>
 
         <dependency>
@@ -88,13 +116,11 @@
             <artifactId>aerogear-android</artifactId>
             <scope>provided</scope>                        
             <type>jar</type>
-            <version>${aerogear-android.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.squareup.picasso</groupId>
             <artifactId>picasso</artifactId>
-            <version>${picasso.version}</version>
         </dependency>
 
     </dependencies>

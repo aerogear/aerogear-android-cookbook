@@ -18,8 +18,6 @@ package org.jboss.aerogear.cookbook.model;
 
 import org.jboss.aerogear.android.RecordId;
 
-import java.io.InputStream;
-
 public class AvatarResponse implements Avatar<String> {
 
     public AvatarResponse() {
