@@ -8,26 +8,23 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
+import com.google.common.collect.ImmutableSet;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.authorization.AuthzModule;
-import org.jboss.aerogear.android.impl.authz.AuthzConfig;
-import org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthzModule;
+import org.jboss.aerogear.android.impl.authz.AuthorizationManager;
+import org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthorizationConfiguration;
 import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
 import org.jboss.aerogear.android.pipeline.Pipe;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
-import static net.saga.oauthtestsing.app.Constants.AUTHZ_ACCOOUNT_ID;
-import static net.saga.oauthtestsing.app.Constants.AUTHZ_CLIENT_ID;
-import static net.saga.oauthtestsing.app.Constants.AUTHZ_CLIENT_SECRET;
-import static net.saga.oauthtestsing.app.Constants.AUTHZ_ENDPOINT;
-import static net.saga.oauthtestsing.app.Constants.AUTHZ_REDIRECT_URL;
-import static net.saga.oauthtestsing.app.Constants.AUTHZ_TOKEN_ENDPOINT;
+import static net.saga.oauthtestsing.app.Constants.*;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -53,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(authzModule.isAuthorized()) {
+        if (authzModule.isAuthorized()) {
             retriveFiles();
         } else {
             authz();
@@ -64,21 +61,18 @@ public class MainActivity extends ActionBarActivity {
     private void authz() {
         try {
 
-            AuthzConfig authzConfig = new AuthzConfig(new URL(Constants.AUTHZ_URL), "restMod");
-            authzConfig.setAuthzEndpoint(AUTHZ_ENDPOINT);
-            authzConfig.setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT);
-            authzConfig.setAccountId(AUTHZ_ACCOOUNT_ID);
-            authzConfig.setClientId(AUTHZ_CLIENT_ID);
-            authzConfig.setClientSecret(AUTHZ_CLIENT_SECRET);
-            authzConfig.setRedirectURL(AUTHZ_REDIRECT_URL);
-            authzConfig.getAdditionalAuthorizationParams().add(Pair.create("access_type", "offline"));
-            authzConfig.setScopes(new ArrayList<String>() {{
-                add("https://www.googleapis.com/auth/drive");
-            }});
+            authzModule = AuthorizationManager.config("GoogleDriveAuthz", OAuth2AuthorizationConfiguration.class)
+                    .setAuthzEndpoint(AUTHZ_ENDPOINT)
+                    .setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT)
+                    .setAccountId(AUTHZ_ACCOOUNT_ID)
+                    .setClientId(AUTHZ_CLIENT_ID)
+                    .setClientSecret(AUTHZ_CLIENT_SECRET)
+                    .setRedirectURL(AUTHZ_REDIRECT_URL)
+                    .setScopes(Arrays.asList("https://www.googleapis.com/auth/drive"))
+                    .setAdditionalAuthorizationParams(ImmutableSet.of(Pair.create("access_type", "offline")))
+                    .asModule();
 
-            authzModule = new OAuth2AuthzModule(authzConfig);
-
-            authzModule.requestAccess("state", this, new Callback<String>() {
+            authzModule.requestAccess(this, new Callback<String>() {
                 @Override
                 public void onSuccess(String o) {
                     Log.d("TOKEN ++ ", o);
