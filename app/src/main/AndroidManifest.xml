@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="org.jboss.aerogear.android.impl.authz.AuthzService"/>
+        <service android:name="org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthzService"/>
     </application>
 
 
