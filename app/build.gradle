@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.12.+'
@@ -11,9 +12,12 @@ apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 android {
+    enforceUniquePackageName=false
+
     compileSdkVersion 19
     buildToolsVersion "19.1"
 
@@ -47,7 +51,10 @@ configurations.all {
 }
 
 dependencies {
-    compile group :'org.jboss.aerogear', name:'aerogear-android', version:'1.4.0-SNAPSHOT', ext: 'aar', changing:true
+    compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-store:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-authz:2.0.0-SNAPSHOT@aar'
     compile 'com.android.support:appcompat-v7:19.1+'
     compile 'com.google.guava:guava:15.0'
     compile 'com.google.code.gson:gson:2.2.+'
