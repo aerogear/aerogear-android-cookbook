@@ -62,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
         try {
 
             authzModule = AuthorizationManager.config("GoogleDriveAuthz", OAuth2AuthorizationConfiguration.class)
+                    .setBaseURL(new URL(AUTHZ_URL))
                     .setAuthzEndpoint(AUTHZ_ENDPOINT)
                     .setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT)
                     .setAccountId(AUTHZ_ACCOOUNT_ID)
