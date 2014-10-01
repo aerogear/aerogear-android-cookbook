@@ -1,4 +1,4 @@
-package net.saga.oauthtestsing.app;
+package org.jboss.aerogear.android.example.gdrive;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,11 +20,9 @@ import org.jboss.aerogear.android.pipeline.Pipe;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
-import static net.saga.oauthtestsing.app.Constants.*;
+import static org.jboss.aerogear.android.example.gdrive.Constants.*;
 
 public class MainActivity extends ActionBarActivity {
 

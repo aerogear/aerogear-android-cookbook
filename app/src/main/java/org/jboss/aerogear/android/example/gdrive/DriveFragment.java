@@ -1,4 +1,4 @@
-package net.saga.oauthtestsing.app;
+package org.jboss.aerogear.android.example.gdrive;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

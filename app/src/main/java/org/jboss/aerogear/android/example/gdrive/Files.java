@@ -1,8 +1,6 @@
-package net.saga.oauthtestsing.app;
+package org.jboss.aerogear.android.example.gdrive;
 
 import org.jboss.aerogear.android.RecordId;
-
-import java.net.URL;
 
 public class Files {
 
