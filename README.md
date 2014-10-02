@@ -4,19 +4,19 @@ The cookbook application contains an interactive version of the code samples fou
 
 ## Building
 
-Please take a look of [step by step on our website](http://aerogear.org/docs/guides/aerogear-android/how-to-build-aerogear-android/)
+Please take a look at the [step by step guide on our website](http://aerogear.org/docs/guides/aerogear-android/how-to-build-aerogear-android/).
 
 ## Cookbook apps
 
 | App | Description | Pipe | Store | Security | Auth | Authz | Push |
 |-----|-------------|:----:|:-----:|:--------:|:----:|:-----:|:-----:| 
-| [GDrive](https://github.com/danielpassos/aerogear-android-cookbook/tree/GDrive/GDrive) | OAuth2 to list all GoogleDrive documents | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| [GDrive](https://github.com/danielpassos/aerogear-android-cookbook/tree/GDrive/GDrive) | Using OAuth2 to list your GoogleDrive documents | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 
 ## Development
 
 If you would like to help develop AeroGear you can join our [developer's mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-dev), join #aerogear on Freenode, or shout at us on Twitter @aerogears.
 
-Also takes some time and skim the [contributor guide](http://aerogear.org/docs/guides/Contributing/)
+Also, take some time and skim the [contributor guide](http://aerogear.org/docs/guides/Contributing/).
 
 ## Questions?
 
