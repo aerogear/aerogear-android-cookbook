@@ -8,9 +8,9 @@ Please take a look of [step by step on our website](http://aerogear.org/docs/gui
 
 ## Cookbook apps
 
-| App    | Description                              | Pipe               | Store              | Security           | Auth                  | Authz              | Push               |
-|--------|------------------------------------------|:------------------:|:------------------:|:------------------:|:----------------------:|:------------------:|:------------------:| 
-| GDrive | OAuth2 to list all GoogleDrive documents | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| App | Description | Pipe | Store | Security | Auth | Authz | Push |
+|-----|-------------|:----:|:-----:|:--------:|:----:|:-----:|:-----:| 
+| [GDrive](https://github.com/danielpassos/aerogear-android-cookbook/tree/GDrive/GDrive) | OAuth2 to list all GoogleDrive documents | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 
 ## Development
 
