@@ -3,7 +3,7 @@
 Author: Daniel Passos (dpassos) & Summers Pittman (supittma)   
 Level: Beginner  
 Technologies: Java, Android  
-Summary: A basic example of OAuth2 : Login and retrive data.  
+Summary: A basic example of OAuth2 : Login and retrieve data.  
 Target Product: -   
 Product Versions: -   
 Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/GDrive
@@ -36,7 +36,7 @@ Now you need to enable the Drive API. To do that, navigate to APIs & auth > APIs
 
 ![Google Console - Enable APIs](docs/google-console-2.png)
 
-Now you need to register our application and state that we are accessing the Google APIs from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. This launches the following popup, where you select `Installed application` and `Other`:
+Now you need create a new credentials to access your Drive accouns from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. This launches the following popup, where you select `Installed application` and `Other`:
 
 ![Google Console - Credentials](docs/google-console-3.png)
 
