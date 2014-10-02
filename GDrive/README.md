@@ -26,7 +26,7 @@ When the application is deployed to an Android device, the application will ask 
 
 ### 1. Google credentials
 
-First, you must authenticate with Google. You will need a Google Account for this. Now open the Google Console.
+First, you must authenticate with Google. You will need a Google Account for this. Now open the [Google Console](http://console.developer.google.com).
 
 If you haven’t created a project, click “Create Project” and give the new project a name:
 
