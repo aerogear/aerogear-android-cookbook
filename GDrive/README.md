@@ -12,23 +12,23 @@ Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/GDrive
 
 The ```AGDroid GDrive``` project demonstrates how to include Authz/OAuth2 functionality in Android applications.
 
-This simple project consists of a ready-to-build Android application. Before building the application, you must create a OAuth2 credential in Google console. The parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. 
+This simple project consists of a ready-to-build Android application. Before building the application, you must create an OAuth2 credential in Google's console. The credentials must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. 
 
-When the application is deployed to an Android device, the application will ask for your Google credentials, ask permission for access your account and retrive your documents.
+When the application is deployed to an Android device, the application will ask for your Google credentials, ask permission to access your account and retrieve your documents.
 
 ## How do I run it?
 
 ### 0. System Requirements
 
-* [Java 6](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle 0.10](http://www.gradle.org/)
+* [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle 2.1](http://www.gradle.org/)
 * Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 19](http://developer.android.com/tools/revisions/platforms.html)
 
 ### 1. Google credentials
 
 First, you must authenticate with Google. You will need a Google Account for this. Now open the [Google Console](http://console.developer.google.com).
 
-If you haven’t created a project, click “Create Project” and give the new project a name:
+If you haven't created a project, click "Create Project" and give the new project a name:
 
 ![Google Console - Create Project](docs/google-console-1.png)
 
@@ -36,7 +36,7 @@ Now you need to enable the Drive API. To do that, navigate to APIs & auth > APIs
 
 ![Google Console - Enable APIs](docs/google-console-2.png)
 
-Now you need create a new credentials to access your Drive accouns from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. This launches the following popup, where you select `Installed application` and `Other`:
+Now you need create new credentials to access your Drive accounts from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. This launches the following popup, where you select `Installed application` and `Other`:
 
 ![Google Console - Credentials](docs/google-console-3.png)
 
