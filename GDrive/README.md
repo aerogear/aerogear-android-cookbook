@@ -24,19 +24,27 @@ When the application is deployed to an Android device, the application will ask 
 * [Gradle 0.10](http://www.gradle.org/)
 * Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 19](http://developer.android.com/tools/revisions/platforms.html)
 
-### 1. Get Google credentials
+### 1. Google credentials
 
-You must create a new project in Google console and a OAuth2
+First, you must authenticate with Google. You will need a Google Account for this. Now open the Google Console.
 
-[some screenshots]
+If you haven’t created a project, click “Create Project” and give the new project a name:
 
-### 2. Enable API
+![Google Console - Create Project](docs/google-console-1.png)
 
-You also need enable access to the Google Drive API. 
+Now you need to enable the Drive API. To do that, navigate to APIs & auth > APIs and scroll down to the Drive API item, which you need to turn on:
 
-[some screenshots]
+![Google Console - Enable APIs](docs/google-console-2.png)
 
-### 3. Customize and Build Application
+Now you need to register our application and state that we are accessing the Google APIs from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. This launches the following popup, where you select `Installed application` and `Other`:
+
+![Google Console - Credentials](docs/google-console-3.png)
+
+On the last screen finally get to see the actual value of the generated `client id`, `secret id` and `redirect uris`, which you will use later:
+
+![Google Console - New credentials created](docs/google-console-4.png)
+
+### 2. Customize and Build Application
 
 The project source code must be customized with your Google credentials. 
 
@@ -57,7 +65,7 @@ $ cd /path/to/gdrive/
 $ mvn compile
 ```
 
-### 4. Test Application
+### 3. Test Application
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
