@@ -40,15 +40,18 @@ You also need enable access to the Google Drive API.
 
 The project source code must be customized with your Google credentials. 
 
-1. Open ```/path/to/gdrive/src/org/jboss/aerogear/android/example/gdrive/Constants.java``` for editing.
-2. Enter the ```client id```, ```client secret``` and ```redirect url``` for the following constants:
+1) Open ```/path/to/gdrive/src/org/jboss/aerogear/android/example/gdrive/Constants.java``` for editing.   
+
+2) Enter the ```client id```, ```client secret``` and ```redirect url``` for the following constants:
+
 ```java
 String AUTHZ_CLIENT_ID = "";
 String AUTHZ_CLIENT_SECRET = "";
 String AUTHZ_REDIRECT_URL = "";
 ```
-3. Save the file.
-4. Build the application
+3) Save the file.   
+
+4) Build the application
 ```shell
 $ cd /path/to/gdrive/
 $ mvn compile
