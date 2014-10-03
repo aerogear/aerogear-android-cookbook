@@ -2,56 +2,23 @@
 
 The cookbook application contains an interactive version of the code samples found in the [online documentation](http://aerogear.org/docs/guides/aerogear-android/).  
 
-# Building and Installing
+## Building
 
-## Prerequisites
+Please take a look at the [step by step guide on our website](http://aerogear.org/docs/guides/aerogear-android/how-to-build-aerogear-android/).
 
-* Maven 3.1.1
-* Android SDK (and platform 19)
-* Git
-* maven-android-deployer
+## Cookbook apps
 
-## Downloading and building
+| App | Description | Pipe | Store | Security | Auth | Authz | Push |
+|-----|-------------|:----:|:-----:|:--------:|:----:|:-----:|:-----:| 
+| [GDrive](https://github.com/danielpassos/aerogear-android-cookbook/tree/GDrive/GDrive) | Using OAuth2 to list your GoogleDrive documents | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 
-The Cookbook is a Maven project, but the Android dependencies are not in Maven Central. We must deploy them locally using the [Maven Android SDK Deployer](https://github.com/mosabua/maven-android-sdk-deployer).  The [README](https://github.com/mosabua/maven-android-sdk-deployer/blob/master/README.markdown) for the deployer will cover getting it installed and configured.
+## Development
 
-Once the deployer has finished you can clone and build the project.
+If you would like to help develop AeroGear you can join our [developer's mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-dev), join #aerogear on Freenode, or shout at us on Twitter @aerogears.
 
-````bash
-git clone https://github.com/aerogear/aerogear-android-cookbook;
-cd aerogear-android-cookbook;
-mvn clean install;
-````
+Also, take some time and skim the [contributor guide](http://aerogear.org/docs/guides/Contributing/).
 
-If you have a running emulator OR have a device with usb debugging turned on you can now deploy the app.
+## Questions?
 
-````bash
-mvn android:deploy;
-````
-
-# Running
-## Configure Push
-To use push messaging, you need to have a Google Cloud Messaging enabled project as well as a unified push server running.  The [Android Push Tutorial](http://aerogear.org/docs/guides/aerogear-push-android/) will walk you through setting up your Google project and the unified push server.  
-
-Once you have your registered your application with the push server, you can fill out the values in `org.jboss.aerogear.cookbook.push.PushConstants`.  After that, rebuild and rerun your application to use and experiment with Push.
- 
-# Troubleshooting
- 
- If you are having troubles, feel free to check out our channel, #aerogear, on Freenode or our mailing list, [ aerogear-dev@lists.jboss.org](mailto:aerogear-dev@lists.jboss.org)
- 
-## Maven Android Deployer
-### Can't deploy gridlayout
- 
- If you are running a 64-bit operating system and you are having trouble deploying the Android dependencies, please make sure you have the appropriate 32 bit libraries installed.  
- 
- For Fedora these are:
-* glibc.i686
-* libstdc++.i686
-* ncurses-lib.i686
-* zlib.i686
- 
-## Push Setup
-### Registration fails
- 
- If you are receiving the message "Registration failed" when you try to use Push messaging, please make sure that your `PushConstants` file has the correct values.
+Join our [user mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-users) for any questions or help! We really hope you enjoy app development with AeroGear!
 
