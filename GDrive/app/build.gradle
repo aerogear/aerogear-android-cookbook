@@ -52,7 +52,7 @@ configurations.all {
 
 dependencies {
     compile 'org.jboss.aerogear:aerogear-android-authz:2.0.0-SNAPSHOT@aar'
-    compile 'com.android.support:appcompat-v7:19.1+'
+    compile 'com.android.support:appcompat-v7:+'
     compile 'com.google.guava:guava:15.0'
     compile 'com.google.code.gson:gson:2.2.+'
     compile 'com.squareup.picasso:picasso:2.2.0'
