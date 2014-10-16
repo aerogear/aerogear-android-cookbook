@@ -97,6 +97,7 @@
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
             <type>jar</type>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
