@@ -109,14 +109,14 @@
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
-            <type>apklib</type>
+            <scope>provided</scope>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
-            <scope>provided</scope>
-            <type>jar</type>
+            <type>apklib</type>
         </dependency>
 
         <dependency>
