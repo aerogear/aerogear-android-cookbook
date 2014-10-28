@@ -51,6 +51,10 @@ configurations.all {
 }
 
 dependencies {
+    compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-security:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-store:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0-SNAPSHOT@aar'
     compile 'org.jboss.aerogear:aerogear-android-authz:2.0.0-SNAPSHOT@aar'
     compile 'com.android.support:appcompat-v7:19.1+'
     compile 'com.google.guava:guava:15.0'
