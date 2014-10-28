@@ -10,12 +10,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.common.collect.ImmutableSet;
 import org.jboss.aerogear.android.Callback;
-import org.jboss.aerogear.android.Pipeline;
 import org.jboss.aerogear.android.authorization.AuthzModule;
 import org.jboss.aerogear.android.impl.authz.AuthorizationManager;
 import org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthorizationConfiguration;
-import org.jboss.aerogear.android.impl.pipeline.PipeConfig;
+import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
+import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;
 import org.jboss.aerogear.android.pipeline.Pipe;
+import org.jboss.aerogear.android.pipeline.PipeManager;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -97,19 +98,21 @@ public class MainActivity extends ActionBarActivity {
 
         URL googleDriveURL = null;
         try {
-            googleDriveURL = new URL("https://www.googleapis.com/drive/v2");
+            googleDriveURL = new URL("https://www.googleapis.com/drive/v2/files");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
-        Pipeline pipeline = new Pipeline(googleDriveURL);
+        GsonResponseParser gsonResponseParser = new GsonResponseParser();
+        gsonResponseParser.getMarshallingConfig().setDataRoot("items");
 
-        PipeConfig pipeConfig = new PipeConfig(googleDriveURL, Files.class);
-        pipeConfig.setAuthzModule(authzModule);
-        pipeConfig.getResponseParser().getMarshallingConfig().setDataRoot("items");
-        pipeline.pipe(Files.class, pipeConfig);
+        PipeManager.config("files", RestfulPipeConfiguration.class)
+                .withUrl(googleDriveURL)
+                .module(authzModule)
+                .responseParser(gsonResponseParser)
+                .forClass(Files.class);
 
-        Pipe<Files> documentsPipe = pipeline.get("files", this);
+        Pipe<Files> documentsPipe = PipeManager.get("files", this);
         documentsPipe.read(new Callback<List<Files>>() {
             @Override
             public void onSuccess(final List<Files> fileses) {
