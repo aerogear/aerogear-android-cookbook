@@ -85,7 +85,7 @@ authzModule = AuthorizationManager.config("GoogleDriveAuthz", OAuth2Authorizatio
         .setBaseURL(new URL(AUTHZ_URL))
         .setAuthzEndpoint(AUTHZ_ENDPOINT)
         .setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT)
-        .setAccountId(AUTHZ_ACCOOUNT_ID)
+        .setAccountId(AUTHZ_ACCOUNT_ID)
         .setClientId(AUTHZ_CLIENT_ID)
         .setClientSecret(AUTHZ_CLIENT_SECRET)
         .setRedirectURL(AUTHZ_REDIRECT_URL)
