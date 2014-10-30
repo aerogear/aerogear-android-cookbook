@@ -44,6 +44,10 @@ On the last screen finally get to see the actual value of the generated `client 
 
 ![Google Console - New credentials created](docs/google-console-4.png)
 
+You also edit the 'Consent screen'. Go to API > Consent screen and edit the project informations.
+
+![Google Console - New credentials created](docs/google-console-5.png)
+
 ### 2. Customize and Build Application
 
 The project source code must be customized with your Google credentials. 
