@@ -19,7 +19,7 @@ android {
     enforceUniquePackageName=false
 
     compileSdkVersion 19
-    buildToolsVersion "19.1"
+    buildToolsVersion "21.0.2"
 
     defaultConfig {
         minSdkVersion 10
