@@ -62,7 +62,7 @@ String AUTHZ_REDIRECT_URL = "";
 4) Build the application
 ```shell
 $ cd /path/to/gdrive/
-$ mvn compile
+$ gradle clean build
 ```
 
 ### 3. Test Application
@@ -70,8 +70,13 @@ $ mvn compile
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
 ```shell
+
+1. Install generated apk to device
 $ cd /path/to/gdrive
-$ mvn clean package android:deploy android:run
+$ gradle installDebug
+
+2. Open app on device
+
 ```
 
 Application output is displayed in the command line window.
