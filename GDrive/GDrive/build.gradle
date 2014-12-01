@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    dexOptions { javaMaxHeapSize "2g" }
+}
+
+dependencies {
+    compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-security:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-store:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0-SNAPSHOT@aar'
+    compile 'org.jboss.aerogear:aerogear-android-authz:2.0.0-SNAPSHOT@aar'
+    compile 'com.android.support:appcompat-v7:21.0.2'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.google.code.gson:gson:2.2.2'
+    compile 'com.squareup.picasso:picasso:2.2.0'
+}
