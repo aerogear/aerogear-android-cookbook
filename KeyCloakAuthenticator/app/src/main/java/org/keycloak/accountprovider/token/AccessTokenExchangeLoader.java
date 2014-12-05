@@ -14,53 +14,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.keycloakaccountprovider.token;
+package org.keycloak.accountprovider.token;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.content.Loader;
-import android.util.Base64;
-import android.util.Pair;
 
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.impl.http.HttpRestProvider;
-import org.json.JSONObject;
-import org.keycloak.keycloakaccountprovider.KeyCloak;
-import org.keycloak.keycloakaccountprovider.KeyCloakAccount;
-import org.keycloak.keycloakaccountprovider.util.IOUtils;
-import org.keycloak.keycloakaccountprovider.util.TokenExchangeUtils;
-
-import java.io.BufferedOutputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import org.keycloak.accountprovider.Keycloak;
+import org.keycloak.accountprovider.KeycloakAccount;
+import org.keycloak.accountprovider.util.TokenExchangeUtils;
 
 /**
  * Created by Summers on 9/13/2014.
  */
-public class AccessTokenExchangeLoader extends AsyncTaskLoader<KeyCloakAccount> {
+public class AccessTokenExchangeLoader extends AsyncTaskLoader<KeycloakAccount> {
 
 
-    private final KeyCloak kc;
+    private final Keycloak kc;
     private final String accessToken;
-    private KeyCloakAccount account;
+    private KeycloakAccount account;
 
     public AccessTokenExchangeLoader(Context context, String accessToken) {
         super(context);
-        this.kc = new KeyCloak(context);
+        this.kc = new Keycloak(context);
         this.accessToken = accessToken;
     }
 
     @Override
-    public KeyCloakAccount loadInBackground() {
+    public KeycloakAccount loadInBackground() {
         return TokenExchangeUtils.exchangeForAccessCode(accessToken, kc);
     }
 

@@ -14,24 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.keycloakaccountprovider;
+package org.keycloak.accountprovider.util;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-
-public class KeyCloakAuthenticatorService extends Service {
-
-    private KeyCloakAccountAuthenticator authenticator;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        authenticator = new KeyCloakAccountAuthenticator(this);
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return authenticator.getIBinder();
+/**
+ * Created by Summers on 9/13/2014.
+ */
+public class ObjectUtils {
+    public static <T>T getOrDefault(T mayBeNull, T defaultIfNull) {
+        if (mayBeNull != null) {
+            return mayBeNull;
+        } else {
+            return defaultIfNull;
+        }
     }
 }

@@ -14,15 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.keycloakaccountprovider;
+package org.keycloak.accountprovider;
 
 import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.keycloak.keycloakaccountprovider.util.IOUtils;
-import org.keycloak.keycloakaccountprovider.util.ObjectUtils;
+import org.keycloak.accountprovider.util.IOUtils;
+import org.keycloak.accountprovider.util.ObjectUtils;
 
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -31,9 +31,9 @@ import java.net.URLEncoder;
 /**
  * Created by Summers on 9/13/2014.
  */
-public final class KeyCloakConfig {
+public final class KeycloakConfig {
 
-    private static final String TAG = KeyCloakConfig.class.getSimpleName().toUpperCase();
+    private static final String TAG = KeycloakConfig.class.getSimpleName().toUpperCase();
 
     public final String realmUrl;
     public final String authServerUrl;
@@ -41,9 +41,9 @@ public final class KeyCloakConfig {
     public final String clientId;
     public final String clientSecret;
 
-    private static KeyCloakConfig instace;
+    private static KeycloakConfig instace;
 
-    private KeyCloakConfig(Context context) {
+    private KeycloakConfig(Context context) {
         InputStream fileStream = context.getResources().openRawResource(R.raw.keycloak);
         String configText = IOUtils.getString(fileStream);
         IOUtils.close(fileStream);
@@ -63,9 +63,9 @@ public final class KeyCloakConfig {
         }
     }
 
-    public static synchronized KeyCloakConfig getInstance(Context context) {
+    public static synchronized KeycloakConfig getInstance(Context context) {
         if (instace == null) {
-            instace = new KeyCloakConfig(context);
+            instace = new KeycloakConfig(context);
         }
         return  instace;
     }

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.keycloakaccountprovider;
+package org.keycloak.accountprovider;
 
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorActivity;
@@ -34,15 +34,13 @@ import android.webkit.WebViewClient;
 
 import com.google.gson.Gson;
 
-import org.keycloak.keycloakaccountprovider.token.AccessTokenExchangeLoader;
-import org.keycloak.keycloakaccountprovider.util.IOUtils;
-
-import java.security.Key;
+import org.keycloak.accountprovider.token.AccessTokenExchangeLoader;
+import org.keycloak.accountprovider.util.IOUtils;
 
 
-public class KeycloakAuthenticationActivity extends AccountAuthenticatorActivity implements LoaderManager.LoaderCallbacks<KeyCloakAccount> {
+public class KeycloakAuthenticationActivity extends AccountAuthenticatorActivity implements LoaderManager.LoaderCallbacks<KeycloakAccount> {
 
-    private KeyCloak kc;
+    private Keycloak kc;
     private static final String ACCESS_TOKEN_KEY = "accessToken";
 
     @Override
@@ -50,8 +48,8 @@ public class KeycloakAuthenticationActivity extends AccountAuthenticatorActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        kc = new KeyCloak(this);
-        Account[] accounts = AccountManager.get(this).getAccountsByType(KeyCloak.ACCOUNT_TYPE);
+        kc = new Keycloak(this);
+        Account[] accounts = AccountManager.get(this).getAccountsByType(Keycloak.ACCOUNT_TYPE);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -60,24 +58,24 @@ public class KeycloakAuthenticationActivity extends AccountAuthenticatorActivity
     }
 
     @Override
-    public Loader<KeyCloakAccount> onCreateLoader(int i, Bundle bundle) {
+    public Loader<KeycloakAccount> onCreateLoader(int i, Bundle bundle) {
         return new AccessTokenExchangeLoader(this, bundle.getString(ACCESS_TOKEN_KEY));
     }
 
     @Override
-    public void onLoadFinished(Loader<KeyCloakAccount> keyCloakAccountLoader, KeyCloakAccount keyCloakAccount) {
+    public void onLoadFinished(Loader<KeycloakAccount> keyCloakAccountLoader, KeycloakAccount keycloakAccount) {
         AccountAuthenticatorResponse response = getIntent().getParcelableExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE);
-        String keyCloakAccountJson = new Gson().toJson(keyCloakAccount);
+        String keyCloakAccountJson = new Gson().toJson(keycloakAccount);
         Bundle accountBundle = new Bundle();
-        accountBundle.putString(KeyCloak.ACCOUNT_KEY, keyCloakAccountJson);
+        accountBundle.putString(Keycloak.ACCOUNT_KEY, keyCloakAccountJson);
 
 
         AccountManager am = AccountManager.get(this);
-        Account androidAccount = new Account(keyCloakAccount.getPreferredUsername(), KeyCloak.ACCOUNT_TYPE);
-        Account[] accounts = am.getAccountsByType(KeyCloak.ACCOUNT_TYPE);
+        Account androidAccount = new Account(keycloakAccount.getPreferredUsername(), Keycloak.ACCOUNT_TYPE);
+        Account[] accounts = am.getAccountsByType(Keycloak.ACCOUNT_TYPE);
         for (Account existingAccount : accounts) {
             if (existingAccount.name == androidAccount.name) {
-                am.setUserData(androidAccount, KeyCloak.ACCOUNT_KEY, keyCloakAccountJson);
+                am.setUserData(androidAccount, Keycloak.ACCOUNT_KEY, keyCloakAccountJson);
                 if (response != null) {
                     response.onResult(accountBundle);
                 }
@@ -97,7 +95,7 @@ public class KeycloakAuthenticationActivity extends AccountAuthenticatorActivity
     }
 
     @Override
-    public void onLoaderReset(Loader<KeyCloakAccount> keyCloakAccountLoader) {
+    public void onLoaderReset(Loader<KeycloakAccount> keyCloakAccountLoader) {
 
     }
 
@@ -107,7 +105,7 @@ public class KeycloakAuthenticationActivity extends AccountAuthenticatorActivity
      */
     public static class PlaceholderFragment extends Fragment {
 
-        private KeyCloak kc;
+        private Keycloak kc;
         private WebView webView;
 
         public PlaceholderFragment() {
@@ -118,7 +116,7 @@ public class KeycloakAuthenticationActivity extends AccountAuthenticatorActivity
         public void onAttach(Activity activity) {
             super.onAttach(activity);
             if (kc == null) {
-                kc = new KeyCloak(activity);
+                kc = new Keycloak(activity);
             }
         }
 
