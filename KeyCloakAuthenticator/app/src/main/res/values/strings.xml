@@ -19,9 +19,9 @@
 -->
 <resources>
 
-    <string name="app_name">KeyCloakAccountProvider</string>
+    <string name="app_name">KeycloakAccountProvider</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="add_account_label">KeyCloak Secured Account</string>
+    <string name="add_account_label">Keycloak Secured Account</string>
 
 </resources>
