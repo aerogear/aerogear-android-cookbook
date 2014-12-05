@@ -1,5 +1,5 @@
 /**
- * JBoss,HomeofProfessionalOpenSource
+ * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,9 +35,6 @@ import org.keycloak.accountprovider.util.TokenExchangeUtils;
 import java.util.Date;
 
 
-/**
- * Created by Summers on 9/12/2014.
- */
 public class KeycloakAccountAuthenticator extends AbstractAccountAuthenticator {
 
     private final Context context;

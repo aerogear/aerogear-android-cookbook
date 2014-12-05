@@ -1,5 +1,5 @@
 /**
- * JBoss,HomeofProfessionalOpenSource
+ * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,9 +28,6 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-/**
- * Created by Summers on 9/13/2014.
- */
 public final class KeycloakConfig {
 
     private static final String TAG = KeycloakConfig.class.getSimpleName().toUpperCase();

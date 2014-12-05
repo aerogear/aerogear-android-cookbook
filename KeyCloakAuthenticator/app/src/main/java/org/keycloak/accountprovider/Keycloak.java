@@ -1,5 +1,5 @@
 /**
- * JBoss,HomeofProfessionalOpenSource
+ * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +23,6 @@ import org.keycloak.accountprovider.util.IOUtils;
 
 import java.util.UUID;
 
-/**
- * Created by Summers on 9/13/2014.
- */
 public class Keycloak {
 
     public static final String ACCOUNT_KEY = "org.keycloak.KeyCloakAccount";
