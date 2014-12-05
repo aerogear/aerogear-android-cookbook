@@ -1,5 +1,5 @@
 /**
- * JBoss,HomeofProfessionalOpenSource
+ * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,28 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.keycloakaccountprovider;
+package org.keycloak.accountprovider;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import org.keycloak.keycloakaccountprovider.util.IOUtils;
+import org.keycloak.accountprovider.util.IOUtils;
 
 import java.util.UUID;
 
-/**
- * Created by Summers on 9/13/2014.
- */
-public class KeyCloak {
+public class Keycloak {
 
     public static final String ACCOUNT_KEY = "org.keycloak.KeyCloakAccount";
     public static final String ACCOUNT_TYPE = "org.keycloak.Account";
     public static final String ACCOUNT_AUTHTOKEN_TYPE = "org.keycloak.Account.authToken";
-    private final KeyCloakConfig config;
+    private final KeycloakConfig config;
     private final Context context;
 
-    public KeyCloak(Context context) {
-        this.config = KeyCloakConfig.getInstance(context);
+    public Keycloak(Context context) {
+        this.config = KeycloakConfig.getInstance(context);
         this.context = context.getApplicationContext();
     }
 

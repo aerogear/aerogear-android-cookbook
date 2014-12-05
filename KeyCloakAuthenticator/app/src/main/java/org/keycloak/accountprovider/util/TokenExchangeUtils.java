@@ -1,5 +1,5 @@
 /**
- * JBoss,HomeofProfessionalOpenSource
+ * JBoss, Home of Professional OpenSource
  * Copyright Red Hat, Inc., and individual contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.keycloakaccountprovider.util;
+package org.keycloak.accountprovider.util;
 
 import android.accounts.NetworkErrorException;
 import android.util.Base64;
@@ -26,8 +26,8 @@ import org.jboss.aerogear.android.http.HttpProvider;
 import org.jboss.aerogear.android.impl.http.HttpRestProvider;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.keycloak.keycloakaccountprovider.KeyCloak;
-import org.keycloak.keycloakaccountprovider.KeyCloakAccount;
+import org.keycloak.accountprovider.Keycloak;
+import org.keycloak.accountprovider.KeycloakAccount;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -42,7 +42,7 @@ public final class TokenExchangeUtils {
     private TokenExchangeUtils() {
     }
 
-    public static KeyCloakAccount exchangeForAccessCode(String accessToken, KeyCloak kc) {
+    public static KeycloakAccount exchangeForAccessCode(String accessToken, Keycloak kc) {
 
         final Map<String, String> data = new HashMap<String, String>();
         data.put("code", accessToken);
@@ -68,7 +68,7 @@ public final class TokenExchangeUtils {
             HeaderAndBody result = provider.post(bodyString);
 
             JSONObject accessResponse = handleResult(result);
-            KeyCloakAccount account = new KeyCloakAccount();
+            KeycloakAccount account = new KeycloakAccount();
             account.extractTokenProperties(accessResponse);
 
             return account;
@@ -79,7 +79,7 @@ public final class TokenExchangeUtils {
 
     }
 
-    public static KeyCloakAccount refreshToken(KeyCloakAccount account, KeyCloak kc) throws NetworkErrorException {
+    public static KeycloakAccount refreshToken(KeycloakAccount account, Keycloak kc) throws NetworkErrorException {
         final Map<String, String> data = new HashMap<String, String>();
         data.put("refresh_token", account.getRefreshToken());
         data.put("grant_type", "refresh_token");
@@ -139,7 +139,7 @@ public final class TokenExchangeUtils {
 
     }
 
-    private static HttpRestProvider  getHttpProvider(KeyCloak kc, URL url) {
+    private static HttpRestProvider  getHttpProvider(Keycloak kc, URL url) {
         HttpRestProvider  provider  = new HttpRestProvider(url);
 
         provider.setDefaultHeader("Content-Type", "application/x-www-form-urlencoded");

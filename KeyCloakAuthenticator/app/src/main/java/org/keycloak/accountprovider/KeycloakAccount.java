@@ -1,5 +1,5 @@
 /**
- * JBoss,HomeofProfessionalOpenSource
+ * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,23 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.keycloakaccountprovider;
+package org.keycloak.accountprovider;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Base64;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Summers on 9/13/2014.
- */
-public class KeyCloakAccount {
+public class KeycloakAccount {
 
     private String name,
             givenName,
@@ -68,7 +61,7 @@ public class KeyCloakAccount {
 
     private Long expiresOn;
 
-    public KeyCloakAccount() {
+    public KeycloakAccount() {
     }
 
 
