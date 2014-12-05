@@ -1,26 +1,22 @@
 # KeyCloak Authenticator Example
 
-This is an implementation of AbstractAccountAuthenticator for KeyCloak.  
+This is an implementation of AbstractAccountAuthenticator for KeyCloak.
 
 # Configure KeyCloak
 
 Before the demo Authenticator can be used a KeyCloak installation must be configured.  If you do not have KeyCloak, you can follow the directions [here](http://docs.jboss.org/keycloak/docs/1.0.4.Final/userguide/html/server-installation.html).
 
- You will need to sign into KeyCloak and add a new Realm.
+You will need to sign into KeyCloak and import a new Realm. The configuration file `demo-realm.json` is located under `realm-config` folder.
 
- ![KeyCloak Create Realm](docs/keycloak-0.png)
+![KeyCloak Create Realm](docs/keycloak-0.jpg)
 
- After you create the realms, add a OAuth Client.  Use `http://oauth2callback` as the Redirect URI.
+After you upload `demo-realm.json` file, select OAuth Clients from the navigation and click on Android:
 
- ![KeyCloak Create OAuth Client](docs/keycloak-1.png)
+![KeyCloak OAuth Clients](docs/keycloak-1.jpg)
 
-After the Client is created, select Claims from the navigation and enable Username.
+Go to 'Installation' menu and copy the json in the text field.
 
-![KeyCloak Username Claim](docs/keycloak-2.png)
-
-Finally, select 'Installation' from the navigation and copy the json in the text field.
-
-![KeyCloak Installation](docs/keycloak-3.png)
+![KeyCloak Installation](docs/keycloak-2.jpg)
 
 # Configure the Application
 
