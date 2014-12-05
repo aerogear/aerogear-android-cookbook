@@ -128,7 +128,7 @@ public class KeycloakAccountAuthenticator extends AbstractAccountAuthenticator {
 
     @Override
     public String getAuthTokenLabel(String s) {
-        return "KeyCloak Token";
+        return "Keycloak Token";
     }
 
     @Override

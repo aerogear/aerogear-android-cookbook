@@ -25,7 +25,7 @@ import java.util.UUID;
 
 public class Keycloak {
 
-    public static final String ACCOUNT_KEY = "org.keycloak.KeyCloakAccount";
+    public static final String ACCOUNT_KEY = "org.keycloak.KeycloakAccount";
     public static final String ACCOUNT_TYPE = "org.keycloak.Account";
     public static final String ACCOUNT_AUTHTOKEN_TYPE = "org.keycloak.Account.authToken";
     private final KeycloakConfig config;
