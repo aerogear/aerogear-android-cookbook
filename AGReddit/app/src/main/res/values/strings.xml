@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">AG Reader</string>
+    <string name="title_story_detail">Story Detail</string>
+    <string name="title_story_list">Stories</string>
+    <string name="reddit_base">http://www.reddit.com/</string>
+    
+</resources>
