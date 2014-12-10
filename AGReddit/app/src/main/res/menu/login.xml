@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_login"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Login"/>
+    <item
+        android:id="@+id/menu_reload"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Reload"/>
+
+    <item
+        android:id="@+id/menu_previous"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="Prev"/>
+    <item
+        android:id="@+id/menu_next"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="Next"/>
+
+</menu>
