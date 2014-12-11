@@ -1,6 +1,6 @@
 # AGDroid CarStore: Basic Mobile Application showing the AeroGear Store feature on Android
 ---------
-Author: Daniel Passos (dpassos) & Summers Pittman (supittma)   
+Author: Daniel Passos (dpassos)   
 Level: Beginner   
 Technologies: Java, Android   
 Summary: A basic example of Store : CRUD   
