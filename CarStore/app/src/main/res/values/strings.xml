@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CarStore</string>
+    <string name="add">Add</string>
+    <string name="delete_confirmation">Really want to delete it?</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="manufacturer">manufacturer</string>
+    <string name="brand">brand</string>
+    <string name="price">price</string>
+
+</resources>

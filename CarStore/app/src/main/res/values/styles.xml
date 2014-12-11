@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="MyTheme" parent="Theme.AppCompat.Light">
+    </style>
+
+    <style name="MyTheme.Base" parent="MyTheme">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:textColorPrimary">@color/text_color_primary</item>
+        <item name="android:windowBackground">@color/background_color</item>
+    </style>
+
+</resources>
