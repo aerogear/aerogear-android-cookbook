@@ -10,8 +10,9 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 
 | App | Description | Pipe | Store | Security | Auth | Authz | Push |
 |-----|-------------|:----:|:-----:|:--------:|:----:|:-----:|:-----:| 
-| [GDrive](https://github.com/danielpassos/aerogear-android-cookbook/tree/GDrive/GDrive) | Using OAuth2 to list your GoogleDrive documents | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| [GDrive](GDrive) | Using OAuth2 to list your GoogleDrive documents | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 | [KeyCloak Authenticator](KeyCloakAuthenticator) | Adding KeyCloak to the list of accounts Android can manage. | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| [AG Reddit](AGReddit) | Consuming a third party API with authentication and pagination | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 
 ## Development
 
