@@ -28,7 +28,6 @@ import org.jboss.aerogear.agreddit.gson.PagingGsonResponseParser;
 import org.jboss.aerogear.agreddit.reddit.Listing;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.impl.pipeline.GsonRequestBuilder;
 import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 import org.jboss.aerogear.android.pipeline.Pipe;
@@ -52,28 +51,42 @@ public class StoryListApplication extends Application {
 			throw new RuntimeException(e);
 		}
 
-		authModule = new RedditAuthenticationModule(getApplicationContext());
+        authModule = new RedditAuthenticationModule(getApplicationContext());
 
-		RestfulPipeConfiguration config = PipeManager.config("listing", RestfulPipeConfiguration.class).withUrl(redditURL);
-
-        config.requestBuilder(new GsonRequestBuilder(GSON));
-        config.module(authModule);
+        /* The Reddit pagination information is embedded in the body of a Listing response.
+        *  This block instructs AeroGear how to extract the information.
+        *
+        *  see : https://www.reddit.com/dev/api#listings
+        *
+        */
         PageConfig pageConfig = new PageConfig();
+
+        /* We should limit the number of items in a response to 25*/
         pageConfig.setLimitValue(25);
+        /* AeroGear should look in the body of the response for paging metadata. */
         pageConfig.setMetadataLocation(PageConfig.MetadataLocations.BODY);
+        /* The metadata for the next data set is the after property of the response data. */
         pageConfig.setNextIdentifier("data.after");
+        /* The metadata for the previous data set is the before property of the response data. */
         pageConfig.setPreviousIdentifier("data.before");
+        /* PageConsumer is responsible for extracting paging data from the response and providing it
+          to the pipe*/
         pageConfig.setPageParameterExtractor(new PageConsumer());
 
-        config.responseParser(new PagingGsonResponseParser(GSON, pageConfig));
 
-        config.pageConfig(pageConfig).forClass(Listing.class);
-		
-                
-                
 
-		
-	}
+        RestfulPipeConfiguration config = PipeManager.config("listing", RestfulPipeConfiguration.class);
+        config.withUrl(redditURL)
+                /* Use Reddit's authentication for access.*/
+                .module(authModule)
+                /* Reddit includes some unique structures in its response that we must configure.*/
+                .responseParser(new PagingGsonResponseParser(GSON, pageConfig))
+                /* Apply our paging configuration*/
+                .pageConfig(pageConfig)
+                /* Create the Pipe and register it with PipeManager*/
+                .forClass(Listing.class);
+
+    }
 	
 	public boolean isLoggedIn() {
 		return authModule.isLoggedIn();
