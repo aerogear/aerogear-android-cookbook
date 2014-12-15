@@ -1,6 +1,7 @@
 package org.jboss.aerogear.android.cookbook.chucknorrisjokes.ui;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,11 +21,13 @@ import org.jboss.aerogear.android.pipeline.LoaderPipe;
 
 import java.util.List;
 
-public class ChuckNorrisJokesActivity extends ActionBarActivity {
+public class ChuckNorrisJokesActivity extends ActionBarActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private ChuckNorrisJokesApplication application;
-    private MenuItem mRefreshItem;
+    private SwipeRefreshLayout mSwipeLayout;
     private TextView mJoke;
+
+    private MenuItem mRefreshItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,9 @@ public class ChuckNorrisJokesActivity extends ActionBarActivity {
 
         application = (ChuckNorrisJokesApplication) getApplication();
         mJoke = (TextView) findViewById(R.id.joke);
+
+        mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        mSwipeLayout.setOnRefreshListener(this);
 
         retrieveJoke();
     }
@@ -46,13 +52,26 @@ public class ChuckNorrisJokesActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.refresh) {
-            startActionBarAnimation(item);
-            dismissJoke();
-            retrieveJoke();
+            refresh(item);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRefresh() {
+        refresh();
+    }
+
+    private void refresh(MenuItem item) {
+        startActionBarAnimation(item);
+        refresh();
+    }
+
+    private void refresh() {
+        dismissJoke();
+        retrieveJoke();
     }
 
     private void retrieveJoke() {
@@ -63,12 +82,14 @@ public class ChuckNorrisJokesActivity extends ActionBarActivity {
             public void onSuccess(List<Joke> jokes) {
                 displayJoke(jokes.get(0));
                 stopActionBarAnimation();
+                stopSwipeAnimation();
             }
 
             @Override
             public void onFailure(Exception e) {
                 displayError(e);
                 stopActionBarAnimation();
+                stopSwipeAnimation();
             }
         });
     }
@@ -94,20 +115,22 @@ public class ChuckNorrisJokesActivity extends ActionBarActivity {
         }
     }
 
+    private void stopSwipeAnimation() {
+        mSwipeLayout.setRefreshing(false);
+    }
+
     private void displayJoke(Joke joke) {
         mJoke.setText(joke.getJoke());
         mJoke.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_down_in));
-//        mJoke.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_up_in));
-//        mJoke.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_from_left_to_right));
     }
 
     private void dismissJoke() {
         mJoke.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_down_out));
-//        mJoke.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_out_from_left_to_right));
     }
 
     private void displayError(Exception e) {
         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
     }
+
 
 }
