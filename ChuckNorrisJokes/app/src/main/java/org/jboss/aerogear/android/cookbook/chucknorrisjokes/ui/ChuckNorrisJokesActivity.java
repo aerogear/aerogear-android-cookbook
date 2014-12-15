@@ -121,16 +121,31 @@ public class ChuckNorrisJokesActivity extends ActionBarActivity implements Swipe
 
     private void displayJoke(Joke joke) {
         mJoke.setText(joke.getJoke());
-        mJoke.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_down_in));
+
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_down_in);
+        mJoke.startAnimation(animation);
+;
     }
 
     private void dismissJoke() {
-        mJoke.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_down_out));
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_down_out);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mJoke.setText("");
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+        mJoke.startAnimation(animation);
     }
 
     private void displayError(Exception e) {
         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
     }
-
 
 }
