@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.agreddit;
+package org.jboss.aerogear.android.cookbook.agreddit;
 
 import android.app.Activity;
 import android.app.ListFragment;
@@ -25,10 +25,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-import org.jboss.aerogear.agreddit.reddit.Listing;
-import org.jboss.aerogear.agreddit.reddit.T3;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.ReadFilter;
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.Listing;
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.T3;
 import org.jboss.aerogear.android.impl.pipeline.paging.WrappingPagedList;
 import org.jboss.aerogear.android.pipeline.LoaderPipe;
 

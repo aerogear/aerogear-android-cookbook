@@ -27,7 +27,7 @@
     android:showDividers="middle"
     tools:context=".StoryListActivity">
 
-    <fragment android:name="org.jboss.aerogear.agreddit.StoryListFragment"
+    <fragment android:name="org.jboss.aerogear.android.cookbook.agreddit.StoryListFragment"
         android:id="@+id/story_list"
         android:layout_width="0dp"
         android:layout_height="match_parent"

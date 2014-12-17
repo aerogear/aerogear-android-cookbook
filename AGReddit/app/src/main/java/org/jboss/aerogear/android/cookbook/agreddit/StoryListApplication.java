@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.agreddit;
+package org.jboss.aerogear.android.cookbook.agreddit;
 
 import android.app.Application;
 import android.app.Fragment;
@@ -22,10 +22,10 @@ import android.app.Fragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.jboss.aerogear.agreddit.authentication.RedditAuthenticationModule;
-import org.jboss.aerogear.agreddit.gson.ListingTypeAdapter;
-import org.jboss.aerogear.agreddit.gson.PagingGsonResponseParser;
-import org.jboss.aerogear.agreddit.reddit.Listing;
+import org.jboss.aerogear.android.cookbook.agreddit.authentication.RedditAuthenticationModule;
+import org.jboss.aerogear.android.cookbook.agreddit.gson.ListingTypeAdapter;
+import org.jboss.aerogear.android.cookbook.agreddit.gson.PagingGsonResponseParser;
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.Listing;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.agreddit.gson;
+package org.jboss.aerogear.android.cookbook.agreddit.gson;
 
 import com.google.gson.InstanceCreator;
 import com.google.gson.JsonArray;
@@ -24,9 +24,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
-import org.jboss.aerogear.agreddit.reddit.Listing;
-import org.jboss.aerogear.agreddit.reddit.ListingData;
-import org.jboss.aerogear.agreddit.reddit.T3;
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.Listing;
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.ListingData;
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.T3;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

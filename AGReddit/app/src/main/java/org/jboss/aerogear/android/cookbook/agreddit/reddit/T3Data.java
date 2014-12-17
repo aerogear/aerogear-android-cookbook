@@ -14,25 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.agreddit.reddit;
+package org.jboss.aerogear.android.cookbook.agreddit.reddit;
 
-import java.util.List;
+public class T3Data {
 
-public class ListingData {
-
-	private String modhash;
-	private List<T3> children;
-	public String getModhash() {
-		return modhash;
+	private String domain;
+	private String banned_by;
+	private MediaEmbed media_embed;
+	public String getDomain() {
+		return domain;
 	}
-	public void setModhash(String modhash) {
-		this.modhash = modhash;
+	public void setDomain(String domain) {
+		this.domain = domain;
 	}
-	public List<T3> getChildren() {
-		return children;
+	public String getBanned_by() {
+		return banned_by;
 	}
-	public void setChildren(List<T3> children) {
-		this.children = children;
+	public void setBanned_by(String banned_by) {
+		this.banned_by = banned_by;
+	}
+	public MediaEmbed getMedia_embed() {
+		return media_embed;
+	}
+	public void setMedia_embed(MediaEmbed media_embed) {
+		this.media_embed = media_embed;
 	}
 	
 	

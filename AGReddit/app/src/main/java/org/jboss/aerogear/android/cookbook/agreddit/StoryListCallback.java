@@ -14,15 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.agreddit;
-
-import java.util.List;
-
-import org.jboss.aerogear.agreddit.reddit.Listing;
-import org.jboss.aerogear.agreddit.reddit.T3;
-import org.jboss.aerogear.android.http.HttpException;
-import org.jboss.aerogear.android.impl.pipeline.paging.WrappingPagedList;
-import org.jboss.aerogear.android.pipeline.AbstractFragmentCallback;
+package org.jboss.aerogear.android.cookbook.agreddit;
 
 import android.content.Context;
 import android.util.Log;
@@ -30,6 +22,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.Listing;
+import org.jboss.aerogear.android.cookbook.agreddit.reddit.T3;
+import org.jboss.aerogear.android.http.HttpException;
+import org.jboss.aerogear.android.impl.pipeline.paging.WrappingPagedList;
+import org.jboss.aerogear.android.pipeline.AbstractFragmentCallback;
+
+import java.util.List;
 
 public class StoryListCallback<T> extends
 		AbstractFragmentCallback<List<Listing>> {

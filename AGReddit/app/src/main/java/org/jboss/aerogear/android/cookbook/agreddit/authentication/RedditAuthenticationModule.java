@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.agreddit.authentication;
+package org.jboss.aerogear.android.cookbook.agreddit.authentication;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -24,11 +24,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import org.apache.http.HttpStatus;
-import org.jboss.aerogear.agreddit.R;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.authentication.AbstractAuthenticationModule;
 import org.jboss.aerogear.android.authentication.AuthorizationFields;
 import org.jboss.aerogear.android.code.ModuleFields;
+import org.jboss.aerogear.android.cookbook.agreddit.R;
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.http.HttpException;
 import org.jboss.aerogear.android.http.HttpProvider;
@@ -42,6 +42,8 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
+
+
 
 public class RedditAuthenticationModule extends AbstractAuthenticationModule {
 
@@ -58,8 +60,7 @@ public class RedditAuthenticationModule extends AbstractAuthenticationModule {
 		try {
 			baseURL = new URL(context.getString(R.string.reddit_base) + "api");
 			loginURL = new URL(baseURL.toString() + "/login");
-            COOKIE_MANAGER =new CookieManager( null, CookiePolicy.ACCEPT_NONE);
-            CookieHandler.setDefault(COOKIE_MANAGER);
+            
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}		
@@ -83,6 +84,10 @@ public class RedditAuthenticationModule extends AbstractAuthenticationModule {
 
 	public void login(final String username, final String password,
 		    final Callback<HeaderAndBody> callback) {
+
+        COOKIE_MANAGER =new CookieManager( null, CookiePolicy.ACCEPT_NONE);
+        CookieHandler.setDefault(COOKIE_MANAGER);
+
         AsyncTask<Void, Void, HeaderAndBody> task = new AsyncTask<Void, Void, HeaderAndBody>() {
             private Exception exception;
 
