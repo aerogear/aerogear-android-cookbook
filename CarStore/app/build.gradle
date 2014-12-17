@@ -28,4 +28,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.+'
     compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT'
     compile 'org.jboss.aerogear:aerogear-android-store:2.0.0-SNAPSHOT'
+    compile 'com.melnykov:floatingactionbutton:1.1.0'
 }

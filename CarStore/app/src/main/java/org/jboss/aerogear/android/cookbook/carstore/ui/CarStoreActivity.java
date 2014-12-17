@@ -3,15 +3,18 @@ package org.jboss.aerogear.android.cookbook.carstore.ui;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.melnykov.fab.FloatingActionButton;
 
 import org.jboss.aerogear.android.cookbook.carstore.CarStoreApplication;
 import org.jboss.aerogear.android.cookbook.carstore.R;
@@ -59,26 +62,21 @@ public class CarStoreActivity extends ActionBarActivity {
                 return false;
             }
         });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.attachToListView(carList);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(DIALOG_ADD);
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         updateDisplayCars();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_car_store, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.add) {
-            showDialog(DIALOG_ADD);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
