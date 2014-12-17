@@ -3,23 +3,22 @@ package org.jboss.aerogear.android.cookbook.carstore.ui;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import org.jboss.aerogear.android.cookbook.carstore.CarStoreApplication;
 import org.jboss.aerogear.android.cookbook.carstore.R;
+import org.jboss.aerogear.android.cookbook.carstore.adapater.CarStoreAdapater;
 import org.jboss.aerogear.android.cookbook.carstore.model.Car;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 
@@ -106,8 +105,7 @@ public class CarStoreActivity extends ActionBarActivity {
 
     private void updateDisplayCars() {
         Collection<Car> cars = storeApplication.getStore().readAll();
-        ArrayAdapter<Car> adapater = new ArrayAdapter<Car>(this,
-                android.R.layout.simple_list_item_1, new ArrayList<>(cars));
+        CarStoreAdapater adapater = new CarStoreAdapater(getApplicationContext(), new ArrayList<>(cars));
         carList.setAdapter(adapater);
     }
 
