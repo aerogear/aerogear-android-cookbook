@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:21.0.2'
+    compile 'com.android.support:appcompat-v7:21.+'
     compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT'
     compile 'org.jboss.aerogear:aerogear-android-store:2.0.0-SNAPSHOT'
 }
