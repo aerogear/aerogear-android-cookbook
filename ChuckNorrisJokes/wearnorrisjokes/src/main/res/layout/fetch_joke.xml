@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TellingMeJokes"
+    tools:deviceIds="wear_round">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8fff"
+        android:padding="35dp"
+        app:layout_box="all">
+
+
+        <android.support.wearable.view.CircledImageView
+            android:id="@+id/jokebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/fetch_text"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+
+            android:src="@android:drawable/stat_notify_sync" />
+
+        <TextView
+            android:id="@+id/fetch_text"
+            style="@style/JokeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/fetch_joke" />
+    </RelativeLayout>
+</android.support.wearable.view.BoxInsetLayout>
