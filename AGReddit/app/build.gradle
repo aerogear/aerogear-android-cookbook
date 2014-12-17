@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.1"
 
     defaultConfig {
-        applicationId "org.jboss.aerogear.agreddit"
+        applicationId "org.jboss.aerogear.android.cookbook.agreddit"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1
