@@ -25,7 +25,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.2'
     compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT'
     compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0-SNAPSHOT'
