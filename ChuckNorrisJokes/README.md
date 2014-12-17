@@ -1,4 +1,4 @@
-# AGDroid CarStore: Basic Mobile Application showing the AeroGear Store feature on Android
+# AGDroid Chuck Norris Jokes: Basic Mobile Application showing the AeroGear Pipe feature on Android
 ---------
 Author: Daniel Passos (dpassos)
 Level: Beginner   
@@ -25,7 +25,7 @@ When the application is deployed to an Android device, the application will retr
 ### 1. Build Application
 
 ```shell
-$ cd /path/to/carStore/
+$ cd /path/to/app
 $ gradle clean build
 ```
 
@@ -36,7 +36,7 @@ To deploy, run and debug the application on an Android device attached to your s
 2.1) Install generated apk to device
 
 ```shell
-$ cd /path/to/carStore
+$ cd /path/to/app
 $ gradle installDebug
 ```
 
