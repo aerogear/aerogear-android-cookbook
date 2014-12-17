@@ -12,7 +12,7 @@ Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/AGRedd
 
 The ```AGReddit``` project demonstrates how to access remote data, page through the data, and engage in form based authenticaiton with a remote service.
 
-This simple project consists of a ready-to-build Android application. If you do not have a Reddit account, you can still use the application.  If you create an account on [Reddit](http://www.reddit.com) you can log in and browser your personal front page.
+This simple project consists of a ready-to-build Android application. If you do not have a Reddit account, you can still use the application.  If you create an account on [Reddit](http://www.reddit.com) you can log in and browse your personal front page.
 
 
 ## How do I run it?
