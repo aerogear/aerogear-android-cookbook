@@ -1,6 +1,7 @@
 package org.jboss.aerogear.android.cookbook.carstore.ui;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -62,7 +63,8 @@ public class CarStoreActivity extends ActionBarActivity {
     private void showFormDialog() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_car_store, null);
-        new AlertDialog.Builder(this)
+
+        Dialog dialog = new AlertDialog.Builder(this)
                 .setView(view)
                 .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
@@ -77,8 +79,10 @@ public class CarStoreActivity extends ActionBarActivity {
                         dialog.dismiss();
                     }
                 })
-                .create()
-                .show();
+                .create();
+
+        dialog.getWindow().getAttributes().windowAnimations = R.style.MyTheme_DialogAnimation;
+        dialog.show();
     }
 
     private void showDeleteConfirmationDialog(final Car car) {
