@@ -1,16 +1,12 @@
 package org.jboss.aerogear.android.cookbook.carstore.ui;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,8 +23,6 @@ import java.util.Collection;
 
 public class CarStoreActivity extends ActionBarActivity {
 
-    private static final int DIALOG_ADD = 1;
-
     private CarStoreApplication storeApplication;
     private ListView carList;
 
@@ -44,21 +38,7 @@ public class CarStoreActivity extends ActionBarActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 final Car car = (Car) adapterView.getItemAtPosition(position);
-                AlertDialog.Builder builder = new AlertDialog.Builder(CarStoreActivity.this)
-                        .setTitle(getString(R.string.delete_confirmation))
-                        .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                remove(car);
-                            }
-                        })
-                        .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.dismiss();
-                            }
-                        });
-                builder.create().show();
+                showDeleteConfirmationDialog(car);
                 return false;
             }
         });
@@ -68,7 +48,7 @@ public class CarStoreActivity extends ActionBarActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog(DIALOG_ADD);
+                showFormDialog();
             }
         });
     }
@@ -79,11 +59,10 @@ public class CarStoreActivity extends ActionBarActivity {
         updateDisplayCars();
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id, Bundle args) {
+    private void showFormDialog() {
         LayoutInflater inflater = getLayoutInflater();
         final View view = inflater.inflate(R.layout.dialog_car_store, null);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this)
                 .setView(view)
                 .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
@@ -97,8 +76,28 @@ public class CarStoreActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
-                });
-        return builder.create();
+                })
+                .create()
+                .show();
+    }
+
+    private void showDeleteConfirmationDialog(final Car car) {
+        new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.delete_confirmation))
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        remove(car);
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
     }
 
     private void updateDisplayCars() {
