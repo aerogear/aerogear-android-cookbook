@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Chuck Norris Jokes</string>
-    <string name="fetch_joke">Fetch Joke</string>
+    <string name="fetch_joke">Touch to fetch a joke</string>
     <string name="swipe_to_fetch_joke">Swipe right to fetch joke</string>
     <string name="view_overflow_error">There are three views</string>
 
