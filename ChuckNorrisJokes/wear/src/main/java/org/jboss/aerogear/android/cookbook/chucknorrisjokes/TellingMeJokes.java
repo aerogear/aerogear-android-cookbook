@@ -1,16 +1,14 @@
-package org.jboss.aerogear.wearnorrisjokes;
+package org.jboss.aerogear.android.cookbook.chucknorrisjokes;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.wearable.view.GridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
-import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,10 +23,6 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
-
-import org.jboss.aerogear.android.cookbook.chucknorrisjokes.R;
-
-import java.util.HashSet;
 
 public class TellingMeJokes extends Activity  implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, MessageApi.MessageListener {
 
@@ -55,12 +49,14 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
         }
 
     };
-    private String jokeText = "Swipe right to fetch joke";
+    private String jokeText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_telling_me_jokes);
+
+        jokeText = getResources().getString(R.string.swipe_to_fetch_joke);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Wearable.API)
@@ -117,7 +113,7 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
                         break;
 
                     default:
-                        throw new IllegalStateException("There are three view");
+                        throw new IllegalStateException(getResources().getString(R.string.view_overflow_error));
                 }
 
 
