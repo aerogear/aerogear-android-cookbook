@@ -103,7 +103,6 @@ public class JokeFetchListener extends WearableListenerService {
     }
 
     private Node getNode() {
-        HashSet<String> results = new HashSet<String>();
         NodeApi.GetConnectedNodesResult nodes =
                 Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).await();
         return nodes.getNodes().get(0);

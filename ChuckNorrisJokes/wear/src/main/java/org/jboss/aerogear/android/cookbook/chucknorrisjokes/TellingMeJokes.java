@@ -26,29 +26,10 @@ import com.google.android.gms.wearable.Wearable;
 
 public class TellingMeJokes extends Activity  implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, MessageApi.MessageListener {
 
-    private TextView mTextView;
-
     private static final String TAG = "ManageTokens";
     private GridViewPager pager;
     private GoogleApiClient mGoogleApiClient;
     private boolean mResolvingError = false;
-    private BroadcastReceiver dataUpdateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                @Override
-                public void run() {
-                    pager.invalidate();
-                    pager.getAdapter().notifyDataSetChanged();
-                    pager.setCurrentItem(0, 0);//For now if data changes reset to origin
-
-                }
-            });
-
-        }
-
-    };
     private String jokeText = "";
 
     @Override
