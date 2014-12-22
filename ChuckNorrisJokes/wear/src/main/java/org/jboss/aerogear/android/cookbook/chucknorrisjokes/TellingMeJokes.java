@@ -24,31 +24,13 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
-public class TellingMeJokes extends Activity  implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, MessageApi.MessageListener {
-
-    private TextView mTextView;
+public class TellingMeJokes extends Activity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, MessageApi.MessageListener {
 
     private static final String TAG = "ManageTokens";
     private GridViewPager pager;
     private GoogleApiClient mGoogleApiClient;
     private boolean mResolvingError = false;
-    private BroadcastReceiver dataUpdateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                @Override
-                public void run() {
-                    pager.invalidate();
-                    pager.getAdapter().notifyDataSetChanged();
-                    pager.setCurrentItem(0, 0);//For now if data changes reset to origin
-
-                }
-            });
-
-        }
-
-    };
     private String jokeText = "";
 
     @Override
@@ -64,7 +46,6 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
                 .addOnConnectionFailedListener(this)
                 .build();
 
-
         pager = (GridViewPager) findViewById(R.id.pager);
         pager.setBackgroundResource(R.drawable.chuck_norris);
         pager.setAdapter(new GridPagerAdapter() {
@@ -75,20 +56,17 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
 
             @Override
             public int getColumnCount(int i) {
-                    return 2;
+                return 2;
             }
-
-
 
             @Override
             protected Object instantiateItem(ViewGroup viewGroup, int row, int col) {
                 final View view;
 
-
                 switch (col) {
                     case 0:
                         view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.joke, viewGroup, false);
-                        ((TextView)view.findViewById(R.id.joketext)).setText(jokeText);
+                        ((TextView) view.findViewById(R.id.joketext)).setText(jokeText);
                         break;
                     case 1:
 
@@ -96,18 +74,16 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
                         view.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-
                                 Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).setResultCallback(new ResultCallback<NodeApi.GetConnectedNodesResult>() {
                                     @Override
                                     public void onResult(NodeApi.GetConnectedNodesResult getConnectedNodesResult) {
                                         Log.d(TAG, "sending fetchRequest");
                                         for (Node n : getConnectedNodesResult.getNodes()) {
-                                            Log.d(TAG, "Node : "+ n.getId());
+                                            Log.d(TAG, "Node : " + n.getId());
                                             Wearable.MessageApi.sendMessage(mGoogleApiClient, n.getId(), "/jokes/request", null);
                                         }
                                     }
                                 });
-
                             }
                         });
                         break;
@@ -143,12 +119,6 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
     }
 
     @Override
-    public void onConnected(Bundle connectionHint) {
-        Log.d(TAG, "Connected to Google Api Service");
-
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         Wearable.MessageApi.addListener(mGoogleApiClient, this);
@@ -161,17 +131,22 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
-        Log.d(TAG, "Suspended Connection to Google Api Service");
-    }
-
-    @Override
     protected void onStop() {
         if (null != mGoogleApiClient && mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
         }
 
         super.onStop();
+    }
+
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        Log.d(TAG, "Connected to Google Api Service");
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.d(TAG, "Suspended Connection to Google Api Service");
     }
 
     @Override
@@ -190,6 +165,6 @@ public class TellingMeJokes extends Activity  implements GoogleApiClient.Connect
                 pager.scrollTo(0, 0);
             }
         });
-
     }
+
 }

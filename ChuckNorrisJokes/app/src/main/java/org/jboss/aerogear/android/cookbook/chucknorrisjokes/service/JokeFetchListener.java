@@ -50,7 +50,6 @@ public class JokeFetchListener extends WearableListenerService {
                     @Override
                     public void onConnected(Bundle connectionHint) {
                         Log.d(TAG, "onConnected: " + connectionHint);
-                        Wearable.MessageApi.addListener(mGoogleApiClient, JokeFetchListener.this);
                     }
                     @Override
                     public void onConnectionSuspended(int cause) {
@@ -76,6 +75,7 @@ public class JokeFetchListener extends WearableListenerService {
         Log.d(TAG, "listener created");
         super.onMessageReceived(messageEvent);
         if (messageEvent.getPath().equals(REQUEST_JOKE)) {
+            Log.d(TAG, "joke requested from wear");
             PipeManager.getPipe("chuckNorris").read(new Callback<List<Joke>>() {
                 @Override
                 public void onSuccess(List<Joke> list) {
@@ -102,7 +102,6 @@ public class JokeFetchListener extends WearableListenerService {
     }
 
     private Node getNode() {
-        HashSet<String> results = new HashSet<String>();
         NodeApi.GetConnectedNodesResult nodes =
                 Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).await();
         return nodes.getNodes().get(0);
