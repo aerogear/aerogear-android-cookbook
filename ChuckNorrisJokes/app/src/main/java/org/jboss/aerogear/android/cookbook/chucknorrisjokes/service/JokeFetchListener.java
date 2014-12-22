@@ -50,7 +50,6 @@ public class JokeFetchListener extends WearableListenerService {
                     @Override
                     public void onConnected(Bundle connectionHint) {
                         Log.d(TAG, "onConnected: " + connectionHint);
-                        Wearable.MessageApi.addListener(mGoogleApiClient, JokeFetchListener.this);
                     }
                     @Override
                     public void onConnectionSuspended(int cause) {
