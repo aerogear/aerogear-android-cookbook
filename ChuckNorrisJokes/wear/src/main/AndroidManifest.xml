@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.jboss.aerogear.android.cookbook.chucknorrisjokes">
+        package="org.jboss.aerogear.android.cookbook.chucknorrisjokes" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.type.watch" />
 
     <application
-        android:name=".ChuckNorrisJokesApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/MyTheme.Base">
-
+        android:theme="@android:style/Theme.DeviceDefault" >
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
         <activity
-            android:name=".ui.ChuckNorrisJokesActivity"
-            android:label="@string/app_name">
+            android:name=".TellingMeJokes"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".service.JokeFetchListener">
-            <intent-filter>
-                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

@@ -1,21 +1,17 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.chucknorrisjokes"
-        minSdkVersion 16
+        minSdkVersion 20
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
-
-    lintOptions {
-        abortOnError false
-    }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -25,11 +21,7 @@ android {
 }
 
 dependencies {
-    dependencies {
-        wearApp project(':wear')
-        compile 'com.android.support:appcompat-v7:21.0.2'
-        compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT'
-        compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0-SNAPSHOT'
-        compile 'com.google.android.gms:play-services:6.5.87'
-    }
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.support:wearable:1.1.0'
+    compile 'com.google.android.gms:play-services-wearable:6.5.87'
 }

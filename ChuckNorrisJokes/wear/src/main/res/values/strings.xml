@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WearNorrisJokes</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="fetch_joke">Fetch Joke</string>
+    <string name="swipe_to_fetch_joke">Swipe right to fetch joke</string>
+    <string name="view_overflow_error">There are three views</string>
+</resources>
