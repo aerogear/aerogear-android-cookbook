@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="social_icon_vertical_padding">30dp</dimen>
+    <dimen name="social_icon_horizontal_padding">40dp</dimen>
+    <dimen name="social_icon_width">120dp</dimen>
+    <dimen name="social_icon_height">90dp</dimen>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shot And Share</string>
+    <string name="camera_button">Camera Button</string>
+    <string name="picture">Picture</string>
+    <string name="google_plus_icon">Google Plus icon</string>
+    <string name="keycloak_icon">Keycloak icon</string>
+    <string name="facebook_icon">Facebook icon</string>
+    <string name="authentication_error">An error occurred when try authenticate on %1$s</string>
+</resources>
+
