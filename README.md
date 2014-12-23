@@ -17,6 +17,15 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 | [CarStore](CarStore) | CRUD made easy | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [ShootAndShare](ShootAndShare) | Social Login and Sharing | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 
+## Others AeroGear Android example apps
+
+| App | Description | Pipe | Store | Security | Auth | Authz | Push |
+|-----|-------------|:----:|:-----:|:--------:|:----:|:-----:|:-----:| 
+| [Push HelloWorld](https://github.com/aerogear/aerogear-push-helloworld/tree/master/android) | How to include basic push functionality in Android applications. | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |
+| [Push Quickstarts](https://github.com/aerogear/aerogear-push-quickstarts/tree/master/client/contacts-mobile-android-client) | Integration with the Push notification mechanism to instantly retrieve a new Contact when it is created on the server | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |
+| [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo) | How case to Java One Time Password API  | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [Crypto Demo](https://github.com/aerogear/aerogear-crypto-android-demo) | Show case to AeroGear Crypto Java | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+
 ## Development
 
 If you would like to help develop AeroGear you can join our [developer's mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-dev), join #aerogear on Freenode, or shout at us on Twitter @aerogears.
