@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:contentDescription="@string/picture"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/facebook"
+            style="@style/social_icon_horizontal"
+            android:contentDescription="@string/facebook_icon"
+            android:background="#3b5998"
+            android:src="@drawable/ic_facebook" />
+
+        <ImageView
+            android:id="@+id/keycloak"
+            style="@style/social_icon_horizontal"
+            android:contentDescription="@string/keycloak_icon"
+            android:background="#014e7c"
+            android:src="@drawable/ic_keycloak" />
+
+        <ImageView
+            android:id="@+id/google_plus"
+            style="@style/social_icon_horizontal"
+            android:contentDescription="@string/google_plus_icon"
+            android:background="#dd4b39"
+            android:src="@drawable/ic_google_plus" />
+    </LinearLayout>
+
+</LinearLayout>
