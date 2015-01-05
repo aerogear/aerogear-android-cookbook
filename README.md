@@ -16,6 +16,7 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 | [AG Reddit](AGReddit) | Consuming a third party API with authentication and pagination | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [CarStore](CarStore) | CRUD made easy | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [ShootAndShare](ShootAndShare) | Social Login and Sharing | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| [AuthExamples](AuthExamples) | Basic and Digest Authentication | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 
 ## Others AeroGear Android example apps
 

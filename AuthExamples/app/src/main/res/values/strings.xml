@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Auth Examples</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="login_successful">Login successful</string>
+    <string name="logout_successful">Logout successful</string>
+    <string name="logged">You are logged</string>
+    <string name="notlogged">You are *not* logged</string>
+    <string name="loading">Loading...</string>
+    <string name="how_to_use_http_basic_authentication">How To Use Httpbasic Authentication</string>
+    <string name="how_to_use_digest_authentication">How To Use Digest Authentication</string>
+    <string name="title_activity_main">Authentication Examples</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
