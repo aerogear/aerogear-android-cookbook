@@ -14,7 +14,7 @@
     <string name="how_to_use_http_basic_authentication">How To Use Httpbasic Authentication</string>
     <string name="how_to_use_digest_authentication">How To Use Digest Authentication</string>
     <string name="title_activity_main">Authentication Examples</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="URLException">URLException: Check Your Constants File</string>
+
 
 </resources>

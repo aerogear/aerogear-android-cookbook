@@ -14,10 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.authexamples;
+package org.jboss.aerogear.android.cookbook.authexamples;
 
 public class Constants {
-    public static final String TAG = "AeroGear Cookbook";
     public static final String URL_BASE = "";
 
 }

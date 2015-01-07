@@ -1,12 +1,12 @@
 # AGDroid Authentication Examples: HTTP Basic and Digest Authentication for Aerogear
 ---------
-Author: Summers Pittman (secondsun)
-Level: Beginner
-Technologies: Java, Android
-Summary: A basic example of HTTP Authentication
-Target Product: -
-Product Versions: -
-Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/AuthExamples
+Author: Summers Pittman (secondsun)  
+Level: Beginner  
+Technologies: Java, Android  
+Summary: A basic example of HTTP Authentication  
+Target Product: -  
+Product Versions: -  
+Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/AuthExamples  
 
 ## What is it?
 
@@ -35,7 +35,7 @@ $ mvn clean install wildfly:run
 
 ### 2. Configure Application
 
-Edit org.jboss.aerogear.authexamples.Constants#URL_BASE to be the path of the application.
+Edit org.jboss.aerogear.android.cookbook.authexamples.Constants#URL_BASE to be the path of the application.
 
 In the case of a emulator and server running on the same machine the URL will be http://10.0.2.2:8080/authentication/rest.
 
@@ -52,8 +52,6 @@ $ gradle clean build
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
-2.1) Install generated apk to device
-
 ```shell
 $ cd /path/to/authExamples
 $ gradle installDebug
@@ -63,11 +61,11 @@ Now just run the app on your device/emulator
 
 ## How does it work?
 
-```HotToUseHttpBasicAuthentication``` and ```HotToUseDigestAuthentication``` are two activities which create appropriate ```AuthenticationModules``` and associate them with ```Pipe``` objects.  The UI provides buttons to log in, log out, and fetch data from the Authentication Server.
+```HowToUseHttpBasicAuthentication``` and ```HowToUseDigestAuthentication``` are two activities which create appropriate ```AuthenticationModules``` and associate them with ```Pipe``` objects.  The UI provides buttons to log in, log out, and fetch data from the Authentication Server.
 
 ```java
 //create a Authentication Module
-//see HotToUseHttpBasicAuthentication.java#L79
+//see HowToUseHttpBasicAuthentication.java#L79
     HttpBasicAuthenticationConfiguration authenticationConfig = null;
     try {
         authenticationConfig = AuthenticationManager.config("login", HttpBasicAuthenticationConfiguration.class)
@@ -78,14 +76,14 @@ Now just run the app on your device/emulator
 
     AuthenticationModule module = authenticationConfig.asModule();
 //create the pipe
-//see HotToUseHttpBasicAuthentication.java#L91
+//see HowToUseHttpBasicAuthentication.java#L91
     RestfulPipeConfiguration pipeConfig = PipeManager.config("beer", RestfulPipeConfiguration.class)
         .module(authModule)
         .withUrl(new URL(Constants.URL_BASE + "/grocery/beers"));
 
     Pipe<String> pipe = pipeConfig.forClass(String.class);
 ///use the pipe as normal
-    pipe.read($callback);
+    pipe.read(new YourCallback());
 
 ```
 
@@ -98,5 +96,5 @@ There are two regressions to note for the 2.0.0 release with fixes scheduled for
 ### Http Digest Authentication onLogout errors
 [This JIRA](https://issues.jboss.org/browse/AGDROID-349) is tracking the fix.  Digest Authentication log outs are not required to make a server call.  In cases where the server doesn't support a logout method (such as this) authentication will be cleared but the http request will fail.
 
- ### Callbacks happen off the main thread
- [This JIRA](https://issues.jboss.org/browse/AGDROID-350) is tracking the fix.  In 1.x we use Loaders to wrap callbacks and ensure methods were called on the main thread.  In 2.0 we have removed Loaders from auth.
+### Callbacks happen off the main thread
+[This JIRA](https://issues.jboss.org/browse/AGDROID-350) is tracking the fix.  In 1.x we use Loaders to wrap callbacks and ensure methods were called on the main thread.  In 2.0 we have removed Loaders from auth.

@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="org.jboss.aerogear.authexamples.MainActivity">
+    tools:context="org.jboss.aerogear.android.cookbook.authexamples.MainActivity">
 
     <Button
         android:id="@+id/httpBasicAuthetication"

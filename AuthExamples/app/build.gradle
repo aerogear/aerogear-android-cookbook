@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "org.jboss.aerogear.authexamples"
+        applicationId "org.jboss.aerogear.android.cookbook.authexamples"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1
@@ -20,7 +20,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'org.jboss.aerogear:aerogear-android-core:2.0.0-SNAPSHOT@aar'
     compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0-SNAPSHOT@aar'
     compile 'org.jboss.aerogear:aerogear-android-auth:2.0.0-SNAPSHOT@aar'

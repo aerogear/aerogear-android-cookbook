@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.authexamples;
+package org.jboss.aerogear.android.cookbook.authexamples;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ import android.widget.Toast;
 import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.authentication.AuthenticationManager;
 import org.jboss.aerogear.android.authentication.AuthenticationModule;
-import org.jboss.aerogear.android.authentication.impl.HttpBasicAuthenticationConfiguration;
+import org.jboss.aerogear.android.authentication.impl.HttpDigestAuthenticationConfiguration;
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;
 import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
@@ -41,18 +41,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-
-public class HowToUseHttpBasicAuthentication extends Activity {
+public class HowToUseDigestAuthentication extends Activity {
 
     private AuthenticationModule authModule;
     private LoaderPipe<String> pipe;
 
-    private ListView listView;
+    private ListView bacons;
     private Button retriveDataButton;
     private Button clearDataButton;
     private Button loginButton;
     private Button logoutButton;
-
     private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
@@ -64,94 +62,100 @@ public class HowToUseHttpBasicAuthentication extends Activity {
         pipe = createPipe(authModule);
 
         TextView screenTitle = (TextView) findViewById(R.id.screen_title);
-        screenTitle.setText(getString(R.string.how_to_use_http_basic_authentication));
+        screenTitle.setText(getString(R.string.how_to_use_digest_authentication));
 
-        listView = (ListView) findViewById(R.id.list);
+        bacons = (ListView) findViewById(R.id.list);
         retriveDataButton = (Button) findViewById(R.id.retriveData);
         clearDataButton = (Button) findViewById(R.id.clearData);
         loginButton = (Button) findViewById(R.id.login);
         logoutButton = (Button) findViewById(R.id.logout);
 
-
         setListeners();
     }
 
     private AuthenticationModule createAuthenticatior() {
-        HttpBasicAuthenticationConfiguration authenticationConfig = null;
+        HttpDigestAuthenticationConfiguration authenticationConfig = null;
         try {
-            authenticationConfig = AuthenticationManager.config("login", HttpBasicAuthenticationConfiguration.class)
-                    .baseURL(new URL(Constants.URL_BASE));
+            authenticationConfig = AuthenticationManager.config("digest", HttpDigestAuthenticationConfiguration.class)
+                    .baseURL(new URL(Constants.URL_BASE))
+                    .logoutEndpoint("")
+                    .loginEndpoint("/grocery/bacons");
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            displayMessage(getString(R.string.URLException));
+            finish();
+            return null;
         }
 
         return authenticationConfig.asModule();
     }
 
-    private LoaderPipe createPipe(AuthenticationModule authModule) {
+    private LoaderPipe createPipe(AuthenticationModule module) {
 
 
         try {
-            RestfulPipeConfiguration pipeConfig = PipeManager.config("beer", RestfulPipeConfiguration.class)
+            RestfulPipeConfiguration pipeConfig = PipeManager.config("bacon", RestfulPipeConfiguration.class)
                     .module(authModule)
-                    .withUrl(new URL(Constants.URL_BASE + "/grocery/beers"));
+                    .withUrl(new URL(Constants.URL_BASE + "/grocery/bacons"));
 
             pipeConfig.forClass(String.class);
 
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            displayMessage(getString(R.string.URLException));
+            finish();
+            return null;
         }
 
-        return PipeManager.get("beer", this);
+        return PipeManager.get("bacon", this);
     }
 
     private void setListeners() {
         retriveDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                retriveBeers();
+                retriveBacon();
             }
         });
 
         clearDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clearBeerList();
+                clearBaconList();
             }
         });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                authModule.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
+                authModule.login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
             }
         });
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                authModule.logout(new LogoutAuthCallBack(HowToUseHttpBasicAuthentication.this));
+                authModule.logout(new LogoutAuthCallBack(HowToUseDigestAuthentication.this));
             }
         });
     }
 
     // Button Actions ---------------------------------------------
 
-    private void retriveBeers() {
-        pipe.read(new RetriveBeerCallback());
+    private void retriveBacon() {
+        pipe.reset(); // Don't cache data
+        pipe.read(new RetriveBaconCallback());
     }
 
-    private void clearBeerList() {
-        listView.setAdapter(null);
+    private void clearBaconList() {
+        bacons.setAdapter(null);
     }
 
     // UIThread callback delegate ---------------------------------
 
     public void logged(boolean logged) {
         if (logged) {
-            retriveBeers();
+            retriveBacon();
         } else {
-            clearBeerList();
+            clearBaconList();
         }
 
         displayMessage(logged ? getString(R.string.login_successful) : getString(R.string.logout_successful));
@@ -159,36 +163,37 @@ public class HowToUseHttpBasicAuthentication extends Activity {
         logoutButton.setEnabled(logged);
     }
 
-    private void displayBeers(List<String> beerList) {
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, beerList));
+    private void displayBacons(List<String> baconList) {
+        bacons.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, baconList));
     }
 
     private void displayMessage(String message) {
-        Toast.makeText(HowToUseHttpBasicAuthentication.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(HowToUseDigestAuthentication.this, message, Toast.LENGTH_SHORT).show();
     }
 
     // Callbacks --------------------------------------------------
 
-    private static class RetriveBeerCallback extends AbstractActivityCallback<List<String>> {
+    private static class RetriveBaconCallback extends AbstractActivityCallback<List<String>> {
         @Override
         public void onSuccess(List<String> data) {
-            HowToUseHttpBasicAuthentication activity = (HowToUseHttpBasicAuthentication) getActivity();
-            activity.displayBeers(data);
+            HowToUseDigestAuthentication activity = (HowToUseDigestAuthentication) getActivity();
+            activity.displayBacons(data);
         }
 
         @Override
         public void onFailure(Exception e) {
-            HowToUseHttpBasicAuthentication activity = (HowToUseHttpBasicAuthentication) getActivity();
+            HowToUseDigestAuthentication activity = (HowToUseDigestAuthentication) getActivity();
             activity.displayMessage(e.getMessage());
         }
     }
 
     private static class LoginAuthCallBack implements Callback<HeaderAndBody> {
-        private final HowToUseHttpBasicAuthentication activity;
+        private final HowToUseDigestAuthentication activity;
 
-        private LoginAuthCallBack(HowToUseHttpBasicAuthentication activity) {
+        private LoginAuthCallBack(HowToUseDigestAuthentication activity) {
             this.activity = activity;
         }
+
 
         @Override
         public void onSuccess(HeaderAndBody data) {
@@ -212,9 +217,9 @@ public class HowToUseHttpBasicAuthentication extends Activity {
     }
 
     private static class LogoutAuthCallBack implements Callback<Void> {
-        private final HowToUseHttpBasicAuthentication activity;
+        private final HowToUseDigestAuthentication activity;
 
-        private LogoutAuthCallBack(HowToUseHttpBasicAuthentication activity) {
+        private LogoutAuthCallBack(HowToUseDigestAuthentication activity) {
             this.activity = activity;
         }
 
@@ -226,7 +231,6 @@ public class HowToUseHttpBasicAuthentication extends Activity {
                     activity.logged(false);
                 }
             });
-
         }
 
         @Override
@@ -234,7 +238,10 @@ public class HowToUseHttpBasicAuthentication extends Activity {
             activity.handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    activity.displayMessage(e.getMessage());
+                    //There is no serverside logout so we get a error.
+                    // Logout does dump the credentials however.
+                    //see https://issues.jboss.org/browse/AGDROID-349
+                    activity.logged(false);
                 }
             });
         }
