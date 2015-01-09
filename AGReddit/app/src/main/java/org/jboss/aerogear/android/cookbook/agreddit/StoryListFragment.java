@@ -25,12 +25,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-import org.jboss.aerogear.android.Callback;
-import org.jboss.aerogear.android.ReadFilter;
 import org.jboss.aerogear.android.cookbook.agreddit.reddit.Listing;
 import org.jboss.aerogear.android.cookbook.agreddit.reddit.T3;
-import org.jboss.aerogear.android.impl.pipeline.paging.WrappingPagedList;
-import org.jboss.aerogear.android.pipeline.LoaderPipe;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.core.ReadFilter;
+import org.jboss.aerogear.android.pipe.LoaderPipe;
+import org.jboss.aerogear.android.pipe.paging.WrappingPagedList;
 
 import java.util.List;
 

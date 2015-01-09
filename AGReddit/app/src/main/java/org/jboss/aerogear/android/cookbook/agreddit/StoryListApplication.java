@@ -26,13 +26,13 @@ import org.jboss.aerogear.android.cookbook.agreddit.authentication.RedditAuthent
 import org.jboss.aerogear.android.cookbook.agreddit.gson.ListingTypeAdapter;
 import org.jboss.aerogear.android.cookbook.agreddit.gson.PagingGsonResponseParser;
 import org.jboss.aerogear.android.cookbook.agreddit.reddit.Listing;
-import org.jboss.aerogear.android.Callback;
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;
-import org.jboss.aerogear.android.pipeline.LoaderPipe;
-import org.jboss.aerogear.android.pipeline.Pipe;
-import org.jboss.aerogear.android.pipeline.PipeManager;
-import org.jboss.aerogear.android.pipeline.paging.PageConfig;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.LoaderPipe;
+import org.jboss.aerogear.android.pipe.Pipe;
+import org.jboss.aerogear.android.pipe.PipeManager;
+import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
+import org.jboss.aerogear.android.pipe.paging.PageConfig;
+import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -93,7 +93,7 @@ public class StoryListApplication extends Application {
 	}
 
 	public Pipe<Listing> getListing(Fragment fragment) {
-        LoaderPipe pipe = PipeManager.get("listing", fragment, getApplicationContext());
+        LoaderPipe pipe = PipeManager.getPipe("listing", fragment, getApplicationContext());
         ((PagingGsonResponseParser)pipe.getResponseParser()).setPipe(pipe);
         return pipe;
 	}

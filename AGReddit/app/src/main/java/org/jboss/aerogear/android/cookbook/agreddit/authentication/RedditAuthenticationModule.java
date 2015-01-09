@@ -24,15 +24,15 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import org.apache.http.HttpStatus;
-import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.authentication.AbstractAuthenticationModule;
-import org.jboss.aerogear.android.authentication.AuthorizationFields;
-import org.jboss.aerogear.android.code.ModuleFields;
 import org.jboss.aerogear.android.cookbook.agreddit.R;
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.http.HttpException;
-import org.jboss.aerogear.android.http.HttpProvider;
-import org.jboss.aerogear.android.impl.http.HttpRestProvider;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
+import org.jboss.aerogear.android.pipe.http.HttpException;
+import org.jboss.aerogear.android.pipe.http.HttpProvider;
+import org.jboss.aerogear.android.pipe.http.HttpRestProvider;
+import org.jboss.aerogear.android.pipe.module.AuthorizationFields;
+import org.jboss.aerogear.android.pipe.module.ModuleFields;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -168,16 +168,6 @@ public class RedditAuthenticationModule extends AbstractAuthenticationModule {
     }
 
     @Override
-    public AuthorizationFields getAuthorizationFields(URI requestUri, String method, byte[] requestBody) {
-        return getAuthorizationFields();
-    }
-
-    @Override
-    public boolean retryLogin() throws HttpException {
-        return false;
-    }
-
-    @Override
     public ModuleFields loadModule(URI relativeURI, String httpMethod, byte[] requestBody) {
         ModuleFields moduleFields = new ModuleFields();
         AuthorizationFields authFields = getAuthorizationFields();
@@ -191,7 +181,7 @@ public class RedditAuthenticationModule extends AbstractAuthenticationModule {
     public boolean handleError(HttpException exception) {
         if (exception.getStatusCode() == HttpStatus.SC_FORBIDDEN || 
                 exception.getStatusCode() == HttpStatus.SC_UNAUTHORIZED) {
-            return retryLogin();
+            return false;
         } else {
             return false;
         }
