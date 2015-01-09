@@ -1,6 +1,7 @@
 package org.jboss.aerogear.android.cookbook.carstore.model;
 
-import org.jboss.aerogear.android.RecordId;
+
+import org.jboss.aerogear.android.core.RecordId;
 
 import java.util.UUID;
 
