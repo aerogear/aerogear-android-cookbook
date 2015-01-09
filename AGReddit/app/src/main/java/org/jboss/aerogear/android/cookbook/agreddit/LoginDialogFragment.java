@@ -27,8 +27,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.jboss.aerogear.android.Callback;
-import org.jboss.aerogear.android.http.HeaderAndBody;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
+
 
 public class LoginDialogFragment extends DialogFragment {
 

@@ -18,12 +18,12 @@ package org.jboss.aerogear.android.cookbook.agreddit.gson;
 
 import com.google.gson.Gson;
 
-import org.jboss.aerogear.android.ReadFilter;
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
-import org.jboss.aerogear.android.impl.pipeline.paging.WrappingPagedList;
-import org.jboss.aerogear.android.pipeline.Pipe;
-import org.jboss.aerogear.android.pipeline.paging.PageConfig;
+import org.jboss.aerogear.android.core.ReadFilter;
+import org.jboss.aerogear.android.pipe.Pipe;
+import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
+import org.jboss.aerogear.android.pipe.paging.PageConfig;
+import org.jboss.aerogear.android.pipe.paging.WrappingPagedList;
+import org.jboss.aerogear.android.pipe.rest.gson.GsonResponseParser;
 import org.json.JSONObject;
 
 import java.util.List;
