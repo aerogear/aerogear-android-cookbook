@@ -28,9 +28,10 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.util.Log;
 
-import org.jboss.aerogear.android.pipeline.PipeManager;
-import org.jboss.aerogear.android.cookbook.shotandshare.model.PhotoHolder;
 import org.jboss.aerogear.android.cookbook.shotandshare.R;
+import org.jboss.aerogear.android.cookbook.shotandshare.model.PhotoHolder;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.PipeManager;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -158,7 +159,7 @@ public final class UploadService extends Service {
         return null;
     }
 
-    private class UploadCallback implements org.jboss.aerogear.android.Callback<PhotoHolder> {
+    private class UploadCallback implements Callback<PhotoHolder> {
 
         private final int id;
 

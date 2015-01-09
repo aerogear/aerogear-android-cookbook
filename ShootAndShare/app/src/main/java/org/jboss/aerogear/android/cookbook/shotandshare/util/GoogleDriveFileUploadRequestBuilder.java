@@ -22,9 +22,9 @@ import android.webkit.MimeTypeMap;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import org.jboss.aerogear.android.impl.pipeline.MultipartRequestBuilder;
-import org.jboss.aerogear.android.pipeline.TypeAndStream;
 import org.jboss.aerogear.android.cookbook.shotandshare.model.PhotoHolder;
+import org.jboss.aerogear.android.pipe.rest.multipart.MultipartRequestBuilder;
+import org.jboss.aerogear.android.pipe.rest.multipart.TypeAndStream;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
