@@ -2,10 +2,11 @@ package org.jboss.aerogear.android.cookbook.carstore;
 
 import android.app.Application;
 
-import org.jboss.aerogear.android.DataManager;
 import org.jboss.aerogear.android.cookbook.carstore.model.Car;
-import org.jboss.aerogear.android.impl.datamanager.SQLStore;
-import org.jboss.aerogear.android.impl.datamanager.SQLStoreConfiguration;
+import org.jboss.aerogear.android.store.DataManager;
+import org.jboss.aerogear.android.store.sql.SQLStore;
+import org.jboss.aerogear.android.store.sql.SQLStoreConfiguration;
+
 
 public class CarStoreApplication extends Application {
 
