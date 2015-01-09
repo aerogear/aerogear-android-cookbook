@@ -1,6 +1,6 @@
 package org.jboss.aerogear.android.example.gdrive;
 
-import org.jboss.aerogear.android.RecordId;
+import org.jboss.aerogear.android.core.RecordId;
 
 public class Files {
 
