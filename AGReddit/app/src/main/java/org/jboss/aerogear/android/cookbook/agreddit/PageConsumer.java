@@ -19,14 +19,14 @@ package org.jboss.aerogear.android.cookbook.agreddit;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-import org.jboss.aerogear.android.ReadFilter;
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.pipeline.paging.PageConfig;
-import org.jboss.aerogear.android.pipeline.paging.PageParameterExtractor;
+import org.jboss.aerogear.android.core.ReadFilter;
+import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
+import org.jboss.aerogear.android.pipe.paging.PageConfig;
+import org.jboss.aerogear.android.pipe.paging.PageParameterExtractor;
 
 import java.net.URI;
 
-public class PageConsumer implements PageParameterExtractor<PageConfig>{
+public class PageConsumer implements PageParameterExtractor<PageConfig> {
 
     @Override
     public ReadFilter getNextFilter(HeaderAndBody result, PageConfig config) {

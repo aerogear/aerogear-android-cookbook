@@ -25,14 +25,14 @@ import android.widget.TextView;
 
 import org.jboss.aerogear.android.cookbook.agreddit.reddit.Listing;
 import org.jboss.aerogear.android.cookbook.agreddit.reddit.T3;
-import org.jboss.aerogear.android.http.HttpException;
-import org.jboss.aerogear.android.impl.pipeline.paging.WrappingPagedList;
-import org.jboss.aerogear.android.pipeline.AbstractFragmentCallback;
+import org.jboss.aerogear.android.pipe.callback.AbstractFragmentCallback;
+import org.jboss.aerogear.android.pipe.http.HttpException;
+import org.jboss.aerogear.android.pipe.paging.WrappingPagedList;
 
 import java.util.List;
 
 public class StoryListCallback<T> extends
-		AbstractFragmentCallback<List<Listing>> {
+        AbstractFragmentCallback<List<Listing>> {
 
 	public StoryListCallback(StoryListFragment f) {
 		super(f, 1);
