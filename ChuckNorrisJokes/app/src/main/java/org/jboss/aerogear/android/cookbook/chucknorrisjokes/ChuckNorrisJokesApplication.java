@@ -4,12 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 
 import org.jboss.aerogear.android.cookbook.chucknorrisjokes.model.Joke;
-import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
-import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;
-import org.jboss.aerogear.android.pipeline.LoaderPipe;
-import org.jboss.aerogear.android.pipeline.Pipe;
-import org.jboss.aerogear.android.pipeline.PipeManager;
-import org.jboss.aerogear.android.pipeline.ResponseParser;
+import org.jboss.aerogear.android.pipe.LoaderPipe;
+import org.jboss.aerogear.android.pipe.PipeManager;
+import org.jboss.aerogear.android.pipe.ResponseParser;
+import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
+import org.jboss.aerogear.android.pipe.rest.gson.GsonResponseParser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,7 +38,7 @@ public class ChuckNorrisJokesApplication extends Application {
     }
 
     public LoaderPipe<Joke> getPipe(Activity activity) {
-        LoaderPipe loaderPipe = PipeManager.get("chuckNorris", activity);
+        LoaderPipe loaderPipe = PipeManager.getPipe("chuckNorris", activity);
         return loaderPipe;
     }
 

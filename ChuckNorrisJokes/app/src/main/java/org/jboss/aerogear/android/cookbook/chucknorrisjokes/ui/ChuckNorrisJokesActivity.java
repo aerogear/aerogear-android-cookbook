@@ -1,9 +1,9 @@
 package org.jboss.aerogear.android.cookbook.chucknorrisjokes.ui;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,8 +16,8 @@ import android.widget.Toast;
 import org.jboss.aerogear.android.cookbook.chucknorrisjokes.ChuckNorrisJokesApplication;
 import org.jboss.aerogear.android.cookbook.chucknorrisjokes.R;
 import org.jboss.aerogear.android.cookbook.chucknorrisjokes.model.Joke;
-import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
-import org.jboss.aerogear.android.pipeline.LoaderPipe;
+import org.jboss.aerogear.android.pipe.LoaderPipe;
+import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
 
 import java.util.List;
 

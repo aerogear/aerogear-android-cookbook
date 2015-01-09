@@ -13,11 +13,10 @@ import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
-import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.cookbook.chucknorrisjokes.model.Joke;
-import org.jboss.aerogear.android.pipeline.PipeManager;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.PipeManager;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class JokeFetchListener extends WearableListenerService {
