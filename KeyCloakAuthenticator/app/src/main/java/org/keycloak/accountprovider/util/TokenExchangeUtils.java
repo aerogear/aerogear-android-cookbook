@@ -20,10 +20,9 @@ import android.accounts.NetworkErrorException;
 import android.util.Base64;
 import android.util.Log;
 
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.http.HttpException;
-import org.jboss.aerogear.android.http.HttpProvider;
-import org.jboss.aerogear.android.impl.http.HttpRestProvider;
+import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
+import org.jboss.aerogear.android.pipe.http.HttpException;
+import org.jboss.aerogear.android.pipe.http.HttpRestProvider;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.keycloak.accountprovider.Keycloak;

@@ -19,8 +19,7 @@ package org.keycloak.accountprovider.token;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.impl.http.HttpRestProvider;
+
 import org.keycloak.accountprovider.Keycloak;
 import org.keycloak.accountprovider.KeycloakAccount;
 import org.keycloak.accountprovider.util.TokenExchangeUtils;

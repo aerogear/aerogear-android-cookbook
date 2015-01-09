@@ -27,9 +27,7 @@ import android.os.Bundle;
 
 import com.google.gson.Gson;
 
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.http.HttpException;
-import org.jboss.aerogear.android.impl.http.HttpRestProvider;
+import org.jboss.aerogear.android.pipe.http.HttpException;
 import org.keycloak.accountprovider.util.TokenExchangeUtils;
 
 import java.util.Date;
