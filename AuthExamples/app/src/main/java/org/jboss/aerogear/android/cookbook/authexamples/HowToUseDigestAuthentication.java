@@ -27,15 +27,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.authentication.AuthenticationManager;
 import org.jboss.aerogear.android.authentication.AuthenticationModule;
-import org.jboss.aerogear.android.authentication.impl.HttpDigestAuthenticationConfiguration;
-import org.jboss.aerogear.android.http.HeaderAndBody;
-import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;
-import org.jboss.aerogear.android.pipeline.AbstractActivityCallback;
-import org.jboss.aerogear.android.pipeline.LoaderPipe;
-import org.jboss.aerogear.android.pipeline.PipeManager;
+import org.jboss.aerogear.android.authentication.digest.HttpDigestAuthenticationConfiguration;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.LoaderPipe;
+import org.jboss.aerogear.android.pipe.PipeManager;
+import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
+import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
+import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -105,7 +105,7 @@ public class HowToUseDigestAuthentication extends Activity {
             return null;
         }
 
-        return PipeManager.get("bacon", this);
+        return PipeManager.getPipe("bacon", this);
     }
 
     private void setListeners() {
