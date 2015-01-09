@@ -27,12 +27,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.cookbook.shotandshare.R;
 import org.jboss.aerogear.android.cookbook.shotandshare.service.UploadService;
 import org.jboss.aerogear.android.cookbook.shotandshare.util.FacebookHelper;
 import org.jboss.aerogear.android.cookbook.shotandshare.util.GooglePlusHelper;
 import org.jboss.aerogear.android.cookbook.shotandshare.util.KeycloakHelper;
+import org.jboss.aerogear.android.core.Callback;
 
 public class PhotoActivity extends ActionBarActivity {
 

@@ -20,14 +20,14 @@ package org.jboss.aerogear.android.cookbook.shotandshare.util;
 import android.app.Activity;
 import android.util.Pair;
 
-import org.jboss.aerogear.android.Callback;
+import org.jboss.aerogear.android.authorization.AuthorizationManager;
 import org.jboss.aerogear.android.authorization.AuthzModule;
-import org.jboss.aerogear.android.impl.authz.AuthorizationManager;
-import org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthorizationConfiguration;
-import org.jboss.aerogear.android.impl.authz.oauth2.OAuthWebViewDialog;
-import org.jboss.aerogear.android.impl.pipeline.RestfulPipeConfiguration;
-import org.jboss.aerogear.android.pipeline.PipeManager;
+import org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthorizationConfiguration;
+import org.jboss.aerogear.android.authorization.oauth2.OAuthWebViewDialog;
 import org.jboss.aerogear.android.cookbook.shotandshare.model.PhotoHolder;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.PipeManager;
+import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -97,7 +97,7 @@ public class GooglePlusHelper {
 
 
     public static void upload(final File file, final Callback callback, Activity activity) {
-        PipeManager.get("gp-upload", activity).save(new PhotoHolder(file), callback);
+        PipeManager.getPipe("gp-upload", activity).save(new PhotoHolder(file), callback);
     }
 
     public static boolean isConnected() {

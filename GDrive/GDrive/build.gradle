@@ -21,7 +21,7 @@ android {
 
 dependencies {
 
-    compile ('org.jboss.aerogear:aerogear-android-authz:2.0.0-SNAPSHOT@aar') {
+    compile ('org.jboss.aerogear:aerogear-android-authz:2.0.0-SNAPSHOT@aar')  {
         transitive=true
     }
     compile 'com.android.support:appcompat-v7:21.0.2'
