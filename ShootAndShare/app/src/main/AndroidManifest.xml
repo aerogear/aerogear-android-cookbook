@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".ui.PhotoActivity" />
 
-        <service android:name="org.jboss.aerogear.android.impl.authz.oauth2.OAuth2AuthzService" />
+        <service android:name="org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthzService"/>
         <service android:name=".service.UploadService" />
 
     </application>
