@@ -17,6 +17,6 @@
 package org.jboss.aerogear.android.cookbook.authexamples;
 
 public class Constants {
-    public static final String URL_BASE = "http://10.0.2.2:8080/authentication/rest";
+    public static final String URL_BASE = "";
 
 }

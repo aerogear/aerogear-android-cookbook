@@ -8,8 +8,8 @@ android {
         applicationId "org.keycloak.keycloakaccountprovider"
         minSdkVersion 16
         targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0.0"
     }
     buildTypes {
         release {
@@ -22,7 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile ('org.jboss.aerogear:aerogear-android-pipe:2.0.0-SNAPSHOT@aar') {
+    compile ('org.jboss.aerogear:aerogear-android-pipe:2.0.0@aar') {
         transitive = true
     }
     compile 'com.google.code.gson:gson:2.2.2'
