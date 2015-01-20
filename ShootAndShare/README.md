@@ -88,11 +88,11 @@ Please refer to [aerogear-backend-cookbook shoot recipe](https://github.com/aero
 
 #### Enable Google Account
 
-In the class `GooglePlusHelper` there are two fields `AUTHZ_CLIENT_ID` and `AUTHZ_CLIENT_ID`.  Use the values you received from the Google console during 'Google Account Setup'
+In the class `GooglePlusHelper` there are two fields `AUTHZ_CLIENT_ID` and `AUTHZ_CLIENT_SECRET`.  Use the values you received from the Google console during 'Google Account Setup'
 
 #### Enable Facebook Account
 
-In the class `FacebookHelper` there are two fields `AUTHZ_CLIENT_ID` and `AUTHZ_CLIENT_ID`.  Use the values for 'App ID' and 'App Secret' you received from Facebook during 'Facebook Account Setup'
+In the class `FacebookHelper` there are two fields `AUTHZ_CLIENT_ID` and `AUTHZ_CLIENT_SECRET`.  Use the values for 'App ID' and 'App Secret' you received from Facebook during 'Facebook Account Setup'
 
 #### Enable Shoot Server Integration
 
