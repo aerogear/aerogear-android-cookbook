@@ -17,6 +17,7 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 | [CarStore](CarStore) | CRUD made easy | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [ShootAndShare](ShootAndShare) | Social Login and Sharing | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 | [AuthExamples](AuthExamples) | Basic and Digest Authentication | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [AeroDoc](AeroDoc) | A client of AeroDoc backend | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: |
 
 ## Others AeroGear Android example apps
 
