@@ -16,16 +16,19 @@
  */
 package org.jboss.aerogear.syncdemo.sync;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.sync.ClientDocument;
+import org.jboss.aerogear.sync.DefaultClientDocument;
 import org.jboss.aerogear.sync.DiffSyncClient;
 import org.jboss.aerogear.sync.DiffSyncClientHandler;
 import org.jboss.aerogear.syncdemo.R;
@@ -34,10 +37,9 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.UUID;
 
-public class DiffSyncMainActivity extends Activity implements Observer {
+public class DiffSyncMainActivity extends ActionBarActivity implements Observer {
 
-    private static final long SENDER_ID = 0l;
-    
+    public static final String DOCUMENT_ID = "DiffSyncMainActivity.DOCUMENT_ID";
     private ProgressDialog dialog;
     private DiffSyncClient<String> syncClient;
     private String documentId;
@@ -53,9 +55,13 @@ public class DiffSyncMainActivity extends Activity implements Observer {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent startIntent = getIntent();
+        
+        
         setContentView(R.layout.editor);
         clientId = UUID.randomUUID().toString();
-        documentId = getString(R.string.documentId);
+        documentId = startIntent.getStringExtra(DOCUMENT_ID);
         name = (TextView) findViewById(R.id.name);
         profession = (TextView) findViewById(R.id.profession);
         hobby0 = (TextView) findViewById(R.id.hobby0);
@@ -69,11 +75,9 @@ public class DiffSyncMainActivity extends Activity implements Observer {
         setFields(content);
 
         Log.i("onCreate", "observer :" + this);
-        syncClient = DiffSyncClient.<String>forHost(getString(R.string.serverHost))
-                .port(Integer.parseInt(getString(R.string.serverPort)))
+        syncClient = DiffSyncClient.<String>forSenderID(getString(R.string.senderID))
                 .observer(this)
                 .context(getApplicationContext())
-                .senderId(SENDER_ID)
                 .build();
 
         new AsyncTask<Void, Void, String>() {
@@ -157,8 +161,8 @@ public class DiffSyncMainActivity extends Activity implements Observer {
         hobby3.setText(content.getHobbies().get(3));
     }
 
-    private static ClientDocument<String> clientDoc(final String id, final String clientId, final String content) {
-        return new DefaultClientDocument<String>(id, clientId, content);
+    private static ClientDocument<String> clientDoc(final String id, final String clientId, final String content) {        
+        return new DefaultClientDocument<>(id, clientId, content);
     }
 
     @Override
