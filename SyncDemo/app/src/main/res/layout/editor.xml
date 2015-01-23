@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:gravity="center"
+              android:padding="30dp"
+              android:stretchColumns="1">
+  
+  <TableRow>
+    <ImageView
+      android:layout_width="250dp"
+      android:layout_height="80dp"
+      android:layout_gravity="top"
+      android:contentDescription="@string/aerogear_logo_content_description"
+      android:src="@drawable/aerogear_logo"/>
+  </TableRow>
+
+  <TableRow>
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="right"
+      android:textSize="20dp" android:textStyle="bold"
+      android:text="@string/project_title"/>
+  </TableRow>
+
+  <TableRow>
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/name"/>
+  </TableRow>
+  <TableRow>
+    <TextView
+      android:id="@+id/name"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"/>
+  </TableRow>
+
+  <TableRow>
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/profession"/>
+  </TableRow>
+  
+  <TableRow>
+    <EditText
+      android:id="@+id/profession"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  </TableRow>
+  
+  <TableRow>
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/hobbies"/>
+  </TableRow>
+  
+  <TableRow>
+    <EditText
+      android:id="@+id/hobby0"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  </TableRow>
+  
+  <TableRow>
+    <EditText
+      android:id="@+id/hobby1"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  </TableRow>
+  
+  <TableRow>
+    <EditText
+      android:id="@+id/hobby2"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  </TableRow>
+  
+  <TableRow>
+    <EditText
+      android:id="@+id/hobby3"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  </TableRow>
+
+  <TableRow>
+    <Button
+      android:id="@+id/sync"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/send_sync"/>
+  </TableRow>
+
+</TableLayout>
