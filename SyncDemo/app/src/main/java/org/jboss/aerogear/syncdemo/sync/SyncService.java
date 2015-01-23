@@ -6,6 +6,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import org.jboss.aerogear.sync.DiffSyncClientHandler;
+
 public class SyncService extends IntentService {
 
     public static final class SyncServiceBinder extends Binder {
@@ -15,7 +17,7 @@ public class SyncService extends IntentService {
         public SyncServiceBinder(SyncService service) {
             this.service = service;
         }
-        
+        DiffSyncClientHandler a;
         public SyncService getService() {
             return service;
         }

@@ -25,15 +25,22 @@
         <item name="android:textColorPrimary">@color/text_color_primary</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="android:buttonStyle">@style/ButtonAppTheme</item>
+        <item name="android:editTextStyle">@style/EditTextTheme</item>
     </style>
 
     <style name="ButtonAppTheme" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:background">@drawable/material_button</item>
+        <item name="android:gravity">center</item>
         <item name="android:layout_margin">14dp</item>
         <item name="android:padding">14dp</item>
         <item name="android:minHeight">42dp</item>
     </style>
-    
+
+    <style name="EditTextTheme" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
     <style name="MyTheme.Fullscreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">@color/primary_dark</item>
     </style>

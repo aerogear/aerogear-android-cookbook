@@ -1,6 +1,7 @@
 package org.jboss.aerogear.syncdemo;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.melnykov.fab.FloatingActionButton;
 
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
+import org.jboss.aerogear.syncdemo.sync.DiffSyncMainActivity;
 import org.jboss.aerogear.syncdemo.vo.Doc;
 
 import java.util.ArrayList;
@@ -28,7 +31,8 @@ public class DocsActivity extends ActionBarActivity {
     private static final String TAG = DocsActivity.class.getSimpleName();
     private ListView listView;
     private static final String IGNORE_EXTRAS = "MessageActivity.ignore_extras";
-    
+    private List<Doc> documents = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,15 @@ public class DocsActivity extends ActionBarActivity {
         listView = (ListView) findViewById(R.id.messages);
         listView.setEmptyView(emptyView);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent newIntent = new Intent(getApplicationContext(), DiffSyncMainActivity.class);
+                newIntent.putExtra(DiffSyncMainActivity.DOCUMENT_ID, documents.get(position).getDocId());
+                startActivity(newIntent);
+            }
+        });
+        
         ListView listView = (ListView) findViewById(R.id.messages);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.attachToListView(listView);
@@ -123,10 +136,14 @@ public class DocsActivity extends ActionBarActivity {
     }
 
     public void refreshDocs(List<Doc> docs) {
+        this.documents = docs;
         ArrayList<String> docNameArray = new ArrayList<>(docs.size());
         for (Doc doc :docs) {
             docNameArray.add(doc.getDocName());
         }
+        
+        PipeManager.getPipe("docs", this).reset();//data load done
+        
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                 R.layout.document_item, docNameArray.toArray(new String[docs.size()]));
         listView.setAdapter(adapter);

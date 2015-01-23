@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import org.jboss.aerogear.diffsync.ClientDocument;
+
+import org.jboss.aerogear.sync.ClientDocument;
+
 
 public class SyncDatabase extends SQLiteOpenHelper {
     
