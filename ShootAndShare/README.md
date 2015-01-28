@@ -37,18 +37,19 @@ Now you need to enable the Drive API. To do that, navigate to APIs & auth > APIs
 
 ![Google Console - Enable APIs](docs/google-console-2.png)
 
-Now you need create new credentials to access your Drive accounts from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. This launches the following popup, where you select `Installed application` and `Other`:
+Now you need create new credentials to access your Drive accounts from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. 
+
+You will need edit the _consent screen_ with a name of your app
+
+![Google Console - Consent screen](docs/google-console-5.png)
+
+After fill consent screen select `Installed application` and `Other`:
 
 ![Google Console - Credentials](docs/google-console-3.png)
 
 On the last screen finally get to see the actual value of the generated `client id`, `secret id` and `redirect uris`, which you will use later:
 
 ![Google Console - New credentials created](docs/google-console-4.png)
-
-You also edit the 'Consent screen'. Go to API > Consent screen and edit the project informations.
-
-![Google Console - New credentials created](docs/google-console-5.png)
-
 
 #### Facebook Account Setup
 
@@ -104,8 +105,6 @@ In the class `KeycloakHelper` edit the field `SHOOT_SERVER_URL` to refer to the 
 $ cd /path/to/app
 $ gradle clean build
 ```
-
-
 
 ### 5. Test Application
 
