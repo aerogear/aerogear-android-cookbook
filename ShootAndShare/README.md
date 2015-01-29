@@ -39,13 +39,19 @@ Now you need to enable the Drive API. To do that, navigate to APIs & auth > APIs
 
 Now you need create new credentials to access your Drive accounts from the app. Go to APIs & auth > Credentials and inside OAuth area click the blue `Create new Client ID` button. 
 
-You will need edit the _consent screen_ with a name of your app
+![Google Console - Create client ID](docs/google-console-3.png)
 
-![Google Console - Consent screen](docs/google-console-5.png)
+_consent screen_ is required so, click the blue `Configure consent screen`
 
-After fill consent screen select `Installed application` and `Other`:
+![Google Console - Consent screen](docs/google-console-4.png)
 
-![Google Console - Credentials](docs/google-console-3.png)
+Select your email and fill the name of your app. After save that you will return to the Client ID
+
+![Google Console - Create client ID](docs/google-console-5.png)
+
+Select `Installed application` and `Other`:
+
+![Google Console - Credentials](docs/google-console-6.png)
 
 On the last screen finally get to see the actual value of the generated `client id`, `secret id` and `redirect uris`, which you will use later:
 
