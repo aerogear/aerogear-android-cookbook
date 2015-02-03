@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.jboss.aerogear.android.cookbook.shotandshare.ui;
+package org.jboss.aerogear.android.cookbook.shootandshare.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -27,11 +27,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.jboss.aerogear.android.cookbook.shotandshare.R;
-import org.jboss.aerogear.android.cookbook.shotandshare.service.UploadService;
-import org.jboss.aerogear.android.cookbook.shotandshare.util.FacebookHelper;
-import org.jboss.aerogear.android.cookbook.shotandshare.util.GooglePlusHelper;
-import org.jboss.aerogear.android.cookbook.shotandshare.util.KeycloakHelper;
+import org.jboss.aerogear.android.cookbook.shootandshare.R;
+import org.jboss.aerogear.android.cookbook.shootandshare.service.UploadService;
+import org.jboss.aerogear.android.cookbook.shootandshare.util.FacebookHelper;
+import org.jboss.aerogear.android.cookbook.shootandshare.util.GooglePlusHelper;
+import org.jboss.aerogear.android.cookbook.shootandshare.util.KeycloakHelper;
 import org.jboss.aerogear.android.core.Callback;
 
 public class PhotoActivity extends ActionBarActivity {

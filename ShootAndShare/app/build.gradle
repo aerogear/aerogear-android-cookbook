@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "org.jboss.aerogear.android.cookbook.shotandshare"
+        applicationId "org.jboss.aerogear.android.cookbook.shootandshare"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 2

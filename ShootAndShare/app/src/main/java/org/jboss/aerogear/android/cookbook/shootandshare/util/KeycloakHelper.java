@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.jboss.aerogear.android.cookbook.shotandshare.util;
+package org.jboss.aerogear.android.cookbook.shootandshare.util;
 
 import android.app.Activity;
 
@@ -23,7 +23,7 @@ import org.jboss.aerogear.android.authorization.AuthorizationManager;
 import org.jboss.aerogear.android.authorization.AuthzModule;
 import org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthorizationConfiguration;
 import org.jboss.aerogear.android.authorization.oauth2.OAuthWebViewDialog;
-import org.jboss.aerogear.android.cookbook.shotandshare.model.PhotoHolder;
+import org.jboss.aerogear.android.cookbook.shootandshare.model.PhotoHolder;
 import org.jboss.aerogear.android.core.Callback;
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
@@ -36,7 +36,7 @@ public class KeycloakHelper {
 
     private static final String SHOOT_SERVER_URL = "";
     private static final String AUTHZ_URL = SHOOT_SERVER_URL +"/auth";
-    private static final String AUTHZ_ENDPOINT = "/realms/shoot-realm/tokens/login";
+    private static final String AUTHZ_ENDPOINT = "/realms/shot-realm/tokens/login";
     private static final String ACCESS_TOKEN_ENDPOINT = "/realms/shoot-realm/tokens/access/codes";
     private static final String REFRESH_TOKEN_ENDPOINT = "/realms/shoot-realm/tokens/refresh";
     private static final String AUTHZ_ACCOOUNT_ID = "keycloak-token";
