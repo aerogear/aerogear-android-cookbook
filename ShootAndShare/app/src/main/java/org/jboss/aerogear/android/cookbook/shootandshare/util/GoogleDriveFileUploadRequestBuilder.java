@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.shotandshare.util;
+package org.jboss.aerogear.android.cookbook.shootandshare.util;
 
 import android.util.Log;
 import android.webkit.MimeTypeMap;
@@ -22,7 +22,7 @@ import android.webkit.MimeTypeMap;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import org.jboss.aerogear.android.cookbook.shotandshare.model.PhotoHolder;
+import org.jboss.aerogear.android.cookbook.shootandshare.model.PhotoHolder;
 import org.jboss.aerogear.android.pipe.rest.multipart.MultipartRequestBuilder;
 import org.jboss.aerogear.android.pipe.rest.multipart.TypeAndStream;
 

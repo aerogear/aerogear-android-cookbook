@@ -1,4 +1,4 @@
-package org.jboss.aerogear.snapandshare;
+package org.jboss.aerogear.shootandshare;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
