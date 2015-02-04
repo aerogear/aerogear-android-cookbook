@@ -2,7 +2,7 @@
 ---------
 Authors: Summers Pittman (secondsun) - Daniel Passos (dpassos)  
 Level: Advanced  
-Technologies: Java, Android, Googele, Facebook, KeyCloak  
+Technologies: Java, Android, Google, Facebook, KeyCloak  
 Summary: And example of interacting with several modern web services.  
 Target Product: -     
 Product Versions: -     
