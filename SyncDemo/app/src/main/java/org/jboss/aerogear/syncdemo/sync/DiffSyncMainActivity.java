@@ -18,30 +18,24 @@ package org.jboss.aerogear.syncdemo.sync;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.jboss.aerogear.android.core.Callback;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.jboss.aerogear.sync.ClientDocument;
 import org.jboss.aerogear.sync.DefaultClientDocument;
-import org.jboss.aerogear.sync.DiffSyncClient;
-import org.jboss.aerogear.sync.DiffSyncClientHandler;
 import org.jboss.aerogear.syncdemo.R;
 
 import java.util.Observable;
-import java.util.Observer;
-import java.util.UUID;
 
-public class DiffSyncMainActivity extends ActionBarActivity implements Observer {
+public class DiffSyncMainActivity extends SyncActivity {
 
     public static final String DOCUMENT_ID = "DiffSyncMainActivity.DOCUMENT_ID";
     private ProgressDialog dialog;
-    private DiffSyncClient<String> syncClient;
     private String documentId;
     private String clientId;
     private TextView name;
@@ -51,7 +45,7 @@ public class DiffSyncMainActivity extends ActionBarActivity implements Observer 
     private TextView hobby2;
     private TextView hobby3;
     private Info content;
-
+    
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +54,7 @@ public class DiffSyncMainActivity extends ActionBarActivity implements Observer 
         
         
         setContentView(R.layout.editor);
-        clientId = UUID.randomUUID().toString();
+        
         documentId = startIntent.getStringExtra(DOCUMENT_ID);
         name = (TextView) findViewById(R.id.name);
         profession = (TextView) findViewById(R.id.profession);
@@ -75,69 +69,29 @@ public class DiffSyncMainActivity extends ActionBarActivity implements Observer 
         setFields(content);
 
         Log.i("onCreate", "observer :" + this);
-        syncClient = DiffSyncClient.<String>forSenderID(getString(R.string.senderID))
-                .observer(this)
-                .context(getApplicationContext())
-                .build();
+        
+        
+    }
 
-        new AsyncTask<Void, Void, String>() {
-            @Override
-            protected String doInBackground(Void... params) {
-
-                try {
-                    syncClient.connect(new Callback<DiffSyncClientHandler>() {
-
-                        @Override
-                        public void onSuccess(DiffSyncClientHandler data) {
-                            new Thread(new Runnable() {
-
-                                @Override
-                                public void run() {
-                                    JsonUtil.toJson(content);
-                                    final ClientDocument<String> clientDocument = clientDoc(documentId, clientId, JsonUtil.toJson(content));
-                                    Log.i("onCreate", "Seed Document:" + clientDocument);
-                                    syncClient.addDocument(clientDocument);
-                                }
-                            }).start();
-                        }
-
-                        @Override
-                        public void onFailure(Exception e) {
-                            Log.e("FAILURE", e.getMessage(), e);
-                            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                        }
-                    });
-                } catch (InterruptedException ex) {
-                    Log.e("TAG", ex.getMessage(), ex);
-                }
-
-                return null;
-            }
-        }.execute();
+    @Override
+    public void onConnected() {
+        clientId = getSyncService().getClientId();
+        final ClientDocument<JsonNode> clientDocument = clientDoc(documentId, clientId, JsonUtil.toJsonNode(content));
+        Log.i("onConnected", "Seed Document:" + clientDocument);
+        getSyncService().addDocument(clientDocument);
 
         final Button sync = (Button) findViewById(R.id.sync);
         sync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                dialog = ProgressDialog.show(DiffSyncMainActivity.this, getString(R.string.wait), getString(R.string.syncing), true, false);
-                new AsyncTask<ClientDocument, Void, String>() {
-                    @Override
-                    protected String doInBackground(final ClientDocument... params) {
-                        Log.i("doInBackground", "Document:" + params[0]);
-                        syncClient.diffAndSend(params[0]);
-                        return null;
-                    }
-
-                    @Override
-                    protected void onPostExecute(final String s) {
-                        dialog.dismiss();
-                    }
-                }.execute(clientDoc(documentId, clientId, JsonUtil.toJson(gatherUpdates())));
+                getSyncService().diffAndSend(clientDoc(documentId, clientId, JsonUtil.toJsonNode(gatherUpdates())));
             }
 
         });
-    }
 
+
+    }
+    
     private Info gatherUpdates() {
         return new Info(content.getName().toString(),
                 profession.getText().toString(),
@@ -161,7 +115,7 @@ public class DiffSyncMainActivity extends ActionBarActivity implements Observer 
         hobby3.setText(content.getHobbies().get(3));
     }
 
-    private static ClientDocument<String> clientDoc(final String id, final String clientId, final String content) {        
+    private static ClientDocument<JsonNode> clientDoc(final String id, final String clientId, final JsonNode content) {        
         return new DefaultClientDocument<>(id, clientId, content);
     }
 
