@@ -23,6 +23,7 @@ import org.jboss.aerogear.syncdemo.vo.Doc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public class DocsActivity extends ActionBarActivity {
@@ -33,10 +34,10 @@ public class DocsActivity extends ActionBarActivity {
     private static final String IGNORE_EXTRAS = "MessageActivity.ignore_extras";
     private List<Doc> documents = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_docs);
 
         View emptyView = findViewById(R.id.empty);
@@ -51,7 +52,7 @@ public class DocsActivity extends ActionBarActivity {
                 startActivity(newIntent);
             }
         });
-        
+
         ListView listView = (ListView) findViewById(R.id.messages);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.attachToListView(listView);
@@ -61,14 +62,14 @@ public class DocsActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        
+
         displayMessages();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        
+
     }
 
     @Override
@@ -84,7 +85,7 @@ public class DocsActivity extends ActionBarActivity {
         PipeManager.getPipe("docs", this).read(new AbstractActivityCallback<List<Doc>>() {
             @Override
             public void onSuccess(List<Doc> docs) {
-                ((DocsActivity)getActivity()).refreshDocs(docs);
+                ((DocsActivity) getActivity()).refreshDocs(docs);
             }
 
             @Override
@@ -98,31 +99,31 @@ public class DocsActivity extends ActionBarActivity {
         @Override
         public void onClick(View v) {
             new DialogFragment() {
-                
+
                 {
                     setTitle("Doc Name?");
                 }
-                
+
                 @Nullable
                 @Override
                 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
                     final View layout = inflater.inflate(R.layout.add_doc_dialog, null);
-                    
+
                     layout.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             dismiss();
                         }
                     });
-                    
+
                     layout.findViewById(R.id.save_button).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            createDoc(((TextView)layout.findViewById(R.id.document_name)).getText());
+                            createDoc(((TextView) layout.findViewById(R.id.document_name)).getText());
                             dismiss();
                         }
                     });
-                    
+
                     return layout;
                 }
             }.show(getFragmentManager(), ":");
@@ -132,18 +133,19 @@ public class DocsActivity extends ActionBarActivity {
     private void createDoc(CharSequence text) {
         Doc doc = new Doc();
         doc.setDocName(text.toString());
+        doc.setDocId(UUID.randomUUID().toString());
         PipeManager.getPipe("docs", this).save(doc, new DocCallback());
     }
 
     public void refreshDocs(List<Doc> docs) {
-        this.documents = docs;
+         this.documents = docs;
         ArrayList<String> docNameArray = new ArrayList<>(docs.size());
-        for (Doc doc :docs) {
+        for (Doc doc : docs) {
             docNameArray.add(doc.getDocName());
         }
-        
+
         PipeManager.getPipe("docs", this).reset();//data load done
-        
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                 R.layout.document_item, docNameArray.toArray(new String[docs.size()]));
         listView.setAdapter(adapter);
