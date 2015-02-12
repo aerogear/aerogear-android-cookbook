@@ -26,7 +26,6 @@ This application also has an [iOS port](https://github.com/aerogear/aerogear-ios
 
 #### Google Account Setup
 
-
 First, you must authenticate with Google. You will need a Google Account for this. Now open the [Google Console](http://console.developer.google.com).
 
 If you haven't created a project, click "Create Project" and give the new project a name:
@@ -45,17 +44,13 @@ You will need to create a _consent screen_. Click the blue `Configure consent sc
 
 ![Google Console - Consent screen](docs/google-console-4.png)
 
-Afterwards, click save and you will return to the Client ID
+Afterwards, click save and you will return to the Client ID. Select `Installed application` and `Other`:
 
 ![Google Console - Create client ID](docs/google-console-5.png)
 
-Select `Installed application` and `Other`:
-
-![Google Console - Credentials](docs/google-console-6.png)
-
 On the last screen we finally get to see the actual value of the generated `client id`, `secret id` and `redirect uris`, which you will use later:
 
-![Google Console - New credentials created](docs/google-console-4.png)
+![Google Console - Credentials](docs/google-console-6.png)
 
 #### Facebook Account Setup
 
