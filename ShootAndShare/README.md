@@ -6,7 +6,7 @@ Technologies: Java, Android, Google, Facebook, KeyCloak
 Summary: And example of interacting with several modern web services.  
 Target Product: -     
 Product Versions: -     
-Source: https://github.com/secondsun/shoot-and-share  
+Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/ShootAndShare   
 
 ## What is it?
 
