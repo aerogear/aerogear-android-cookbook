@@ -91,7 +91,7 @@ Now save your changes and Facebook is ready to go.
 
 Please refer to [aerogear-backend-cookbook shoot recipe](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Shoot).
 
-### 3. Application Setup
+### 2. Application Setup
 
 #### Enable Google Account
 
@@ -105,14 +105,14 @@ In the class `FacebookHelper` there are two fields `AUTHZ_CLIENT_ID` and `AUTHZ_
 
 In the class `KeycloakHelper` edit the field `SHOOT_SERVER_URL` to refer to the address of the server you are running the shoot server on.  If this is the host machine of the emulator you can use 'http://10.0.2.2:8080'
 
-### 4. Build Application
+### 3. Build Application
 
 ```shell
 $ cd /path/to/app
 $ gradle clean build
 ```
 
-### 5. Test Application
+### 4. Test Application
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
