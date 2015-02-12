@@ -103,9 +103,13 @@ public class RedditAuthenticationModule extends AbstractAuthenticationModule {
                     Log.d("Auth", new String(result.getBody()));
                     String json = new String(result.getBody());
                     JsonObject obj = new JsonParser().parse(json).getAsJsonObject().get("json").getAsJsonObject();
-                    modHash = obj.get("data").getAsJsonObject().get("modhash").getAsString();
-                    authToken = obj.get("data").getAsJsonObject().get("cookie").getAsString();
-                    isLoggedIn = true;
+                    if(obj.getAsJsonArray("errors").size() != 0) {
+                        throw new Exception(obj.get("errors").toString());
+                    } else {
+                        modHash = obj.get("data").getAsJsonObject().get("modhash").getAsString();
+                        authToken = obj.get("data").getAsJsonObject().get("cookie").getAsString();
+                        isLoggedIn = true;
+                    }
                 } catch (Exception e) {
                     Log.e(RedditAuthenticationModule.class.getSimpleName(),
                             "Error with Login", e);
