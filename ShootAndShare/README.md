@@ -54,31 +54,35 @@ On the last screen we finally get to see the actual value of the generated `clie
 
 #### Facebook Account Setup
 
-First you must have a Facebook account.  Now open the [Facebook Developers](https://developers.facebook.com/) page and select 'Apps' -> 'Add a New App'
+First you must have a Facebook account.  Now open the [Facebook Developers](https://developers.facebook.com/) page and select `Apps` -> `Add a New App`
 
-![Facebook - Add App](docs/facebook-0.png)
+![Facebook - Add App](docs/facebook-1.png)
 
-Click on 'advanced setup'
+Click `www`
 
-![Facebook - Add App Window](docs/facebook-2.png)
+![Facebook - Select platform](docs/facebook-2.png)
 
-Setup a Display Name and Namespace and select a category, then click create app ID
+Click `Skip and Create App ID`
 
-![Facebook - Create App](docs/facebook-3.png)
+![Facebook - Skip and Create App ID](docs/facebook-3.png)
+
+Setup a Display Name and Namespace and select a category, then click `Create App ID`
+
+![Facebook - Choice app category](docs/facebook-4.png)
 
 Fill out the captcha
 
-You are now on the Dashboard view.  Make a note of your 'App ID' and 'App Secret'. You are now on the Dashboard view.  Make a note of your 'App ID' and 'App Secret'
+You are now on the Dashboard view. Make a note of your `App ID` and `App Secret`.
 
-![Facebook - Dashboard](docs/facebook-4.png)
+![Facebook - Dashboard](docs/facebook-5.png)
 
-Select 'Settings' from the sidebar and then the 'Advanced' tab
+Select `Settings` from the sidebar and then the `Advanced` tab
 
-![Facebook - Advanced Tab](docs/facebook-5.png)
+![Facebook - Advanced Tab](docs/facebook-6.png)
 
-Scroll to Security and enable 'Embedded browser OAuth Login' and make 'https://localhost/' your redirectURI
+Scroll to Security and enable `Embedded browser OAuth Login` and make `https://localhost/` your redirectURI
 
-![Facebook - Enable OAuth](docs/facebook-6.png)
+![Facebook - Enable OAuth](docs/facebook-7.png)
 
 Now save your changes and Facebook is ready to go.
 
