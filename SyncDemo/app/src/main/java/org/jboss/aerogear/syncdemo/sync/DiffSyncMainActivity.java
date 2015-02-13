@@ -125,8 +125,8 @@ public class DiffSyncMainActivity extends SyncActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                final ClientDocument<String> document = (ClientDocument<String>) data;
-                final Info updates = JsonUtil.fromJson(document.content());
+                final ClientDocument<JsonNode> document = (ClientDocument<JsonNode>) data;
+                final Info updates = JsonUtil.fromJsonNode(document.content());
                 setFields(updates);
             }
         });

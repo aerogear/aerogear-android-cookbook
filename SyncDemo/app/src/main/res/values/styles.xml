@@ -41,9 +41,5 @@
     </style>
 
 
-    <style name="MyTheme.Fullscreen" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-    </style>
-
 </resources>
 
