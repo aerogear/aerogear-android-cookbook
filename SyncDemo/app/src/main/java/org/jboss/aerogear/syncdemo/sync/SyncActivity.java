@@ -7,11 +7,8 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 
-import org.jboss.aerogear.android.sync.DiffSyncClient;
-import org.jboss.aerogear.android.sync.SyncService;
 import org.jboss.aerogear.android.sync.SyncServerConnectionListener;
-
-import java.util.Observer;
+import org.jboss.aerogear.android.sync.SyncService;
 
 /**
  * Created by summers on 1/28/15.
@@ -44,7 +41,6 @@ public abstract class SyncActivity extends ActionBarActivity implements SyncServ
     @Override
     protected void onResume() {
         super.onResume();
-        DiffSyncClient f;
         Intent syncServiceIntent = new Intent(this, SyncService.class);
         bindService(syncServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
     }

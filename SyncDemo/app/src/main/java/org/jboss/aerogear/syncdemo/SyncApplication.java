@@ -1,6 +1,6 @@
 package org.jboss.aerogear.syncdemo;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import org.jboss.aerogear.android.authorization.AuthorizationManager;
@@ -15,7 +15,7 @@ import java.net.URL;
 /**
  * Created by summers on 1/29/15.
  */
-public class SyncApplication extends Application {
+public class SyncApplication extends MultiDexApplication {
 
 
     private static final String DOC_SERVER_URL = "http://192.168.1.195:8080";
@@ -27,7 +27,6 @@ public class SyncApplication extends Application {
         super.onCreate();
 
         KeycloakHelper.init();
-        
         try {
             PipeManager.config("userPipe", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule(MODULE_NAME))
                     .withUrl(new URL(DOC_SERVER_URL + "/sync/api/user"))
