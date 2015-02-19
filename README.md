@@ -27,6 +27,7 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 | [ShootAndShare](ShootAndShare) | Social Login and Sharing | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 | [AuthExamples](AuthExamples) | Basic and Digest Authentication | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [AeroDoc](AeroDoc) | A client of AeroDoc backend | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: |
+| [Password Manager](PasswordManager) | Mobile Application to store your passwords in an Encrypted Store | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
 
 ## Other AeroGear Android example apps
 
@@ -35,7 +36,6 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 | [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld/tree/master/android) | How to include basic push functionality in Android applications. | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |
 | [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-android-client) | Integration with the Push notification mechanism to instantly retrieve a new Contact when it is created on the server | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |
 | [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo) | How case to Java One Time Password API  | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Crypto Demo](https://github.com/aerogear/aerogear-crypto-android-demo) | Show case to AeroGear Crypto Java | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
 
 ## Development
 
