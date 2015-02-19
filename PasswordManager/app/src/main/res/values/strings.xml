@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Password Manager</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="aerogear_logo">AeroGear Logo</string>
+    <string name="password_masked">**********</string>
+    <string name="name">Name</string>
+    <string name="save">Save</string>
+    <string name="username">Username</string>
+    <string name="required">This is required</string>
+    <string name="credential">Credential</string>
+    <string name="invalid_credential">Invalid Credential</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirmation">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="copied_clipboard">Copied to clipboard</string>
+    <string name="icon_copy_to_clipboard_content_description">Copy to clipboard icon</string>
+    <string name="add">Add</string>
+</resources>
