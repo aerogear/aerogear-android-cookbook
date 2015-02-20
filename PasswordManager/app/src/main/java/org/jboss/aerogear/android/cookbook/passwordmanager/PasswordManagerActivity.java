@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -34,7 +35,7 @@ import org.jboss.aerogear.android.security.InvalidKeyException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Collection;
 
-public class PasswordManagerActivity extends Activity {
+public class PasswordManagerActivity extends ActionBarActivity {
 
     private enum Display {
         LOGIN, LIST, FORM, DETAIL
