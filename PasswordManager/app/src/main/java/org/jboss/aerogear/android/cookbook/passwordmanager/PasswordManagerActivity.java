@@ -50,6 +50,15 @@ public class PasswordManagerActivity extends ActionBarActivity {
         displayLogin();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
+    }
+
     private void displayFragment(Fragment fragment, boolean enableBack) {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
