@@ -24,5 +24,5 @@ dependencies {
     compile 'org.jboss.aerogear:aerogear-android-core:2.0.0'
     compile 'org.jboss.aerogear:aerogear-android-security:2.0.0'
     compile 'org.jboss.aerogear:aerogear-android-store:2.0.0'
-
+    compile 'com.melnykov:floatingactionbutton:1.1.0'
 }
