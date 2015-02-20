@@ -16,13 +16,10 @@
  */
 package org.jboss.aerogear.android.cookbook.passwordmanager;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.jboss.aerogear.android.cookbook.passwordmanager.fragments.DetailFragment;
@@ -37,12 +34,7 @@ import java.util.Collection;
 
 public class PasswordManagerActivity extends ActionBarActivity {
 
-    private enum Display {
-        LOGIN, LIST, FORM, DETAIL
-    }
-
     private PasswordManagerApplication application;
-    private Display currentFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,27 +50,7 @@ public class PasswordManagerActivity extends ActionBarActivity {
         displayLogin();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.crypto_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.setGroupVisible(R.id.group_add, Display.LIST.equals(currentFragment));
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        displayForm();
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void displayFragment(Fragment fragment, Display display, boolean enableBack) {
-        currentFragment = display;
-
+    private void displayFragment(Fragment fragment, boolean enableBack) {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
         if (enableBack) {
@@ -88,18 +60,16 @@ public class PasswordManagerActivity extends ActionBarActivity {
         fragmentTransaction
                 .replace(R.id.frame, fragment, fragment.getClass().getSimpleName())
                 .commit();
-
-        invalidateOptionsMenu();
     }
 
     private void displayLogin() {
-        displayFragment(new LoginFragment(), Display.LOGIN, false);
+        displayFragment(new LoginFragment(), false);
     }
 
     public void displayList() {
         try {
             Collection credentials = application.getStore().readAll();
-            displayFragment(new ListFragment(credentials), Display.LIST, false);
+            displayFragment(new ListFragment(credentials), false);
         } catch (InvalidKeyException e) {
             displayLogin();
             Toast.makeText(this, getString(R.string.invalid_credential), Toast.LENGTH_LONG).show();
@@ -107,12 +77,12 @@ public class PasswordManagerActivity extends ActionBarActivity {
 
     }
 
-    private void displayForm() {
-        displayFragment(new FormFragment(), Display.FORM, true);
+    public void displayForm() {
+        displayFragment(new FormFragment(), true);
     }
 
     public void displayInfo(Credential credential) {
-        displayFragment(new DetailFragment(credential), Display.DETAIL, true);
+        displayFragment(new DetailFragment(credential), true);
     }
 
     public void login(String passphrase) {

@@ -27,6 +27,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.melnykov.fab.FloatingActionButton;
+
 import org.jboss.aerogear.android.cookbook.passwordmanager.PasswordManagerActivity;
 import org.jboss.aerogear.android.cookbook.passwordmanager.R;
 import org.jboss.aerogear.android.cookbook.passwordmanager.model.Credential;
@@ -80,7 +82,17 @@ public class ListFragment extends Fragment {
                             }
                         })
                         .setNegativeButton(getString(R.string.no), null).show();
-                return false;
+
+                return true;
+            }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.attachToListView(listView);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((PasswordManagerActivity) getActivity()).displayForm();
             }
         });
 
