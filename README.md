@@ -28,7 +28,7 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 | [AuthExamples](AuthExamples) | Basic and Digest Authentication | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [AeroDoc](AeroDoc) | A client of AeroDoc backend | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: |
 
-## Others AeroGear Android example apps
+## Other AeroGear Android example apps
 
 | App | Description | Pipe | Store | Security | Auth | Authz | Push |
 |-----|-------------|:----:|:-----:|:--------:|:----:|:-----:|:-----:| 
