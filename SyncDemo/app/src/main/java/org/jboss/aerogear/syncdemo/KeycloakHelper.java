@@ -31,7 +31,7 @@ import java.net.URL;
 
 public class KeycloakHelper {
 
-    private static final String DOC_SERVER_URL = "http://192.168.1.195:8080";
+    private static final String DOC_SERVER_URL = "http://192.168.11.160:8080";
     private static final String AUTHZ_URL = DOC_SERVER_URL + "/auth";
     private static final String AUTHZ_ENDPOINT = "/realms/sync-demo/tokens/login";
     private static final String ACCESS_TOKEN_ENDPOINT = "/realms/sync-demo/tokens/access/codes";

@@ -18,7 +18,7 @@ import java.net.URL;
 public class SyncApplication extends MultiDexApplication {
 
 
-    private static final String DOC_SERVER_URL = "http://192.168.1.195:8080";
+    private static final String DOC_SERVER_URL = "http://192.168.11.160:8080";
     private static final String MODULE_NAME = "KeyCloakAuthz";
     private static final String TAG = SyncApplication.class.getSimpleName();
 
