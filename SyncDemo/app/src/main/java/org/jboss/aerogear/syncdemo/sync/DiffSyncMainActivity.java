@@ -30,8 +30,6 @@ import org.jboss.aerogear.sync.ClientDocument;
 import org.jboss.aerogear.sync.DefaultClientDocument;
 import org.jboss.aerogear.syncdemo.R;
 
-import java.util.Observable;
-
 public class DiffSyncMainActivity extends SyncActivity {
 
     public static final String DOCUMENT_ID = "DiffSyncMainActivity.DOCUMENT_ID";
@@ -120,7 +118,7 @@ public class DiffSyncMainActivity extends SyncActivity {
     }
 
     @Override
-    public void update(final Observable observable, final Object data) {
+    public void patched(final ClientDocument data) {
         Log.i(DiffSyncMainActivity.class.getName(), "updated:" + data);
         runOnUiThread(new Runnable() {
             @Override
