@@ -31,6 +31,9 @@
             <meta-data
                 android:name="serverHost"
                 android:value="10.0.2.2" />
+            <meta-data
+                android:name="serverPath"
+                android:value="/sync" />
         </service>
 
         <activity
