@@ -17,7 +17,6 @@
 package org.jboss.aerogear.android.cookbook.syncdemo;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,14 +47,12 @@ public class DiffSyncMainActivity extends SyncActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Intent startIntent = getIntent();
-
-
         setContentView(R.layout.editor);
 
-//        documentId = startIntent.getStringExtra(DOCUMENT_ID);
-        documentId = "12345";
+        documentId = getIntent().getStringExtra(DOCUMENT_ID);
+        if(documentId == null) {
+            documentId = "12345";
+        }
 
         name = (TextView) findViewById(R.id.name);
         profession = (TextView) findViewById(R.id.profession);
@@ -70,8 +67,6 @@ public class DiffSyncMainActivity extends SyncActivity {
         setFields(content);
 
         Log.i("onCreate", "observer :" + this);
-
-
     }
 
     @Override
