@@ -8,12 +8,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/document_name"
         android:layout_gravity="center_horizontal"
-        android:hint="Document Name" />
+        android:hint="@string/document_name" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:id="@+id/cancel_button"
         android:layout_below="@+id/document_name"
         android:layout_alignParentLeft="true"
@@ -22,7 +22,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create"
+        android:text="@string/create"
         android:id="@+id/save_button"
         android:layout_gravity="right"
         android:layout_below="@+id/document_name"
