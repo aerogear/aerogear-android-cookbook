@@ -8,7 +8,7 @@ public class Doc implements Serializable {
 
     @RecordId
     private Long id;
-    
+
     private String docId = "";
     private String userId = "";
     private boolean shared = false;
@@ -53,5 +53,5 @@ public class Doc implements Serializable {
     public void setDocName(String docName) {
         this.docName = docName;
     }
-    
+
 }

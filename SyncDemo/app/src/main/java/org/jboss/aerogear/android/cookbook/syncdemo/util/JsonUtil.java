@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public final class JsonUtil {
 
     private static final ObjectMapper OM = new ObjectMapper();
-    
+
     private JsonUtil() {
     }
 
@@ -32,6 +32,7 @@ public final class JsonUtil {
             throw new RuntimeException(e.getMessage(), e);
         }
     }
+
     public static JsonNode toJsonNode(final Info info) {
         try {
             final ObjectNode content = OM.createObjectNode();
@@ -47,6 +48,7 @@ public final class JsonUtil {
             throw new RuntimeException(e.getMessage(), e);
         }
     }
+
     public static Info fromJsonNode(final JsonNode json) {
         try {
             final ArrayNode hobbies = (ArrayNode) json.get("hobbies");
@@ -60,6 +62,7 @@ public final class JsonUtil {
             throw new RuntimeException(e.getMessage(), e);
         }
     }
+
     public static Info fromJson(final String json) {
         try {
             final JSONObject jsonObject = new JSONObject(json);

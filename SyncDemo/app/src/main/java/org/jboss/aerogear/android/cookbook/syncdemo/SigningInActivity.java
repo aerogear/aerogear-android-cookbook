@@ -11,13 +11,12 @@ import org.jboss.aerogear.android.core.Callback;
 
 public class SigningInActivity extends ActionBarActivity {
 
-    
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-        
+
     }
 
     @Override
