@@ -24,8 +24,5 @@ public class SignInActivity extends ActionBarActivity {
         
     }
 
-    private void startSignIn() {
-        
-    }
 
 }

@@ -101,11 +101,6 @@ public class DiffSyncMainActivity extends SyncActivity {
                 hobby3.getText().toString());
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
     private void setFields(final Info content) {
         name.setText(content.getName());
         profession.setText(content.getProfession());
