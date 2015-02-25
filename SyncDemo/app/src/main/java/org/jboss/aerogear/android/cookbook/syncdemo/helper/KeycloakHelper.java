@@ -23,9 +23,9 @@ import org.jboss.aerogear.android.authorization.AuthorizationManager;
 import org.jboss.aerogear.android.authorization.AuthzModule;
 import org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthorizationConfiguration;
 import org.jboss.aerogear.android.authorization.oauth2.OAuthWebViewDialog;
+import org.jboss.aerogear.android.cookbook.syncdemo.vo.DocUser;
 import org.jboss.aerogear.android.core.Callback;
 import org.jboss.aerogear.android.pipe.PipeManager;
-import org.jboss.aerogear.android.cookbook.syncdemo.vo.DocUser;
 
 import java.net.URL;
 
@@ -58,7 +58,6 @@ public class KeycloakHelper {
             throw new RuntimeException(e);
         }
     }
-
 
 
     public static void connect(final Activity activity, final Callback callback) {

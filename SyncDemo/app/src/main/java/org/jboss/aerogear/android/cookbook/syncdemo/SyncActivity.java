@@ -19,10 +19,10 @@ public abstract class SyncActivity extends ActionBarActivity implements SyncServ
     @Override
     protected void onStart() {
         super.onStart();
-        serviceConnection  = new ServiceConnection() {
+        serviceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
-                final SyncService syncService = ((SyncService.SyncServiceBinder)service).getService();
+                final SyncService syncService = ((SyncService.SyncServiceBinder) service).getService();
                 SyncActivity.this.service = syncService;
                 syncService.subscribe(SyncActivity.this);
 

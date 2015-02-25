@@ -9,7 +9,7 @@ public class DocUser implements Serializable {
 
     @RecordId
     private Long id;
-    
+
     private String userId = "";
 
     public Long getId() {

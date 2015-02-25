@@ -17,9 +17,9 @@ import android.widget.TextView;
 import com.melnykov.fab.FloatingActionButton;
 
 import org.jboss.aerogear.android.cookbook.syncdemo.callback.DocCallback;
+import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
-import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +132,7 @@ public class DocsActivity extends ActionBarActivity {
     }
 
     public void refreshDocs(List<Doc> docs) {
-         this.documents = docs;
+        this.documents = docs;
         ArrayList<String> docNameArray = new ArrayList<>(docs.size());
         for (Doc doc : docs) {
             docNameArray.add(doc.getDocName());

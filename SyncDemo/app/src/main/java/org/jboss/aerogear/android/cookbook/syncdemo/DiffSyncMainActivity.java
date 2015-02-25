@@ -44,18 +44,18 @@ public class DiffSyncMainActivity extends SyncActivity {
     private TextView hobby2;
     private TextView hobby3;
     private Info content;
-    
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent startIntent = getIntent();
-        
-        
+
+
         setContentView(R.layout.editor);
-        
+
 //        documentId = startIntent.getStringExtra(DOCUMENT_ID);
-          documentId = "12345";
+        documentId = "12345";
 
         name = (TextView) findViewById(R.id.name);
         profession = (TextView) findViewById(R.id.profession);
@@ -70,8 +70,8 @@ public class DiffSyncMainActivity extends SyncActivity {
         setFields(content);
 
         Log.i("onCreate", "observer :" + this);
-        
-        
+
+
     }
 
     @Override
@@ -92,7 +92,7 @@ public class DiffSyncMainActivity extends SyncActivity {
 
 
     }
-    
+
     private Info gatherUpdates() {
         return new Info(content.getName(),
                 profession.getText().toString(),
@@ -111,7 +111,7 @@ public class DiffSyncMainActivity extends SyncActivity {
         hobby3.setText(content.getHobbies().get(3));
     }
 
-    private static ClientDocument<JsonNode> clientDoc(final String id, final String clientId, final JsonNode content) {        
+    private static ClientDocument<JsonNode> clientDoc(final String id, final String clientId, final JsonNode content) {
         return new DefaultClientDocument<>(id, clientId, content);
     }
 
