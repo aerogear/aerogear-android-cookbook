@@ -26,7 +26,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Into KeyCloak"
+        android:text="@string/sign_keycloak"
         android:id="@+id/sign_in_button"
         android:layout_gravity="center"
         android:gravity="center"

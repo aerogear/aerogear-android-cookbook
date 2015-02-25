@@ -30,4 +30,8 @@
     <string name="hobbies">Hobbies:</string>
     <string name="send_sync">Sync</string>
     <string name="aerogear_logo_content_description">AeroGear Logo</string>
+    <string name="sign_keycloak">Sign Into KeyCloak</string>
+    <string name="document_name">Document Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
 </resources>
