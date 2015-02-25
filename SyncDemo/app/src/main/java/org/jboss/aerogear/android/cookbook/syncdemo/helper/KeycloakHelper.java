@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.jboss.aerogear.android.cookbook.syncdemo;
+package org.jboss.aerogear.android.cookbook.syncdemo.helper;
 
 import android.app.Activity;
 

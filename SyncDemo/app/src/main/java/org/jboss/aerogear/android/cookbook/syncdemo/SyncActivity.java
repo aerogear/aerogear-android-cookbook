@@ -1,4 +1,4 @@
-package org.jboss.aerogear.android.cookbook.syncdemo.sync;
+package org.jboss.aerogear.android.cookbook.syncdemo;
 
 import android.content.ComponentName;
 import android.content.Context;

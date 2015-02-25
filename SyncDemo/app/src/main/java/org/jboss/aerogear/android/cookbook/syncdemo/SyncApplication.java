@@ -4,6 +4,7 @@ import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import org.jboss.aerogear.android.authorization.AuthorizationManager;
+import org.jboss.aerogear.android.cookbook.syncdemo.helper.KeycloakHelper;
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
 import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;

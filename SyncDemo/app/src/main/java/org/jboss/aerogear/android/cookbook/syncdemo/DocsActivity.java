@@ -16,9 +16,9 @@ import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
 
+import org.jboss.aerogear.android.cookbook.syncdemo.callback.DocCallback;
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
-import org.jboss.aerogear.android.cookbook.syncdemo.sync.DiffSyncMainActivity;
 import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;
 
 import java.util.ArrayList;
