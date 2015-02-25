@@ -93,7 +93,7 @@ public class DiffSyncMainActivity extends SyncActivity {
     }
     
     private Info gatherUpdates() {
-        return new Info(content.getName().toString(),
+        return new Info(content.getName(),
                 profession.getText().toString(),
                 hobby0.getText().toString(),
                 hobby1.getText().toString(),
