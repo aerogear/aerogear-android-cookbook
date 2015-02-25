@@ -9,9 +9,6 @@ import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;
 
 import java.util.List;
 
-/**
- * Created by summers on 1/22/15.
- */
 public class DocCallback extends AbstractActivityCallback<Doc> {
 
     private static final String TAG = "DocsCallback";

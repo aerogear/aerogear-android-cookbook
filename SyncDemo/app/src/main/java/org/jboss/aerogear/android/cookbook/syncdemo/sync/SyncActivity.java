@@ -10,9 +10,6 @@ import android.support.v7.app.ActionBarActivity;
 import org.jboss.aerogear.android.sync.SyncServerConnectionListener;
 import org.jboss.aerogear.android.sync.SyncService;
 
-/**
- * Created by summers on 1/28/15.
- */
 public abstract class SyncActivity extends ActionBarActivity implements SyncServerConnectionListener {
 
     private SyncService service;
