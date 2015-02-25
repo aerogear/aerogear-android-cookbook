@@ -30,6 +30,8 @@ import org.jboss.aerogear.sync.ClientDocument;
 import org.jboss.aerogear.sync.DefaultClientDocument;
 import org.jboss.aerogear.syncdemo.R;
 
+import java.util.UUID;
+
 public class DiffSyncMainActivity extends SyncActivity {
 
     public static final String DOCUMENT_ID = "DiffSyncMainActivity.DOCUMENT_ID";
@@ -53,7 +55,9 @@ public class DiffSyncMainActivity extends SyncActivity {
         
         setContentView(R.layout.editor);
         
-        documentId = startIntent.getStringExtra(DOCUMENT_ID);
+//        documentId = startIntent.getStringExtra(DOCUMENT_ID);
+          documentId = "966f3bcd-18a4-4f79-bda9-96d91d964e2d";
+
         name = (TextView) findViewById(R.id.name);
         profession = (TextView) findViewById(R.id.profession);
         hobby0 = (TextView) findViewById(R.id.hobby0);
