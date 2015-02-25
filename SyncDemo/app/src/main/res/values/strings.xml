@@ -18,9 +18,7 @@
     <string name="app_name">AeroGear Sync HelloWorld</string>
     <string name="project_name">UnifiedPush Sync Client POC</string>
     <string name="aerogear_logo">AeroGear Logo</string>
-    <string name="notifications">Notifications</string>
     <string name="nothing_here">Nothing here yet</string>
-    <string name="send_notification">Send notifications from the console</string>
     <string name="notification_icon">Notification icon</string>
     <string name="logging_in">Loggin In...</string>
     <string name="title_activity_docs">Docs</string>
@@ -31,12 +29,5 @@
     <string name="profession">Profession:</string>
     <string name="hobbies">Hobbies:</string>
     <string name="send_sync">Sync</string>
-    <string name="wait">Wait...</string>
-    <string name="syncing">Syncing</string>
-    <string name="error_occurred">Something went wrong</string>
-    <string name="warning">Warning</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
     <string name="aerogear_logo_content_description">AeroGear Logo</string>
-    <string name="senderID">213383135458</string>
 </resources>
