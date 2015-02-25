@@ -67,12 +67,6 @@ public class DocsActivity extends ActionBarActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(IGNORE_EXTRAS, true);
