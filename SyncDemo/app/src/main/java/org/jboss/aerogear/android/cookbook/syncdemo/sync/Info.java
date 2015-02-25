@@ -1,4 +1,4 @@
-package org.jboss.aerogear.syncdemo.sync;
+package org.jboss.aerogear.android.cookbook.syncdemo.sync;
 
 import java.util.ArrayList;
 import java.util.Arrays;

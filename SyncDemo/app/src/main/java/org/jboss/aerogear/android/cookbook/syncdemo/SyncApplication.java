@@ -1,4 +1,4 @@
-package org.jboss.aerogear.syncdemo;
+package org.jboss.aerogear.android.cookbook.syncdemo;
 
 import android.support.multidex.MultiDexApplication;
 import android.util.Log;
@@ -6,8 +6,8 @@ import android.util.Log;
 import org.jboss.aerogear.android.authorization.AuthorizationManager;
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
-import org.jboss.aerogear.syncdemo.vo.Doc;
-import org.jboss.aerogear.syncdemo.vo.DocUser;
+import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;
+import org.jboss.aerogear.android.cookbook.syncdemo.vo.DocUser;
 
 import java.net.MalformedURLException;
 import java.net.URL;

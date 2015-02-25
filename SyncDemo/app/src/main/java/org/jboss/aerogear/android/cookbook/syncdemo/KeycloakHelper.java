@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.jboss.aerogear.syncdemo;
+package org.jboss.aerogear.android.cookbook.syncdemo;
 
 import android.app.Activity;
 
@@ -25,7 +25,7 @@ import org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthorizationConfig
 import org.jboss.aerogear.android.authorization.oauth2.OAuthWebViewDialog;
 import org.jboss.aerogear.android.core.Callback;
 import org.jboss.aerogear.android.pipe.PipeManager;
-import org.jboss.aerogear.syncdemo.vo.DocUser;
+import org.jboss.aerogear.android.cookbook.syncdemo.vo.DocUser;
 
 import java.net.URL;
 
