@@ -1,4 +1,4 @@
-package org.jboss.aerogear.syncdemo;
+package org.jboss.aerogear.android.cookbook.syncdemo;
 
 import android.app.DialogFragment;
 import android.content.Intent;
@@ -18,8 +18,8 @@ import com.melnykov.fab.FloatingActionButton;
 
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
-import org.jboss.aerogear.syncdemo.sync.DiffSyncMainActivity;
-import org.jboss.aerogear.syncdemo.vo.Doc;
+import org.jboss.aerogear.android.cookbook.syncdemo.sync.DiffSyncMainActivity;
+import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;
 
 import java.util.ArrayList;
 import java.util.List;

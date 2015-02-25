@@ -14,7 +14,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.jboss.aerogear.syncdemo.sync;
+package org.jboss.aerogear.android.cookbook.syncdemo.sync;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import org.jboss.aerogear.sync.ClientDocument;
 import org.jboss.aerogear.sync.DefaultClientDocument;
-import org.jboss.aerogear.syncdemo.R;
+import org.jboss.aerogear.android.cookbook.syncdemo.R;
 
 public class DiffSyncMainActivity extends SyncActivity {
 

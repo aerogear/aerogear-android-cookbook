@@ -5,13 +5,18 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "org.jboss.aerogear.syncdemo"
+        applicationId "org.jboss.aerogear.android.cookbook.syncdemo"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,6 +35,7 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:multidex:1.0.0'
     compile 'com.melnykov:floatingactionbutton:1.1.0'    
     compile 'org.jboss.aerogear:aerogear-android-core:2.0.0'
@@ -40,5 +46,4 @@ dependencies {
     compile ('org.jboss.aerogear:sync-json-patch-core:0.0.1-SNAPSHOT')
     compile ('org.jboss.aerogear:sync-json-patch-client:0.0.1-SNAPSHOT')
     compile ('org.jboss.aerogear:sync-client-netty:0.0.1-SNAPSHOT')
-    compile 'com.android.support:appcompat-v7:21.0.3'
 }

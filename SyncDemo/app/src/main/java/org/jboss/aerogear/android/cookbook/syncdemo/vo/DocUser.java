@@ -1,5 +1,5 @@
 
-package org.jboss.aerogear.syncdemo.vo;
+package org.jboss.aerogear.android.cookbook.syncdemo.vo;
 
 import org.jboss.aerogear.android.core.RecordId;
 

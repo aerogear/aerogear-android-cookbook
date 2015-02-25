@@ -1,4 +1,4 @@
-package org.jboss.aerogear.syncdemo;
+package org.jboss.aerogear.android.cookbook.syncdemo;
 
 /**
  * Created by summers on 1/20/15.
