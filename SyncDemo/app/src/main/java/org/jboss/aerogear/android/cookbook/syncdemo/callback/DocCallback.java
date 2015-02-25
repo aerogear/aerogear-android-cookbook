@@ -1,8 +1,9 @@
-package org.jboss.aerogear.android.cookbook.syncdemo;
+package org.jboss.aerogear.android.cookbook.syncdemo.callback;
 
 import android.util.Log;
 import android.widget.Toast;
 
+import org.jboss.aerogear.android.cookbook.syncdemo.DocsActivity;
 import org.jboss.aerogear.android.pipe.PipeManager;
 import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
 import org.jboss.aerogear.android.cookbook.syncdemo.vo.Doc;

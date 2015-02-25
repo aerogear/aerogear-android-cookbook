@@ -6,6 +6,7 @@ import org.jboss.aerogear.android.core.RecordId;
 import java.io.Serializable;
 
 public class DocUser implements Serializable {
+
     @RecordId
     private Long id;
     
@@ -34,4 +35,5 @@ public class DocUser implements Serializable {
                 ", userId='" + userId + '\'' +
                 '}';
     }
+
 }

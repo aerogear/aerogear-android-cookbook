@@ -5,6 +5,7 @@ import org.jboss.aerogear.android.core.RecordId;
 import java.io.Serializable;
 
 public class Doc implements Serializable {
+
     @RecordId
     private Long id;
     

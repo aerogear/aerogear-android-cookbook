@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
+import org.jboss.aerogear.android.cookbook.syncdemo.helper.KeycloakHelper;
 import org.jboss.aerogear.android.core.Callback;
 
 
@@ -32,7 +33,7 @@ public class SigningInActivity extends ActionBarActivity {
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
-                        
+
                     }
 
                     @Override
