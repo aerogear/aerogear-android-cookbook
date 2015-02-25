@@ -12,9 +12,6 @@ import org.jboss.aerogear.android.cookbook.syncdemo.vo.DocUser;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by summers on 1/29/15.
- */
 public class SyncApplication extends MultiDexApplication {
 
 
