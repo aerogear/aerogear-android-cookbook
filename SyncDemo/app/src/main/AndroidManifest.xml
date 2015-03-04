@@ -39,7 +39,7 @@
         <service android:name="org.jboss.aerogear.android.sync.SyncService">
             <meta-data
                 android:name="serverHost"
-                android:value="192.168.56.1" />
+                android:value="10.0.2.2" />
             <meta-data
                 android:name="serverPort"
                 android:value="7777" />
