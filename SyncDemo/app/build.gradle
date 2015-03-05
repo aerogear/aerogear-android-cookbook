@@ -22,7 +22,7 @@ android {
             minifyEnabled false
         }
     }
-    
+
     packagingOptions {
         exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/LICENSE'
@@ -30,8 +30,8 @@ android {
         exclude 'META-INF/ASL-2.0.txt'
         exclude 'META-INF/LGPL-3.0.txt'
         exclude 'META-INF/io.netty.versions.properties'        
-    }
-    
+    } 
+
 }
 
 dependencies {
@@ -42,8 +42,8 @@ dependencies {
     compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0'
     compile 'org.jboss.aerogear:aerogear-android-store:2.0.0'
     compile 'org.jboss.aerogear:aerogear-android-authz:2.0.0'
-    compile (group:'org.jboss.aerogear', name:'sync-client-android', version:'0.0.1-SNAPSHOT', changing:'true' , ext:'aar')
-    compile ('org.jboss.aerogear:sync-json-patch-core:0.0.1-SNAPSHOT')
-    compile ('org.jboss.aerogear:sync-json-patch-client:0.0.1-SNAPSHOT')
-    compile ('org.jboss.aerogear:sync-client-netty:0.0.1-SNAPSHOT')
+    compile 'org.jboss.aerogear:aerogear-android-sync:0.0.1-SNAPSHOT'
+    compile 'org.jboss.aerogear:sync-json-patch-core:0.0.1-SNAPSHOT'
+    compile 'org.jboss.aerogear:sync-json-patch-client:0.0.1-SNAPSHOT'
+    compile 'org.jboss.aerogear:sync-client-netty:0.0.1-SNAPSHOT'
 }
