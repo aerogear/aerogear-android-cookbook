@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "org.jboss.aerogear.android.cookbook.syncdemo"
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/ASL-2.0.txt'
+        exclude 'META-INF/LGPL-3.0.txt'
+        exclude 'META-INF/io.netty.versions.properties'        
+    } 
+
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.melnykov:floatingactionbutton:1.1.0'    
+    compile 'org.jboss.aerogear:aerogear-android-core:2.0.0'
+    compile 'org.jboss.aerogear:aerogear-android-pipe:2.0.0'
+    compile 'org.jboss.aerogear:aerogear-android-store:2.0.0'
+    compile 'org.jboss.aerogear:aerogear-android-authz:2.0.0'
+    compile 'org.jboss.aerogear:aerogear-android-sync:0.0.1-SNAPSHOT'
+    compile 'org.jboss.aerogear:sync-json-patch-core:0.0.1-SNAPSHOT'
+    compile 'org.jboss.aerogear:sync-json-patch-client:0.0.1-SNAPSHOT'
+    compile 'org.jboss.aerogear:sync-client-netty:0.0.1-SNAPSHOT'
+}

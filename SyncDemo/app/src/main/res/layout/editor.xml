@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:gravity="center"
+              android:padding="30dp"
+              android:stretchColumns="1">
+  
+  
+    <ImageView
+      android:layout_width="250dp"
+      android:layout_height="80dp"
+      android:layout_gravity="top"
+      android:contentDescription="@string/aerogear_logo_content_description"
+      android:src="@drawable/aerogear_logo"/>
+  
+
+  
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="right"
+      android:textSize="20sp" android:textStyle="bold"
+      android:text="@string/project_title"/>
+  
+
+  
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/name"/>
+  
+  
+    <TextView
+      android:id="@+id/name"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"/>
+  
+
+  
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/profession"/>
+  
+  
+  
+    <EditText
+      android:id="@+id/profession"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  
+  
+  
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/hobbies"/>
+  
+  
+  
+    <EditText
+      android:id="@+id/hobby0"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  
+  
+  
+    <EditText
+      android:id="@+id/hobby1"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  
+  
+  
+    <EditText
+      android:id="@+id/hobby2"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  
+  
+  
+    <EditText
+      android:id="@+id/hobby3"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"/>
+  
+
+  
+    <Button
+      android:id="@+id/sync"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/send_sync"/>
+  
+
+</LinearLayout>
