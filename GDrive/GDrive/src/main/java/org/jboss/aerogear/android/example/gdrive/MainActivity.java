@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (authzModule.isAuthorized()) {
-            retriveFiles();
+            retrieveFiles();
         } else {
             authz();
         }
@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onSuccess(String o) {
                     Log.d("TOKEN ++ ", o);
-                    retriveFiles();
+                    retrieveFiles();
                 }
 
                 @Override
@@ -98,7 +98,7 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    private void retriveFiles() {
+    private void retrieveFiles() {
 
         displayLoading();
 
