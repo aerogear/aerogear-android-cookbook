@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aerogear OTP Android Demo</string>
+    <string name="project_title">OTP Demo</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="login">Login</string>
+    <string name="using_login">Using Login</string>
+    <string name="using_qrcode">Using QR Code</string>
+    <string name="wait">Wait...</string>
+    <string name="loging">Loging</string>
+    <string name="error_occurred">Something went wrong</string>
+    <string name="warning">Warning</string>
+    <string name="error_occurred_qrcode">An error occurred while trying to read the QRCode. Do you want to try again?
+    </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="aerogear_logo_content_description">AeroGear Logo</string>
+</resources>
