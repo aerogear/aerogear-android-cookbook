@@ -1,12 +1,12 @@
 # Shoot and Share: Basic Mobile Application showing AeroGear Pipe and Authorization with multiple service providers
 ---------
-Authors: Summers Pittman (secondsun) - Daniel Passos (dpassos)
-Level: Advanced
-Technologies: Java, Android, Google, Facebook, KeyCloak
-Summary: And example of interacting with several modern web services.
-Target Product: -
-Product Versions: -
-Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/ShootAndShare
+Authors: Summers Pittman (secondsun) - Daniel Passos (dpassos)   
+Level: Advanced   
+Technologies: Java, Android, Google, Facebook, KeyCloak   
+Summary: And example of interacting with several modern web services.   
+Target Product: -   
+Product Versions: -   
+Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/ShootAndShare   
 
 ## What is it?
 

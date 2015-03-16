@@ -1,12 +1,12 @@
 # AGDroid GDrive: Basic Mobile Application showing the AeroGear Authz (OAuth2) feature on Android
 ---------
-Author: Daniel Passos (dpassos) & Summers Pittman (supittma)
-Level: Beginner
-Technologies: Java, Android
-Summary: A basic example of OAuth2 : Login and retrieve data.
-Target Product: -
-Product Versions: -
-Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/GDrive
+Author: Daniel Passos (dpassos) & Summers Pittman (supittma)   
+Level: Beginner   
+Technologies: Java, Android   
+Summary: A basic example of OAuth2 : Login and retrieve data.   
+Target Product: -   
+Product Versions: -   
+Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/GDrive   
 
 ## What is it?
 
