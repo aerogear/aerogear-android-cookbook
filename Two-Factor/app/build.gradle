@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.twofactor"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "2.1.0"
     }
 
     lintOptions {

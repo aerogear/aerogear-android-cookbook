@@ -1,31 +1,39 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.example.gdrive"
         minSdkVersion 16
-        targetSdkVersion 21
-        versionCode 2
-        versionName "2.0.0"
+        targetSdkVersion 22
+        versionCode 3
+        versionName "2.1.0"
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dexOptions { javaMaxHeapSize "2g" }
 }
 
 dependencies {
 
-    compile ('org.jboss.aerogear:aerogear-android-authz:2.0.0')  {
-        transitive=true
-    }
-    compile 'com.android.support:appcompat-v7:21.0.2'
+    compile 'com.android.support:appcompat-v7:22.+'
     compile 'com.google.guava:guava:18.0'
     compile 'com.google.code.gson:gson:2.2.2'
     compile 'com.squareup.picasso:picasso:2.2.0'
+    compile ('org.jboss.aerogear:aerogear-android-authz:2.1.0')  {
+        transitive=true
+    }
+
 }
