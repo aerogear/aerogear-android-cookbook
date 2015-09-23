@@ -1,9 +1,9 @@
 # AGDroid Two-Factor: Basic Mobile Application showing the AeroGear OTP feature on Android
 ---------
-Author: Daniel Passos (dpassos)
-Level: Beginner
-Technologies: Java, Android
-Summary: A basic example how to use OTP
+Author: Daniel Passos (dpassos)   
+Level: Beginner   
+Technologies: Java, Android   
+Summary: A basic example how to use OTP   
 Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/Two-Factor
 
 ## What is it?
