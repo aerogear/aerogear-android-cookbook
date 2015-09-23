@@ -22,13 +22,14 @@ The ```AGDroid Two-Factor``` project demonstrates how to include OTP functionali
 
 **Note**: The server side configuration is not mandatory for testing OTP with Android.
 
-1. Follow directions to install [Shoot 'n Share backend](https://github.com/aerogear/aerogear-backend-cookbook/blob/master/Shoot/README.md)
-1. Open the [console shoot-realm credentials](http://localhost:8080/auth/admin/master/console/#/realms/shoot-realm/required-credentials) and add TOTP in `Required User Credentials`
-1. Open Shoot 'n Share backend http://localhost:8080/shoot/photos
+### Configuring a testing server
+
+1. Follow directions to install [OTP-Demo](https://github.com/aerogear/aerogear-backend-cookbook/blob/master/OTP-Demo/README.md)
+1. Open OTP backend app [http://localhost:8080/otp-demo](http://localhost:8080/otp-demo)
 1. Login with username: *user* and password: *password*.
-1. Now open [android OTP client application](https://github.com/aerogear/aerogear-android-cookbook/tree/master/Two-Factor) on your phone
+1. Now open this "OTP client application" on your phone
 1. Then scan the *Scan QRCode*
-1. Enter the current OTP on your mobile
+1. Enter the current OTP on your mobile into the form
 
 For more details, please refer to our [documentation](http://aerogear.org/docs/specs/aerogear-security-otp/)
 
