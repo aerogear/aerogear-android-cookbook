@@ -24,7 +24,7 @@ The ```AGDroid Two-Factor``` project demonstrates how to include OTP functionali
 
 ### Configuring a testing server
 
-1. Follow directions to install [OTP-Demo](https://github.com/aerogear/aerogear-backend-cookbook/blob/master/OTP-Demo/README.md)
+1. Follow directions to install [OTP-Demo](https://github.com/aerogear/aerogear-backend-cookbook/blob/master/OTP-demo/README.md)
 1. Open OTP backend app [http://localhost:8080/otp-demo](http://localhost:8080/otp-demo)
 1. Login with username: *user* and password: *password*.
 1. Now open this "OTP client application" on your phone
