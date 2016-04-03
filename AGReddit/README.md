@@ -14,6 +14,11 @@ The ```AGReddit``` project demonstrates how to access remote data, page through 
 
 This simple project consists of a ready-to-build Android application. If you do not have a Reddit account, you can still use the application.  If you create an account on [Reddit](http://www.reddit.com) you can log in and browse your personal front page.
 
+## Out of Date
+
+Reddit has changed their authentication system to use exclusively OAuth2.  The authentication portions will no longer work with the live Reddit systems.  
+
+Please follow the [update JIRA](https://issues.jboss.org/browse/AGDROID-533) for more information.
 
 ## How do I run it?
 
