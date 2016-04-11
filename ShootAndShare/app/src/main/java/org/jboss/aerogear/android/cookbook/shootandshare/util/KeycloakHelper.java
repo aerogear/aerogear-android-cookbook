@@ -36,9 +36,9 @@ public class KeycloakHelper {
 
     private static final String SHOOT_SERVER_URL = "";
     private static final String AUTHZ_URL = SHOOT_SERVER_URL +"/auth";
-    private static final String AUTHZ_ENDPOINT = "/realms/shoot-realm/tokens/login";
-    private static final String ACCESS_TOKEN_ENDPOINT = "/realms/shoot-realm/tokens/access/codes";
-    private static final String REFRESH_TOKEN_ENDPOINT = "/realms/shoot-realm/tokens/refresh";
+    private static final String AUTHZ_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/auth";
+    private static final String ACCESS_TOKEN_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/token";
+    private static final String REFRESH_TOKEN_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/token";
     private static final String AUTHZ_ACCOOUNT_ID = "keycloak-token";
     private static final String AUTHZ_CLIENT_ID = "shoot-third-party";
     private static final String AUTHZ_REDIRECT_URL = "http://oauth2callback";
