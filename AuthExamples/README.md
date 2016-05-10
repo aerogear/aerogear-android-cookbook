@@ -22,7 +22,7 @@ This application is run on an Android device or emulator.  It also requires the 
 
 * [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 2.2.1](http://www.gradle.org/)
-* Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 21](http://developer.android.com/tools/revisions/platforms.html)
+* Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 23](http://developer.android.com/tools/revisions/platforms.html)
 * [Authentication Server](https://github.com/aerogear/aerogear-backend-cookbook/tree/master/Authentication)
 * [Maven 3.1 or greater](http://maven.apache.org/download.cgi)
 
