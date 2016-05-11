@@ -22,7 +22,7 @@ When the application is deployed to an Android device, the application will ask 
 
 * [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 2.1](http://www.gradle.org/)
-* Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 19](http://developer.android.com/tools/revisions/platforms.html)
+* Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 23](http://developer.android.com/tools/revisions/platforms.html)
 
 For the complete instructions about how to setup Google credentials, visit our [OAuth2 documentation guide](https://aerogear.org/docs/guides/security/oauth2-guide/#Google)
 

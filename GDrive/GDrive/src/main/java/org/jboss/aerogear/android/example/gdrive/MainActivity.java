@@ -3,6 +3,7 @@ package org.jboss.aerogear.android.example.gdrive;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
@@ -31,7 +32,7 @@ import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_REDIRECT
 import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_TOKEN_ENDPOINT;
 import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_URL;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     private AuthzModule authzModule;
 
