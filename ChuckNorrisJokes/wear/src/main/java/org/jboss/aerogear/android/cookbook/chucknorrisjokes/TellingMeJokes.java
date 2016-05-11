@@ -60,7 +60,7 @@ public class TellingMeJokes extends Activity implements GoogleApiClient.Connecti
             }
 
             @Override
-            protected Object instantiateItem(ViewGroup viewGroup, int row, int col) {
+            public Object instantiateItem(ViewGroup viewGroup, int row, int col) {
                 final View view;
 
                 switch (col) {
@@ -98,7 +98,7 @@ public class TellingMeJokes extends Activity implements GoogleApiClient.Connecti
             }
 
             @Override
-            protected void destroyItem(ViewGroup viewGroup, int row, int col, Object o) {
+            public void destroyItem(ViewGroup viewGroup, int row, int col, Object o) {
                 viewGroup.removeView((View) o);
             }
 
