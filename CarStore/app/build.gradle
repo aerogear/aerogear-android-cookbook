@@ -7,9 +7,9 @@ android {
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.carstore"
         minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 3
-        versionName "2.1.0"
+        targetSdkVersion 23
+        versionCode 4
+        versionName "3.0.0"
     }
 
     lintOptions {
@@ -27,6 +27,6 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:design:23.+'
-    compile 'org.jboss.aerogear:aerogear-android-core:3.0.0-SNAPSHOT'
-    compile 'org.jboss.aerogear:aerogear-android-store:3.0.0-SNAPSHOT'
+    compile 'org.jboss.aerogear:aerogear-android-core:3.0.0'
+    compile 'org.jboss.aerogear:aerogear-android-store:3.0.0'
 }

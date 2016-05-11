@@ -42,8 +42,7 @@ public class PasswordManagerApplication extends Application {
         store = (EncryptedSQLStore<Credential>) DataManager.config("pwdStore", EncryptedSQLStoreConfiguration.class)
                 .withContext(getApplicationContext())
                 .usingPassphrase(passphrase)
-                .forClass(Credential.class)
-                .store();
+                .store(Credential.class);
 
         store.openSync();
     }
