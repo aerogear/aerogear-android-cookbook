@@ -39,7 +39,7 @@ public class GooglePlusHelper {
     private static final String AUTHZ_URL = "https://accounts.google.com";
     private static final String AUTHZ_ENDPOINT = "/o/oauth2/auth";
     private static final String AUTHZ_TOKEN_ENDPOINT = "/o/oauth2/token";
-    private static final String AUTHZ_ACCOOUNT_ID = "google-token";
+    private static final String AUTHZ_ACCOUNT_ID = "google-token";
     private static final String AUTHZ_REDIRECT_URL = "http://localhost";
     private static final String MODULE_NAME = "GoogleDriveAuthz";
     private static final String AUTHZ_CLIENT_ID = "";
@@ -51,8 +51,7 @@ public class GooglePlusHelper {
                     .setBaseURL(new URL(AUTHZ_URL))
                     .setAuthzEndpoint(AUTHZ_ENDPOINT)
                     .setAccessTokenEndpoint(AUTHZ_TOKEN_ENDPOINT)
-                    .setRefreshEndpoint(AUTHZ_TOKEN_ENDPOINT)
-                    .setAccountId(AUTHZ_ACCOOUNT_ID)
+                    .setAccountId(AUTHZ_ACCOUNT_ID)
                     .setClientId(AUTHZ_CLIENT_ID)
                     .setClientSecret(AUTHZ_CLIENT_SECRET)
                     .setRedirectURL(AUTHZ_REDIRECT_URL)

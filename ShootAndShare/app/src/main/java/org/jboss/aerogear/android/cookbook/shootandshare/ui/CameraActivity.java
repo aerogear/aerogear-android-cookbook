@@ -17,12 +17,17 @@
 
 package org.jboss.aerogear.android.cookbook.shootandshare.ui;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -37,9 +42,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-public class CameraActivity extends ActionBarActivity implements SurfaceHolder.Callback {
+public class CameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
     private static final String TAG = CameraActivity.class.getSimpleName();
+    private static final int CAMERA_REQUEST = 0x1000;
 
     private Camera mCamera;
     private SurfaceView mSurfaceView;
@@ -56,7 +62,11 @@ public class CameraActivity extends ActionBarActivity implements SurfaceHolder.C
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCamera.takePicture(null, null, mPictureCallback);
+                try {
+                    mCamera.takePicture(null, null, mPictureCallback);
+                } catch (Exception ex) {
+                    Log.e("PICTURE", ex.getMessage(), ex);
+                }
             }
         });
     }
@@ -64,10 +74,22 @@ public class CameraActivity extends ActionBarActivity implements SurfaceHolder.C
     @Override
     protected void onResume() {
         super.onResume();
-        safeCameraOpen();
 
-        mHolder = mSurfaceView.getHolder();
-        mHolder.addCallback(this);
+        int cameraCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        int filesystemCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (PackageManager.PERMISSION_GRANTED == cameraCheck &&
+            PackageManager.PERMISSION_GRANTED == filesystemCheck) {
+            safeCameraOpen();
+
+            mHolder = mSurfaceView.getHolder();
+            mHolder.addCallback(this);
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{ Manifest.permission.CAMERA,
+                                  Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                    CAMERA_REQUEST);
+        }
+
     }
 
     @Override
@@ -157,6 +179,27 @@ public class CameraActivity extends ActionBarActivity implements SurfaceHolder.C
 
         mCamera.setPreviewDisplay(mHolder);
         mCamera.startPreview();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case CAMERA_REQUEST: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    startActivity(new Intent(getApplicationContext(), CameraActivity.class));
+                    finish();
+                } else {
+
+                    finish();
+                }
+                return;
+            }
+
+        }
     }
 
     @Override
