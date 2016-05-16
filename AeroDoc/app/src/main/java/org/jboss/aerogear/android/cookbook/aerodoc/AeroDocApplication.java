@@ -49,12 +49,12 @@ import java.util.Arrays;
 
 public class AeroDocApplication extends Application {
 
-    private static final String BASE_BACKEND_URL = "http://10.0.2.2:8090/aerodoc/";
+    private static final String BASE_BACKEND_URL = "";
 
-    private static final String UNIFIED_PUSH_URL = "http://10.0.2.2:8080/ag-push/";
-    private static final String GCM_SENDER_ID = "272275396485";
-    private static final String VARIANT_ID = "1af1231d-a68e-48c8-a403-52e673e7c886";
-    private static final String SECRET = "9084e94f-8334-4e68-9ac7-d3754ff91439";
+    private static final String UNIFIED_PUSH_URL = "";
+    private static final String GCM_SENDER_ID = "";
+    private static final String VARIANT_ID = "";
+    private static final String SECRET = "";
 
     private AuthenticationModule authenticationModule;
     private SQLStore<Lead> localStore;
