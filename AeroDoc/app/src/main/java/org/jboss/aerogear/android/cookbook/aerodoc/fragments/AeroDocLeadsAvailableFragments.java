@@ -16,13 +16,17 @@
  */
 package org.jboss.aerogear.android.cookbook.aerodoc.fragments;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,12 +35,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.LocationClient;
+
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+
 import org.jboss.aerogear.android.core.Callback;
 import org.jboss.aerogear.android.pipe.Pipe;
 import org.jboss.aerogear.android.cookbook.aerodoc.AeroDocApplication;
@@ -57,7 +65,7 @@ public class AeroDocLeadsAvailableFragments extends Fragment {
     private AeroDocActivity activity;
     private ListView listView;
 
-    private LocationClient locationClient;
+    private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
     private TrackLocationListener listener = new TrackLocationListener();
 
@@ -105,27 +113,38 @@ public class AeroDocLeadsAvailableFragments extends Fragment {
     }
 
     private void trackMovement() {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(application.getApplicationContext());
+        int resultCode = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(application.getApplicationContext());
         if (ConnectionResult.SUCCESS == resultCode) {
             locationRequest = LocationRequest.create();
             locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
             locationRequest.setInterval(30000);
-            locationClient = new LocationClient(application, new GooglePlayServicesClient.ConnectionCallbacks() {
-                @Override
-                public void onConnected(Bundle bundle) {
-                  locationClient.requestLocationUpdates(locationRequest, listener);
-                }
+            googleApiClient =
+                    new GoogleApiClient.Builder(this.activity)
+                            .addApi(LocationServices.API)
+                            .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                                @Override
+                                public void onConnected(@Nullable Bundle bundle) {
 
-                @Override
-                public void onDisconnected() {
-                }
-            }, new GooglePlayServicesClient.OnConnectionFailedListener() {
-                @Override
-                public void onConnectionFailed(ConnectionResult connectionResult) {
-                    showErrorDialog(connectionResult.getErrorCode());
-               }
-            });
-            locationClient.connect();
+                                    if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                        LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, listener);
+                                    }
+
+                                }
+
+                                @Override
+                                public void onConnectionSuspended(int i) {
+
+                                }
+                            })
+                            .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                                @Override
+                                public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                                    showErrorDialog(connectionResult.getErrorCode());
+                                }
+                            })
+                            .build();
+
+            googleApiClient.connect();
         } else {
             showErrorDialog(resultCode);
         }
@@ -142,8 +161,8 @@ public class AeroDocLeadsAvailableFragments extends Fragment {
 
   @Override
     public void onStop() {
-        if (locationClient != null && locationClient.isConnected()) {
-            locationClient.removeLocationUpdates(listener);
+        if (googleApiClient != null && googleApiClient.isConnected()) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, listener);
         }
         super.onStop();
     }
@@ -189,10 +208,10 @@ public class AeroDocLeadsAvailableFragments extends Fragment {
         activity.showProgressDialog(getString(R.string.updating_lead));
 
         lead.setSaleAgent(application.getSaleAgent().getId());
-        Pipe<Lead> leadPipe = application.getLeadPipe(this);
-        leadPipe.save(lead, new Callback<Lead>() {
+        Pipe leadPipe = application.getLeadPipe(this);
+        leadPipe.save(lead, new Callback() {
             @Override
-            public void onSuccess(Lead data) {
+            public void onSuccess(Object data) {
                 application.getLocalStore().save(lead);
                 activity.dismissDialog();
             }
@@ -211,10 +230,10 @@ public class AeroDocLeadsAvailableFragments extends Fragment {
         SaleAgent saleAgent = application.getSaleAgent();
         saleAgent.setStatus(status);
 
-        Pipe<SaleAgent> pipe = application.getSaleAgentPipe(this);
-        pipe.save(saleAgent, new Callback<SaleAgent>() {
+        Pipe pipe = application.getSaleAgentPipe(this);
+        pipe.save(saleAgent, new Callback<Object>() {
             @Override
-            public void onSuccess(SaleAgent data) {
+            public void onSuccess(Object data) {
                 activity.dismissDialog();
             }
 

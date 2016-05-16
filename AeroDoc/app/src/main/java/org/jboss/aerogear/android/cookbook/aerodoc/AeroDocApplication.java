@@ -18,6 +18,7 @@ package org.jboss.aerogear.android.cookbook.aerodoc;
 
 import android.app.Application;
 import android.app.Fragment;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.jboss.aerogear.android.authentication.AuthenticationManager;
@@ -48,12 +49,12 @@ import java.util.Arrays;
 
 public class AeroDocApplication extends Application {
 
-    private static final String BASE_BACKEND_URL = "";
+    private static final String BASE_BACKEND_URL = "http://10.0.2.2:8090/aerodoc/";
 
-    private static final String UNIFIED_PUSH_URL = "";
-    private static final String GCM_SENDER_ID = "";
-    private static final String VARIANT_ID = "";
-    private static final String SECRET = "";
+    private static final String UNIFIED_PUSH_URL = "http://10.0.2.2:8080/ag-push/";
+    private static final String GCM_SENDER_ID = "272275396485";
+    private static final String VARIANT_ID = "1af1231d-a68e-48c8-a403-52e673e7c886";
+    private static final String SECRET = "9084e94f-8334-4e68-9ac7-d3754ff91439";
 
     private AuthenticationModule authenticationModule;
     private SQLStore<Lead> localStore;
@@ -123,8 +124,7 @@ public class AeroDocApplication extends Application {
 
         DataManager.config("lead", SQLStoreConfiguration.class)
                 .withContext(getApplicationContext())
-                .forClass(Lead.class)
-                .store();
+                .store(Lead.class);
 
         localStore = (SQLStore) DataManager.getStore("lead");
         localStore.openSync();
@@ -137,7 +137,7 @@ public class AeroDocApplication extends Application {
 
             RegistrarManager.config("AeroDoc", AeroGearGCMPushConfiguration.class)
                     .setPushServerURI(new URI(UNIFIED_PUSH_URL))
-                    .setSenderIds(GCM_SENDER_ID)
+                    .setSenderId(GCM_SENDER_ID)
                     .setVariantID(VARIANT_ID)
                     .setSecret(SECRET)
                     .setAlias(alias)
@@ -148,6 +148,7 @@ public class AeroDocApplication extends Application {
             registrar.register(getApplicationContext(), new Callback<Void>() {
                 @Override
                 public void onSuccess(Void data) {
+                    Log.d("GCM", "Registered");
                 }
 
                 @Override

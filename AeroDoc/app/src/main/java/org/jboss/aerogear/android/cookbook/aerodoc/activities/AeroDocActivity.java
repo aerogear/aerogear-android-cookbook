@@ -16,16 +16,22 @@
  */
 package org.jboss.aerogear.android.cookbook.aerodoc.activities;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.location.LocationServices;
 import com.google.gson.Gson;
 
 import org.jboss.aerogear.android.cookbook.aerodoc.AeroDocApplication;
@@ -43,7 +49,9 @@ import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
 
 import java.nio.charset.Charset;
 
-public class AeroDocActivity extends ActionBarActivity implements MessageHandler {
+public class AeroDocActivity extends AppCompatActivity implements MessageHandler {
+
+    private static final int LOCATION_REQUEST = 0x100;
 
     private enum Display {
         LOGIN, AVAILABLE_LEADS, LEADS_ACCEPTED
@@ -58,20 +66,34 @@ public class AeroDocActivity extends ActionBarActivity implements MessageHandler
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+
 
         application = (AeroDocApplication) getApplication();
+        setContentView(R.layout.main);
 
-        if (application.isLoggedIn()) {
-            displayAvailableLeadsScreen();
-        } else {
-            displayLoginScreen();
-        }
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(this,
+                new String[]{ Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION },
+                LOCATION_REQUEST);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        if (!(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+
+            if (application.isLoggedIn()) {
+                displayAvailableLeadsScreen();
+            } else {
+                displayLoginScreen();
+            }
+        } else {
+            requestPermissions();
+        }
+
         RegistrarManager.unregisterBackgroundThreadHandler(NotifyingMessageHandler.instance);
         RegistrarManager.registerMainThreadHandler(this);
     }
@@ -124,14 +146,6 @@ public class AeroDocActivity extends ActionBarActivity implements MessageHandler
         } else if (MessageType.ACCPET.getType().equals(messageType)) {
             updateLeads();
         }
-    }
-
-    @Override
-    public void onDeleteMessage(Context context, Bundle bundle) {
-    }
-
-    @Override
-    public void onError() {
     }
 
     private void displayLoginScreen() {
@@ -220,5 +234,27 @@ public class AeroDocActivity extends ActionBarActivity implements MessageHandler
 //        Toast.makeText(AeroDocActivity.this, getString(R.string.error_message), Toast.LENGTH_SHORT).show();
         Toast.makeText(AeroDocActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case LOCATION_REQUEST: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    startActivity(new Intent(getApplicationContext(), AeroDocActivity.class));
+                    finish();
+                } else {
+
+                    finish();
+                }
+                return;
+            }
+
+        }
+    }
+
 
 }
