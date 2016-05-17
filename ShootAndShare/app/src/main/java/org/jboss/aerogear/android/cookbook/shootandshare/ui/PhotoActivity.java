@@ -22,6 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,7 +35,7 @@ import org.jboss.aerogear.android.cookbook.shootandshare.util.GooglePlusHelper;
 import org.jboss.aerogear.android.cookbook.shootandshare.util.KeycloakHelper;
 import org.jboss.aerogear.android.core.Callback;
 
-public class PhotoActivity extends ActionBarActivity {
+public class PhotoActivity extends AppCompatActivity {
 
     private static final String TAG = PhotoActivity.class.getSimpleName();
 

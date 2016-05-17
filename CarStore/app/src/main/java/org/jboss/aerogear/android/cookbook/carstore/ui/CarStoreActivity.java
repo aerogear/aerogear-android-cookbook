@@ -1,17 +1,16 @@
 package org.jboss.aerogear.android.cookbook.carstore.ui;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.melnykov.fab.FloatingActionButton;
 
 import org.jboss.aerogear.android.cookbook.carstore.CarStoreApplication;
 import org.jboss.aerogear.android.cookbook.carstore.R;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 
-public class CarStoreActivity extends ActionBarActivity {
+public class CarStoreActivity extends AppCompatActivity {
 
     private CarStoreApplication storeApplication;
     private ListView carList;
@@ -45,7 +44,6 @@ public class CarStoreActivity extends ActionBarActivity {
         });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.attachToListView(carList);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

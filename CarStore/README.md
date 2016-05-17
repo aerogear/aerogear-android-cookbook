@@ -53,8 +53,7 @@ Application output is displayed in the command line window.
 ```java
 DataManager.config("carStore", SQLStoreConfiguration.class)
         .withContext(getApplicationContext())
-        .forClass(Car.class)
-        .store();
+        .store(Car.class);
 
 store = (SQLStore) DataManager.getStore("carStore");
 store.openSync();

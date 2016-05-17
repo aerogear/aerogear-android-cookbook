@@ -18,6 +18,7 @@ package org.jboss.aerogear.android.cookbook.aerodoc;
 
 import android.app.Application;
 import android.app.Fragment;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.jboss.aerogear.android.authentication.AuthenticationManager;
@@ -123,8 +124,7 @@ public class AeroDocApplication extends Application {
 
         DataManager.config("lead", SQLStoreConfiguration.class)
                 .withContext(getApplicationContext())
-                .forClass(Lead.class)
-                .store();
+                .store(Lead.class);
 
         localStore = (SQLStore) DataManager.getStore("lead");
         localStore.openSync();
@@ -137,7 +137,7 @@ public class AeroDocApplication extends Application {
 
             RegistrarManager.config("AeroDoc", AeroGearGCMPushConfiguration.class)
                     .setPushServerURI(new URI(UNIFIED_PUSH_URL))
-                    .setSenderIds(GCM_SENDER_ID)
+                    .setSenderId(GCM_SENDER_ID)
                     .setVariantID(VARIANT_ID)
                     .setSecret(SECRET)
                     .setAlias(alias)
@@ -148,6 +148,7 @@ public class AeroDocApplication extends Application {
             registrar.register(getApplicationContext(), new Callback<Void>() {
                 @Override
                 public void onSuccess(Void data) {
+                    Log.d("GCM", "Registered");
                 }
 
                 @Override

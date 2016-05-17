@@ -34,7 +34,7 @@ import java.net.URL;
 
 public class KeycloakHelper {
 
-    private static final String SHOOT_SERVER_URL = "";
+    private static final String SHOOT_SERVER_URL = "http://10.0.2.2:8080";
     private static final String AUTHZ_URL = SHOOT_SERVER_URL +"/auth";
     private static final String AUTHZ_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/auth";
     private static final String ACCESS_TOKEN_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/token";
