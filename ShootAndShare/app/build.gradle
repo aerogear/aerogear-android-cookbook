@@ -28,6 +28,6 @@ android {
 dependencies {
     compile 'com.squareup.picasso:picasso:2.3.4'
     compile ('com.android.support:appcompat-v7:23.+')
-    compile ('org.jboss.aerogear:aerogear-android-authz:3.0.0') 
+    compile ('org.jboss.aerogear:aerogear-android-authz:3.0.1')
 
 }
