@@ -39,7 +39,7 @@ import org.jboss.aerogear.android.store.sql.SQLStore;
 import org.jboss.aerogear.android.store.sql.SQLStoreConfiguration;
 import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
 import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
-import org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMPushConfiguration;
+import org.jboss.aerogear.android.unifiedpush.fcm.AeroGearFCMPushConfiguration;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -135,7 +135,7 @@ public class AeroDocApplication extends Application {
 
         try {
 
-            RegistrarManager.config("AeroDoc", AeroGearGCMPushConfiguration.class)
+            RegistrarManager.config("AeroDoc", AeroGearFCMPushConfiguration.class)
                     .setPushServerURI(new URI(UNIFIED_PUSH_URL))
                     .setSenderId(GCM_SENDER_ID)
                     .setVariantID(VARIANT_ID)
