@@ -26,10 +26,10 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:23.+'
-    compile 'com.google.android.gms:play-services-location:8.4.0'
+    compile 'com.google.android.gms:play-services-location:9.0.0'
     compile 'org.jboss.aerogear:aerogear-android-core:3.0.0'
     compile 'org.jboss.aerogear:aerogear-android-store:3.0.0'
     compile 'org.jboss.aerogear:aerogear-android-pipe:3.0.0'
     compile 'org.jboss.aerogear:aerogear-android-auth:3.0.0'
-    compile 'org.jboss.aerogear:aerogear-android-push:3.0.1'
+    compile 'org.jboss.aerogear:aerogear-android-push:4.0.0-SNAPSHOT'
 }

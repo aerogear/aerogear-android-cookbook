@@ -19,11 +19,11 @@ package org.jboss.aerogear.android.cookbook.aerodoc.fragments;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -39,19 +39,18 @@ import android.widget.Spinner;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-import org.jboss.aerogear.android.core.Callback;
-import org.jboss.aerogear.android.pipe.Pipe;
 import org.jboss.aerogear.android.cookbook.aerodoc.AeroDocApplication;
 import org.jboss.aerogear.android.cookbook.aerodoc.R;
 import org.jboss.aerogear.android.cookbook.aerodoc.activities.AeroDocActivity;
 import org.jboss.aerogear.android.cookbook.aerodoc.model.Lead;
 import org.jboss.aerogear.android.cookbook.aerodoc.model.SaleAgent;
+import org.jboss.aerogear.android.core.Callback;
+import org.jboss.aerogear.android.pipe.Pipe;
 
 import java.util.List;
 
