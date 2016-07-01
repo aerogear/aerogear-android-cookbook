@@ -1,4 +1,4 @@
-# helloworld-push-android: Basic Mobile Application showing the AeroGear Push feature on Android
+# HelloPush: Basic Mobile Application showing the AeroGear Push feature on Android
 ---------
 Author: Daniel Passos (dpassos)  
 Level: Beginner  
@@ -11,7 +11,7 @@ Source: https://github.com/aerogear/aerogear-push-helloworld/tree/master/android
 ## What is it?
 The ```helloworld``` project demonstrates how to include basic push functionality in Android applications.
 
-This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running AeroGear UnifiedPush Server instance and Google Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices.
+This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running AeroGear UnifiedPush Server instance and Firebase Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices.
 
 When the application is deployed to an Android device, the push functionality enables the device to register with the running AeroGear UnifiedPush Server instance and receive push notifications.
 
@@ -21,15 +21,15 @@ When the application is deployed to an Android device, the push functionality en
 * [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 2.2.1](https://www.gradle.org/downloads)
 * Latest [Android SDK](https://developer.android.com/sdk/index.html)
-* [Platform version 22](http://developer.android.com/tools/revisions/platforms.html)
-* [Build Tools 22.0.1](https://developer.android.com/tools/revisions/build-tools.html)
+* [Platform version 23](http://developer.android.com/tools/revisions/platforms.html)
+* [Build Tools 23.0.3](https://developer.android.com/tools/revisions/build-tools.html)
 * Latest [Android Support Library](http://developer.android.com/tools/support-library/index.html)
 * [Google Play Services](http://developer.android.com/google/play-services/index.html)
 
 ### 1. Register Application with Push Services
-First, you must register the application with Google Cloud Messaging for Android and enable access to the Google Cloud Messaging for Android APIs and Google APIs. This ensures access to the APIs by the UnifiedPush Server when it routes push notification requests from the application to the GCM. Registering an application with GCM requires that you have a Google account. For information on setting your Google account to use Google’s services, follow the [Google Setup Guide](https://aerogear.org/docs/unifiedpush/aerogear-push-android/guides/#google-setup).
+First, you must register the application with Firebase Cloud Messaging for Android and enable access to the Firebase Cloud Messaging for Android APIs and Google APIs. This ensures access to the APIs by the UnifiedPush Server when it routes push notification requests from the application to the FCM. Registering an application with FCM requires that you have a Google account. For information on setting your Google account to use Google’s services, follow the [Google Setup Guide](https://aerogear.org/docs/unifiedpush/aerogear-push-android/guides/#google-setup).
 
-Second, you must register the application and an Android variant of the application with the UnifiedPush Server. This requires a running AeroGear UnifiedPush Server instance and uses the unique metadata assigned to the application by GCM. For information on installing the AeroGear UnifiedPush Server, see the README distributed with the AeroGear UnifiedPush Server or the [UPS guide](https://aerogear.org/docs/unifiedpush/ups_userguide/index/).
+Second, you must register the application and an Android variant of the application with the UnifiedPush Server. This requires a running AeroGear UnifiedPush Server instance and uses the unique metadata assigned to the application by FCM. For information on installing the AeroGear UnifiedPush Server, see the README distributed with the AeroGear UnifiedPush Server or the [UPS guide](https://aerogear.org/docs/unifiedpush/ups_userguide/index/).
 
 1. Log into the UnifiedPush Server console.
 2. In the ```Applications``` view, click ```Create Application```.
@@ -37,20 +37,21 @@ Second, you must register the application and an Android variant of the applicat
 4. When created, under the application click ```No variants```.
 5. Click ```Add Variant```.
 6. In the ```Name``` and ```Description``` fields, type values for the Android application variant.
-7. Click ```Android``` and in the ```Google Cloud Messaging Key``` and ```Project Number``` fields type the values assigned to the project by GCM.
+7. Click ```Android``` and in the ```Server Key``` and ```Sender ID``` fields type the values assigned to the project by FCM.
 8. Click ```Add```.
 9. When created, expand the variant name and make note of the ```Server URL```, ```Variant ID```, and ```Secret```.
 
 ### 2. Customize and Build Application
-The project source code must be customized with the unique metadata assigned to the application variant by the AeroGear UnifiedPush Server and GCM.
+The project source code must be customized with the unique metadata assigned to the application variant by the AeroGear UnifiedPush Server and FCM.
 
-1. Open ```/path/to/helloworld/android/app/src/main/assets/push-config.json``` for editing.
-2. Enter the application variant values allocated by the AeroGear UnifiedPush Server and GCM for the following constants:
+1. Download the ```google-services.json``` file from the Firebase Console and place it into the ```/app``` folder.
+2. Open ```/path/to/helloworld/android/app/src/main/assets/push-config.json``` for editing.
+3. Enter the application variant values allocated by the AeroGear UnifiedPush Server and FCM for the following constants:
 ```js
 {
   "pushServerURL": "pushServerURL (e.g http(s)//host:port/context)",
   "android": {
-    "senderID": "senderID (e.g Google Project ID only for android)",
+    "senderID": "senderID (e.g Firebase Sender ID only for android)",
     "variantID": "variantID (e.g. 1234456-234320)",
     "variantSecret": "variantSecret (e.g. 1234456-234320)"
   }
@@ -96,7 +97,7 @@ You can send a push notification to your device using the AeroGear UnifiedPush S
 ```RegisterActivity``` is invoked right after a successful application login. The Activity life cycle ```onCreate``` is called first invoking the ```register``` method — attempting to register the application to receive push notifications.
 
 ```java
-RegistrarManager.config(PUSH_REGISTER_NAME, AeroGearGCMPushJsonConfiguration.class)
+RegistrarManager.config(PUSH_REGISTER_NAME, AeroGearFCMPushJsonConfiguration.class)
         .loadConfigJson(getApplicationContext())
         .asRegistrar();
 
@@ -128,37 +129,22 @@ In case of a successful registration with the UnifiedPush Server the application
 
 ### Receiving Notifications
 
-Before the usage of GCM notifications on Android, we need to include some permissions for GCM and a broadcast receiver to handle push messages from the service.
+Before the usage of FCM notifications on Android, we need to include a few permissions for FCM.
 
 To enable the permissions we add these as child of the manifest element.
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
-<permission
-    android:name="com.mypackage.C2D_MESSAGE"
-    android:protectionLevel="signature" />
-
-<uses-permission android:name="org.jboss.aerogear.unifiedpush.helloworld" />
 ```
 
-And add this element as a child of the application element, to register the default AeroGear Android broadcast receiver. It will receive all messages and dispatch the message to registered handlers.
+And add this element as a child of the application element, to register the default MessageHandler. It will receive all messages and dispatch the message to registered handlers.
 
 ```xml
-<receiver
-    android:name="org.jboss.aerogear.android.unifiedpush.AeroGearGCMMessageReceiver"
-    android:permission="com.google.android.c2dm.permission.SEND" >
-    <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <category android:name="org.jboss.aerogear.unifiedpush.helloworld" />
-    </intent-filter>
-</receiver>
+<meta-data 
+    android:name="DEFAULT_MESSAGE_HANDLER_KEY"
+    android:value="org.jboss.aerogear.unifiedpush.helloworld.handler.NotificationBarMessageHandler" />
 ```
-
-All push messages are received by an instance of ```AeroGearGCMMessageReceiver```. They are processed and passed to Registrations via the ```notifyHandlers``` method.
 
 The ```NotificationBarMessageHandler``` is able to receive that message and show it in the Notification Bar.
 
