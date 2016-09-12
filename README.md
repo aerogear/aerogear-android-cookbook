@@ -26,13 +26,13 @@ Please take a look at the [step by step guide on our website](http://aerogear.or
 | [AuthExamples](AuthExamples)                    | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
 | [AeroDoc](AeroDoc)                              | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 | [Password Manager](PasswordManager)             | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [Hello Push](HelloPush)                         | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 
 
 ## Other AeroGear Android example apps
 
 | App                                             | Pipe               | Store              | Security            | Auth               | Authz              | Push               | Sync               | 
 |-------------------------------------------------|:------------------:|:------------------:|:-------------------:|:------------------:|:------------------:|:------------------:| :-----------------:|
-| [Unified Push HelloWorld](https://github.com/jboss-mobile/unified-push-helloworld/tree/master/android) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 | [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-android-client) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 | [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | 
 

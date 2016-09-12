@@ -4,9 +4,9 @@ Author: Daniel Passos (dpassos)
 Level: Beginner  
 Technologies: Java, Android  
 Summary: A basic example of Push : Registration and receiving messages.  
-Target Product: JBoss Mobile Add-On  
-Product Versions: 1.0.0  
-Source: https://github.com/aerogear/aerogear-push-helloworld/tree/master/android 
+Target Product: - 
+Product Versions: - 
+Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/HelloPush
 
 ## What is it?
 The ```helloworld``` project demonstrates how to include basic push functionality in Android applications.
