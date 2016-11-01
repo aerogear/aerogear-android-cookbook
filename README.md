@@ -11,23 +11,19 @@ The cookbook application contains an interactive version of the code samples fou
 | Mailing lists:  | [aerogear-users](http://aerogear-users.1116366.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-users))  |
 |                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))        |
 
-## Building
-
-Please take a look at the [step by step guide on our website](http://aerogear.org/docs/guides/aerogear-android/how-to-build-aerogear-android/).
 
 ## Cookbook apps
 
-| App                                             | Pipe               | Store              | Security            | Auth               | Authz              | Push               | Sync               | 
-|-------------------------------------------------|:------------------:|:------------------:|:-------------------:|:------------------:|:------------------:|:------------------:| :-----------------:|
-| [GDrive](GDrive)                                | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | 
-| [Chuck Norris Jokes](ChuckNorrisJokes)          | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [CarStore](CarStore)                            | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [ShootAndShare](ShootAndShare)                  | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [AuthExamples](AuthExamples)                    | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [AeroDoc](AeroDoc)                              | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
-| [Password Manager](PasswordManager)             | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Hello Push](HelloPush)                         | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
-
+| App                                      | Pipe               | Store              | Security            | Auth               | Authz              | Push               | Sync               | 
+|------------------------------------------|:------------------:|:------------------:|:-------------------:|:------------------:|:------------------:|:------------------:| :-----------------:|
+| [GDrive](GDrive)                         | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | 
+| [Chuck Norris Jokes](ChuckNorrisJokes)   | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [CarStore](CarStore)                     | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [ShootAndShare](ShootAndShare)           | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [AuthExamples](AuthExamples)             | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [AeroDoc](AeroDoc)                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| [Password Manager](PasswordManager)      | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [Hello Push](HelloPush)                  | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
 
 ## Other AeroGear Android example apps
 
