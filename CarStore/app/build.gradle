@@ -36,6 +36,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support:design:25.0.0'
-    compile 'org.jboss.aerogear:aerogear-android-core:3.0.0'
-    compile 'org.jboss.aerogear:aerogear-android-store:3.0.0'
+    compile 'org.jboss.aerogear:aerogear-android-store:3.0.2'
 }
