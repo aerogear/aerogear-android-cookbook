@@ -1,15 +1,15 @@
 # AeroGear Android Cookbook
 
-The cookbook application contains an interactive version of the code samples found in the [online documentation](http://aerogear.org/docs/guides/aerogear-android/).  
+The cookbook application contains an interactive version of the code samples found in the [online documentation](https://aerogear.org/getstarted/demos/#android).  
 
-|                 | Project Info  |
-| --------------- | ------------- |
-| License:        | Apache License, Version 2.0  |
-| Build:          | Maven  |
-| Documentation:  | http://aerogear.org/docs/guides/aerogear-android/  |
-| Issue tracker:  | https://issues.jboss.org/browse/AGDROID  |
+|                 | Project Info                                                                                                                           |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| License:        | Apache License, Version 2.0                                                                                                            |
+| Build:          | Maven                                                                                                                                  |
+| Documentation:  | http://aerogear.org/docs/guides/aerogear-android/                                                                                      |
+| Issue tracker:  | https://issues.jboss.org/browse/AGDROID                                                                                                |
 | Mailing lists:  | [aerogear-users](http://aerogear-users.1116366.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-users))  |
-|                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))  |
+|                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))        |
 
 ## Building
 
