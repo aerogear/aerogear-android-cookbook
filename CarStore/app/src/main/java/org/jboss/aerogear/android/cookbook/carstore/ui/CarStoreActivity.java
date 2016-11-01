@@ -89,8 +89,8 @@ public class CarStoreActivity extends AppCompatActivity {
     }
 
     private void showDeleteConfirmationDialog(final Car car) {
-        new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.delete_confirmation))
+        new AlertDialog.Builder(this, R.style.MyTheme_Dialog)
+                .setTitle(R.string.delete_confirmation)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
