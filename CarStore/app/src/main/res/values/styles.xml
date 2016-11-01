@@ -12,8 +12,8 @@
     </style>
 
     <style name="MyTheme.DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_top</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_top</item>
     </style>
 
 </resources>
