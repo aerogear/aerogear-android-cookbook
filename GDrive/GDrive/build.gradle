@@ -10,6 +10,15 @@ android {
         targetSdkVersion 25
         versionCode 4
         versionName "3.0.0"
+
+        jackOptions {
+            enabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
@@ -22,8 +31,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    dexOptions { javaMaxHeapSize "2g" }
 }
 
 dependencies {
@@ -33,7 +40,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.squareup.picasso:picasso:2.2.0'
     compile ('org.jboss.aerogear:aerogear-android-authz:3.0.1')  {
-        transitive=true
     }
 
 }
