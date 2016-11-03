@@ -3,5 +3,6 @@
 
     <string name="app_name">Chuck Norris Jokes</string>
     <string name="refresh_content_description">Refresh animated image</string>
+    <string name="refresh">refresh</string>
 
 </resources>
