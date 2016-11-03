@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.unifiedpush.helloworld.activities;
+package org.jboss.aerogear.android.cookbook.hellopush.activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -27,10 +27,10 @@ import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
 import org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushMessage;
 import org.jboss.aerogear.android.unifiedpush.metrics.UnifiedPushMetricsMessage;
-import org.jboss.aerogear.unifiedpush.helloworld.HelloWorldApplication;
-import org.jboss.aerogear.unifiedpush.helloworld.R;
-import org.jboss.aerogear.unifiedpush.helloworld.callback.MetricsCallback;
-import org.jboss.aerogear.unifiedpush.helloworld.handler.NotificationBarMessageHandler;
+import org.jboss.aerogear.android.cookbook.hellopush.HelloWorldApplication;
+import org.jboss.aerogear.android.cookbook.hellopush.R;
+import org.jboss.aerogear.android.cookbook.hellopush.callback.MetricsCallback;
+import org.jboss.aerogear.android.cookbook.hellopush.handler.NotificationBarMessageHandler;
 
 public class MessagesActivity extends AppCompatActivity implements MessageHandler {
 

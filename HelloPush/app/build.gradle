@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "org.jboss.aerogear.unifiedpush.helloworld"
+        applicationId "org.jboss.aerogear.android.cookbook.hellopush"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.unifiedpush.helloworld.handler;
+package org.jboss.aerogear.android.cookbook.hellopush.handler;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -26,9 +26,9 @@ import android.support.v4.app.NotificationCompat;
 
 import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushMessage;
-import org.jboss.aerogear.unifiedpush.helloworld.HelloWorldApplication;
-import org.jboss.aerogear.unifiedpush.helloworld.R;
-import org.jboss.aerogear.unifiedpush.helloworld.activities.MessagesActivity;
+import org.jboss.aerogear.android.cookbook.hellopush.HelloWorldApplication;
+import org.jboss.aerogear.android.cookbook.hellopush.R;
+import org.jboss.aerogear.android.cookbook.hellopush.activities.MessagesActivity;
 
 public class NotificationBarMessageHandler implements MessageHandler {
 

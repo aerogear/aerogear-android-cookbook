@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.unifiedpush.helloworld.activities;
+package org.jboss.aerogear.android.cookbook.hellopush.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,9 +26,9 @@ import org.jboss.aerogear.android.core.Callback;
 import org.jboss.aerogear.android.unifiedpush.PushRegistrar;
 import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
 import org.jboss.aerogear.android.unifiedpush.fcm.AeroGearFCMPushJsonConfiguration;
-import org.jboss.aerogear.unifiedpush.helloworld.R;
+import org.jboss.aerogear.android.cookbook.hellopush.R;
 
-import static org.jboss.aerogear.unifiedpush.helloworld.HelloWorldApplication.PUSH_REGISTER_NAME;
+import static org.jboss.aerogear.android.cookbook.hellopush.HelloWorldApplication.PUSH_REGISTER_NAME;
 
 public class RegisterActivity extends AppCompatActivity {
 
