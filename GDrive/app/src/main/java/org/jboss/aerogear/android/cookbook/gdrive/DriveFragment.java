@@ -1,4 +1,4 @@
-package org.jboss.aerogear.android.example.gdrive;
+package org.jboss.aerogear.android.cookbook.gdrive;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
