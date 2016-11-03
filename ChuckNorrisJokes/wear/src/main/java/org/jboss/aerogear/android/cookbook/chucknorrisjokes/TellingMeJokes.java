@@ -3,6 +3,7 @@ package org.jboss.aerogear.android.cookbook.chucknorrisjokes;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.wearable.view.GridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
 import android.util.Log;
@@ -71,7 +72,7 @@ public class TellingMeJokes extends Activity implements GoogleApiClient.Connecti
                             public void onClick(View v) {
                                 Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).setResultCallback(new ResultCallback<NodeApi.GetConnectedNodesResult>() {
                                     @Override
-                                    public void onResult(NodeApi.GetConnectedNodesResult getConnectedNodesResult) {
+                                    public void onResult(@NonNull NodeApi.GetConnectedNodesResult getConnectedNodesResult) {
                                         Log.d(TAG, "sending fetchRequest");
                                         for (Node n : getConnectedNodesResult.getNodes()) {
                                             Log.d(TAG, "Node : " + n.getId());
@@ -143,7 +144,7 @@ public class TellingMeJokes extends Activity implements GoogleApiClient.Connecti
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.e(TAG, "Connection to Google Api Service Failed");
     }
 
