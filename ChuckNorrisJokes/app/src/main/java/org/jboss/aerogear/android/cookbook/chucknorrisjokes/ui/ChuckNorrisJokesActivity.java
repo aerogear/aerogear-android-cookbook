@@ -126,7 +126,6 @@ public class ChuckNorrisJokesActivity extends AppCompatActivity
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.push_down_in);
         mJoke.startAnimation(animation);
-;
     }
 
     private void dismissJoke() {
