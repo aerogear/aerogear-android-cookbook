@@ -42,7 +42,8 @@ public class CarStoreAdapater extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.listview_car_store_item, null);
+            convertView = LayoutInflater.from(context)
+                    .inflate(R.layout.listview_car_store_item, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
