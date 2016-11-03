@@ -75,6 +75,7 @@ public class JokeFetchListener extends WearableListenerService {
         super.onMessageReceived(messageEvent);
         if (messageEvent.getPath().equals(REQUEST_JOKE)) {
             Log.d(TAG, "joke requested from wear");
+            //noinspection unchecked
             PipeManager.getPipe("chuckNorris").read(new Callback<List<Joke>>() {
                 @Override
                 public void onSuccess(List<Joke> list) {
