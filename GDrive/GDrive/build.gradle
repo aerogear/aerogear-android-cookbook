@@ -36,7 +36,6 @@ android {
 dependencies {
 
     compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.google.guava:guava:18.0'
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.squareup.picasso:picasso:2.2.0'
     compile ('org.jboss.aerogear:aerogear-android-authz:3.0.1') 
