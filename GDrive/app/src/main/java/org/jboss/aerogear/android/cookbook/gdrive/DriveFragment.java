@@ -1,6 +1,7 @@
 package org.jboss.aerogear.android.cookbook.gdrive;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,8 +30,9 @@ public class DriveFragment extends Fragment {
         ListView driveItems = (ListView) view.findViewById(R.id.drive_items);
 
         driveItems.setAdapter(new ArrayAdapter<Files>(getActivity(), android.R.layout.simple_list_item_1, fileses) {
+            @NonNull
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                 Files files = fileses.get(position);
 
                 if (convertView == null) {
