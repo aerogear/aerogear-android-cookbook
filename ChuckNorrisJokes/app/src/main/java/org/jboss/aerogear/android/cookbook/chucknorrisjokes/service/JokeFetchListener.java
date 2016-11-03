@@ -50,12 +50,7 @@ public class JokeFetchListener extends WearableListenerService {
                         Log.d(TAG, "onConnectionSuspended: " + cause);
                     }
                 })
-                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(ConnectionResult result) {
-                        Log.d(TAG, "onConnectionFailed: " + result);
-                    }
-                })
+                .addOnConnectionFailedListener(result -> Log.d(TAG, "onConnectionFailed: " + result))
                         // Request access only to the Wearable API
                 .addApi(Wearable.API)
                 .build();
