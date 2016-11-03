@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +22,8 @@ import org.jboss.aerogear.android.pipe.callback.AbstractActivityCallback;
 
 import java.util.List;
 
-public class ChuckNorrisJokesActivity extends ActionBarActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class ChuckNorrisJokesActivity extends AppCompatActivity
+        implements SwipeRefreshLayout.OnRefreshListener {
 
     private ChuckNorrisJokesApplication application;
     private SwipeRefreshLayout mSwipeLayout;
