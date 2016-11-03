@@ -11,6 +11,8 @@ android {
         versionCode 4
         versionName "3.0.0"
 
+        multiDexEnabled = true
+
         jackOptions {
             enabled true
         }
