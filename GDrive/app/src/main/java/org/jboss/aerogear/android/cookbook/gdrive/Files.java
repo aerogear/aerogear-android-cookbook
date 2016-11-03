@@ -1,4 +1,4 @@
-package org.jboss.aerogear.android.example.gdrive;
+package org.jboss.aerogear.android.cookbook.gdrive;
 
 import org.jboss.aerogear.android.core.RecordId;
 

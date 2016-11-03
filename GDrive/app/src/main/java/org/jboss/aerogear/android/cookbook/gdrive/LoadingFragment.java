@@ -1,4 +1,4 @@
-package org.jboss.aerogear.android.example.gdrive;
+package org.jboss.aerogear.android.cookbook.gdrive;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

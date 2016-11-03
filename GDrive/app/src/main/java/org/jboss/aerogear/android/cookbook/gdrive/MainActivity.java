@@ -1,8 +1,7 @@
-package org.jboss.aerogear.android.example.gdrive;
+package org.jboss.aerogear.android.cookbook.gdrive;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Pair;
@@ -24,13 +23,13 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_ACCOUNT_ID;
-import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_CLIENT_ID;
-import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_CLIENT_SECRET;
-import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_ENDPOINT;
-import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_REDIRECT_URL;
-import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_TOKEN_ENDPOINT;
-import static org.jboss.aerogear.android.example.gdrive.Constants.AUTHZ_URL;
+import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_ACCOUNT_ID;
+import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_CLIENT_ID;
+import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_CLIENT_SECRET;
+import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_ENDPOINT;
+import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_REDIRECT_URL;
+import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_TOKEN_ENDPOINT;
+import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_URL;
 
 public class MainActivity extends AppCompatActivity {
 
