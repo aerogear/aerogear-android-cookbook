@@ -35,7 +35,7 @@ public class CarStoreAdapater extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return Long.valueOf(position);
+        return position;
     }
 
     @Override
