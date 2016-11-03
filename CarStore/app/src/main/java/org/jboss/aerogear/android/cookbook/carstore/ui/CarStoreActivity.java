@@ -66,7 +66,9 @@ public class CarStoreActivity extends AppCompatActivity {
                 .setNegativeButton(getString(R.string.cancel), (dialog1, id) -> dialog1.dismiss())
                 .create();
 
-        dialog.getWindow().getAttributes().windowAnimations = R.style.MyTheme_DialogAnimation;
+        if(dialog.getWindow() != null) {
+            dialog.getWindow().getAttributes().windowAnimations = R.style.MyTheme_DialogAnimation;
+        }
         dialog.show();
     }
 
