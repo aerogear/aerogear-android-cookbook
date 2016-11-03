@@ -24,7 +24,7 @@ public class DriveFragment extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.drive_list, null);
+        View view = inflater.inflate(R.layout.drive_list, container, false);
 
         ListView driveItems = (ListView) view.findViewById(R.id.drive_items);
 
@@ -34,7 +34,7 @@ public class DriveFragment extends Fragment {
                 Files files = fileses.get(position);
 
                 if (convertView == null) {
-                    convertView = inflater.inflate(R.layout.drive_list_item, null);
+                    convertView = inflater.inflate(R.layout.drive_list_item, parent, false);
                 }
 
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
