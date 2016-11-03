@@ -20,7 +20,7 @@ import org.jboss.aerogear.android.pipe.rest.gson.GsonResponseParser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.jboss.aerogear.android.cookbook.gdrive.Constants.AUTHZ_ACCOUNT_ID;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     .setClientId(AUTHZ_CLIENT_ID)
                     .setClientSecret(AUTHZ_CLIENT_SECRET)
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
-                    .setScopes(Arrays.asList("https://www.googleapis.com/auth/drive"))
+                    .setScopes(Collections.singletonList("https://www.googleapis.com/auth/drive"))
                     .addAdditionalAuthorizationParam((Pair.create("access_type", "offline")))
                     .asModule();
 
