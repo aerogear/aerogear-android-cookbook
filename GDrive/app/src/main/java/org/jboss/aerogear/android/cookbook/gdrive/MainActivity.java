@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 .responseParser(gsonResponseParser)
                 .forClass(Files.class);
 
+        @SuppressWarnings("unchecked")
         Pipe<Files> documentsPipe = PipeManager.getPipe("files", this);
         documentsPipe.read(new Callback<List<Files>>() {
             @Override
