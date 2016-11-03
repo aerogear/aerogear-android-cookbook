@@ -27,11 +27,6 @@ public class JokeFetchListener extends WearableListenerService {
     private GoogleApiClient mGoogleApiClient;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-    }
-
-    @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
         super.onDataChanged(dataEvents);
         Log.d(TAG, "DataChanged " + dataEvents);
