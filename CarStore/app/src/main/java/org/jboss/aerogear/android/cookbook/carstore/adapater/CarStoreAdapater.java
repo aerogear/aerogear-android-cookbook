@@ -39,17 +39,33 @@ public class CarStoreAdapater extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.listview_car_store_item, null);
+        ViewHolder holder;
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.listview_car_store_item, null);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
         Car car = getItem(position);
+        holder.carBrand.setText(car.getBrand());
+        holder.carPrice.setText(String.valueOf(car.getPrice()));
 
-        TextView carBrand = (TextView) view.findViewById(R.id.brand);
-        carBrand.setText(car.getBrand());
+        return convertView;
+    }
 
-        TextView carPrice = (TextView) view.findViewById(R.id.price);
-        carPrice.setText(String.valueOf(car.getPrice()));
+    private class ViewHolder {
 
-        return view;
+        private final TextView carBrand;
+        private final TextView carPrice;
+
+        ViewHolder(View view) {
+            carBrand = (TextView) view.findViewById(R.id.brand);
+            carPrice = (TextView) view.findViewById(R.id.price);
+        }
+
     }
 
 }
