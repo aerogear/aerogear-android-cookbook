@@ -123,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
         documentsPipe.read(new Callback<List<Files>>() {
             @Override
             public void onSuccess(final List<Files> fileses) {
-                Toast.makeText(getApplicationContext(), getString(R.string.fetched, fileses.size()), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),
+                        getResources().getQuantityString(R.plurals.fetched, fileses.size()),
+                        Toast.LENGTH_LONG).show();
                 displayDriveFiles(fileses);
             }
 

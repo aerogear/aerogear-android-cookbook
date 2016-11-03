@@ -3,7 +3,11 @@
 
     <string name="app_name">AGDroid GDrive</string>
     <string name="refresh">Refresh</string>
-    <string name="fetched">%1$d file(s) fetched</string>
+    <plurals
+        name="fetched">
+        <item quantity="zero">1 file fetched</item>
+        <item quantity="other">%d fetched</item>
+    </plurals>
     <string name="drive_icon">Drive icon</string>
 
 </resources>
