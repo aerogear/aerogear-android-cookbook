@@ -26,7 +26,6 @@ public class TellingMeJokes extends Activity implements GoogleApiClient.Connecti
     private static final String TAG = "ManageTokens";
     private GridViewPager pager;
     private GoogleApiClient mGoogleApiClient;
-    private boolean mResolvingError = false;
     private String jokeText = "";
 
     @Override
@@ -109,9 +108,7 @@ public class TellingMeJokes extends Activity implements GoogleApiClient.Connecti
     @Override
     protected void onStart() {
         super.onStart();
-        if (!mResolvingError) {
-            mGoogleApiClient.connect();
-        }
+        mGoogleApiClient.connect();
     }
 
     @Override
