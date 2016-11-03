@@ -10,7 +10,7 @@ public class LoadingFragment extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.loading, null);
+        return inflater.inflate(R.layout.loading, container, false);
     }
 
 }
