@@ -16,9 +16,16 @@
         android:name=".AeroDocApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name">
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+
+        <meta-data
+            android:name="DEFAULT_MESSAGE_HANDLER_KEY"
+            android:value="org.jboss.aerogear.android.cookbook.aerodoc.handler.NotifyingHandler" />
+
         <activity
             android:name=".activities.AeroDocActivity"
             android:label="@string/app_name"
@@ -28,32 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="org.jboss.aerogear.android.unifiedpush.gcm.UnifiedPushInstanceIDListenerService" android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
-            </intent-filter>
-        </service>
 
-        <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="org.jboss.aerogear.android.cookbook.aerodoc" />
-            </intent-filter>
-        </receiver>
-        <service
-            android:name="org.jboss.aerogear.android.unifiedpush.gcm.AeroGearGCMMessageReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="DEFAULT_MESSAGE_HANDLER_KEY"
-                android:value="org.jboss.aerogear.android.cookbook.aerodoc.handler.NotifyingHandler" />
-        </service>
     </application>
 
 </manifest>
