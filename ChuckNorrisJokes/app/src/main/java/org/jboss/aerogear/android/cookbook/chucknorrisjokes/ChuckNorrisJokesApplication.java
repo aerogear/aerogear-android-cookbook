@@ -38,9 +38,8 @@ public class ChuckNorrisJokesApplication extends Application {
     }
 
     public LoaderPipe<Joke> getPipe(Activity activity) {
-        LoaderPipe loaderPipe = PipeManager.getPipe("chuckNorris", activity);
         //noinspection unchecked
-        return loaderPipe;
+        return PipeManager.getPipe("chuckNorris", activity);
     }
 
 }
