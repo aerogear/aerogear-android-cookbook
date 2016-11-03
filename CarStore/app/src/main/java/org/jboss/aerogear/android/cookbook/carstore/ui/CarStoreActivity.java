@@ -12,18 +12,19 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.jboss.aerogear.android.cookbook.carstore.CarStoreApplication;
 import org.jboss.aerogear.android.cookbook.carstore.R;
 import org.jboss.aerogear.android.cookbook.carstore.adapater.CarStoreAdapater;
 import org.jboss.aerogear.android.cookbook.carstore.model.Car;
+import org.jboss.aerogear.android.store.DataManager;
+import org.jboss.aerogear.android.store.sql.SQLStore;
+import org.jboss.aerogear.android.store.sql.SQLStoreConfiguration;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-
 public class CarStoreActivity extends AppCompatActivity {
 
-    private CarStoreApplication storeApplication;
+    private SQLStore<Car> carStore;
     private ListView carList;
 
     @Override
@@ -31,7 +32,11 @@ public class CarStoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_store);
 
-        storeApplication = (CarStoreApplication) getApplication();
+        carStore = (SQLStore<Car>) DataManager.config("carStore", SQLStoreConfiguration.class)
+                .withContext(getApplicationContext())
+                .store(Car.class);
+        carStore.openSync();
+
         carList = (ListView) findViewById(R.id.carList);
 
         carList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -84,8 +89,8 @@ public class CarStoreActivity extends AppCompatActivity {
     }
 
     private void showDeleteConfirmationDialog(final Car car) {
-        new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.delete_confirmation))
+        new AlertDialog.Builder(this, R.style.MyTheme_Dialog)
+                .setTitle(R.string.delete_confirmation)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -103,18 +108,18 @@ public class CarStoreActivity extends AppCompatActivity {
     }
 
     private void updateDisplayCars() {
-        Collection<Car> cars = storeApplication.getStore().readAll();
+        Collection<Car> cars = carStore.readAll();
         CarStoreAdapater adapater = new CarStoreAdapater(getApplicationContext(), new ArrayList<>(cars));
         carList.setAdapter(adapater);
     }
 
     private void save(Car car) {
-        storeApplication.getStore().save(car);
+        carStore.save(car);
         updateDisplayCars();
     }
 
     private void remove(Car car) {
-        storeApplication.getStore().remove(car.getId());
+        carStore.remove(car.getId());
         updateDisplayCars();
     }
 
