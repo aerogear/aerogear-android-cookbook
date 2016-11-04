@@ -19,8 +19,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:drawableLeft="@drawable/ic_account_username"
-        android:drawableStart="@drawable/ic_account_username" />
+        android:drawableLeft="@drawable/ic_username"
+        android:drawableStart="@drawable/ic_username" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -31,8 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:drawableLeft="@drawable/ic_account_password"
-            android:drawableStart="@drawable/ic_account_password"
+            android:drawableLeft="@drawable/ic_password"
+            android:drawableStart="@drawable/ic_password"
             android:paddingStart="10sp"
             android:paddingEnd="10sp"
             android:text="@string/password_masked" />
