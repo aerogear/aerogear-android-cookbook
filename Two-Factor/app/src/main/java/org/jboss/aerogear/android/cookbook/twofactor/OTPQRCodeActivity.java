@@ -16,14 +16,14 @@
  */
 package org.jboss.aerogear.android.cookbook.twofactor;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class OTPQRCodeActivity extends Activity {
+public class OTPQRCodeActivity extends AppCompatActivity {
 
     private final int requestCode = 1500;
 
@@ -51,7 +51,7 @@ public class OTPQRCodeActivity extends Activity {
         if (requestCode == this.requestCode) {
             if (resultCode == RESULT_OK) {
                 String otpauth = data.getStringExtra("SCAN_RESULT");
-                Intent intent = new Intent(this, OTPDisplay.class);
+                Intent intent = new Intent(this, OTPCodeActivity.class);
                 intent.putExtra("otpauth", otpauth);
                 startActivity(intent);
                 finish();

@@ -20,11 +20,12 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import org.jboss.aerogear.security.otp.Totp;
 
-public class OTPDisplay extends Activity {
+public class OTPCodeActivity extends AppCompatActivity {
 
     private static final int COUNTDOWN_DURATION = 30000;
     private static final int COUNTDOWN_STEP = 100; // only 100 ms for smoother action
