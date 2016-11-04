@@ -1,5 +1,5 @@
-# AGDroid Two-Factor: Basic Mobile Application showing the AeroGear OTP feature on Android
----------
+# Mobile app showing the AeroGear OTP feature on Android
+
 Author: Daniel Passos (dpassos)   
 Level: Beginner   
 Technologies: Java, Android   
@@ -8,51 +8,35 @@ Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/Two-Fa
 
 ## What is it?
 
-The ```AGDroid Two-Factor``` project demonstrates how to include OTP functionality in Android applications.
+_Two-Factor_ project demonstrates how to include OTP functionality in Android applications.
 
 ## How do I run it?
 
-### 0. System Requirements
+### System Requirements
 
-* [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle 2.2.1](http://www.gradle.org/)
-* Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 22](http://developer.android.com/tools/revisions/platforms.html)
+* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](http://www.gradle.org/)
+* [Android SDK](https://developer.android.com/sdk/index.html) and [Platform](http://developer.android.com/tools/revisions/platforms.html)
 
-### Configuring a testing server
-
-**Note**: The server side configuration is not mandatory for testing OTP with Android.
-
-### Configuring a testing server
-
-1. Follow directions to install [OTP-Demo](https://github.com/aerogear/aerogear-backend-cookbook/blob/master/OTP-demo/README.md)
-1. Open OTP backend app [http://localhost:8080/otp-demo](http://localhost:8080/otp-demo)
-1. Login with username: *user* and password: *password*.
-1. Now open this "OTP client application" on your phone
-1. Then scan the *Scan QRCode*
-1. Enter the current OTP on your mobile into the form
-
-For more details, please refer to our [documentation](http://aerogear.org/docs/specs/aerogear-security-otp/)
-
-### 1. Build Application
+### Build Application
 
 ```shell
 $ cd /path/to/Two-Factor/
 $ gradle clean build
 ```
-### 2. Test Application
+### Running the app
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
-2.1) Install generated apk to device
+1. Install generated apk to device
 
-```shell
-$ cd /path/to/Two-Factor
-$ gradle installDebug
-```
+    ```shell
+    $ cd /path/to/Two-Factor
+    $ gradle installDebug
+    ```
 
-2.2) Open app on device
-
-Application output is displayed in the command line window.
+1. Open app on device
+1. You can use the [browser-authenticator website](https://daplie.github.io/browser-authenticator/) to play with the app.
 
 ## How does it work?
 
@@ -88,7 +72,7 @@ private void parseOtpPath() {
     String otpauth = getIntent().getStringExtra("otpauth");
     Uri otpUri = Uri.parse(otpauth);
 
-    name = otpUri.getQueryParameter("");
+    name = otpUri.getQueryParameter("issuer");
     secret = otpUri.getQueryParameter("secret");
 
     totp = new Totp(secret);
