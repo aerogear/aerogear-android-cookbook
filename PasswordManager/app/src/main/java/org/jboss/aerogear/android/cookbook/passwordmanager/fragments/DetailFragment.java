@@ -32,6 +32,7 @@ public class DetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         final Credential credential =
                 (Credential) getArguments().getSerializable(Credential.class.getName());
 
@@ -44,16 +45,13 @@ public class DetailFragment extends Fragment {
         username.setText(credential.getUsername());
 
         final TextView password = (TextView) view.findViewById(R.id.password);
-        password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!displayPassword) {
-                    password.setText(credential.getPassword());
-                } else {
-                    password.setText(getString(R.string.password_masked));
-                }
-                displayPassword = !displayPassword;
+        password.setOnClickListener(view1 -> {
+            if (!displayPassword) {
+                password.setText(credential.getPassword());
+            } else {
+                password.setText(getString(R.string.password_masked));
             }
+            displayPassword = !displayPassword;
         });
 
         return view;

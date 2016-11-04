@@ -18,13 +18,11 @@ package org.jboss.aerogear.android.cookbook.passwordmanager.fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -53,44 +51,31 @@ public class ListFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(android.R.id.list);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Credential credential = (Credential) adapterView.getItemAtPosition(position);
+        listView.setOnItemClickListener((adapterView, view12, position, id) -> {
+            Credential credential = (Credential) adapterView.getItemAtPosition(position);
 
-                PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
-                activity.displayInfo(credential);
-            }
+            PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
+            activity.displayInfo(credential);
         });
 
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                final Credential credential = (Credential) adapterView.getItemAtPosition(position);
+        listView.setOnItemLongClickListener((adapterView, view1, position, id) -> {
+            final Credential credential = (Credential) adapterView.getItemAtPosition(position);
 
-                new AlertDialog.Builder(getActivity())
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle(getString(R.string.delete))
-                        .setMessage(getString(R.string.delete_confirmation))
-                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
-                                activity.delete(credential);
-                            }
-                        })
-                        .setNegativeButton(getString(R.string.no), null).show();
+            new AlertDialog.Builder(getActivity())
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle(getString(R.string.delete))
+                    .setMessage(getString(R.string.delete_confirmation))
+                    .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
+                        PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
+                        activity.delete(credential);
+                    })
+                    .setNegativeButton(getString(R.string.no), null).show();
 
-                return true;
-            }
+            return true;
         });
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((PasswordManagerActivity) getActivity()).displayForm();
-            }
-        });
+        fab.setOnClickListener(v -> ((PasswordManagerActivity) getActivity()).displayForm());
 
         return view;
     }

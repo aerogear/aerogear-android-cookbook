@@ -39,21 +39,18 @@ public class FormFragment extends Fragment {
         final EditText password = (EditText) view.findViewById(R.id.password);
         final Button save = (Button) view.findViewById(R.id.save);
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isEmptyFields(name, username, password)) {
-                    return;
-                }
-
-                Credential credential = new Credential();
-                credential.setName(name.getText().toString());
-                credential.setUsername(username.getText().toString());
-                credential.setPassword(password.getText().toString());
-
-                PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
-                activity.save(credential);
+        save.setOnClickListener(view1 -> {
+            if (isEmptyFields(name, username, password)) {
+                return;
             }
+
+            Credential credential = new Credential();
+            credential.setName(name.getText().toString());
+            credential.setUsername(username.getText().toString());
+            credential.setPassword(password.getText().toString());
+
+            PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
+            activity.save(credential);
         });
 
         return view;

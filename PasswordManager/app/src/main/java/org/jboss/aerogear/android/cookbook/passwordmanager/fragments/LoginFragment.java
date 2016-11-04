@@ -37,17 +37,14 @@ public class LoginFragment extends Fragment {
 
         Button login = (Button) view.findViewById(R.id.login);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (password.getText().toString().trim().equals("")) {
-                    password.setError(getString(R.string.required));
-                    return;
-                }
-
-                PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
-                activity.login(password.getText().toString());
+        login.setOnClickListener(view1 -> {
+            if (password.getText().toString().trim().equals("")) {
+                password.setError(getString(R.string.required));
+                return;
             }
+
+            PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
+            activity.login(password.getText().toString());
         });
 
         return view;
