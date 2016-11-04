@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:paddingBottom="20dp"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:drawableLeft="@drawable/ic_account_username" />
 
     <LinearLayout
@@ -28,7 +29,7 @@
             android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
             android:drawableLeft="@drawable/ic_account_password"
             android:paddingLeft="10sp"
             android:text="@string/password_masked" />
