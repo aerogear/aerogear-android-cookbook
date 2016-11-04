@@ -98,7 +98,7 @@ public class PasswordManagerActivity extends ActionBarActivity {
         try {
             application.createStore(passphrase);
             displayList();
-        } catch (InvalidKeySpecException e) {
+        } catch (Exception e) {
             displayLogin();
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
