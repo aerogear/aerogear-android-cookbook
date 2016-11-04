@@ -16,27 +16,21 @@
 
     <TextView
         android:id="@+id/username"
+        android:drawablePadding="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:drawableLeft="@drawable/ic_username"
-        android:drawableStart="@drawable/ic_username" />
+        android:drawableStart="@drawable/ic_username"
+        android:gravity="center_vertical" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/password"
+        android:drawablePadding="10dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:drawableLeft="@drawable/ic_password"
-            android:drawableStart="@drawable/ic_password"
-            android:paddingStart="10sp"
-            android:paddingEnd="10sp"
-            android:text="@string/password_masked" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawableStart="@drawable/ic_password"
+        android:gravity="center_vertical"
+        android:text="@string/password_masked" />
 
 </LinearLayout>
