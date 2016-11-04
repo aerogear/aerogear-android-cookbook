@@ -29,17 +29,17 @@ import android.widget.Toast;
 import org.jboss.aerogear.android.cookbook.passwordmanager.R;
 import org.jboss.aerogear.android.cookbook.passwordmanager.model.Credential;
 
+import java.io.Serializable;
+
 public class DetailFragment extends Fragment {
 
-    private final Credential credential;
     private boolean displayPassword = false;
-
-    public DetailFragment(Credential credential) {
-        this.credential = credential;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final Credential credential =
+                (Credential) getArguments().getSerializable(Credential.class.getName());
+
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.detail, null);
 
         TextView name = (TextView) view.findViewById(R.id.name);

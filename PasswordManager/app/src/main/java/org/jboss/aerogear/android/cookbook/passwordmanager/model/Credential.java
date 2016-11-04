@@ -18,9 +18,10 @@ package org.jboss.aerogear.android.cookbook.passwordmanager.model;
 
 import org.jboss.aerogear.android.core.RecordId;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Credential {
+public class Credential implements Serializable {
 
     @RecordId
     private UUID id;

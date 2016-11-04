@@ -77,8 +77,7 @@ public class PasswordManagerActivity extends ActionBarActivity {
 
     public void displayList() {
         try {
-            Collection credentials = application.getStore().readAll();
-            displayFragment(new ListFragment(credentials), false);
+            displayFragment(new ListFragment(), false);
         } catch (InvalidKeyException e) {
             displayLogin();
             Toast.makeText(this, getString(R.string.invalid_credential), Toast.LENGTH_LONG).show();
@@ -91,7 +90,13 @@ public class PasswordManagerActivity extends ActionBarActivity {
     }
 
     public void displayInfo(Credential credential) {
-        displayFragment(new DetailFragment(credential), true);
+        Bundle args = new Bundle();
+        args.putSerializable(Credential.class.getName(), credential);
+
+        DetailFragment fragment = new DetailFragment();
+        fragment.setArguments(args);
+
+        displayFragment(fragment, true);
     }
 
     public void login(String passphrase) {

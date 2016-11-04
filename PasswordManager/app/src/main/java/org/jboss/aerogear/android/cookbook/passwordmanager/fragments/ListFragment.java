@@ -17,6 +17,7 @@
 package org.jboss.aerogear.android.cookbook.passwordmanager.fragments;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -29,26 +30,25 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.jboss.aerogear.android.cookbook.passwordmanager.PasswordManagerActivity;
+import org.jboss.aerogear.android.cookbook.passwordmanager.PasswordManagerApplication;
 import org.jboss.aerogear.android.cookbook.passwordmanager.R;
 import org.jboss.aerogear.android.cookbook.passwordmanager.model.Credential;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static android.R.layout.simple_list_item_1;
 
 public class ListFragment extends Fragment {
 
-    private final List<Credential> credentials;
-
-    public ListFragment(Collection<Credential> credentials) {
-        this.credentials = new ArrayList(credentials);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.list, null);
+
+        PasswordManagerApplication application = (PasswordManagerApplication) getActivity().getApplication();
+        List<Credential> credentials = new ArrayList<Credential>(application.getStore().readAll());
 
         ArrayAdapter<Credential> adapter = new ArrayAdapter(getActivity(), simple_list_item_1, credentials);
 
