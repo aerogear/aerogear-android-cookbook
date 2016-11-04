@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.passwordmanager.fragments;
+package org.jboss.aerogear.android.cookbook.passwordmanager.ui;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -24,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.jboss.aerogear.android.cookbook.passwordmanager.PasswordManagerActivity;
 import org.jboss.aerogear.android.cookbook.passwordmanager.R;
 
 public class LoginFragment extends Fragment {
@@ -43,7 +42,7 @@ public class LoginFragment extends Fragment {
                 return;
             }
 
-            PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
+            MainActivity activity = (MainActivity) getActivity();
             activity.login(password.getText().toString());
         });
 

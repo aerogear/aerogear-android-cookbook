@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.passwordmanager.fragments;
+package org.jboss.aerogear.android.cookbook.passwordmanager.ui;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -26,7 +26,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import org.jboss.aerogear.android.cookbook.passwordmanager.PasswordManagerActivity;
 import org.jboss.aerogear.android.cookbook.passwordmanager.PasswordManagerApplication;
 import org.jboss.aerogear.android.cookbook.passwordmanager.R;
 import org.jboss.aerogear.android.cookbook.passwordmanager.model.Credential;
@@ -54,7 +53,7 @@ public class ListFragment extends Fragment {
         listView.setOnItemClickListener((adapterView, view12, position, id) -> {
             Credential credential = (Credential) adapterView.getItemAtPosition(position);
 
-            PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
+            MainActivity activity = (MainActivity) getActivity();
             activity.displayInfo(credential);
         });
 
@@ -66,7 +65,7 @@ public class ListFragment extends Fragment {
                     .setTitle(getString(R.string.delete))
                     .setMessage(getString(R.string.delete_confirmation))
                     .setPositiveButton(getString(R.string.yes), (dialog, which) -> {
-                        PasswordManagerActivity activity = (PasswordManagerActivity) getActivity();
+                        MainActivity activity = (MainActivity) getActivity();
                         activity.delete(credential);
                     })
                     .setNegativeButton(getString(R.string.no), null).show();
@@ -75,7 +74,7 @@ public class ListFragment extends Fragment {
         });
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(v -> ((PasswordManagerActivity) getActivity()).displayForm());
+        fab.setOnClickListener(v -> ((MainActivity) getActivity()).displayForm());
 
         return view;
     }

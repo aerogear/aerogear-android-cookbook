@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.passwordmanager;
+package org.jboss.aerogear.android.cookbook.passwordmanager.ui;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -22,14 +22,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import org.jboss.aerogear.android.cookbook.passwordmanager.fragments.DetailFragment;
-import org.jboss.aerogear.android.cookbook.passwordmanager.fragments.FormFragment;
-import org.jboss.aerogear.android.cookbook.passwordmanager.fragments.ListFragment;
-import org.jboss.aerogear.android.cookbook.passwordmanager.fragments.LoginFragment;
+import org.jboss.aerogear.android.cookbook.passwordmanager.PasswordManagerApplication;
+import org.jboss.aerogear.android.cookbook.passwordmanager.R;
+import org.jboss.aerogear.android.cookbook.passwordmanager.ui.DetailFragment;
+import org.jboss.aerogear.android.cookbook.passwordmanager.ui.FormFragment;
+import org.jboss.aerogear.android.cookbook.passwordmanager.ui.ListFragment;
+import org.jboss.aerogear.android.cookbook.passwordmanager.ui.LoginFragment;
 import org.jboss.aerogear.android.cookbook.passwordmanager.model.Credential;
 import org.jboss.aerogear.android.security.InvalidKeyException;
 
-public class PasswordManagerActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private PasswordManagerApplication application;
 
