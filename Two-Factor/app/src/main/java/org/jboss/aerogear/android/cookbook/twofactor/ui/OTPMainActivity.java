@@ -14,21 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.twofactor;
+package org.jboss.aerogear.android.cookbook.twofactor.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import org.jboss.aerogear.android.cookbook.twofactor.R;
+
 public class OTPMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_main);
 
         Button withQRCode = (Button) findViewById(R.id.withQRCode);
         withQRCode.setOnClickListener(new View.OnClickListener() {

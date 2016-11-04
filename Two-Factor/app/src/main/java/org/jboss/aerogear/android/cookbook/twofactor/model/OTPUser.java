@@ -14,8 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.twofactor;
+package org.jboss.aerogear.android.cookbook.twofactor.model;
 
-public interface Constants {
-    static String BASE_URL = "";
+public class OTPUser {
+
+    private String username;
+    private String uri;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
 }

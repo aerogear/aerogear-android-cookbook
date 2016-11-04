@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.twofactor;
+package org.jboss.aerogear.android.cookbook.twofactor.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -22,6 +22,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import org.jboss.aerogear.android.cookbook.twofactor.R;
 
 public class OTPQRCodeActivity extends AppCompatActivity {
 
