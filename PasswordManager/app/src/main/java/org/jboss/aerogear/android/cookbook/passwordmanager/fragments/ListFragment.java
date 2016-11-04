@@ -17,7 +17,6 @@
 package org.jboss.aerogear.android.cookbook.passwordmanager.fragments;
 
 import android.app.AlertDialog;
-import android.app.Application;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -35,8 +34,6 @@ import org.jboss.aerogear.android.cookbook.passwordmanager.R;
 import org.jboss.aerogear.android.cookbook.passwordmanager.model.Credential;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import static android.R.layout.simple_list_item_1;
