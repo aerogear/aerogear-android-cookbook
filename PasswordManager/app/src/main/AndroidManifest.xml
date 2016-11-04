@@ -2,6 +2,7 @@
     package="org.jboss.aerogear.android.cookbook.passwordmanager">
 
     <application
+        android:supportsRtl="true"
         android:name=".PasswordManagerApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
