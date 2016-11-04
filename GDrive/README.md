@@ -27,13 +27,14 @@ When the application is deployed to an Android device, the application will ask 
 The project source code must be customized with your Google credentials.
 
 1. Open ```/path/to/gdrive/src/org/jboss/aerogear/android/example/gdrive/Constants.java``` for editing.
-2. Enter the ```client id```, ```client secret``` and ```redirect url``` for the following constants:
+1. Enter the ```client id```, ```client secret``` and ```redirect url``` for the following constants:
 
-```java
-String AUTHZ_CLIENT_ID = "";
-String AUTHZ_CLIENT_SECRET = "";
-String AUTHZ_REDIRECT_URL = "";
-```
+    ```java
+    String AUTHZ_CLIENT_ID = "";
+    String AUTHZ_CLIENT_SECRET = "";
+    String AUTHZ_REDIRECT_URL = "";
+    ```
+
 For the complete instructions about how to setup Google credentials, visit our [OAuth2 documentation guide](https://aerogear.org/docs/guides/security/oauth2-guide/#Google)
 
 ### Build Application
@@ -47,16 +48,13 @@ $ gradle clean build
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
-#### Install generated apk to device
+1. Install generated apk to device
 
-```shell
-$ cd /path/to/gdrive
-$ gradle installDebug
-```
-
-#### Open app on device
-
-Application output is displayed in the command line window.
+    ```shell
+    $ cd /path/to/gdrive
+    $ gradle installDebug
+    ```
+1. Open app on device
 
 ## How does it work?
 
