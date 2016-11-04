@@ -14,15 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.twofactor;
+package org.jboss.aerogear.android.cookbook.twofactor.ui;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import org.jboss.aerogear.android.cookbook.twofactor.R;
 import org.jboss.aerogear.security.otp.Totp;
 
 public class OTPCodeActivity extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class OTPCodeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.display);
+        setContentView(R.layout.activity_code);
 
         parseOtpPath();
 
@@ -71,7 +72,7 @@ public class OTPCodeActivity extends AppCompatActivity {
         String otpauth = getIntent().getStringExtra("otpauth");
         Uri otpUri = Uri.parse(otpauth);
 
-        name = otpUri.getQueryParameter("");
+        name = otpUri.getQueryParameter("issuer");
         secret = otpUri.getQueryParameter("secret");
 
         totp = new Totp(secret);
