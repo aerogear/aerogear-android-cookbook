@@ -50,6 +50,7 @@ public class ListFragment extends Fragment {
         PasswordManagerApplication application = (PasswordManagerApplication) getActivity().getApplication();
         List<Credential> credentials = new ArrayList<Credential>(application.getStore().readAll());
 
+        @SuppressWarnings("unchecked")
         ArrayAdapter<Credential> adapter = new ArrayAdapter(getActivity(), simple_list_item_1, credentials);
 
         ListView listView = (ListView) view.findViewById(android.R.id.list);
