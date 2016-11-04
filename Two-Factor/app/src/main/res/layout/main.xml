@@ -26,7 +26,7 @@
             android:id="@+id/withQRCode"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/using_qrcode"/>
+            android:text="@string/scan_qrcode"/>
 
 </LinearLayout>
 
