@@ -32,7 +32,7 @@ public class FormFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.form, null);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.form, container, false);
 
         final EditText name = (EditText) view.findViewById(R.id.name);
         final EditText username = (EditText) view.findViewById(R.id.username);

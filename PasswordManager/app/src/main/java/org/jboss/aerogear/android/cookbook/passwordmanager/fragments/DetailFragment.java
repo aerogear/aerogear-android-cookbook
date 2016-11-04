@@ -40,7 +40,7 @@ public class DetailFragment extends Fragment {
         final Credential credential =
                 (Credential) getArguments().getSerializable(Credential.class.getName());
 
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.detail, null);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.detail, container, false);
 
         TextView name = (TextView) view.findViewById(R.id.name);
         name.setText(credential.getName());

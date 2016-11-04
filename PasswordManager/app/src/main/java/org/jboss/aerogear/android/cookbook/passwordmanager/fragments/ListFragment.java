@@ -45,7 +45,7 @@ public class ListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.list, null);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.list, container, false);
 
         PasswordManagerApplication application = (PasswordManagerApplication) getActivity().getApplication();
         List<Credential> credentials = new ArrayList<Credential>(application.getStore().readAll());
