@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
 
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.shootandshare"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 4
         versionName "3.0.0"
     }
@@ -26,8 +26,7 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'org.jboss.aerogear:aerogear-android-authz:3.0.1'
     compile 'com.squareup.picasso:picasso:2.3.4'
-    compile ('com.android.support:appcompat-v7:23.+')
-    compile ('org.jboss.aerogear:aerogear-android-authz:3.0.1')
-
 }
