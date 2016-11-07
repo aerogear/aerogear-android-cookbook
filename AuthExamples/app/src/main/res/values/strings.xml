@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Auth Examples</string>
-    <string name="ok">ok</string>
+    <string name="ok">OK</string>
     <string name="cancel">cancel</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
