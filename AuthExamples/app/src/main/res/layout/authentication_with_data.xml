@@ -29,14 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Retrieve data" />
+            android:text="@string/retrieve_data" />
 
         <Button
             android:id="@+id/clearData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Clear data" />
+            android:text="@string/clear_data" />
 
     </LinearLayout>
 
