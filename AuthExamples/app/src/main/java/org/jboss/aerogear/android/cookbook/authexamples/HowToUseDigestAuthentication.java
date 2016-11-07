@@ -75,7 +75,7 @@ public class HowToUseDigestAuthentication extends Activity {
     }
 
     private AuthenticationModule createAuthenticatior() {
-        HttpDigestAuthenticationConfiguration authenticationConfig = null;
+        HttpDigestAuthenticationConfiguration authenticationConfig;
         try {
             authenticationConfig = AuthenticationManager.config("digest", HttpDigestAuthenticationConfiguration.class)
                     .baseURL(new URL(Constants.URL_BASE))

@@ -78,7 +78,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
     }
 
     private AuthenticationModule createAuthenticatior() {
-        HttpBasicAuthenticationConfiguration authenticationConfig = null;
+        HttpBasicAuthenticationConfiguration authenticationConfig;
         try {
             authenticationConfig = AuthenticationManager.config("login", HttpBasicAuthenticationConfiguration.class)
                     .baseURL(new URL(Constants.URL_BASE));
