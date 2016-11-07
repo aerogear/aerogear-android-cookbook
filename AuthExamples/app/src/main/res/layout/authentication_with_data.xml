@@ -9,7 +9,9 @@
 
     <TextView
         android:id="@+id/screen_title"
-        style="@style/screen_title"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

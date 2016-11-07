@@ -34,5 +34,6 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'org.jboss.aerogear:aerogear-android-auth:3.0.0'
 }

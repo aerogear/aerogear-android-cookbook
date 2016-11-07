@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,7 +42,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class HowToUseDigestAuthentication extends Activity {
+public class HowToUseDigestAuthentication extends AppCompatActivity {
 
     private AuthenticationModule authModule;
     private LoaderPipe<String> pipe;
