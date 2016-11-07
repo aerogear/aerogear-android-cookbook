@@ -64,7 +64,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
         pipe = createPipe(authModule);
 
         TextView screenTitle = (TextView) findViewById(R.id.screen_title);
-        screenTitle.setText(getString(R.string.how_to_use_http_basic_authentication));
+        screenTitle.setText(getString(R.string.http_basic_authentication));
 
         listView = (ListView) findViewById(R.id.list);
         retriveDataButton = (Button) findViewById(R.id.retriveData);

@@ -62,7 +62,7 @@ public class HowToUseDigestAuthentication extends Activity {
         pipe = createPipe(authModule);
 
         TextView screenTitle = (TextView) findViewById(R.id.screen_title);
-        screenTitle.setText(getString(R.string.how_to_use_digest_authentication));
+        screenTitle.setText(getString(R.string.digest_authentication));
 
         bacons = (ListView) findViewById(R.id.list);
         retriveDataButton = (Button) findViewById(R.id.retriveData);

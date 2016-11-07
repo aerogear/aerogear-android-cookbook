@@ -11,8 +11,8 @@
     <string name="logged">You are logged</string>
     <string name="notlogged">You are *not* logged</string>
     <string name="loading">Loading...</string>
-    <string name="how_to_use_http_basic_authentication">How To Use Httpbasic Authentication</string>
-    <string name="how_to_use_digest_authentication">How To Use Digest Authentication</string>
+    <string name="http_basic_authentication">Httpbasic Authentication</string>
+    <string name="digest_authentication">Digest Authentication</string>
     <string name="title_activity_main">Authentication Examples</string>
     <string name="URLException">URLException: Check Your Constants File</string>
 
