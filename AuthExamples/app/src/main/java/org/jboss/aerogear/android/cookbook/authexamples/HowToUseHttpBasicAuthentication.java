@@ -53,7 +53,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
     private Button loginButton;
     private Button logoutButton;
 
-    private Handler handler = new Handler(Looper.getMainLooper());
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
     @SuppressWarnings("unchecked")
     @Override
