@@ -55,6 +55,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
 
     private Handler handler = new Handler(Looper.getMainLooper());
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

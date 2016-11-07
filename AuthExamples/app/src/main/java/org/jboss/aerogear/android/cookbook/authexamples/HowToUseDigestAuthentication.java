@@ -53,6 +53,7 @@ public class HowToUseDigestAuthentication extends Activity {
     private Button logoutButton;
     private Handler handler = new Handler(Looper.getMainLooper());
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
