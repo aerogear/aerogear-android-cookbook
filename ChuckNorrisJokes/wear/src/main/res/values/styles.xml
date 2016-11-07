@@ -17,21 +17,11 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    <style name="JokeContainer">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_centerInParent">true</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:background">@drawable/card_background</item>
-
-    </style>
-
     <style name="JokeText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">32dp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>

@@ -3,7 +3,6 @@ package org.jboss.aerogear.android.cookbook.chucknorrisjokes.service;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.MessageApi;
@@ -25,11 +24,6 @@ public class JokeFetchListener extends WearableListenerService {
     private static final String INCOMING_JOKE = "/jokes/incoming";
     private static final String REQUEST_JOKE = "/jokes/request";
     private GoogleApiClient mGoogleApiClient;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
 
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
@@ -55,12 +49,7 @@ public class JokeFetchListener extends WearableListenerService {
                         Log.d(TAG, "onConnectionSuspended: " + cause);
                     }
                 })
-                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(ConnectionResult result) {
-                        Log.d(TAG, "onConnectionFailed: " + result);
-                    }
-                })
+                .addOnConnectionFailedListener(result -> Log.d(TAG, "onConnectionFailed: " + result))
                         // Request access only to the Wearable API
                 .addApi(Wearable.API)
                 .build();
@@ -75,6 +64,7 @@ public class JokeFetchListener extends WearableListenerService {
         super.onMessageReceived(messageEvent);
         if (messageEvent.getPath().equals(REQUEST_JOKE)) {
             Log.d(TAG, "joke requested from wear");
+            //noinspection unchecked
             PipeManager.getPipe("chuckNorris").read(new Callback<List<Joke>>() {
                 @Override
                 public void onSuccess(List<Joke> list) {

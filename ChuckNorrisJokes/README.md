@@ -1,48 +1,43 @@
-# AGDroid Chuck Norris Jokes: Basic Mobile Application showing the AeroGear Pipe feature on Android
----------
+# Mobile app showing the AeroGear Pipe feature on Android
+
 Author: Daniel Passos (dpassos)
-Level: Beginner   
-Technologies: Java, Android   
+Level: Beginner
+Technologies: Java, Android
 Summary: A basic example of Pipe
-Target Product: -   
-Product Versions: -   
 Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/ChuckNorrisJokes
 
 ## What is it?
 
-The ```AGDroid Chuck Norris Jokes``` project demonstrates how to include retrive data from a REST endpoint
+The _Chuck Norris Jokes_ project demonstrates how to include retrive data from a REST endpoint
 
 When the application is deployed to an Android device, the application will retrieve a Chuck Norris joke
 
 ## How do I run it?
 
-### 0. System Requirements
+### System Requirements
 
-* [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle 2.2.1](http://www.gradle.org/)
-* Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 23](http://developer.android.com/tools/revisions/platforms.html)
+* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](http://www.gradle.org/)
+* [Android SDK](https://developer.android.com/sdk/index.html) and [Platform](http://developer.android.com/tools/revisions/platforms.html)
 
-### 1. Build Application
+### Build Application
 
 ```shell
 $ cd /path/to/app
 $ gradle clean build
 ```
 
-### 2. Test Application
+### Running the app
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
-2.1) Install generated apk to device
+1. Install generated apk to device
 
-```shell
-$ cd /path/to/app
-$ gradle installDebug
-```
-
-2.2) Open app on device
-
-Application output is displayed in the command line window.
+    ```shell
+    $ cd /path/to/app
+    $ gradle installDebug
+    ```
+1. Open app on device
 
 ## How does it work?
 
