@@ -166,7 +166,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
     }
 
     private void displayBeers(List<String> beerList) {
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, beerList));
+        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, beerList));
     }
 
     private void displayMessage(String message) {

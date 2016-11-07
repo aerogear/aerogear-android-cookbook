@@ -165,7 +165,7 @@ public class HowToUseDigestAuthentication extends Activity {
     }
 
     private void displayBacons(List<String> baconList) {
-        bacons.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, baconList));
+        bacons.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, baconList));
     }
 
     private void displayMessage(String message) {
