@@ -55,7 +55,7 @@ public class NotifyingMessageHandler implements MessageHandler {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(ctx)
                         .setAutoCancel(true)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("AeroGear Push Notification")
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                         .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
