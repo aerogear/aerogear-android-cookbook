@@ -105,7 +105,7 @@ public class AeroDocLeadsAvailableFragments extends Fragment {
         });
 
         retrieveLeads();
-        trackMovement();
+//        trackMovement();
 
         return view;
     }
