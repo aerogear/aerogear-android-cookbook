@@ -124,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(final List<Files> fileses) {
                 Toast.makeText(getApplicationContext(),
-                        getResources().getQuantityString(R.plurals.fetched, fileses.size()),
+                        getResources().getQuantityString(R.plurals.fetched,
+                                fileses.size() , fileses.size()),
                         Toast.LENGTH_LONG).show();
                 displayDriveFiles(fileses);
             }
