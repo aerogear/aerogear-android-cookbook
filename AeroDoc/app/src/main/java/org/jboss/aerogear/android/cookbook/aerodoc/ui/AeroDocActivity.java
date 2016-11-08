@@ -1,13 +1,13 @@
 /**
  * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- * 	http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -70,8 +70,8 @@ public class AeroDocActivity extends AppCompatActivity implements MessageHandler
 
     private void requestPermissions() {
         ActivityCompat.requestPermissions(this,
-                new String[]{ Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION },
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION},
                 LOCATION_REQUEST);
     }
 
@@ -79,12 +79,7 @@ public class AeroDocActivity extends AppCompatActivity implements MessageHandler
     protected void onResume() {
         super.onResume();
         if (!(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
-
-            if (application.isLoggedIn()) {
-                displayAvailableLeadsScreen();
-            } else {
-                displayLoginScreen();
-            }
+            displayAvailableLeadsScreen();
         } else {
             requestPermissions();
         }
@@ -143,10 +138,6 @@ public class AeroDocActivity extends AppCompatActivity implements MessageHandler
         }
     }
 
-    private void displayLoginScreen() {
-        displayFragment(Display.LOGIN, new AeroDocLoginFragment());
-    }
-
     private void displayAvailableLeadsScreen() {
         displayFragment(Display.AVAILABLE_LEADS, new AeroDocLeadsAvailableFragments());
     }
@@ -164,37 +155,13 @@ public class AeroDocActivity extends AppCompatActivity implements MessageHandler
                 .commit();
     }
 
-    public void login(final String user, final String pass) {
-        showProgressDialog(getString(R.string.loging));
-        application.login(user, pass, new Callback<HeaderAndBody>() {
-            @Override
-            public void onSuccess(HeaderAndBody headerAndBody) {
-                AeroDocActivity activity = AeroDocActivity.this;
-                String response = new String(headerAndBody.getBody(), Charset.forName("UTF-8"));
-                SaleAgent saleAgent = new Gson().fromJson(response, SaleAgent.class);
-                ((AeroDocApplication) activity.getApplication()).setSaleAgent(saleAgent);
-                ((AeroDocApplication) activity.getApplication()).registerDeviceOnPushServer(user);
-                activity.dismissDialog();
-                activity.displayAvailableLeadsScreen();
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.e(TAG, e.getMessage(), e);
-                AeroDocActivity activity = AeroDocActivity.this;
-                activity.dismissDialog();
-                activity.displayErrorMessage(e);
-            }
-        });
-    }
-
     public void logout() {
         showProgressDialog(getString(R.string.logout));
         application.logout(new Callback<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 AeroDocActivity activity = AeroDocActivity.this;
-                activity.displayLoginScreen();
+//                activity.displayLoginScreen();
                 activity.dismissDialog();
             }
 

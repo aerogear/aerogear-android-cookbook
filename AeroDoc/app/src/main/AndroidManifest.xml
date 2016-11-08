@@ -20,14 +20,18 @@
             android:value="org.jboss.aerogear.android.cookbook.aerodoc.handler.NotifyingHandler" />
 
         <activity
-            android:name=".ui.AeroDocActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.AeroDocActivity"
+            android:theme="@style/AppTheme" />
 
     </application>
 

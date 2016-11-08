@@ -18,6 +18,7 @@
     <string name="updating_lead">Updating lead</string>
     <string name="availables">Availables</string>
     <string name="accepted">Accepted</string>
+    <string name="cant_be_blank">Can\'t be blank</string>
 
     <string-array name="status">
         <item>STANDBY</item>

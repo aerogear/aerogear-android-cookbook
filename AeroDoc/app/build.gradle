@@ -26,10 +26,12 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:design:25.0.0'
     compile 'com.google.android.gms:play-services-location:9.0.0'
     compile 'org.jboss.aerogear:aerogear-android-store:3.0.1'
     compile 'org.jboss.aerogear:aerogear-android-auth:3.0.0'
     compile 'org.jboss.aerogear:aerogear-android-push:4.0.2'
+    compile 'com.afollestad.material-dialogs:core:0.9.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
