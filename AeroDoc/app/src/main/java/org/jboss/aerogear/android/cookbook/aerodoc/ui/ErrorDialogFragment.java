@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.aerodoc.fragments;
+package org.jboss.aerogear.android.cookbook.aerodoc.ui;
 
 import android.app.Dialog;
 import android.os.Bundle;

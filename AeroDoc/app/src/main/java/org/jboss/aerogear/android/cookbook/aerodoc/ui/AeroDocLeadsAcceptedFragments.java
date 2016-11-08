@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.aerodoc.fragments;
+package org.jboss.aerogear.android.cookbook.aerodoc.ui;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -25,7 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import org.jboss.aerogear.android.cookbook.aerodoc.AeroDocApplication;
 import org.jboss.aerogear.android.cookbook.aerodoc.R;
-import org.jboss.aerogear.android.cookbook.aerodoc.activities.AeroDocActivity;
+import org.jboss.aerogear.android.cookbook.aerodoc.ui.AeroDocActivity;
 import org.jboss.aerogear.android.cookbook.aerodoc.model.Lead;
 
 import java.util.ArrayList;

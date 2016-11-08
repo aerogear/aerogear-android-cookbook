@@ -25,7 +25,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.android.cookbook.aerodoc.R;
-import org.jboss.aerogear.android.cookbook.aerodoc.activities.AeroDocActivity;
+import org.jboss.aerogear.android.cookbook.aerodoc.ui.AeroDocActivity;
 
 public class NotifyingMessageHandler implements MessageHandler {
 

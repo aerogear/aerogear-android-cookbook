@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.android.cookbook.aerodoc.activities;
+package org.jboss.aerogear.android.cookbook.aerodoc.ui;
 
 import android.Manifest;
 import android.app.Fragment;
@@ -24,21 +24,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.gms.location.LocationServices;
 import com.google.gson.Gson;
 
 import org.jboss.aerogear.android.cookbook.aerodoc.AeroDocApplication;
 import org.jboss.aerogear.android.cookbook.aerodoc.R;
-import org.jboss.aerogear.android.cookbook.aerodoc.fragments.AeroDocLeadsAcceptedFragments;
-import org.jboss.aerogear.android.cookbook.aerodoc.fragments.AeroDocLeadsAvailableFragments;
-import org.jboss.aerogear.android.cookbook.aerodoc.fragments.AeroDocLoginFragment;
 import org.jboss.aerogear.android.cookbook.aerodoc.handler.NotifyingMessageHandler;
 import org.jboss.aerogear.android.cookbook.aerodoc.model.MessageType;
 import org.jboss.aerogear.android.cookbook.aerodoc.model.SaleAgent;
