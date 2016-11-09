@@ -59,7 +59,7 @@ public class FacebookHelper {
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
                     .setRefreshEndpoint(AUTHZ_TOKEN_ENDPOINT)
                     .addAdditionalAccessParam(Pair.create("response_type", "code"))
-                    .setScopes(Arrays.asList("photo_upload, publish_actions"))
+                    .setScopes(Arrays.asList("publish_actions"))
                     .asModule();
 
             PipeManager.config("fb-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule(MODULE_NAME))
