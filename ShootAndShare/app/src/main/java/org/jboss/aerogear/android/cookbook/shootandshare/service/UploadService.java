@@ -43,7 +43,7 @@ public final class UploadService extends Service {
     public static final String FILE_URI = "UploadService.FILE_URI";
     public static final String PROVIDER = "UploadService.PROVIDER";
 
-    public static enum PROVIDERS {GOOGLE, KEYCLOAK, FACEBOOK}
+    public enum PROVIDERS {GOOGLE, KEYCLOAK, FACEBOOK}
 
     private static final AtomicInteger notificationCount = new AtomicInteger(1);
 
