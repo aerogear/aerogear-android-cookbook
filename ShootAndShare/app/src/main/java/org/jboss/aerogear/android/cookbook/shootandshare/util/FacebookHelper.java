@@ -34,6 +34,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class FacebookHelper {
 
@@ -59,7 +60,7 @@ public class FacebookHelper {
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
                     .setRefreshEndpoint(AUTHZ_TOKEN_ENDPOINT)
                     .addAdditionalAccessParam(Pair.create("response_type", "code"))
-                    .setScopes(Arrays.asList("publish_actions"))
+                    .setScopes(Collections.singletonList("publish_actions"))
                     .asModule();
 
             PipeManager.config("fb-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule(MODULE_NAME))

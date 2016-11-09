@@ -33,6 +33,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class GooglePlusHelper {
 
@@ -55,7 +56,7 @@ public class GooglePlusHelper {
                     .setClientId(AUTHZ_CLIENT_ID)
                     .setClientSecret(AUTHZ_CLIENT_SECRET)
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
-                    .setScopes(Arrays.asList("https://www.googleapis.com/auth/drive"))
+                    .setScopes(Collections.singletonList("https://www.googleapis.com/auth/drive"))
                     .addAdditionalAuthorizationParam(Pair.create("access_type", "offline"))
                     .asModule();
 
