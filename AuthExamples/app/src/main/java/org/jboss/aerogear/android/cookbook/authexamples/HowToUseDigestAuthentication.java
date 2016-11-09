@@ -84,7 +84,9 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
             return null;
         }
         AuthenticationModule module = authenticationConfig.asModule();
-        module.login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
+        if (!module.isLoggedIn()) {
+            module.login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
+        }
         return module;
     }
 

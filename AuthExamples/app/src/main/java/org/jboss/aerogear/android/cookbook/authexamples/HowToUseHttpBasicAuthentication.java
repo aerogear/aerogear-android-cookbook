@@ -83,7 +83,9 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
             return null;
         }
         AuthenticationModule module = authenticationConfig.asModule();
-        module.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
+        if (!module.isLoggedIn()) {
+            module.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
+        }
         return module;
     }
 
