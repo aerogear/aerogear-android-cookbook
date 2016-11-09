@@ -77,14 +77,15 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
                     .baseURL(new URL(Constants.URL_BASE))
                     .logoutEndpoint("")
                     .loginEndpoint("/grocery/bacons");
-            authenticationConfig.asModule().login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
+
         } catch (MalformedURLException e) {
             displayMessage(getString(R.string.URLException));
             finish();
             return null;
         }
-
-        return authenticationConfig.asModule();
+        AuthenticationModule module = authenticationConfig.asModule();
+        module.login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
+        return module;
     }
 
     private LoaderPipe createPipe(AuthenticationModule module) {

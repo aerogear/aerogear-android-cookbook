@@ -82,8 +82,9 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
             finish();
             return null;
         }
-        authenticationConfig.asModule().login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
-        return authenticationConfig.asModule();
+        AuthenticationModule module = authenticationConfig.asModule();
+        module.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
+        return module;
     }
 
     private LoaderPipe createPipe(AuthenticationModule authModule) {
@@ -123,6 +124,7 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
     // Button Actions ---------------------------------------------
 
     private void retriveBeers() {
+        pipe.reset();
         pipe.read(new RetriveBeerCallback());
     }
 
