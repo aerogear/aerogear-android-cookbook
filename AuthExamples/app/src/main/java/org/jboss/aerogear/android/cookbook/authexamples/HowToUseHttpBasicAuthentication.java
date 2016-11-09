@@ -53,14 +53,18 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
 
     private final Handler handler = new Handler(Looper.getMainLooper());
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        authModule = createAuthenticatior();
+        pipe = createPipe(authModule);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentication_with_data);
-
-        authModule = createAuthenticatior();
-        pipe = createPipe(authModule);
 
         TextView screenTitle = (TextView) findViewById(R.id.screen_title);
         screenTitle.setText(getString(R.string.http_basic_authentication));
@@ -83,9 +87,8 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
             return null;
         }
         AuthenticationModule module = authenticationConfig.asModule();
-        if (!module.isLoggedIn()) {
-            module.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
-        }
+        module.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
+
         return module;
     }
 
