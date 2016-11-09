@@ -60,6 +60,7 @@ public final class UploadService extends Service {
         super.onStartCommand(intent, flags, startId);
 
         handler.post(new Runnable() {
+            @SuppressWarnings("unchecked")
             @Override
             public void run() {
                 int id = 0;

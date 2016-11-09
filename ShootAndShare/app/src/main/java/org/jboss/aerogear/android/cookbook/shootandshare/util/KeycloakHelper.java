@@ -71,6 +71,7 @@ public class KeycloakHelper {
             final AuthzModule authzModule = AuthorizationManager.getModule(MODULE_NAME);
 
             authzModule.requestAccess(activity, new Callback<String>() {
+                @SuppressWarnings("unchecked")
                 @Override
                 public void onSuccess(String s) {
                     callback.onSuccess(s);
@@ -92,6 +93,7 @@ public class KeycloakHelper {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static void upload(final File file, final Callback callback, Activity activity) {
         PipeManager.getPipe("kc-upload", activity).save(new PhotoHolder(file), callback);
     }
