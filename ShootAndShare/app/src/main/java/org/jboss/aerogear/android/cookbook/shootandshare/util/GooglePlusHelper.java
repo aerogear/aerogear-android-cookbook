@@ -32,7 +32,6 @@ import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class GooglePlusHelper {
