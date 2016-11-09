@@ -55,6 +55,7 @@ public final class UploadService extends Service {
         handler = new Handler(thread.getLooper());
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public int onStartCommand(final Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
