@@ -36,6 +36,10 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:support-v13:25.0.0'
     compile 'org.jboss.aerogear:aerogear-android-authz:3.0.1'
     compile 'com.squareup.picasso:picasso:2.3.4'
+    compile 'com.afollestad:material-camera:0.4.4'
+    compile 'com.github.hotchemi:permissionsdispatcher:2.2.0'
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.2.0'
 }

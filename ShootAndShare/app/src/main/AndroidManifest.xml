@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -21,9 +22,17 @@
         </activity>
         <activity android:name=".ui.PhotoActivity" />
 
-        <service android:name="org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthzService"/>
+        <activity
+            android:name="com.afollestad.materialcamera.CaptureActivity"
+            android:theme="@style/MaterialCamera.CaptureActivity" />
+        <activity
+            android:name="com.afollestad.materialcamera.CaptureActivity2"
+            android:theme="@style/MaterialCamera.CaptureActivity" />
+
+        <service android:name="org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthzService" />
         <service android:name=".service.UploadService" />
 
     </application>
+
 
 </manifest>

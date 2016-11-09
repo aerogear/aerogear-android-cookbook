@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Shoot And Share</string>
-    <string name="camera_button">Camera Button</string>
+    <string name="allow">Allow</string>
+    <string name="deny">Deny</string>
+    <string name="permission_camera_rationale">Camera permission is needed take a picture.</string>
+    <string name="permission_camera_denied">Camera permission was denied. Please consider granting it in order to access the camera!</string>
+    <string name="permission_camera_never_askagain">Camera permission was denied with never ask again.</string>
+    <string name="take_a_picture">Take a picture</string>
+    <string name="ok">Use it!</string>
     <string name="picture">Picture</string>
     <string name="google_plus_icon">Google Plus icon</string>
     <string name="keycloak_icon">Keycloak icon</string>

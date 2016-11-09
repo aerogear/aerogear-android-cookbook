@@ -1,13 +1,13 @@
 /**
  * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,15 +18,14 @@
 package org.jboss.aerogear.android.cookbook.shootandshare.ui;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import org.jboss.aerogear.android.cookbook.shootandshare.R;
 import org.jboss.aerogear.android.cookbook.shootandshare.service.UploadService;
@@ -38,11 +37,16 @@ import org.jboss.aerogear.android.core.Callback;
 public class PhotoActivity extends AppCompatActivity {
 
     private static final String TAG = PhotoActivity.class.getSimpleName();
+    private String photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+
+        photo = getIntent().getStringExtra("PHOTO");
+        ImageView photoImageView = (ImageView) findViewById(R.id.image);
+        Picasso.with(getApplicationContext()).load(photo).into(photoImageView);
 
         ImageView googlePlus = (ImageView) findViewById(R.id.google_plus);
         googlePlus.setOnClickListener(new View.OnClickListener() {
@@ -67,17 +71,6 @@ public class PhotoActivity extends AppCompatActivity {
                 sendPhotoToFacebook();
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        String photo = getIntent().getStringExtra("PHOTO");
-        Bitmap bitmap = BitmapFactory.decodeFile(photo);
-
-        ImageView imageView = (ImageView) findViewById(R.id.image);
-        imageView.setImageBitmap(bitmap);
     }
 
     private void sendPhotoToGooglePlus() {
@@ -146,7 +139,7 @@ public class PhotoActivity extends AppCompatActivity {
 
     private void sendPhoto(UploadService.PROVIDERS provider) {
         Intent shareIntent = new Intent(PhotoActivity.this, UploadService.class);
-        shareIntent.putExtra(UploadService.FILE_URI, getIntent().getStringExtra("PHOTO"));
+        shareIntent.putExtra(UploadService.FILE_URI, photo.replace("file://", ""));
         shareIntent.putExtra(UploadService.PROVIDER, provider.name());
         startService(shareIntent);
     }
