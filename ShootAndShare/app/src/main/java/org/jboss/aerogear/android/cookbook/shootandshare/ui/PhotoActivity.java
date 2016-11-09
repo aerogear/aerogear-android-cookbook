@@ -49,28 +49,13 @@ public class PhotoActivity extends AppCompatActivity {
         Picasso.with(getApplicationContext()).load(photo).into(photoImageView);
 
         ImageView googlePlus = (ImageView) findViewById(R.id.google_plus);
-        googlePlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendPhotoToGooglePlus();
-            }
-        });
+        googlePlus.setOnClickListener(v -> sendPhotoToGooglePlus());
 
         ImageView keycloak = (ImageView) findViewById(R.id.keycloak);
-        keycloak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendPhotoToKeycloak();
-            }
-        });
+        keycloak.setOnClickListener(v -> sendPhotoToKeycloak());
 
         ImageView facebook = (ImageView) findViewById(R.id.facebook);
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendPhotoToFacebook();
-            }
-        });
+        facebook.setOnClickListener(v -> sendPhotoToFacebook());
     }
 
     private void sendPhotoToGooglePlus() {
