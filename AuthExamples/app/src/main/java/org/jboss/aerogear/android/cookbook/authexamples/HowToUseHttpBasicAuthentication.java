@@ -16,7 +16,6 @@
  */
 package org.jboss.aerogear.android.cookbook.authexamples;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -49,10 +48,8 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
     private LoaderPipe<String> pipe;
 
     private ListView listView;
-    private Button retriveDataButton;
+    private Button retrieveDataButton;
     private Button clearDataButton;
-    private Button loginButton;
-    private Button logoutButton;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -69,11 +66,8 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
         screenTitle.setText(getString(R.string.http_basic_authentication));
 
         listView = (ListView) findViewById(R.id.list);
-        retriveDataButton = (Button) findViewById(R.id.retriveData);
+        retrieveDataButton = (Button) findViewById(R.id.retriveData);
         clearDataButton = (Button) findViewById(R.id.clearData);
-        loginButton = (Button) findViewById(R.id.login);
-        logoutButton = (Button) findViewById(R.id.logout);
-
 
         setListeners();
     }
@@ -88,13 +82,11 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
             finish();
             return null;
         }
-
+        authenticationConfig.asModule().login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
         return authenticationConfig.asModule();
     }
 
     private LoaderPipe createPipe(AuthenticationModule authModule) {
-
-
         try {
             RestfulPipeConfiguration pipeConfig = PipeManager.config("beer", RestfulPipeConfiguration.class)
                     .module(authModule)
@@ -113,7 +105,7 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
     }
 
     private void setListeners() {
-        retriveDataButton.setOnClickListener(new View.OnClickListener() {
+        retrieveDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 retriveBeers();
@@ -124,20 +116,6 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clearBeerList();
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
-            }
-        });
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.logout(new LogoutAuthCallBack(HowToUseHttpBasicAuthentication.this));
             }
         });
     }
@@ -162,8 +140,6 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
         }
 
         displayMessage(logged ? getString(R.string.login_successful) : getString(R.string.logout_successful));
-        loginButton.setEnabled(!logged);
-        logoutButton.setEnabled(logged);
     }
 
     private void displayBeers(List<String> beerList) {

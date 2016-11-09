@@ -16,7 +16,6 @@
  */
 package org.jboss.aerogear.android.cookbook.authexamples;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -48,10 +47,8 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
     private LoaderPipe<String> pipe;
 
     private ListView bacons;
-    private Button retriveDataButton;
+    private Button retrieveDataButton;
     private Button clearDataButton;
-    private Button loginButton;
-    private Button logoutButton;
     private final Handler handler = new Handler(Looper.getMainLooper());
 
     @SuppressWarnings("unchecked")
@@ -67,10 +64,8 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
         screenTitle.setText(getString(R.string.digest_authentication));
 
         bacons = (ListView) findViewById(R.id.list);
-        retriveDataButton = (Button) findViewById(R.id.retriveData);
+        retrieveDataButton = (Button) findViewById(R.id.retriveData);
         clearDataButton = (Button) findViewById(R.id.clearData);
-        loginButton = (Button) findViewById(R.id.login);
-        logoutButton = (Button) findViewById(R.id.logout);
 
         setListeners();
     }
@@ -82,6 +77,7 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
                     .baseURL(new URL(Constants.URL_BASE))
                     .logoutEndpoint("")
                     .loginEndpoint("/grocery/bacons");
+            authenticationConfig.asModule().login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
         } catch (MalformedURLException e) {
             displayMessage(getString(R.string.URLException));
             finish();
@@ -111,10 +107,10 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
     }
 
     private void setListeners() {
-        retriveDataButton.setOnClickListener(new View.OnClickListener() {
+        retrieveDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                retriveBacon();
+                retrieveBacon();
             }
         });
 
@@ -124,27 +120,13 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
                 clearBaconList();
             }
         });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
-            }
-        });
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.logout(new LogoutAuthCallBack(HowToUseDigestAuthentication.this));
-            }
-        });
     }
 
     // Button Actions ---------------------------------------------
 
-    private void retriveBacon() {
+    private void retrieveBacon() {
         pipe.reset(); // Don't cache data
-        pipe.read(new RetriveBaconCallback());
+        pipe.read(new RetrieveBaconCallback());
     }
 
     private void clearBaconList() {
@@ -155,14 +137,12 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
 
     public void logged(boolean logged) {
         if (logged) {
-            retriveBacon();
+            retrieveBacon();
         } else {
             clearBaconList();
         }
 
         displayMessage(logged ? getString(R.string.login_successful) : getString(R.string.logout_successful));
-        loginButton.setEnabled(!logged);
-        logoutButton.setEnabled(logged);
     }
 
     private void displayBacons(List<String> baconList) {
@@ -175,7 +155,7 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
 
     // Callbacks --------------------------------------------------
 
-    private static class RetriveBaconCallback extends AbstractActivityCallback<List<String>> {
+    private static class RetrieveBaconCallback extends AbstractActivityCallback<List<String>> {
         @Override
         public void onSuccess(List<String> data) {
             HowToUseDigestAuthentication activity = (HowToUseDigestAuthentication) getActivity();
@@ -213,37 +193,6 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
                 @Override
                 public void run() {
                     activity.displayMessage(e.getMessage());
-                }
-            });
-        }
-    }
-
-    private static class LogoutAuthCallBack implements Callback<Void> {
-        private final HowToUseDigestAuthentication activity;
-
-        private LogoutAuthCallBack(HowToUseDigestAuthentication activity) {
-            this.activity = activity;
-        }
-
-        @Override
-        public void onSuccess(Void data) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    activity.logged(false);
-                }
-            });
-        }
-
-        @Override
-        public void onFailure(final Exception e) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    //There is no serverside logout so we get a error.
-                    // Logout does dump the credentials however.
-                    //see https://issues.jboss.org/browse/AGDROID-349
-                    activity.logged(false);
                 }
             });
         }

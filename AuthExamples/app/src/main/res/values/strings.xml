@@ -6,7 +6,7 @@
     <string name="logout">Logout</string>
     <string name="login_successful">Login successful</string>
     <string name="logout_successful">Logout successful</string>
-    <string name="http_basic_authentication">Httpbasic Authentication</string>
+    <string name="http_basic_authentication">Http Basic Authentication</string>
     <string name="digest_authentication">Digest Authentication</string>
     <string name="title_activity_main">Authentication Examples</string>
     <string name="URLException">URLException: Check Your Constants File</string>
