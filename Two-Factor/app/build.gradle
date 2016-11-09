@@ -35,4 +35,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'org.jboss.aerogear:aerogear-otp-java:1.0.0'
+    compile 'com.journeyapps:zxing-android-embedded:3.4.0'
 }

@@ -19,15 +19,18 @@ package org.jboss.aerogear.android.cookbook.twofactor.ui;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.jboss.aerogear.android.cookbook.twofactor.R;
 
 public class OTPQRCodeActivity extends AppCompatActivity {
 
-    private final int requestCode = 1500;
+    private static final String TAG = OTPQRCodeActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,30 +39,27 @@ public class OTPQRCodeActivity extends AppCompatActivity {
     }
 
     private void scanBarcode() {
-        try {
-            Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-            startActivityForResult(intent, requestCode);
-        } catch (Exception e) {
-            Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
-            Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
-            startActivity(marketIntent);
-        }
+        new IntentIntegrator(this).initiateScan();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == this.requestCode) {
-            if (resultCode == RESULT_OK) {
-                String otpauth = data.getStringExtra("SCAN_RESULT");
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() != null) {
+                Log.d(TAG, result.getContents());
                 Intent intent = new Intent(this, OTPCodeActivity.class);
-                intent.putExtra("otpauth", otpauth);
+                intent.putExtra("otpauth", result.getContents());
                 startActivity(intent);
                 finish();
             } else {
-                showAlertDialog();
+                // Cancelled
+                finish();
             }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+            showAlertDialog();
         }
     }
 
