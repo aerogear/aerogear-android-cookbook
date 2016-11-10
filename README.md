@@ -1,40 +1,29 @@
 # AeroGear Android Cookbook
 
-The cookbook application contains an interactive version of the code samples found in the [online documentation](http://aerogear.org/docs/guides/aerogear-android/).  
+The cookbook application contains an interactive version of the code samples found in the [online documentation](https://aerogear.org/getstarted/demos/#android).  
 
-|                 | Project Info  |
-| --------------- | ------------- |
-| License:        | Apache License, Version 2.0  |
-| Build:          | Maven  |
-| Documentation:  | http://aerogear.org/docs/guides/aerogear-android/  |
-| Issue tracker:  | https://issues.jboss.org/browse/AGDROID  |
+|                 | Project Info                                                                                                                           |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| License:        | Apache License, Version 2.0                                                                                                            |
+| Build:          | Gradle                                                                                                                                 |
+| Documentation:  | https://aerogear.org/android/                                                                                                          |
+| Issue tracker:  | https://issues.jboss.org/browse/AGDROID                                                                                                |
 | Mailing lists:  | [aerogear-users](http://aerogear-users.1116366.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-users))  |
-|                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))  |
-
-## Building
-
-Please take a look at the [step by step guide on our website](http://aerogear.org/docs/guides/aerogear-android/how-to-build-aerogear-android/).
+|                 | [aerogear-dev](http://aerogear-dev.1069024.n5.nabble.com/) ([subscribe](https://lists.jboss.org/mailman/listinfo/aerogear-dev))        |
 
 ## Cookbook apps
 
-| App                                             | Pipe               | Store              | Security            | Auth               | Authz              | Push               | Sync               | 
-|-------------------------------------------------|:------------------:|:------------------:|:-------------------:|:------------------:|:------------------:|:------------------:| :-----------------:|
-| [GDrive](GDrive)                                | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | 
-| [Chuck Norris Jokes](ChuckNorrisJokes)          | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [CarStore](CarStore)                            | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [ShootAndShare](ShootAndShare)                  | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [AuthExamples](AuthExamples)                    | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [AeroDoc](AeroDoc)                              | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
-| [Password Manager](PasswordManager)             | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
-| [Hello Push](HelloPush)                         | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
-
-
-## Other AeroGear Android example apps
-
-| App                                             | Pipe               | Store              | Security            | Auth               | Authz              | Push               | Sync               | 
-|-------------------------------------------------|:------------------:|:------------------:|:-------------------:|:------------------:|:------------------:|:------------------:| :-----------------:|
-| [Unified Push Quickstarts](https://github.com/jboss-mobile/unified-push-quickstarts/tree/master/client/contacts-mobile-android-client) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
-| [OTP Demo](https://github.com/aerogear/aerogear-otp-android-demo) | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | 
+| App                                      | Pipe               | Store              | Security            | Auth               | Authz              | Push               | Sync               | 
+|------------------------------------------|:------------------:|:------------------:|:-------------------:|:------------------:|:------------------:|:------------------:| :-----------------:|
+| [AeroDoc](AeroDoc)                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| [AuthExamples](AuthExamples)             | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [CarStore](CarStore)                     | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [Chuck Norris Jokes](ChuckNorrisJokes)   | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [GDrive](GDrive)                         | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: | 
+| [Hello Push](HelloPush)                  | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: |
+| [Password Manager](PasswordManager)      | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [ShootAndShare](ShootAndShare)           | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |  :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign: |
+| [Two-Factor](Two-Factor)                 | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: | :heavy_minus_sign: |
 
 ## Development
 
