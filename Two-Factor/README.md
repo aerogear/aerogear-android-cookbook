@@ -15,14 +15,14 @@ _Two-Factor_ project demonstrates how to include OTP functionality in Android ap
 ### System Requirements
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](http://www.gradle.org/)
+* [Gradlew](http://www../gradlew.org/)
 * [Android SDK](https://developer.android.com/sdk/index.html) and [Platform](http://developer.android.com/tools/revisions/platforms.html)
 
 ### Build Application
 
 ```shell
 $ cd /path/to/Two-Factor/
-$ gradle clean build
+$ ./gradlew clean build
 ```
 ### Running the app
 
@@ -32,7 +32,7 @@ To deploy, run and debug the application on an Android device attached to your s
 
     ```shell
     $ cd /path/to/Two-Factor
-    $ gradle installDebug
+    $ ./gradlew installDebug
     ```
 
 1. Open app on device
