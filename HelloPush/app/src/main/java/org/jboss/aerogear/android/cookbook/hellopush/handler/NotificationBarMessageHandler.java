@@ -33,7 +33,6 @@ import org.jboss.aerogear.android.cookbook.hellopush.activities.MessagesActivity
 public class NotificationBarMessageHandler implements MessageHandler {
 
     public static final int NOTIFICATION_ID = 1;
-    private Context context;
 
     public static final NotificationBarMessageHandler instance = new NotificationBarMessageHandler();
 
@@ -42,17 +41,15 @@ public class NotificationBarMessageHandler implements MessageHandler {
 
     @Override
     public void onMessage(Context context, Bundle bundle) {
-        this.context = context;
-
         String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
 
         HelloWorldApplication application = (HelloWorldApplication) context.getApplicationContext();
         application.addMessage(message);
 
-        notify(bundle);
+        notify(context, bundle);
     }
 
-    private void notify(Bundle bundle) {
+    private void notify(Context context, Bundle bundle) {
         NotificationManager mNotificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -79,6 +76,5 @@ public class NotificationBarMessageHandler implements MessageHandler {
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
-
 
 }
