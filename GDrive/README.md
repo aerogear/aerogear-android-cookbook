@@ -41,7 +41,7 @@ For the complete instructions about how to setup Google credentials, visit our [
 
 ```shell
 $ cd /path/to/gdrive/
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
 ### Running the app
@@ -52,7 +52,7 @@ To deploy, run and debug the application on an Android device attached to your s
 
     ```shell
     $ cd /path/to/gdrive
-    $ gradle installDebug
+    $ ./gradlew installDebug
     ```
 1. Open app on device
 
