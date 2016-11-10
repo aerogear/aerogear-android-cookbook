@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
     android:orientation="vertical">
 
     <TextView
@@ -14,7 +12,7 @@
         android:gravity="center_horizontal"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:text="Car"
+        android:text="@string/car"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

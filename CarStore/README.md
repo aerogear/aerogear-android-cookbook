@@ -26,23 +26,20 @@ When the application is deployed to an Android device, the application will show
 
 ```shell
 $ cd /path/to/carStore/
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
 ### Running the app
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
-#### Install generated apk to device
+1. Install generated apk to device
 
-```shell
-$ cd /path/to/carStore
-$ gradle installDebug
-```
-
-#### Open app on device
-
-Application output is displayed in the command line window.
+    ```shell
+    $ cd /path/to/carStore
+    $ ./gradlew installDebug
+    ```
+1. Open app on device
 
 ## How does it work?
 

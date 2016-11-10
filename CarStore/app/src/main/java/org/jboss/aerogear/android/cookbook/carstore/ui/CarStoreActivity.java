@@ -1,14 +1,12 @@
 package org.jboss.aerogear.android.cookbook.carstore.ui;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -39,22 +37,14 @@ public class CarStoreActivity extends AppCompatActivity {
 
         carList = (ListView) findViewById(R.id.carList);
 
-        carList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                final Car car = (Car) adapterView.getItemAtPosition(position);
-                showDeleteConfirmationDialog(car);
-                return false;
-            }
+        carList.setOnItemLongClickListener((adapterView, view, position, id) -> {
+            final Car car = (Car) adapterView.getItemAtPosition(position);
+            showDeleteConfirmationDialog(car);
+            return false;
         });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showFormDialog();
-            }
-        });
+        fab.setOnClickListener(v -> showFormDialog());
     }
 
     @Override
@@ -69,40 +59,24 @@ public class CarStoreActivity extends AppCompatActivity {
 
         Dialog dialog = new AlertDialog.Builder(this)
                 .setView(view)
-                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        Car car = retrieveCarFromForm(view);
-                        save(car);
-                    }
+                .setPositiveButton(getString(R.string.ok), (dialog12, id) -> {
+                    Car car = retrieveCarFromForm(view);
+                    save(car);
                 })
-                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                    }
-                })
+                .setNegativeButton(getString(R.string.cancel), (dialog1, id) -> dialog1.dismiss())
                 .create();
 
-        dialog.getWindow().getAttributes().windowAnimations = R.style.MyTheme_DialogAnimation;
+        if(dialog.getWindow() != null) {
+            dialog.getWindow().getAttributes().windowAnimations = R.style.MyTheme_DialogAnimation;
+        }
         dialog.show();
     }
 
     private void showDeleteConfirmationDialog(final Car car) {
         new AlertDialog.Builder(this, R.style.MyTheme_Dialog)
                 .setTitle(R.string.delete_confirmation)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        remove(car);
-                    }
-                })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
+                .setPositiveButton(R.string.ok, (dialog, id) -> remove(car))
+                .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
     }
