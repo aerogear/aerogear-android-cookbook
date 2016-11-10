@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AGDroid GDrive</string>
+    <string name="refresh">Refresh</string>
+    <plurals
+        name="fetched">
+        <item quantity="zero">1 file fetched</item>
+        <item quantity="other">%d fetched</item>
+    </plurals>
+    <string name="drive_icon">Drive icon</string>
+
+</resources>

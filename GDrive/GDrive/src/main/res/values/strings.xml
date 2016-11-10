@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="app_name">AGDroid GDrive</string>
-    <string name="refresh">Refresh</string>
-    <string name="fetched">%1$d file(s) fetched</string>
-    <string name="drive_icon">Drive icon</string>
-
-</resources>
