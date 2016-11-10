@@ -40,30 +40,35 @@ To deploy, run and debug the application on an Android device attached to your s
 
 ## How does it work?
 
-```OTPQRCodeActivity``` will invoke the [Barcode Scanner](https://play.google.com/store/apps/details?id=com.google.zxing.client.android)
+```OTPQRCodeActivity``` will invoke the [zxing](https://github.com/journeyapps/zxing-android-embedded)
 
 ```java
-Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-startActivityForResult(intent, requestCode);
+new IntentIntegrator(this).initiateScan();
 ```
 
-After [Barcode Scanner](https://play.google.com/store/apps/details?id=com.google.zxing.client.android) finish the ```onActivityResult``` will be called, with a otpauth. It will be passed to OTPDisplay for show the token
+After [zxing](https://github.com/journeyapps/zxing-android-embedded) finish the ```onActivityResult``` will be called, with a otpauth. It will be passed to OTPDisplay for show the token
 
 ```java
+@Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == this.requestCode) {
-        if (resultCode == RESULT_OK) {
-            String otpauth = data.getStringExtra("SCAN_RESULT");
-            Intent intent = new Intent(this, OTPDisplay.class);
-            intent.putExtra("otpauth", otpauth);
+    IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+    if(result != null) {
+        if(result.getContents() != null) {
+            Log.d(TAG, result.getContents());
+            Intent intent = new Intent(this, OTPCodeActivity.class);
+            intent.putExtra("otpauth", result.getContents());
             startActivity(intent);
             finish();
+        } else {
+            // Cancelled
+            finish();
         }
+    } else {
+        super.onActivityResult(requestCode, resultCode, data);
+        showAlertDialog();
     }
-}
-```
+}```
 
 ```parseOtpPath``` will parse the _secret_  and [Totp](https://github.com/aerogear/aerogear-otp-java/blob/master/src/main/java/org/jboss/aerogear/security/otp/Totp.java) to show generate the token
 
