@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".ui.AeroDocActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/AppTheme" />
 
     </application>

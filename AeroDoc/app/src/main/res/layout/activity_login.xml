@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/contentPanel"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="30dp">
@@ -30,7 +30,7 @@
 
         <EditText
             android:id="@+id/username"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"
             android:inputType="text" />
@@ -44,7 +44,7 @@
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textPassword" />
@@ -53,7 +53,7 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login" />
 

@@ -8,4 +8,8 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+
+    <color name="tabIndicatorColor">@color/primary</color>
+    <color name="tabSelectedTextColor">#000000</color>
+    <color name="tabTextColor">#CDCDCD</color>
 </resources>

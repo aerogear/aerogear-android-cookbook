@@ -26,7 +26,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
@@ -90,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 dialog.dismiss();
 
-                startActivity(new Intent(LoginActivity.this, AeroDocActivity.class));
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                 finish();
             }

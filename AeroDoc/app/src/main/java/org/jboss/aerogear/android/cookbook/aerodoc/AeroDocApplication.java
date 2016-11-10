@@ -1,13 +1,13 @@
 /**
  * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- * 	http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,14 +16,14 @@
  */
 package org.jboss.aerogear.android.cookbook.aerodoc;
 
+import android.app.Activity;
 import android.app.Application;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
 
 import org.jboss.aerogear.android.authentication.AuthenticationManager;
 import org.jboss.aerogear.android.authentication.AuthenticationModule;
-import org.jboss.aerogear.android.cookbook.aerodoc.activities.AeroDocActivity;
 import org.jboss.aerogear.android.cookbook.aerodoc.authentication.AeroDocAuthenticationConfiguration;
 import org.jboss.aerogear.android.cookbook.aerodoc.authentication.AeroDocAuthenticationConfigurationProvider;
 import org.jboss.aerogear.android.cookbook.aerodoc.model.Lead;
@@ -171,16 +171,12 @@ public class AeroDocApplication extends Application {
         authenticationModule.logout(callback);
     }
 
-    public boolean isLoggedIn() {
-        return authenticationModule.isLoggedIn();
-    }
-
     public Pipe<Lead> getLeadPipe(Fragment fragment) {
         return PipeManager.getPipe("lead", fragment, getApplicationContext());
     }
 
-    public Pipe<SaleAgent> getSaleAgentPipe(Fragment fragment) {
-        return PipeManager.getPipe("agent", fragment, getApplicationContext());
+    public Pipe<SaleAgent> getSaleAgentPipe(Activity activity) {
+        return PipeManager.getPipe("agent", activity);
     }
 
     public SQLStore<Lead> getLocalStore() {
