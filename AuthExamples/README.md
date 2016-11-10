@@ -34,7 +34,7 @@ Edit ```org.jboss.aerogear.android.cookbook.authexamples.Constants#URL_BASE``` t
 
 ```shell
 $ cd /path/to/authExamples/
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
 ### Running the app
@@ -43,7 +43,7 @@ To deploy, run and debug the application on an Android device attached to your s
 
 ```shell
 $ cd /path/to/authExamples
-$ gradle installDebug
+$ ./gradlew installDebug
 ```
 
 ## How does it work?

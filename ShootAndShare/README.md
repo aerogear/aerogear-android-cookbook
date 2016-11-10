@@ -28,7 +28,7 @@ For the complete instructions about how to setup Google, Facebook or Keycloak cr
 
 ```shell
 $ cd /path/to/app
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
 ### 3. Test Application
@@ -39,7 +39,7 @@ To deploy, run and debug the application on an Android device attached to your s
 
 ```shell
 $ cd /path/to/app
-$ gradle installDebug
+$ ./gradlew installDebug
 ```
 
 5.2) Open app on device

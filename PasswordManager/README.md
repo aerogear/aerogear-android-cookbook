@@ -22,7 +22,7 @@ _Password Manager_ project demonstrates how to include Encrypted Store functiona
 
 ```shell
 $ cd /path/to/PasswordManager/
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
 ### Running the app
@@ -33,7 +33,7 @@ To deploy, run and debug the application on an Android device attached to your s
 
     ```shell
     $ cd /path/to/PasswordManager
-    $ gradle installDebug
+    $ ./gradlew installDebug
     ```
 1. Open app on device
 
