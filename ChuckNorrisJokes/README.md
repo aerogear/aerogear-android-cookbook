@@ -24,7 +24,7 @@ When the application is deployed to an Android device, the application will retr
 
 ```shell
 $ cd /path/to/app
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
 ### Running the app
@@ -35,7 +35,7 @@ To deploy, run and debug the application on an Android device attached to your s
 
     ```shell
     $ cd /path/to/app
-    $ gradle installDebug
+    $ ./gradlew installDebug
     ```
 1. Open app on device
 
