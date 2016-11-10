@@ -16,10 +16,10 @@
  */
 package org.jboss.aerogear.android.cookbook.authexamples;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,42 +42,77 @@ import java.net.URL;
 import java.util.List;
 
 
-public class HowToUseHttpBasicAuthentication extends Activity {
+public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
 
     private AuthenticationModule authModule;
     private LoaderPipe<String> pipe;
 
     private ListView listView;
-    private Button retriveDataButton;
+    private Button retrieveDataButton;
     private Button clearDataButton;
-    private Button loginButton;
-    private Button logoutButton;
 
-    private Handler handler = new Handler(Looper.getMainLooper());
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        authModule = createAuthenticatior();
+        pipe = createPipe(authModule);
+    }
+    @Override
+    public void onBackPressed() {
+        authModule.logout(new HowToUseHttpBasicAuthentication.LogoutAuthCallBack(HowToUseHttpBasicAuthentication.this));
+        finish();
+        return;
+    }
+    private static class LogoutAuthCallBack implements Callback<Void> {
+        private final HowToUseHttpBasicAuthentication activity;
+
+        private LogoutAuthCallBack(HowToUseHttpBasicAuthentication activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        public void onSuccess(Void data) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    activity.logged(false);
+                }
+            });
+        }
+
+        @Override
+        public void onFailure(final Exception e) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    //There is no serverside logout so we get a error.
+                    // Logout does dump the credentials however.
+                    //see https://issues.jboss.org/browse/AGDROID-349
+                    activity.logged(false);
+                }
+            });
+        }
+    }
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentication_with_data);
 
-        authModule = createAuthenticatior();
-        pipe = createPipe(authModule);
-
         TextView screenTitle = (TextView) findViewById(R.id.screen_title);
-        screenTitle.setText(getString(R.string.how_to_use_http_basic_authentication));
+        screenTitle.setText(getString(R.string.http_basic_authentication));
 
         listView = (ListView) findViewById(R.id.list);
-        retriveDataButton = (Button) findViewById(R.id.retriveData);
+        retrieveDataButton = (Button) findViewById(R.id.retriveData);
         clearDataButton = (Button) findViewById(R.id.clearData);
-        loginButton = (Button) findViewById(R.id.login);
-        logoutButton = (Button) findViewById(R.id.logout);
-
 
         setListeners();
     }
 
     private AuthenticationModule createAuthenticatior() {
-        HttpBasicAuthenticationConfiguration authenticationConfig = null;
+        HttpBasicAuthenticationConfiguration authenticationConfig;
         try {
             authenticationConfig = AuthenticationManager.config("login", HttpBasicAuthenticationConfiguration.class)
                     .baseURL(new URL(Constants.URL_BASE));
@@ -86,13 +121,13 @@ public class HowToUseHttpBasicAuthentication extends Activity {
             finish();
             return null;
         }
+        AuthenticationModule module = authenticationConfig.asModule();
+        module.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
 
-        return authenticationConfig.asModule();
+        return module;
     }
 
     private LoaderPipe createPipe(AuthenticationModule authModule) {
-
-
         try {
             RestfulPipeConfiguration pipeConfig = PipeManager.config("beer", RestfulPipeConfiguration.class)
                     .module(authModule)
@@ -111,7 +146,7 @@ public class HowToUseHttpBasicAuthentication extends Activity {
     }
 
     private void setListeners() {
-        retriveDataButton.setOnClickListener(new View.OnClickListener() {
+        retrieveDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 retriveBeers();
@@ -124,25 +159,12 @@ public class HowToUseHttpBasicAuthentication extends Activity {
                 clearBeerList();
             }
         });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.login("john", "123", new LoginAuthCallBack(HowToUseHttpBasicAuthentication.this));
-            }
-        });
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.logout(new LogoutAuthCallBack(HowToUseHttpBasicAuthentication.this));
-            }
-        });
     }
 
     // Button Actions ---------------------------------------------
 
     private void retriveBeers() {
+        pipe.reset();
         pipe.read(new RetriveBeerCallback());
     }
 
@@ -160,12 +182,10 @@ public class HowToUseHttpBasicAuthentication extends Activity {
         }
 
         displayMessage(logged ? getString(R.string.login_successful) : getString(R.string.logout_successful));
-        loginButton.setEnabled(!logged);
-        logoutButton.setEnabled(logged);
     }
 
     private void displayBeers(List<String> beerList) {
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, beerList));
+        listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, beerList));
     }
 
     private void displayMessage(String message) {
@@ -216,33 +236,5 @@ public class HowToUseHttpBasicAuthentication extends Activity {
         }
     }
 
-    private static class LogoutAuthCallBack implements Callback<Void> {
-        private final HowToUseHttpBasicAuthentication activity;
-
-        private LogoutAuthCallBack(HowToUseHttpBasicAuthentication activity) {
-            this.activity = activity;
-        }
-
-        @Override
-        public void onSuccess(Void data) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    activity.logged(false);
-                }
-            });
-
-        }
-
-        @Override
-        public void onFailure(final Exception e) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    activity.displayMessage(e.getMessage());
-                }
-            });
-        }
-    }
 
 }

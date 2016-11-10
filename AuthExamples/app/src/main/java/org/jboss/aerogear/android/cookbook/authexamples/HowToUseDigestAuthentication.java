@@ -16,10 +16,10 @@
  */
 package org.jboss.aerogear.android.cookbook.authexamples;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,52 +41,90 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class HowToUseDigestAuthentication extends Activity {
+public class HowToUseDigestAuthentication extends AppCompatActivity {
 
     private AuthenticationModule authModule;
     private LoaderPipe<String> pipe;
 
     private ListView bacons;
-    private Button retriveDataButton;
+    private Button retrieveDataButton;
     private Button clearDataButton;
-    private Button loginButton;
-    private Button logoutButton;
-    private Handler handler = new Handler(Looper.getMainLooper());
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        authModule = createAuthenticatior();
+        pipe = createPipe(authModule);
+    }
+    @Override
+    public void onBackPressed() {
+        authModule.logout(new LogoutAuthCallBack(HowToUseDigestAuthentication.this));
+        finish();
+        return;
+    }
+    private static class LogoutAuthCallBack implements Callback<Void> {
+        private final HowToUseDigestAuthentication activity;
+
+        private LogoutAuthCallBack(HowToUseDigestAuthentication activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        public void onSuccess(Void data) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    activity.logged(false);
+                }
+            });
+        }
+
+        @Override
+        public void onFailure(final Exception e) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    //There is no serverside logout so we get a error.
+                    // Logout does dump the credentials however.
+                    //see https://issues.jboss.org/browse/AGDROID-349
+                    activity.logged(false);
+                }
+            });
+        }
+    }
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentication_with_data);
 
-        authModule = createAuthenticatior();
-        pipe = createPipe(authModule);
-
         TextView screenTitle = (TextView) findViewById(R.id.screen_title);
-        screenTitle.setText(getString(R.string.how_to_use_digest_authentication));
+        screenTitle.setText(getString(R.string.digest_authentication));
 
         bacons = (ListView) findViewById(R.id.list);
-        retriveDataButton = (Button) findViewById(R.id.retriveData);
+        retrieveDataButton = (Button) findViewById(R.id.retriveData);
         clearDataButton = (Button) findViewById(R.id.clearData);
-        loginButton = (Button) findViewById(R.id.login);
-        logoutButton = (Button) findViewById(R.id.logout);
 
         setListeners();
     }
 
     private AuthenticationModule createAuthenticatior() {
-        HttpDigestAuthenticationConfiguration authenticationConfig = null;
+        HttpDigestAuthenticationConfiguration authenticationConfig;
         try {
             authenticationConfig = AuthenticationManager.config("digest", HttpDigestAuthenticationConfiguration.class)
                     .baseURL(new URL(Constants.URL_BASE))
                     .logoutEndpoint("")
                     .loginEndpoint("/grocery/bacons");
+
         } catch (MalformedURLException e) {
             displayMessage(getString(R.string.URLException));
             finish();
             return null;
         }
-
-        return authenticationConfig.asModule();
+        AuthenticationModule module = authenticationConfig.asModule();
+        module.login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
+        return module;
     }
 
     private LoaderPipe createPipe(AuthenticationModule module) {
@@ -109,10 +147,10 @@ public class HowToUseDigestAuthentication extends Activity {
     }
 
     private void setListeners() {
-        retriveDataButton.setOnClickListener(new View.OnClickListener() {
+        retrieveDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                retriveBacon();
+                retrieveBacon();
             }
         });
 
@@ -122,27 +160,13 @@ public class HowToUseDigestAuthentication extends Activity {
                 clearBaconList();
             }
         });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.login("agnes", "123", new LoginAuthCallBack(HowToUseDigestAuthentication.this));
-            }
-        });
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                authModule.logout(new LogoutAuthCallBack(HowToUseDigestAuthentication.this));
-            }
-        });
     }
 
     // Button Actions ---------------------------------------------
 
-    private void retriveBacon() {
+    private void retrieveBacon() {
         pipe.reset(); // Don't cache data
-        pipe.read(new RetriveBaconCallback());
+        pipe.read(new RetrieveBaconCallback());
     }
 
     private void clearBaconList() {
@@ -153,18 +177,16 @@ public class HowToUseDigestAuthentication extends Activity {
 
     public void logged(boolean logged) {
         if (logged) {
-            retriveBacon();
+            retrieveBacon();
         } else {
             clearBaconList();
         }
 
         displayMessage(logged ? getString(R.string.login_successful) : getString(R.string.logout_successful));
-        loginButton.setEnabled(!logged);
-        logoutButton.setEnabled(logged);
     }
 
     private void displayBacons(List<String> baconList) {
-        bacons.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, baconList));
+        bacons.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, baconList));
     }
 
     private void displayMessage(String message) {
@@ -173,7 +195,7 @@ public class HowToUseDigestAuthentication extends Activity {
 
     // Callbacks --------------------------------------------------
 
-    private static class RetriveBaconCallback extends AbstractActivityCallback<List<String>> {
+    private static class RetrieveBaconCallback extends AbstractActivityCallback<List<String>> {
         @Override
         public void onSuccess(List<String> data) {
             HowToUseDigestAuthentication activity = (HowToUseDigestAuthentication) getActivity();
@@ -211,37 +233,6 @@ public class HowToUseDigestAuthentication extends Activity {
                 @Override
                 public void run() {
                     activity.displayMessage(e.getMessage());
-                }
-            });
-        }
-    }
-
-    private static class LogoutAuthCallBack implements Callback<Void> {
-        private final HowToUseDigestAuthentication activity;
-
-        private LogoutAuthCallBack(HowToUseDigestAuthentication activity) {
-            this.activity = activity;
-        }
-
-        @Override
-        public void onSuccess(Void data) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    activity.logged(false);
-                }
-            });
-        }
-
-        @Override
-        public void onFailure(final Exception e) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    //There is no serverside logout so we get a error.
-                    // Logout does dump the credentials however.
-                    //see https://issues.jboss.org/browse/AGDROID-349
-                    activity.logged(false);
                 }
             });
         }

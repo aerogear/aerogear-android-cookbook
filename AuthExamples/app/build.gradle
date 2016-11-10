@@ -1,15 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.authexamples"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 4
         versionName "3.0.0"
+
+        jackOptions {
+            enabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
@@ -25,8 +34,6 @@ android {
 }
 
 dependencies {
-    compile 'org.jboss.aerogear:aerogear-android-core:3.0.0'
-    compile 'org.jboss.aerogear:aerogear-android-pipe:3.0.0'
+    compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'org.jboss.aerogear:aerogear-android-auth:3.0.0'
-    compile 'com.google.code.gson:gson:2.3.1'
 }

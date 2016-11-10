@@ -17,6 +17,6 @@
 package org.jboss.aerogear.android.cookbook.authexamples;
 
 public class Constants {
-    public static final String URL_BASE = "";
+    public static final String URL_BASE = "http://bacon-corinnekrych.rhcloud.com/rest";
 
 }
