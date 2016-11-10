@@ -15,7 +15,7 @@ _Two-Factor_ project demonstrates how to include OTP functionality in Android ap
 ### System Requirements
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradlew](http://www../gradlew.org/)
+* [Gradle](http://www.gradle.org/)
 * [Android SDK](https://developer.android.com/sdk/index.html) and [Platform](http://developer.android.com/tools/revisions/platforms.html)
 
 ### Build Application
@@ -68,7 +68,8 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         showAlertDialog();
     }
-}```
+}
+```
 
 ```parseOtpPath``` will parse the _secret_  and [Totp](https://github.com/aerogear/aerogear-otp-java/blob/master/src/main/java/org/jboss/aerogear/security/otp/Totp.java) to show generate the token
 
