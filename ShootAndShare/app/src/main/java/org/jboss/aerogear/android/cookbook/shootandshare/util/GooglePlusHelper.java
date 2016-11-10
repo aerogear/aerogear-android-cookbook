@@ -32,7 +32,7 @@ import org.jboss.aerogear.android.pipe.rest.RestfulPipeConfiguration;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
+import java.util.Collections;
 
 public class GooglePlusHelper {
 
@@ -55,7 +55,7 @@ public class GooglePlusHelper {
                     .setClientId(AUTHZ_CLIENT_ID)
                     .setClientSecret(AUTHZ_CLIENT_SECRET)
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
-                    .setScopes(Arrays.asList("https://www.googleapis.com/auth/drive"))
+                    .setScopes(Collections.singletonList("https://www.googleapis.com/auth/drive"))
                     .addAdditionalAuthorizationParam(Pair.create("access_type", "offline"))
                     .asModule();
 
@@ -75,6 +75,7 @@ public class GooglePlusHelper {
             final AuthzModule authzModule = AuthorizationManager.getModule(MODULE_NAME);
 
             authzModule.requestAccess(activity, new Callback<String>() {
+                @SuppressWarnings("unchecked")
                 @Override
                 public void onSuccess(String s) {
                     callback.onSuccess(s);
@@ -95,6 +96,7 @@ public class GooglePlusHelper {
     }
 
 
+    @SuppressWarnings("unchecked")
     public static void upload(final File file, final Callback callback, Activity activity) {
         PipeManager.getPipe("gp-upload", activity).save(new PhotoHolder(file), callback);
     }

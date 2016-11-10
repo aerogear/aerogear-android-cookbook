@@ -43,7 +43,7 @@ public final class UploadService extends Service {
     public static final String FILE_URI = "UploadService.FILE_URI";
     public static final String PROVIDER = "UploadService.PROVIDER";
 
-    public static enum PROVIDERS {GOOGLE, KEYCLOAK, FACEBOOK}
+    public enum PROVIDERS {GOOGLE, KEYCLOAK, FACEBOOK}
 
     private static final AtomicInteger notificationCount = new AtomicInteger(1);
 
@@ -55,53 +55,51 @@ public final class UploadService extends Service {
         handler = new Handler(thread.getLooper());
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public int onStartCommand(final Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
 
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                int id = 0;
-                try {
+        handler.post(() -> {
+            int id = 0;
+            try {
 
-                    Bundle extras = intent.getExtras();
+                Bundle extras = intent.getExtras();
 
-                    String fileName = extras.getString(FILE_URI);
-                    String providerName = extras.getString(PROVIDER);
+                String fileName = extras.getString(FILE_URI);
+                String providerName = extras.getString(PROVIDER);
 
-                    if (fileName == null) {
-                        displayErrorNotification("No file provided", 0);
-                        return;
-                    }
-
-                    if (providerName == null) {
-                        displayErrorNotification("No provider selected", 0);
-                        return;
-                    }
-
-                    PROVIDERS provider = PROVIDERS.valueOf(providerName);
-                    File file = new File(fileName);
-                    id = displayUploadNotification(fileName);
-
-                    switch (provider) {
-
-                        case GOOGLE:
-                            PipeManager.getPipe("gp-upload").save(new PhotoHolder(file), new UploadCallback(id));
-                            break;
-                        case KEYCLOAK:
-                            PipeManager.getPipe("kc-upload").save(new PhotoHolder(file), new UploadCallback(id));
-                            break;
-                        case FACEBOOK:
-                            PipeManager.getPipe("fb-upload").save(new PhotoHolder(file), new UploadCallback(id));
-                            break;
-                    }
-
-                } catch (Exception e) {
-                    displayErrorNotification(e.getMessage(), id);
+                if (fileName == null) {
+                    displayErrorNotification("No file provided", 0);
+                    return;
                 }
 
+                if (providerName == null) {
+                    displayErrorNotification("No provider selected", 0);
+                    return;
+                }
+
+                PROVIDERS provider = PROVIDERS.valueOf(providerName);
+                File file = new File(fileName);
+                id = displayUploadNotification(fileName);
+
+                switch (provider) {
+
+                    case GOOGLE:
+                        PipeManager.getPipe("gp-upload").save(new PhotoHolder(file), new UploadCallback(id));
+                        break;
+                    case KEYCLOAK:
+                        PipeManager.getPipe("kc-upload").save(new PhotoHolder(file), new UploadCallback(id));
+                        break;
+                    case FACEBOOK:
+                        PipeManager.getPipe("fb-upload").save(new PhotoHolder(file), new UploadCallback(id));
+                        break;
+                }
+
+            } catch (Exception e) {
+                displayErrorNotification(e.getMessage(), id);
             }
+
         });
 
         return START_NOT_STICKY;

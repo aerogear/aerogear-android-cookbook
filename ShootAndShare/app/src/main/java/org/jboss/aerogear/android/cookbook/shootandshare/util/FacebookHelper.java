@@ -33,7 +33,7 @@ import org.jboss.aerogear.android.pipe.rest.multipart.MultipartRequestBuilder;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
+import java.util.Collections;
 
 public class FacebookHelper {
 
@@ -59,7 +59,7 @@ public class FacebookHelper {
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
                     .setRefreshEndpoint(AUTHZ_TOKEN_ENDPOINT)
                     .addAdditionalAccessParam(Pair.create("response_type", "code"))
-                    .setScopes(Arrays.asList("photo_upload, publish_actions"))
+                    .setScopes(Collections.singletonList("publish_actions"))
                     .asModule();
 
             PipeManager.config("fb-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule(MODULE_NAME))
@@ -78,6 +78,7 @@ public class FacebookHelper {
             final OAuth2AuthzModule authzModule = (OAuth2AuthzModule) AuthorizationManager.getModule(MODULE_NAME);
 
             authzModule.requestAccess(activity, new Callback<String>() {
+                @SuppressWarnings("unchecked")
                 @Override
                 public void onSuccess(String s) {
                     callback.onSuccess(s);
@@ -99,6 +100,7 @@ public class FacebookHelper {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static void upload(final File file, final Callback callback, Activity activity) {
             PipeManager.getPipe("fb-upload", activity).save(new PhotoHolder(file), callback);
     }
