@@ -82,8 +82,8 @@ public class MessagesActivity extends AppCompatActivity implements MessageHandle
     }
 
     private void displayMessages() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-            R.layout.message_item, application.getMessages());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
+                R.layout.message_item, application.getMessages());
         listView.setAdapter(adapter);
     }
 }

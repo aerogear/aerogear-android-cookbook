@@ -37,7 +37,7 @@ public class HelloWorldApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        messages = new ArrayList<String>();
+        messages = new ArrayList<>();
     }
 
     public List<String> getMessages() {
