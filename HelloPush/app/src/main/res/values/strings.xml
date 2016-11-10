@@ -19,7 +19,6 @@
     <string name="app_name">AeroGear UnifiedPush HelloWorld</string>
     <string name="project_name">UnifiedPush HelloWorld</string>
     <string name="aerogear_logo">AeroGear Logo</string>
-    <string name="ups_url_parse_error">Unable to reach UnifiedPushServer at %1$s.</string>
     <string name="registration_successful">Registration Successful</string>
     <string name="registration_error">"An error occurred during device registration"</string>
     <string name="notifications">Notifications</string>
