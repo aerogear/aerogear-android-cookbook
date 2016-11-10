@@ -26,7 +26,7 @@ When the application is deployed to an Android device, the application will show
 
 ```shell
 $ cd /path/to/carStore/
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
 ### Running the app
@@ -37,7 +37,7 @@ To deploy, run and debug the application on an Android device attached to your s
 
     ```shell
     $ cd /path/to/carStore
-    $ gradle installDebug
+    $ ./gradlew installDebug
     ```
 1. Open app on device
 
