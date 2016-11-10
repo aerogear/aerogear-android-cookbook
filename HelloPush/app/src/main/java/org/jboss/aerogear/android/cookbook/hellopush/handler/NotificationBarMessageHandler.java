@@ -67,7 +67,7 @@ public class NotificationBarMessageHandler implements MessageHandler {
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(context.getString(R.string.app_name))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
