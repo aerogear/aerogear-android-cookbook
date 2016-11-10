@@ -46,7 +46,7 @@ To deploy, run and debug the application on an Android device attached to your s
 new IntentIntegrator(this).initiateScan();
 ```
 
-After [zxing](https://github.com/journeyapps/zxing-android-embedded) finish the ```onActivityResult``` will be called, with a otpauth. It will be passed to OTPDisplay for show the token
+After [zxing](https://github.com/journeyapps/zxing-android-embedded) finish the ```onActivityResult``` will be called, with a otpauth. It will be passed to ```OTPCodeActivity``` for show the token
 
 ```java
 @Override
