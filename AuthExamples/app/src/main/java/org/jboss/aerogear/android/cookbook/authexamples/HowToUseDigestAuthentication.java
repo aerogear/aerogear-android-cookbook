@@ -57,7 +57,42 @@ public class HowToUseDigestAuthentication extends AppCompatActivity {
         authModule = createAuthenticatior();
         pipe = createPipe(authModule);
     }
+    @Override
+    public void onBackPressed() {
+        authModule.logout(new LogoutAuthCallBack(HowToUseDigestAuthentication.this));
+        finish();
+        return;
+    }
+    private static class LogoutAuthCallBack implements Callback<Void> {
+        private final HowToUseDigestAuthentication activity;
 
+        private LogoutAuthCallBack(HowToUseDigestAuthentication activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        public void onSuccess(Void data) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    activity.logged(false);
+                }
+            });
+        }
+
+        @Override
+        public void onFailure(final Exception e) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    //There is no serverside logout so we get a error.
+                    // Logout does dump the credentials however.
+                    //see https://issues.jboss.org/browse/AGDROID-349
+                    activity.logged(false);
+                }
+            });
+        }
+    }
     @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

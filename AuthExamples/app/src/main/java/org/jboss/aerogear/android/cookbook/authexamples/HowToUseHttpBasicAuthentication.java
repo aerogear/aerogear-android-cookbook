@@ -59,7 +59,42 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
         authModule = createAuthenticatior();
         pipe = createPipe(authModule);
     }
+    @Override
+    public void onBackPressed() {
+        authModule.logout(new HowToUseHttpBasicAuthentication.LogoutAuthCallBack(HowToUseHttpBasicAuthentication.this));
+        finish();
+        return;
+    }
+    private static class LogoutAuthCallBack implements Callback<Void> {
+        private final HowToUseHttpBasicAuthentication activity;
 
+        private LogoutAuthCallBack(HowToUseHttpBasicAuthentication activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        public void onSuccess(Void data) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    activity.logged(false);
+                }
+            });
+        }
+
+        @Override
+        public void onFailure(final Exception e) {
+            activity.handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    //There is no serverside logout so we get a error.
+                    // Logout does dump the credentials however.
+                    //see https://issues.jboss.org/browse/AGDROID-349
+                    activity.logged(false);
+                }
+            });
+        }
+    }
     @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,33 +236,5 @@ public class HowToUseHttpBasicAuthentication extends AppCompatActivity {
         }
     }
 
-    private static class LogoutAuthCallBack implements Callback<Void> {
-        private final HowToUseHttpBasicAuthentication activity;
-
-        private LogoutAuthCallBack(HowToUseHttpBasicAuthentication activity) {
-            this.activity = activity;
-        }
-
-        @Override
-        public void onSuccess(Void data) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    activity.logged(false);
-                }
-            });
-
-        }
-
-        @Override
-        public void onFailure(final Exception e) {
-            activity.handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    activity.displayMessage(e.getMessage());
-                }
-            });
-        }
-    }
 
 }
