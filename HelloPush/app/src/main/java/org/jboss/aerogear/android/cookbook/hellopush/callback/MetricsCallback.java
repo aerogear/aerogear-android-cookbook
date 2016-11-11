@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.aerogear.unifiedpush.helloworld.callback;
+package org.jboss.aerogear.android.cookbook.hellopush.callback;
 
 import android.util.Log;
 

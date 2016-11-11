@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
     JBoss, Home of Professional Open Source
     Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
     contributors by the @authors tag. See the copyright.txt in the
@@ -15,36 +14,41 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<manifest
-    package="org.jboss.aerogear.unifiedpush.helloworld"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.jboss.aerogear.android.cookbook.hellopush">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
         android:name=".HelloWorldApplication"
-        android:allowBackup="false">
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name">
 
-        <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" android:value="org.jboss.aerogear.unifiedpush.helloworld.handler.NotificationBarMessageHandler"/>
+        <meta-data
+            android:name="DEFAULT_MESSAGE_HANDLER_KEY"
+            android:value="org.jboss.aerogear.android.cookbook.hellopush.handler.NotificationBarMessageHandler" />
 
-        <activity android:name=".activities.SplashScreenActivity"
+        <activity
+            android:name=".activities.SplashScreenActivity"
             android:theme="@style/MyTheme.Fullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.RegisterActivity" android:theme="@style/MyTheme.Base"/>
-        <activity android:name=".activities.MessagesActivity"
-            android:theme="@style/MyTheme.Base"
-            android:label="@string/notifications">
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:theme="@style/MyTheme.Base" />
+        <activity
+            android:name=".activities.MessagesActivity"
+            android:label="@string/notifications"
+            android:theme="@style/MyTheme.Base">
             <intent-filter>
-                <action android:name="org.jboss.aerogear.unifiedpush.helloworld.activities.MessagesActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="org.jboss.aerogear.unifiedpush.helloworld.activities.MessagesActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
