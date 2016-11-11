@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:compat="http://schemas.android.com/apk/res-auto">
-    <group android:id="@+id/menuLeadsAccepted">
-        <item android:id="@+id/available_leads"
-              android:title="@string/availables"
-              android:icon="@drawable/ic_menu_avalable_leads"
-              compat:showAsAction="always"/>
-    </group>
-    <group android:id="@+id/menuAvailableLead">
-        <item android:id="@+id/refresh"
-              android:title="@string/refresh"
-              android:icon="@drawable/ic_menu_refresh"
-              compat:showAsAction="always"/>
-        <item android:id="@+id/leads_accepted"
-              android:title="@string/accepted"
-              android:icon="@drawable/ic_menu_leads_accepted"
-              compat:showAsAction="always"/>
-    </group>
-    <group android:id="@+id/menuLogout">
-        <item android:id="@+id/logout"
-              android:title="@string/logout"
-              android:icon="@drawable/ic_menu_logout"
-              compat:showAsAction="always"/>
-    </group>
+    xmlns:compat="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/logout"
+        compat:showAsAction="ifRoom" />
 </menu>

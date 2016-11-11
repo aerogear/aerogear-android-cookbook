@@ -1,5 +1,5 @@
-# AGDroid AeroDoc: Basic Mobile Application client to AeroDoc backend
----------
+# Basic Mobile Application client to AeroDoc backend
+
 Author: Daniel Passos (dpassos)   
 Level: Beginner   
 Technologies: Java, Android   
@@ -10,55 +10,52 @@ Source: https://github.com/aerogear/aerogear-android-cookbook/tree/master/AeroDo
 
 ## What is it?
 
-The ```AGDroid AeroDoc``` project demonstrates how to integrate to a backend using Pipe, Auth, Store and Push functionality in Android applications.
+_AeroDoc_ project demonstrates how to integrate to a backend using Pipe, Auth, Store and Push functionality in Android applications.
 
 ## How do I run it?
 
-### 0. System Requirements
+### System Requirements
 
-* [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle 2.2.1](http://www.gradle.org/)
-* Latest [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 21](http://developer.android.com/tools/revisions/platforms.html)
+* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](http://www.gradle.org/)
+* [Android SDK](https://developer.android.com/sdk/index.html) and [Platform](http://developer.android.com/tools/revisions/platforms.html)
 
-### 1. Customize Application
+### Configure
 
-The project source code must be customized with the unique metadata assigned to the application variant by the AeroGear UnifiedPush Server and GCM and AeroDoc URL. 
+The project source code must be customized with the unique metadata assigned to the application variant by the AeroGear UnifiedPush Server and FCM and AeroDoc URL. 
 
-1.1. Open ```/path/to/AeroDoc/app/src/main/java/org/jboss/aerogear/android/cookbook/aerodoc/AeroDocApplication.java``` for editing.
+1. Open ```/path/to/AeroDoc/app/src/main/java/org/jboss/aerogear/android/cookbook/aerodoc/AeroDocApplication.java``` for editing.
+1. Enter the application variant values allocated by the AeroGear of UnifiedPush Server and GCM for the following constants:
 
-1.2. Enter the application variant values allocated by the AeroGear of UnifiedPush Server and GCM for the following constants:
+    ```java
+    private static final String BASE_BACKEND_URL = "";
 
-```java
-private static final String BASE_BACKEND_URL = "";
+    private static final String UNIFIED_PUSH_URL = "";
+    private static final String GCM_SENDER_ID = "";
+    private static final String VARIANT_ID = "";
+    private static final String SECRET = "";
+    ```
+1. Save the file.
 
-private static final String UNIFIED_PUSH_URL = "";
-private static final String GCM_SENDER_ID = "";
-private static final String VARIANT_ID = "";
-private static final String SECRET = "";
-```
-1.3. Save the file.
-
-### 2. Build Application
+### Build Application
 
 ```shell
 $ cd /path/to/AeroDoc/
-$ gradle clean build
+$ ./gradlew clean build
 ```
 
-### 3. Test Application
+### Running the app
 
 To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 
-3.1. Install generated apk to device
+1. Install generated apk to device
 
-```shell
-$ cd /path/to/AeroDoc
-$ gradle installDebug
-```
+    ```shell
+    $ cd /path/to/AeroDoc
+    $ ./gradlew installDebug
+    ```
 
-3.2. Open app on device
-
-Application output is displayed in the command line window.
+1. Open app on device
 
 ## How does it work?
 
@@ -130,7 +127,7 @@ private void createLocalStorage() {
 }
 ```
 
-After login the ```AeroDocActivity``` will register device on push server
+After login the ```LoginActivity``` will register device on push server
 
 ```java
 public void registerDeviceOnPushServer(String alias) {

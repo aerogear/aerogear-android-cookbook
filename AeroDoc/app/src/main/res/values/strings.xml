@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AeroGear AeroDoc</string>
+    <string name="app_name">AeroDoc</string>
     <string name="aerodoc">AeroDoc</string>
     <string name="refresh">Refresh</string>
     <string name="logout">Logout</string>
@@ -18,6 +18,10 @@
     <string name="updating_lead">Updating lead</string>
     <string name="availables">Availables</string>
     <string name="accepted">Accepted</string>
+    <string name="cant_be_blank">Can\'t be blank</string>
+    <string name="accept">Accept</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="available">Available</string>
 
     <string-array name="status">
         <item>STANDBY</item>

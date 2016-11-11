@@ -25,7 +25,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.android.cookbook.aerodoc.R;
-import org.jboss.aerogear.android.cookbook.aerodoc.activities.AeroDocActivity;
+import org.jboss.aerogear.android.cookbook.aerodoc.ui.MainActivity;
 
 public class NotifyingMessageHandler implements MessageHandler {
 
@@ -46,7 +46,7 @@ public class NotifyingMessageHandler implements MessageHandler {
     private void sendNotification(String msg) {
         NotificationManager mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(ctx, AeroDocActivity.class)
+        Intent intent = new Intent(ctx, MainActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 .putExtra("alert", msg);
 
@@ -55,7 +55,7 @@ public class NotifyingMessageHandler implements MessageHandler {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(ctx)
                         .setAutoCancel(true)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("AeroGear Push Notification")
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                         .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
