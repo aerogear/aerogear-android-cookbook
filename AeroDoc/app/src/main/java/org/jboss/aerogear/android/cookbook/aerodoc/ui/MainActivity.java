@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE2.0
  * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,9 +16,14 @@
  */
 package org.jboss.aerogear.android.cookbook.aerodoc.ui;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -37,6 +42,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 
 import org.jboss.aerogear.android.cookbook.aerodoc.AeroDocApplication;
 import org.jboss.aerogear.android.cookbook.aerodoc.R;
@@ -48,9 +58,20 @@ import org.jboss.aerogear.android.pipe.Pipe;
 import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
 
-public class MainActivity extends AppCompatActivity implements MessageHandler {
+import java.util.List;
 
-    private static final int LOCATION_REQUEST = 0x100;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnNeverAskAgain;
+import permissions.dispatcher.OnPermissionDenied;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
+
+@RuntimePermissions
+public class MainActivity extends AppCompatActivity implements MessageHandler,
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+        LocationListener {
+
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private AeroDocApplication application;
@@ -59,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
 
     private AvailableLeadsFragments availableLeadsFragments;
     private AcceptedLeadsFragments acceptedLeadsFragments;
+
+    private GoogleApiClient mGoogleApiClient;
+
+    private LocationRequest mLocationRequest;
 
     // -- Android Life Cycle ----------------------------------------------------------------------
 
@@ -81,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
         ArrayAdapter<String> spinnerAdapter = (ArrayAdapter) spinner.getAdapter();
         int actualStatus = spinnerAdapter.getPosition(application.getSaleAgent().getStatus());
         spinner.setSelection(actualStatus, true);
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView,
@@ -104,19 +128,39 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
 
         pager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         tabs.setupWithViewPager(pager);
+
+        // -- Track Moviment
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
+
+        // Connect to Google services
+        mGoogleApiClient.connect();
 
         RegistrarManager.unregisterBackgroundThreadHandler(NotifyingMessageHandler.instance);
         RegistrarManager.registerMainThreadHandler(this);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
+
+        // Disconnect from Google services
+        mGoogleApiClient.disconnect();
+
         RegistrarManager.unregisterMainThreadHandler(this);
         RegistrarManager.registerBackgroundThreadHandler(NotifyingMessageHandler.instance);
     }
@@ -139,10 +183,10 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
 
     @Override
     public void onMessage(Context context, Bundle bundle) {
-        /**
-         * MessageType.PUSHED when new lead is available and need to be displayed
-         * MessageType.ACCPET when a lead was accepeted and need to be removed from the list.
-         */
+        /*
+          MessageType.PUSHED when new lead is available and need to be displayed
+          MessageType.ACCPET when a lead was accepeted and need to be removed from the list.
+        */
         String messageType = bundle.getString("messageType");
         if (MessageType.PUSHED.getType().equals(messageType)) {
             Toast.makeText(this, bundle.getString("alert"), Toast.LENGTH_SHORT).show();
@@ -150,6 +194,33 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
             acceptedLeadsFragments.retrieveLeads();
         }
         availableLeadsFragments.retrieveLeads();
+    }
+
+    // -- GoogleApiClient.ConnectionCallbacks -----------------------------------------------------
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        MainActivityPermissionsDispatcher.trackMovimentWithCheck(this);
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        // Stop request track moviment
+        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+
+    }
+
+    // GoogleApiClient.OnConnectionFailedListener -------------------------------------------------
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    }
+
+    // -- LocationListener ------------------------------------------------------------------------
+
+    @Override
+    public void onLocationChanged(Location location) {
+        updateLocation(location);
     }
 
     // -- ViewPagerAdapter ------------------------------------------------------------------------
@@ -200,6 +271,7 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
     }
 
     // -- Change Sale -----------------------------------------------------------------------------
+
     private void updateStatus(String status) {
 
         final MaterialDialog dialog = showProgressDialog(R.string.updating_status);
@@ -235,6 +307,60 @@ public class MainActivity extends AppCompatActivity implements MessageHandler {
 
     private void showSnackBar(String message) {
         Snackbar.make(contentPanel, message, Snackbar.LENGTH_LONG).show();
+    }
+
+    // -- Track Moviment
+
+    @SuppressWarnings("MissingPermission")
+    @NeedsPermission({Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION})
+    void trackMoviment() {
+        LocationServices.FusedLocationApi
+                .requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+    }
+
+    @OnShowRationale({Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION})
+    void showRationale(final PermissionRequest request) {
+        request.proceed();
+    }
+
+    @OnPermissionDenied({Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION})
+    void showDenied() {
+        Snackbar.make(contentPanel, R.string.location_denied, Snackbar.LENGTH_LONG)
+                .setAction(R.string.ask_again, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        MainActivityPermissionsDispatcher.trackMovimentWithCheck(MainActivity.this);
+                    }
+                })
+                .show();
+    }
+
+    @OnNeverAskAgain({Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION})
+    void showNeverAskAgain() {
+        Toast.makeText(this, R.string.request_location_never_ask_again, Toast.LENGTH_LONG).show();
+    }
+
+    private void updateLocation(Location location) {
+        SaleAgent saleAgent = application.getSaleAgent();
+        saleAgent.setLongitude(location.getLongitude());
+        saleAgent.setLatitude(location.getLatitude());
+
+        Pipe pipe = application.getSaleAgentPipe(this);
+        pipe.save(saleAgent, new Callback<List<SaleAgent>>() {
+            @Override
+            public void onFailure(Exception e) {
+                Log.e(TAG, "could not save sales agent", e);
+            }
+
+            @Override
+            public void onSuccess(List<SaleAgent> data) {
+                Log.d(TAG, "Sale Agent location success updated");
+            }
+        });
     }
 
 }

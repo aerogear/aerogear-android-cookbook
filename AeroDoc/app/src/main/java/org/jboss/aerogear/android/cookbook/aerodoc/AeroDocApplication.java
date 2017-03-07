@@ -148,7 +148,7 @@ public class AeroDocApplication extends Application {
             registrar.register(getApplicationContext(), new Callback<Void>() {
                 @Override
                 public void onSuccess(Void data) {
-                    Log.d("GCM", "Registered");
+                    Log.d(TAG, "Device registered on UPS");
                 }
 
                 @Override
