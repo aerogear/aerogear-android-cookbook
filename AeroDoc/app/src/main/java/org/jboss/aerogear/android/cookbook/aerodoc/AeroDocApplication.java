@@ -49,6 +49,8 @@ import java.util.Arrays;
 
 public class AeroDocApplication extends Application {
 
+    private static final String TAG = AeroDocApplication.class.getName();
+
     private static final String BASE_BACKEND_URL = "";
 
     private static final String UNIFIED_PUSH_URL = "";
