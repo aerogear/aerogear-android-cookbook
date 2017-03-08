@@ -49,6 +49,8 @@ import java.util.Arrays;
 
 public class AeroDocApplication extends Application {
 
+    private static final String TAG = AeroDocApplication.class.getName();
+
     private static final String BASE_BACKEND_URL = "";
 
     private static final String UNIFIED_PUSH_URL = "";
@@ -148,7 +150,7 @@ public class AeroDocApplication extends Application {
             registrar.register(getApplicationContext(), new Callback<Void>() {
                 @Override
                 public void onSuccess(Void data) {
-                    Log.d("GCM", "Registered");
+                    Log.d(TAG, "Device registered on UPS");
                 }
 
                 @Override

@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.aerodoc"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 4
-        versionName "3.0.0"
+        versionName "4.1.0"
 
         jackOptions {
             enabled true
@@ -34,14 +34,19 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.android.support:design:25.0.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
     compile 'org.jboss.aerogear:aerogear-android-store:3.0.1'
     compile 'org.jboss.aerogear:aerogear-android-auth:3.0.0'
     compile 'org.jboss.aerogear:aerogear-android-pipe:3.1.0'
-    compile 'org.jboss.aerogear:aerogear-android-push:4.0.2'
+    compile 'org.jboss.aerogear:aerogear-android-push:4.1.0'
     compile 'com.google.firebase:firebase-messaging:9.8.0'
-    compile 'com.afollestad.material-dialogs:core:0.9.1.0'
+    // Google play-services version need to be the same of firebase to avoid conflit :/
+    compile 'com.google.android.gms:play-services-location:9.8.0'
+    compile 'com.github.hotchemi:permissionsdispatcher:2.3.1'
+    compile 'com.afollestad.material-dialogs:core:0.9.3.0'
+
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.3.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
