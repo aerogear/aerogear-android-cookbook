@@ -20,6 +20,8 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -58,7 +60,9 @@ import org.jboss.aerogear.android.pipe.Pipe;
 import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -345,9 +349,19 @@ public class MainActivity extends AppCompatActivity implements MessageHandler,
     }
 
     private void updateLocation(Location location) {
+
         SaleAgent saleAgent = application.getSaleAgent();
+
         saleAgent.setLongitude(location.getLongitude());
         saleAgent.setLatitude(location.getLatitude());
+
+        try {
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            saleAgent.setLocation(addresses.get(0).getLocality());
+        } catch (IOException e) {
+            Log.d(TAG, e.getMessage(), e);
+        }
 
         Pipe pipe = application.getSaleAgentPipe(this);
         pipe.save(saleAgent, new Callback<List<SaleAgent>>() {

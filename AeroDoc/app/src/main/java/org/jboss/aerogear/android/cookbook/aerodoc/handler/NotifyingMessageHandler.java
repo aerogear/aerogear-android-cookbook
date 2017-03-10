@@ -34,7 +34,7 @@ public class NotifyingMessageHandler implements MessageHandler {
 
     public static final NotifyingMessageHandler instance = new NotifyingMessageHandler();
 
-    private NotifyingMessageHandler() {
+    public NotifyingMessageHandler() {
     }
 
     @Override
