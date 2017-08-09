@@ -35,11 +35,11 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:26.0.0'
-    compile 'org.jboss.aerogear:aerogear-android-core:3.0.0'
-    compile 'org.jboss.aerogear:aerogear-android-pipe:3.0.0'
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'org.jboss.aerogear:aerogear-android-core:3.1.0'
+    compile 'org.jboss.aerogear:aerogear-android-pipe:3.2.0'
     compile 'org.jboss.aerogear:aerogear-android-push:4.2.0'
-    compile 'com.google.firebase:firebase-messaging:11.0.1'
+    compile 'com.google.firebase:firebase-messaging:11.0.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
