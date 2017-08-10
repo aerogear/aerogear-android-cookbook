@@ -25,6 +25,8 @@
     <string name="location_denied">Without permission the app can\'t track movement</string>
     <string name="ask_again">Ask me again</string>
     <string name="request_location_never_ask_again">Okay, we\'re not gonna piss you off anymore.</string>
+    <string name="channel_name">Push Channel</string>
+    <string name="channel_description">Notifications from Push Service</string>
 
     <string-array name="status">
         <item>STANDBY</item>
