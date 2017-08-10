@@ -102,9 +102,7 @@ public class NotificationBarMessageHandler implements MessageHandler {
         String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
         String pushMessageId = bundle.getString(UnifiedPushMessage.PUSH_MESSAGE_ID);
 
-        @SuppressLint("WrongConstant")
         Intent intent = new Intent(context, MessagesActivity.class)
-                .addFlags(PendingIntent.FLAG_UPDATE_CURRENT)
                 .putExtra(UnifiedPushMessage.ALERT_KEY, message)
                 .putExtra(UnifiedPushMessage.PUSH_MESSAGE_ID, pushMessageId)
                 .putExtra(HelloWorldApplication.PUSH_MESSAGE_FROM_BACKGROUND, true);
