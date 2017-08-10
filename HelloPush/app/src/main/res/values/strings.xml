@@ -26,4 +26,6 @@
     <string name="nothing_here">Nothing here yet</string>
     <string name="send_notification">Send notifications from the console</string>
     <string name="notification_icon">Notification icon</string>
+    <string name="channel_name">Push Channel</string>
+    <string name="channel_description">Notifications from Push Service</string>
 </resources>
