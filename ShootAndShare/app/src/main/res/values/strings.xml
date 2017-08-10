@@ -12,5 +12,7 @@
     <string name="keycloak_icon">Keycloak icon</string>
     <string name="facebook_icon">Facebook icon</string>
     <string name="authentication_error">An error occurred when try authenticate on %1$s</string>
+    <string name="channel_name">Push Channel</string>
+    <string name="channel_description">Notifications from Push Service</string>
 </resources>
 
