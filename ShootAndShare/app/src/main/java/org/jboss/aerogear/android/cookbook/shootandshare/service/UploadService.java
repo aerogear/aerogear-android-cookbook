@@ -18,14 +18,18 @@ package org.jboss.aerogear.android.cookbook.shootandshare.service;
 
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import org.jboss.aerogear.android.cookbook.shootandshare.R;
@@ -42,6 +46,7 @@ public final class UploadService extends Service {
 
     public static final String FILE_URI = "UploadService.FILE_URI";
     public static final String PROVIDER = "UploadService.PROVIDER";
+    private static final String CHANNEL_ID = "shootnshare_push_channel";
 
     public enum PROVIDERS {GOOGLE, KEYCLOAK, FACEBOOK}
 
@@ -106,7 +111,17 @@ public final class UploadService extends Service {
     }
 
     private int displayUploadNotification(String fileName) {
-        Notification.Builder builder = new Notification.Builder(this);
+
+        Notification.Builder builder;
+
+        // because versions >= O require a channel for notifications
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createChannel();
+            builder = new Notification.Builder(this, CHANNEL_ID);
+        } else {
+            builder = new Notification.Builder(this);
+        }
+
         builder.setSmallIcon(R.drawable.ic_launcher);
         builder.setContentTitle("Uploading...");
         builder.setContentText("Uploading " + fileName);
@@ -114,6 +129,7 @@ public final class UploadService extends Service {
         builder.setOngoing(true);
 
         Notification notification = builder.build();
+
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -131,7 +147,16 @@ public final class UploadService extends Service {
             clearUploadNotification(id);
         }
 
-        Notification.Builder builder = new Notification.Builder(this);
+        Notification.Builder builder;
+
+        // because versions >= O require a channel for notifications
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createChannel();
+            builder = new Notification.Builder(this, CHANNEL_ID);
+        } else {
+            builder = new Notification.Builder(this);
+        }
+
         builder.setSmallIcon(R.drawable.ic_launcher);
         builder.setContentTitle("Upload Error");
         builder.setContentText(message);
@@ -150,6 +175,36 @@ public final class UploadService extends Service {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(id);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createChannel() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            throw new IllegalStateException("This function should not be called on < Android O");
+        }
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // The user-visible name of the channel.
+        CharSequence name = getString(R.string.channel_name);
+
+        // The user-visible description of the channel.
+        String description = getString(R.string.channel_description);
+        int importance = NotificationManager.IMPORTANCE_LOW;
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+
+        // Configure the notification channel.
+        channel.setDescription(description);
+        channel.enableLights(true);
+
+        // Sets the notification light color for notifications posted to this
+        // channel, if the device supports this feature.
+        channel.setLightColor(Color.RED);
+        channel.enableVibration(true);
+        channel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+        notificationManager.createNotificationChannel(channel);
+
     }
 
     @Override
