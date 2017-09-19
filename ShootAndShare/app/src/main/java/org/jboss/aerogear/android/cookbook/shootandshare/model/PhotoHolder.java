@@ -24,6 +24,8 @@ import java.io.File;
 
 public class PhotoHolder {
 
+    private Long serialVersionUID = null;
+
     @RecordId
     private String id = null;
 
@@ -65,5 +67,13 @@ public class PhotoHolder {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public void setSerialVersionUID(Long serialVersionUID) {
+        this.serialVersionUID = serialVersionUID;
     }
 }

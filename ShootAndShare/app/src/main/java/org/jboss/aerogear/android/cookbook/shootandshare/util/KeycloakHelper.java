@@ -34,8 +34,8 @@ import java.net.URL;
 
 public class KeycloakHelper {
 
-    private static final String SHOOT_SERVER_URL = "http://10.0.2.2:8080";
-    private static final String AUTHZ_URL = SHOOT_SERVER_URL +"/auth";
+    private static final String SHOOT_SERVER_URL = "http://rest.10.0.2.2.nip.io";
+    private static final String AUTHZ_URL = "http://rest.10.0.2.2.nip.io/auth";
     private static final String AUTHZ_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/auth";
     private static final String ACCESS_TOKEN_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/token";
     private static final String REFRESH_TOKEN_ENDPOINT = "/realms/shoot-realm/protocol/openid-connect/token";
@@ -57,7 +57,7 @@ public class KeycloakHelper {
                     .asModule();
 
             PipeManager.config("kc-upload", RestfulPipeConfiguration.class).module(AuthorizationManager.getModule(MODULE_NAME))
-                    .withUrl(new URL(SHOOT_SERVER_URL + "/shoot/rest/photos"))
+                    .withUrl(new URL(SHOOT_SERVER_URL + "/rest/photos"))
                     .requestBuilder(new MultipartRequestBuilder())
                     .forClass(PhotoHolder.class);
 
