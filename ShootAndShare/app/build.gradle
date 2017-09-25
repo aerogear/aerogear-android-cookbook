@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: "com.android.application"
 
 android {
     compileSdkVersion 26
@@ -26,20 +26,24 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 }
 
+ext {
+    google_support_library = "26.1.0"
+}
+
 dependencies {
 
-    compile 'com.android.support:appcompat-v7:26.0.2'
-    compile 'com.android.support:support-v13:26.0.2'
-    compile 'org.jboss.aerogear:aerogear-android-authz:3.0.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile ('com.afollestad:material-camera:0.4.4') {
-        exclude group : 'com.android.support'
+    compile "com.android.support:appcompat-v7:${google_support_library}"
+    compile "com.android.support:support-v13:${google_support_library}"
+    compile "org.jboss.aerogear:aerogear-android-authz:3.0.1"
+    compile "com.squareup.picasso:picasso:2.5.2"
+    compile ("com.afollestad:material-camera:0.4.4") {
+        exclude group : "com.android.support"
     }
-    compile 'com.github.hotchemi:permissionsdispatcher:2.2.0'
-    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.2.0'
+    compile "com.github.hotchemi:permissionsdispatcher:2.3.1"
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:2.3.1"
 }
