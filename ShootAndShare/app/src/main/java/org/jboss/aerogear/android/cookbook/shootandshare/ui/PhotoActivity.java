@@ -43,7 +43,28 @@ public class PhotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
 
-        photo = getIntent().getStringExtra("PHOTO");
+        if (getIntent().getStringExtra("PHOTO") != null) {
+            showPhoto(getIntent().getStringExtra("PHOTO"));
+        } else if (getIntent().getData() != null
+                && getIntent().getData().getQueryParameter("code") != null) {
+            showPhoto(popPhoto());
+        } else {
+            finish();
+        }
+
+
+    }
+
+    private String popPhoto() {
+        return getSharedPreferences("PHOTO", MODE_PRIVATE).getString("PHOTO0", "");
+
+    }
+
+    private void showPhoto(String photo) {
+        this.photo = photo;
+        if (photo == null || photo.isEmpty()) {
+            finish();
+        }
         ImageView photoImageView = (ImageView) findViewById(R.id.image);
         Picasso.with(getApplicationContext()).load(photo).into(photoImageView);
 
@@ -57,9 +78,15 @@ public class PhotoActivity extends AppCompatActivity {
         facebook.setOnClickListener(v -> sendPhotoToFacebook());
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+    }
+
     private void sendPhotoToGooglePlus() {
         if (!GooglePlusHelper.isConnected()) {
-
+            pushPhotoString(getIntent().getStringExtra("PHOTO"));
             GooglePlusHelper.connect(PhotoActivity.this, new Callback() {
                         @Override
                         public void onSuccess(Object o) {
@@ -77,6 +104,10 @@ public class PhotoActivity extends AppCompatActivity {
         } else {
             sendPhoto(UploadService.PROVIDERS.GOOGLE);
         }
+    }
+
+    private void pushPhotoString(String photo) {
+        getSharedPreferences("PHOTO", MODE_PRIVATE).edit().putString("PHOTO0", photo).commit();
     }
 
     private void sendPhotoToFacebook() {

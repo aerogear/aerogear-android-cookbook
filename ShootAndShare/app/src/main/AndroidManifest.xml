@@ -20,14 +20,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PhotoActivity" />
+        <activity android:name=".ui.PhotoActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="localhost" android:scheme="https"></data>
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.afollestad.materialcamera.CaptureActivity"
             android:theme="@style/MaterialCamera.CaptureActivity" />
         <activity
             android:name="com.afollestad.materialcamera.CaptureActivity2"
-            android:theme="@style/MaterialCamera.CaptureActivity" />
+            android:theme="@style/MaterialCamera.CaptureActivity" >
+        </activity>
 
         <service android:name="org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthzService" />
         <service android:name=".service.UploadService" />
