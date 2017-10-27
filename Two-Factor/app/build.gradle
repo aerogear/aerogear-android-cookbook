@@ -1,18 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.twofactor"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 3
         versionName "2.1.0"
-        jackOptions {
-            enabled true
-        }
+
     }
 
     compileOptions {
@@ -33,7 +31,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'org.jboss.aerogear:aerogear-otp-java:1.0.0'
     compile 'com.journeyapps:zxing-android-embedded:3.4.0'
 }
