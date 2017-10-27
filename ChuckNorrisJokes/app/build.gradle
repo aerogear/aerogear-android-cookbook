@@ -1,21 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "org.jboss.aerogear.android.cookbook.chucknorrisjokes"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 4
         versionName "3.0.0"
 
         multiDexEnabled = true
 
-        jackOptions {
-            enabled true
-        }
     }
 
     compileOptions {
@@ -38,8 +35,8 @@ android {
 dependencies {
     dependencies {
         wearApp project(':wear')
-        compile 'com.android.support:appcompat-v7:25.0.0'
-        compile 'com.google.android.gms:play-services:9.8.0'
-        compile 'org.jboss.aerogear:aerogear-android-pipe:3.1.0'
+        implementation 'com.android.support:appcompat-v7:26.0.0'
+        implementation 'com.google.android.gms:play-services:9.8.0'
+        implementation 'org.jboss.aerogear:aerogear-android-pipe:3.1.0'
     }
 }
