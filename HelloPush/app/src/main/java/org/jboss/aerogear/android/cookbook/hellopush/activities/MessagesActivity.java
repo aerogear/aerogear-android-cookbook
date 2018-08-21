@@ -50,7 +50,7 @@ public class MessagesActivity extends AppCompatActivity implements MessageHandle
         }
 
         View emptyView = findViewById(R.id.empty);
-        listView = (ListView) findViewById(R.id.messages);
+        listView = findViewById(R.id.messages);
         listView.setEmptyView(emptyView);
     }
 
@@ -58,7 +58,8 @@ public class MessagesActivity extends AppCompatActivity implements MessageHandle
     protected void onResume() {
         super.onResume();
         RegistrarManager.registerMainThreadHandler(this);
-        RegistrarManager.unregisterBackgroundThreadHandler(NotificationBarMessageHandler.instance);
+        RegistrarManager.unregisterBackgroundThreadHandler(
+                NotificationBarMessageHandler.getInstance());
 
         displayMessages();
     }
@@ -67,7 +68,8 @@ public class MessagesActivity extends AppCompatActivity implements MessageHandle
     protected void onPause() {
         super.onPause();
         RegistrarManager.unregisterMainThreadHandler(this);
-        RegistrarManager.registerBackgroundThreadHandler(NotificationBarMessageHandler.instance);
+        RegistrarManager.registerBackgroundThreadHandler(
+                NotificationBarMessageHandler.getInstance());
     }
 
     @Override
