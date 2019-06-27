@@ -16,65 +16,93 @@
  */
 package org.jboss.aerogear.android.cookbook.hellopush.handler;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.support.v4.app.NotificationManagerCompat;
 
-import org.jboss.aerogear.android.unifiedpush.MessageHandler;
-import org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushMessage;
 import org.jboss.aerogear.android.cookbook.hellopush.HelloWorldApplication;
 import org.jboss.aerogear.android.cookbook.hellopush.R;
 import org.jboss.aerogear.android.cookbook.hellopush.activities.MessagesActivity;
+import org.jboss.aerogear.android.unifiedpush.MessageHandler;
+import org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushMessage;
 
 public class NotificationBarMessageHandler implements MessageHandler {
 
-    public static final int NOTIFICATION_ID = 1;
+    private static final String CHANNEL_ID = "aerogear-channel";
 
     public static final NotificationBarMessageHandler instance = new NotificationBarMessageHandler();
+
+    public static final int NOTIFICATION_ID = 1;
 
     public NotificationBarMessageHandler() {
     }
 
     @Override
     public void onMessage(Context context, Bundle bundle) {
+
         String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
 
         HelloWorldApplication application = (HelloWorldApplication) context.getApplicationContext();
         application.addMessage(message);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createChannel(context);
+        }
+
         notify(context, bundle);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createChannel(Context context) {
+
+        String name = "AeroGear";
+        String description = "AeroGear Android Cookbook";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+        channel.setDescription(description);
+
+        NotificationManager systemService = context.getSystemService(NotificationManager.class);
+        systemService.createNotificationChannel(channel);
+
     }
 
     private void notify(Context context, Bundle bundle) {
-        NotificationManager mNotificationManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         String message = bundle.getString(UnifiedPushMessage.ALERT_KEY);
         String pushMessageId = bundle.getString(UnifiedPushMessage.PUSH_MESSAGE_ID);
 
         Intent intent = new Intent(context, MessagesActivity.class)
-                .addFlags(PendingIntent.FLAG_UPDATE_CURRENT)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 .putExtra(UnifiedPushMessage.ALERT_KEY, message)
                 .putExtra(UnifiedPushMessage.PUSH_MESSAGE_ID, pushMessageId)
                 .putExtra(HelloWorldApplication.PUSH_MESSAGE_FROM_BACKGROUND, true);
+        PendingIntent pendingIntent = PendingIntent
+                .getActivity(context, 0, intent, 0);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(context, 0, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+        Builder builder = new Builder(context, CHANNEL_ID)
                 .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle(context.getString(R.string.app_name))
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setContentText(message);
+                .setContentIntent(pendingIntent);
 
-        mBuilder.setContentIntent(contentIntent);
-        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
+
     }
 
 }
