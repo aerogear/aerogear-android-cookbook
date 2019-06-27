@@ -38,11 +38,12 @@ import org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushMessage;
 public class NotificationBarMessageHandler implements MessageHandler {
 
     private static final String CHANNEL_ID = "aerogear-channel";
+    private static final int NOTIFICATION_ID = 1;
 
     public static final NotificationBarMessageHandler instance = new NotificationBarMessageHandler();
 
-    public static final int NOTIFICATION_ID = 1;
-
+    // This should be public to be used on AndroidManifest.xml
+    @SuppressWarnings("WeakerAccess")
     public NotificationBarMessageHandler() {
     }
 

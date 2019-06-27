@@ -26,10 +26,8 @@ import android.widget.ListView;
 import org.jboss.aerogear.android.unifiedpush.MessageHandler;
 import org.jboss.aerogear.android.unifiedpush.RegistrarManager;
 import org.jboss.aerogear.android.unifiedpush.fcm.UnifiedPushMessage;
-import org.jboss.aerogear.android.unifiedpush.metrics.UnifiedPushMetricsMessage;
 import org.jboss.aerogear.android.cookbook.hellopush.HelloWorldApplication;
 import org.jboss.aerogear.android.cookbook.hellopush.R;
-import org.jboss.aerogear.android.cookbook.hellopush.callback.MetricsCallback;
 import org.jboss.aerogear.android.cookbook.hellopush.handler.NotificationBarMessageHandler;
 
 public class MessagesActivity extends AppCompatActivity implements MessageHandler {
@@ -45,7 +43,7 @@ public class MessagesActivity extends AppCompatActivity implements MessageHandle
         application = (HelloWorldApplication) getApplication();
 
         View emptyView = findViewById(R.id.empty);
-        listView = (ListView) findViewById(R.id.messages);
+        listView = findViewById(R.id.messages);
         listView.setEmptyView(emptyView);
     }
 
