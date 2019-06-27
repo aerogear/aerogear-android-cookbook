@@ -48,10 +48,4 @@ public class HelloWorldApplication extends Application {
         messages.add(newMessage);
     }
 
-    public void sendMetric(UnifiedPushMetricsMessage metricsMessage, Callback<UnifiedPushMetricsMessage> callback) {
-        AeroGearFCMPushRegistrar registrar = (AeroGearFCMPushRegistrar)
-                RegistrarManager.getRegistrar(PUSH_REGISTER_NAME);
-        registrar.sendMetrics(metricsMessage, callback);
-    }
-
 }

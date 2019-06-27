@@ -44,11 +44,6 @@ public class MessagesActivity extends AppCompatActivity implements MessageHandle
 
         application = (HelloWorldApplication) getApplication();
 
-        if(getIntent().getBooleanExtra(HelloWorldApplication.PUSH_MESSAGE_FROM_BACKGROUND, false)) {
-            UnifiedPushMetricsMessage metricsMessage = new UnifiedPushMetricsMessage(getIntent().getExtras());
-            application.sendMetric(metricsMessage, new MetricsCallback());
-        }
-
         View emptyView = findViewById(R.id.empty);
         listView = (ListView) findViewById(R.id.messages);
         listView.setEmptyView(emptyView);
